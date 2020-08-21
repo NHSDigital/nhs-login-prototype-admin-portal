@@ -1,77 +1,51 @@
-<!-- Use this page as the index for your project -->
-
-<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
-
-<!-- Extends the layout from /views/layout.html -->
 {% extends 'layout.html' %}
-<!-- 
-  In /views/layout.html you can:
-    - change the header and footer 
-    - add custom CSS and JavaScript
--->
 
-<!-- Set the page title inside the pageTitle block -->
-{% block pageTitle %}
-  NHS.UK prototype kit
-{% endblock %}
-
-<!-- Breadcrumb goes inside the beforeContent block -->
 {% block beforeContent %}
+  {% include "includes/phase-banner.html" %}
 {% endblock %}
 
-<!-- Your page content goes inside the content block -->
-<!-- More info and code for the page layout can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
 {% block content %}
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
-      <!-- Change the page title here -->
       <h1>
-        NHS.UK prototype kit
-        <span class="nhsuk-caption-xl nhsuk-caption--bottom">Version {{version}}</span>
+        Disable a live user account
       </h1>
 
-      <!-- Add your content here -->
-      <!-- Styles and components can be found at https://service-manual.nhs.uk/design-system -->
-
-      <p class="nhsuk-lede-text">
-        This kit lets you rapidly create HTML prototypes of NHS services.
-      </p>
-
-      <hr>
+      <p>An explanation about what happens when you disable a user and who can enable them perhaps?</p>
 
       <h2>
-        About this page
+        Search for a user
       </h2>
 
-      <p>
-        Use this page as the index for your project.
-      </p>
-      
-      <p>
-        You'll find the code for this page at <strong>/app/views/index.html</strong>.
-      </p>
+      <form action="result" method="POST">
 
-      <p>
-        There is also an <a href="/page-example">example page</a>, which contains a selection of NHS.UK frontend styles and components.
-      </p>
+        <div class="nhsuk-form-group">
 
-      <hr>
+          <label class="nhsuk-label" for="example">
+            Account ID
+          </label>
+          <span class="nhsuk-hint">
+            For example: 2eee22a1-bb11-cd1c-ab11-11bcd22aaed2
+          </span>
+          <input class="nhsuk-input" id="example" name="example" type="text">
 
-      <h2>
-        Documentation
-      </h2>
+          <p class="nhsuk-u-margin-top-4">or</p>
 
-      <ul>
-        <li>
-          Get started with <a href="/docs">how to guides and page templates</a>
-        </li>
-        <li>
-          Copy and paste styles and components from the <a href="https://service-manual.nhs.uk/design-system">NHS digital service manual</a>
-        </li>
-      </ul>
+          <label class="nhsuk-label" for="example">
+            Email address
+          </label>
+          <input class="nhsuk-input" id="example" name="example" type="text">
 
-      <!-- End of content -->
+        </div>
+
+        <div class="nhsuk-form-group">
+          <button class="nhsuk-button" type="submit">
+            Search
+          </button>
+        </div>
+
+      </form>
 
     </div>
   </div>
