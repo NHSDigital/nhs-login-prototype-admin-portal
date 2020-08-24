@@ -11,19 +11,19 @@
       <fieldset class="nhsuk-fieldset">
         <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
           <h1 class="nhsuk-fieldset__heading">
-            Are you sure you want to disable the user: {{ data['email'] }}?
+            Are you sure you want to enable the user: {{ data['email'] }}?
           </h1>
         </legend>
       
         <div class="nhsuk-form-group">
 
-          <form action="result?result{{ data['result'] }}=active" method="POST" style="display: inline-block;">
+          <form action="result?result{{ data['result'] }}=disabled" method="POST" style="display: inline-block;">
             <button class="nhsuk-button nhsuk-button--secondary nhsuk-u-margin-right-4" type="submit">
               No
             </button>
           </form>
 
-          <form action="result?result{{ data['result'] }}=disabled" method="POST" style="display: inline-block;">
+          <form action="result?result{{ data['result'] }}=active" method="POST" style="display: inline-block;">
             <button class="nhsuk-button nhsuk-button--secondary" type="submit">
               Yes
             </button>

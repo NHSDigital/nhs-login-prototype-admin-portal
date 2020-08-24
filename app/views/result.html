@@ -5,6 +5,7 @@
 {% endblock %}
 
 {% block content %}
+
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-full">
 
@@ -28,10 +29,10 @@
           <tbody class="nhsuk-table__body">
             <tr class="nhsuk-table__row">
               <td class="nhsuk-table__cell">2eee22a1-bb11-cd1c-ab11-11bcd22aaed2</td>
-              <td class="nhsuk-table__cell ">tim.peak2@hotmail.com</td>
-              <td class="nhsuk-table__cell ">Tim</td>
-              <td class="nhsuk-table__cell ">Peake</td>
-              <td class="nhsuk-table__cell ">
+              <td class="nhsuk-table__cell">tim.peak2@hotmail.com</td>
+              <td class="nhsuk-table__cell">Tim</td>
+              <td class="nhsuk-table__cell">Peake</td>
+              <td class="nhsuk-table__cell">
                 {% if data['result1'] == "disabled" %}
                   Disabled
                 {% else %}
@@ -39,29 +40,55 @@
                 {% endif %}
               </td>
               <td class="nhsuk-table__cell ">
-                {% if data['result1'] != "disabled" %}
-                <form action="disable?result=1&email=tim.peak2@hotmail.com" method="POST">
-                  <button class="nhsuk-button nhsuk-button--secondary nhsuk-u-margin-bottom-0" type="submit">
-                    Disable
-                  </button>
-                </form>
+                {% if data['result1'] == "disabled" %}
+                  <form action="enable?result=1&email=tim.peak2@hotmail.com" method="POST">
+                    <button class="nhsuk-button nhsuk-u-margin-bottom-0" type="submit">
+                      Enable
+                    </button>
+                  </form>
+                {% else %}
+                  <form action="disable?result=1&email=tim.peak2@hotmail.com" method="POST">
+                    <button class="nhsuk-button nhsuk-button--secondary nhsuk-u-margin-bottom-0" type="submit">
+                      Disable
+                    </button>
+                  </form>
                 {% endif %}
               </td>
             </tr>
             <tr class="nhsuk-table__row">
               <td class="nhsuk-table__cell">2eee22a1-bb11-cd1c-ab11-11bcd22aaed2</td>
-              <td class="nhsuk-table__cell ">chadfield123@gmail.com</td>
-              <td class="nhsuk-table__cell ">Chris</td>
-              <td class="nhsuk-table__cell ">Hadfield</td>
-              <td class="nhsuk-table__cell ">Disabled</td>
-              <td class="nhsuk-table__cell "></td>
+              <td class="nhsuk-table__cell">chadfield123@gmail.com</td>
+              <td class="nhsuk-table__cell">Chris</td>
+              <td class="nhsuk-table__cell">Hadfield</td>
+              <td class="nhsuk-table__cell">
+                {% if data['result2'] == "active" %}
+                  Active
+                {% else %}
+                  Disabled
+                {% endif %}
+              </td>
+              <td class="nhsuk-table__cell ">
+                {% if data['result2'] == "active" %}
+                  <form action="disable?result=2&email=chadfield123@gmail.com" method="POST">
+                    <button class="nhsuk-button nhsuk-button--secondary nhsuk-u-margin-bottom-0" type="submit">
+                      Disable
+                    </button>
+                  </form>
+                {% else %}
+                  <form action="enable?result=2&email=chadfield123@gmail.com" method="POST">
+                    <button class="nhsuk-button nhsuk-u-margin-bottom-0" type="submit">
+                      Enable
+                    </button>
+                  </form>
+                {% endif %}
+              </td>
             </tr>
             <tr class="nhsuk-table__row">
               <td class="nhsuk-table__cell">2eee22a1-bb11-cd1c-ab11-11bcd22aaed2</td>
-              <td class="nhsuk-table__cell ">anne_mcclain@yahoo.co.uk</td>
-              <td class="nhsuk-table__cell ">Anne</td>
-              <td class="nhsuk-table__cell ">McClain</td>
-              <td class="nhsuk-table__cell ">
+              <td class="nhsuk-table__cell">anne_mcclain@yahoo.co.uk</td>
+              <td class="nhsuk-table__cell">Anne</td>
+              <td class="nhsuk-table__cell">McClain</td>
+              <td class="nhsuk-table__cell">
                 {% if data['result3'] == "disabled" %}
                   Disabled
                 {% else %}
@@ -69,12 +96,18 @@
                 {% endif %}
               </td>
               <td class="nhsuk-table__cell ">
-                {% if data['result3'] != "disabled" %}
-                <form action="disable?result=3&email=anne_mcclain@yahoo.co.uk" method="POST">
-                  <button class="nhsuk-button nhsuk-button--secondary nhsuk-u-margin-bottom-0" type="submit">
-                    Disable
-                  </button>
-                </form>
+                {% if data['result3'] == "disabled" %}
+                  <form action="enable?result=3&email=anne_mcclain@yahoo.co.uk" method="POST">
+                    <button class="nhsuk-button nhsuk-u-margin-bottom-0" type="submit">
+                      Enable
+                    </button>
+                  </form>
+                {% else %}
+                  <form action="disable?result=3&email=anne_mcclain@yahoo.co.uk" method="POST">
+                    <button class="nhsuk-button nhsuk-button--secondary nhsuk-u-margin-bottom-0" type="submit">
+                      Disable
+                    </button>
+                  </form>
                 {% endif %}
               </td>
             </tr>
