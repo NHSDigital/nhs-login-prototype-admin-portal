@@ -5,82 +5,314 @@
 {% endblock %}
 
 {% block content %}
+
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-full">
 
+      <div class="nhsuk-back-link">
+        <a class="nhsuk-back-link__link" href="index">
+          <svg class="nhsuk-icon nhsuk-icon__chevron-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M8.5 12c0-.3.1-.5.3-.7l5-5c.4-.4 1-.4 1.4 0s.4 1 0 1.4L10.9 12l4.3 4.3c.4.4.4 1 0 1.4s-1 .4-1.4 0l-5-5c-.2-.2-.3-.4-.3-.7z"></path>
+          </svg>
+          Go back to search again</a>
+      </div>
+
       <h1>
-        Results
+        3 results
       </h1>
 
-      <div class="nhsuk-table-responsive">
-        <table class="nhsuk-table">
-          <caption class="nhsuk-table__caption">A list of live user accounts that meet your search criteria</caption>
-          <thead class="nhsuk-table__head">
-            <tr class="nhsuk-table__row">
-              <th class="nhsuk-table__header" scope="col">Account ID</th>
-              <th class="nhsuk-table__header" scope="col">Email address</th>
-              <th class="nhsuk-table__header" scope="col">First name</th>
-              <th class="nhsuk-table__header" scope="col">Last name</th>
-              <th class="nhsuk-table__header" scope="col">Account status</th>
-              <th class="nhsuk-table__header" scope="col"></th>
-            </tr>
-          </thead>
-          <tbody class="nhsuk-table__body">
-            <tr class="nhsuk-table__row">
-              <td class="nhsuk-table__cell">2eee22a1-bb11-cd1c-ab11-11bcd22aaed2</td>
-              <td class="nhsuk-table__cell ">tim.peak2@hotmail.com</td>
-              <td class="nhsuk-table__cell ">Tim</td>
-              <td class="nhsuk-table__cell ">Peake</td>
-              <td class="nhsuk-table__cell ">
-                {% if data['result1'] == "disabled" %}
-                  Disabled
-                {% else %}
-                  Active
-                {% endif %}
-              </td>
-              <td class="nhsuk-table__cell ">
-                {% if data['result1'] != "disabled" %}
-                <form action="disable?result=1&email=tim.peak2@hotmail.com" method="POST">
-                  <button class="nhsuk-button nhsuk-button--secondary nhsuk-u-margin-bottom-0" type="submit">
-                    Disable
-                  </button>
-                </form>
-                {% endif %}
-              </td>
-            </tr>
-            <tr class="nhsuk-table__row">
-              <td class="nhsuk-table__cell">2eee22a1-bb11-cd1c-ab11-11bcd22aaed2</td>
-              <td class="nhsuk-table__cell ">chadfield123@gmail.com</td>
-              <td class="nhsuk-table__cell ">Chris</td>
-              <td class="nhsuk-table__cell ">Hadfield</td>
-              <td class="nhsuk-table__cell ">Disabled</td>
-              <td class="nhsuk-table__cell "></td>
-            </tr>
-            <tr class="nhsuk-table__row">
-              <td class="nhsuk-table__cell">2eee22a1-bb11-cd1c-ab11-11bcd22aaed2</td>
-              <td class="nhsuk-table__cell ">anne_mcclain@yahoo.co.uk</td>
-              <td class="nhsuk-table__cell ">Anne</td>
-              <td class="nhsuk-table__cell ">McClain</td>
-              <td class="nhsuk-table__cell ">
-                {% if data['result3'] == "disabled" %}
-                  Disabled
-                {% else %}
-                  Active
-                {% endif %}
-              </td>
-              <td class="nhsuk-table__cell ">
-                {% if data['result3'] != "disabled" %}
-                <form action="disable?result=3&email=anne_mcclain@yahoo.co.uk" method="POST">
-                  <button class="nhsuk-button nhsuk-button--secondary nhsuk-u-margin-bottom-0" type="submit">
-                    Disable
-                  </button>
-                </form>
-                {% endif %}
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+      <dl class="nhsuk-summary-list nhsuk-u-padding-4 background-white">
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Account ID
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            2eee22a1-bb11-cd1c-ab11-11bcd22aaed2
+          </dd>
+          <dd class="nhsuk-summary-list__actions">
+          </dd>
+        </div>
+      
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Email address
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            tim.peak2@hotmail.com
+          </dd>
+          <dd class="nhsuk-summary-list__actions">
+          </dd>
+        </div>
+      
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            First name
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            Tim
+          </dd>
+          <dd class="nhsuk-summary-list__actions">
+          </dd>
+        </div>
+      
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Last name
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            Peake
+          </dd>
+          <dd class="nhsuk-summary-list__actions">
+          </dd>
+        </div>
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Status
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            {% if data['result1'] == "disabled" %}
+              Disabled
+            {% else %}
+              Active
+            {% endif %}
+          </dd>
+          <dd class="nhsuk-summary-list__actions">
+            {% if data['result1'] == "disabled" %}
+              <a href="enable?result=1&email=tim.peak2@hotmail.com">Enable</a>
+            {% else %}
+              <a href="disable?result=1&email=tim.peak2@hotmail.com">Disable</a>
+            {% endif %}
+          </dd>
+        </div>
+
+        {% if data['result1'] == "disabled" %}
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Incident number
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            {% if data['incident-number-1'] %}
+              {{ data['incident-number-1'] }}
+            {% else %}
+              None
+            {% endif %}
+          </dd>
+          <dd class="nhsuk-summary-list__actions">
+            {% if data['incident-number-1'] %}
+              <a href="404">Change</a>
+            {% else %}
+              <a href="404">Add</a>
+            {% endif %}
+          </dd>
+        </div>
+        {% endif %}
+      
+      </dl>
+
+      <dl class="nhsuk-summary-list nhsuk-u-padding-4 background-white">
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Account ID
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            2eee22a1-bb11-cd1c-ab11-11bcd22aaed2
+          </dd>
+          <dd class="nhsuk-summary-list__actions">
+          </dd>
+        </div>
+      
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Email address
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            chadfield123@gmail.com
+          </dd>
+          <dd class="nhsuk-summary-list__actions">
+          </dd>
+        </div>
+      
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            First name
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            Chris
+          </dd>
+          <dd class="nhsuk-summary-list__actions">
+          </dd>
+        </div>
+      
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Last name
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            Hadfield
+          </dd>
+          <dd class="nhsuk-summary-list__actions">
+          </dd>
+        </div>
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Status
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            {% if data['result2'] == "active" %}
+              Active
+            {% else %}
+              Disabled
+            {% endif %}
+          </dd>
+          <dd class="nhsuk-summary-list__actions">
+            {% if data['result2'] == "active" %}
+              <a href="disable?result=2&email=chadfield123@gmail.com">Disable</a>
+            {% else %}
+              <a href="enable?result=2&email=chadfield123@gmail.com">Enable</a>
+            {% endif %}
+          </dd>
+        </div>
+
+        {% if data['result2'] == "disabled" %}
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Incident number
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            {% if data['incident-number-2'] %}
+              {{ data['incident-number-2'] }}
+            {% else %}
+              None
+            {% endif %}
+          </dd>
+          <dd class="nhsuk-summary-list__actions">
+            {% if data['incident-number-2'] %}
+              <a href="404">Change</a>
+            {% else %}
+              <a href="404">Add</a>
+            {% endif %}
+          </dd>
+        </div>
+        {% endif %}
+
+        {% if data['result2'] %}
+        {% else %}
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Incident number
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            {% if data['incident-number-2'] %}
+              {{ data['incident-number-2'] }}
+            {% else %}
+              None
+            {% endif %}
+          </dd>
+          <dd class="nhsuk-summary-list__actions">
+            {% if data['incident-number-2'] %}
+              <a href="404">Change</a>
+            {% else %}
+              <a href="404">Add</a>
+            {% endif %}
+          </dd>
+        </div>
+        {% endif %}
+      
+      </dl>
+
+      <dl class="nhsuk-summary-list nhsuk-u-padding-4 background-white">
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Account ID
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            2eee22a1-bb11-cd1c-ab11-11bcd22aaed2
+          </dd>
+          <dd class="nhsuk-summary-list__actions">
+          </dd>
+        </div>
+      
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Email address
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            anne_mcclain@yahoo.co.uk
+          </dd>
+          <dd class="nhsuk-summary-list__actions">
+          </dd>
+        </div>
+      
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            First name
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            Anne
+          </dd>
+          <dd class="nhsuk-summary-list__actions">
+          </dd>
+        </div>
+      
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Last name
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            MacClain
+          </dd>
+          <dd class="nhsuk-summary-list__actions">
+          </dd>
+        </div>
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Status
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            {% if data['result3'] == "disabled" %}
+              Disabled
+            {% else %}
+              Active
+            {% endif %}
+          </dd>
+          <dd class="nhsuk-summary-list__actions">
+            {% if data['result3'] == "disabled" %}
+              <a href="enable?result=3&email=anne_mcclain@yahoo.co.uk">Enable</a>
+            {% else %}
+              <a href="disable?result=3&email=anne_mcclain@yahoo.co.uk">Disable</a>
+            {% endif %}
+          </dd>
+        </div>
+
+        {% if data['result3'] == "disabled" %}
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Incident number
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            {% if data['incident-number-3'] %}
+              {{ data['incident-number-3'] }}
+            {% else %}
+              None
+            {% endif %}
+          </dd>
+          <dd class="nhsuk-summary-list__actions">
+            {% if data['incident-number-3'] %}
+              <a href="404">Change</a>
+            {% else %}
+              <a href="404">Add</a>
+            {% endif %}
+          </dd>
+        </div>
+        {% endif %}
+      
+      </dl>
 
     </div>
   </div>
