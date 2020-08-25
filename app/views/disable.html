@@ -8,31 +8,56 @@
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-full">
 
-      <fieldset class="nhsuk-fieldset">
-        <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
-          <h1 class="nhsuk-fieldset__heading">
-            Are you sure you want to disable the user: {{ data['email'] }}?
-          </h1>
-        </legend>
-      
+      <form action="result" method="POST">
+
         <div class="nhsuk-form-group">
 
-          <form action="result?result{{ data['result'] }}=active" method="POST" style="display: inline-block;">
-            <button class="nhsuk-button nhsuk-button--secondary nhsuk-u-margin-right-4" type="submit">
-              No
-            </button>
-          </form>
+          <fieldset class="nhsuk-fieldset">
+            <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+              <h1 class="nhsuk-fieldset__heading">
+                Are you sure you want to disable the user: {{ data['email'] }}?
+              </h1>
+            </legend>
+        
+            <div class="nhsuk-radios">
+        
+              <div class="nhsuk-radios__item">
+                <input class="nhsuk-radios__input" id="example-1" name="result{{ data['result'] }}" value="disabled" type="radio" onclick="document.getElementById('incident').style.display = 'block'">
+                <label class="nhsuk-label nhsuk-radios__label" for="example-1">
+                  Yes
+                </label>
+              </div>
 
-          <form action="result?result{{ data['result'] }}=disabled" method="POST" style="display: inline-block;">
-            <button class="nhsuk-button nhsuk-button--secondary" type="submit">
-              Yes
-            </button>
-          </form>
-          
+              <div class="nhsuk-form-group" id="incident" style="display:none;">
+                <label class="nhsuk-label" for="incident-number-{{ data['result'] }}">
+                  Incident number (optional)
+                </label>
+                <span class="nhsuk-hint">
+                  Enter the Cherwell incident number that relates to the reason why this account is being disabled.
+                </span>
+                <input class="nhsuk-input" id="incident-number-{{ data['result'] }}" name="incident-number-{{ data['result'] }}" type="text">
+              </div>
+        
+              <div class="nhsuk-radios__item">
+                <input class="nhsuk-radios__input" id="example-2" name="result{{ data['result'] }}" value="active" type="radio" onclick="document.getElementById('incident').style.display = 'none'">
+                <label class="nhsuk-label nhsuk-radios__label" for="example-2">
+                  No
+                </label>
+              </div>
+        
+            </div>
+          </fieldset>
+        
         </div>
-      
-      </fieldset>
 
+        <div class="nhsuk-form-group">
+          <button class="nhsuk-button" type="submit">
+            Submit
+          </button>
+        </div>
+
+      </form>
+      
     </div>
   </div>
 {% endblock %}
