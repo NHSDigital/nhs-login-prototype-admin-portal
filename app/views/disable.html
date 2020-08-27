@@ -6,7 +6,7 @@
 
 {% block content %}
   <div class="nhsuk-grid-row">
-    <div class="nhsuk-grid-column-full">
+    <div class="nhsuk-grid-column-two-thirds">
 
       <form action="result" method="POST">
 
@@ -22,7 +22,7 @@
             <div class="nhsuk-radios">
         
               <div class="nhsuk-radios__item">
-                <input class="nhsuk-radios__input" id="example-1" name="result{{ data['result'] }}" value="disabled" type="radio" onclick="document.getElementById('incident').style.display = 'block'">
+                <input class="nhsuk-radios__input" id="example-1" name="result{{ data['result'] }}" value="Disabled" type="radio" onclick="document.getElementById('incident').style.display = 'block'">
                 <label class="nhsuk-label nhsuk-radios__label" for="example-1">
                   Yes
                 </label>
@@ -39,7 +39,7 @@
               </div>
         
               <div class="nhsuk-radios__item">
-                <input class="nhsuk-radios__input" id="example-2" name="result{{ data['result'] }}" value="active" type="radio" onclick="document.getElementById('incident').style.display = 'none'">
+                <input class="nhsuk-radios__input" id="example-2" name="result{{ data['result'] }}" value="Active" type="radio" onclick="document.getElementById('incident').style.display = 'none'">
                 <label class="nhsuk-label nhsuk-radios__label" for="example-2">
                   No
                 </label>
