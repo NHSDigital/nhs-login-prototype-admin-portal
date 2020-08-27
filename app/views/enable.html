@@ -6,7 +6,7 @@
 
 {% block content %}
   <div class="nhsuk-grid-row">
-    <div class="nhsuk-grid-column-full">
+    <div class="nhsuk-grid-column-two-thirds">
 
       <fieldset class="nhsuk-fieldset">
         <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
@@ -17,13 +17,13 @@
       
         <div class="nhsuk-form-group">
 
-          <form action="result?result{{ data['result'] }}=disabled" method="POST" style="display: inline-block;">
+          <form action="result?result{{ data['result'] }}=Disabled" method="POST" style="display: inline-block;">
             <button class="nhsuk-button nhsuk-button--secondary nhsuk-u-margin-right-4" type="submit">
               No
             </button>
           </form>
 
-          <form action="result?result{{ data['result'] }}=active" method="POST" style="display: inline-block;">
+          <form action="result?result{{ data['result'] }}=Active" method="POST" style="display: inline-block;">
             <button class="nhsuk-button nhsuk-button--secondary" type="submit">
               Yes
             </button>

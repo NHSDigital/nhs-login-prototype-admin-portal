@@ -1,0 +1,52 @@
+{% extends 'layout.html' %}
+
+{% block beforeContent %}
+  {% include "includes/phase-banner.html" %}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <h1>
+        Disable a live user account
+      </h1>
+
+      <p>An explanation about what happens when you disable a user and who can enable them perhaps?</p>
+
+      <h2>
+        Search for a user
+      </h2>
+
+      <form action="result" method="POST">
+
+        <div class="nhsuk-form-group">
+
+          <label class="nhsuk-label" for="search-id">
+            Account ID
+          </label>
+          <span class="nhsuk-hint">
+            For example: 2eee22a1-bb11-cd1c-ab11-11bcd22aaed2
+          </span>
+          <input class="nhsuk-input" id="search-id" name="search-id" type="text" value="2eee22a1-bb11-cd1c-ab11-11bcd22aaed2">
+
+          <p class="nhsuk-u-margin-top-4">or</p>
+
+          <label class="nhsuk-label" for="search-email">
+            Email address
+          </label>
+          <input class="nhsuk-input" id="search-email" name="search-email" type="text">
+
+        </div>
+
+        <div class="nhsuk-form-group">
+          <button class="nhsuk-button" type="submit">
+            Search
+          </button>
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+{% endblock %}
