@@ -19,7 +19,7 @@
       <fieldset class="nhsuk-fieldset">
         <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
           <h1 class="nhsuk-fieldset__heading">
-            Are you sure you want to enable this user?
+            Change incident number
           </h1>
         </legend>
 
@@ -32,22 +32,20 @@
           <span class="nhsuk-hint">{{ data['email'] }}</span>
         </p>
       
-        <div class="nhsuk-form-group">
-
-          <form action="result?status=Disabled" method="POST" style="display: inline-block;">
-            <button class="nhsuk-button nhsuk-button--secondary nhsuk-u-margin-right-4" type="submit">
-              No
-            </button>
-          </form>
-
-          <form action="result?status=Active&history=1" method="POST" style="display: inline-block;">
+        <form action="result" method="POST">
+          <div class="nhsuk-form-group">
+            <label class="nhsuk-label" for="incident-number">
+              Incident number
+            </label>
+            <input class="nhsuk-input" id="incident-number" name="incident-number" type="text" value="{{ data['incident-number'] }}">
+          </div>
+          <div class="nhsuk-form-group">
             <button class="nhsuk-button" type="submit">
-              Yes
+              Change
             </button>
-          </form>
-          
-        </div>
-      
+          </div>
+        </form>
+                
       </fieldset>
 
     </div>
