@@ -132,11 +132,7 @@
               {{ data['incident-number'] }}
             </dd>
             <dd class="nhsuk-summary-list__actions">
-              {% if data['incident-number'] %}
-                <a href="404">Change</a>
-              {% else %}
-                <a href="404">Add</a>
-              {% endif %}
+              <a href="change-incident?email=tim.peak2@hotmail.com&accountid=2ead33a3-bb11-cd1c-ab11-33bcd33aaed3">Change</a>
             </dd>
           </div>
 
@@ -161,8 +157,11 @@
         </dl>
 
         {% endif %}
+
+
+        {% if data['history'] == "1" %}
   
-        <!--<details class="nhsuk-details nhsuk-expander nhsuk-u-margin-bottom-0">
+        <details class="nhsuk-details nhsuk-expander nhsuk-u-margin-bottom-0">
           <summary class="nhsuk-details__summary nhsuk-u-padding-left-0">
             <span class="nhsuk-details__summary-text">
               Account history
@@ -170,10 +169,22 @@
           </summary>
           <div class="nhsuk-details__text">
             <ul>
-              <li>Disabled on 24/07/2020, incident number: 93039281387</li>
-              <li>Enabled on 29/07/2020</li>
-              <li>Disabled on 02/08/2020, incident number: 0004938271</li>
-              {% if data['result'] == "Active" %}
+              {% if data['status'] == "Disabled" %}
+              <li>Disabled on 
+                <script>
+                  var today = new Date();
+                  var dd = String(today.getDate()).padStart(2, '0');
+                  var mm = String(today.getMonth() + 1).padStart(2, '0');
+                  var yyyy = today.getFullYear();
+  
+                  today = dd + '/' + mm + '/' + yyyy;
+                  document.write(today);
+                </script>, incident number: {{ data['incident-number'] }}
+              </li>
+              {% endif %}
+              {% if data['status'] == "Active" %}
+              <li>Disabled on 08/09/2020, incident number: 78840392
+              </li>
               <li>Enabled on 
                 <script>
                   var today = new Date();
@@ -188,7 +199,9 @@
               {% endif %}
             </ul>
           </div>
-        </details>-->
+        </details>
+
+        {% endif %}
 
       </div>
 
