@@ -5,54 +5,129 @@
 {% endblock %}
 
 {% block content %}
+
+<script>
+
+function validate() {
+      
+  if( document.getElementById('incident-number').value == "" ) {
+      document.getElementById('incident-error').style.display = 'block';
+      document.getElementById('incident-number-container').classList.add("nhsuk-form-group--error");
+      document.getElementById('incident-number').classList.add("nhsuk-input--error");
+      document.getElementById('incident-number').focus();
+      return false;
+  }
+
+  if( document.querySelectorAll('input[type="radio"]:checked').length === 0 ) {
+      document.getElementById('reason-error').style.display = 'block';
+      document.getElementById('reason-container').classList.add("nhsuk-form-group--error");
+      return false;
+  }
+
+  return( true );
+}
+
+</script>
+
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
-      <form action="result" method="POST">
+      <div class="nhsuk-back-link">
+        <a class="nhsuk-back-link__link" href="javascript:history.back()">
+          <svg class="nhsuk-icon nhsuk-icon__chevron-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M8.5 12c0-.3.1-.5.3-.7l5-5c.4-.4 1-.4 1.4 0s.4 1 0 1.4L10.9 12l4.3 4.3c.4.4.4 1 0 1.4s-1 .4-1.4 0l-5-5c-.2-.2-.3-.4-.3-.7z"></path>
+          </svg>
+          Back to: search result</a>
+      </div>
+
+      <form action="result?status=Disabled" method="POST" name="form_disable" onsubmit="return(validate());">
 
         <div class="nhsuk-form-group">
 
           <fieldset class="nhsuk-fieldset">
             <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
               <h1 class="nhsuk-fieldset__heading">
-                Are you sure you want to disable the user: {{ data['email'] }}?
+                Provide information to disable this user
               </h1>
             </legend>
-        
-            <div class="nhsuk-radios">
-        
-              <div class="nhsuk-radios__item">
-                <input class="nhsuk-radios__input" id="example-1" name="result{{ data['result'] }}" value="Disabled" type="radio" onclick="document.getElementById('incident').style.display = 'block'">
-                <label class="nhsuk-label nhsuk-radios__label" for="example-1">
-                  Yes
-                </label>
+
+            <p>
+              Account ID<br />
+              <span class="nhsuk-hint">{{ data['accountid'] }}</span>
+            </p>
+            <p>
+              Email address<br />
+              <span class="nhsuk-hint">{{ data['email'] }}</span>
+            </p>
+
+            <div class="nhsuk-form-group" id="incident-number-container">
+              <label class="nhsuk-label" for="incident-number">
+                Incident number
+              </label>
+              <span class="nhsuk-hint">
+                Enter the Cherwell incident number that relates to this account being disabled.
+              </span>
+              <span class="nhsuk-error-message" id="incident-error" style="display: none;">
+                Enter an incident number
+              </span>
+              <input class="nhsuk-input" id="incident-number" name="incident-number" type="text">
+            </div>
+
+            <div class="nhsuk-form-group" id="reason-container">
+              <label class="nhsuk-label" for="reason">
+                Reason for disabling this account
+              </label>
+              <span class="nhsuk-error-message" id="reason-error" style="display: none;">
+                Choose a reason
+              </span>
+              <div class="nhsuk-radios">
+
+                <div class="nhsuk-radios__item">
+                  <input class="nhsuk-radios__input" id="reason1" name="reason" value="ID checker app" type="radio" onclick="document.getElementById('incident').style.display = 'none'">
+                  <label class="nhsuk-label nhsuk-radios__label" for="reason1">
+                    ID checker app
+                  </label>
+                </div>
+                <div class="nhsuk-radios__item">
+                  <input class="nhsuk-radios__input" id="reason2" name="reason" value="P5 registration" type="radio" onclick="document.getElementById('incident').style.display = 'none'">
+                  <label class="nhsuk-label nhsuk-radios__label" for="reason2">
+                    P5 registration
+                  </label>
+                </div>
+                <div class="nhsuk-radios__item">
+                  <input class="nhsuk-radios__input" id="reason3" name="reason" value="Patient confusion" type="radio" onclick="document.getElementById('incident').style.display = 'none'">
+                  <label class="nhsuk-label nhsuk-radios__label" for="reason3">
+                    Patient confusion
+                  </label>
+                </div>
+                
+                <div class="nhsuk-radios__item">
+                  <input class="nhsuk-radios__input" id="reason4" name="reason" value="Other" type="radio" onclick="document.getElementById('other').style.display = 'block'">
+                  <label class="nhsuk-label nhsuk-radios__label" for="reason4">
+                    Other
+                  </label>
+                </div>
+                <div class="nhsuk-form-group" id="other" style="display:none;">
+                  <label class="nhsuk-label" for="other-info">
+                    Additional information
+                  </label>
+                  <span class="nhsuk-hint">
+                    Explain why this account is being disabled.
+                  </span>
+                  <textarea class="nhsuk-textarea" name="other-info" id="other-info" rows="3"></textarea>
+                </div>
+          
               </div>
 
-              <div class="nhsuk-form-group" id="incident" style="display:none;">
-                <label class="nhsuk-label" for="incident-number-{{ data['result'] }}">
-                  Incident number (optional)
-                </label>
-                <span class="nhsuk-hint">
-                  Enter the Cherwell incident number that relates to the reason why this account is being disabled.
-                </span>
-                <input class="nhsuk-input" id="incident-number-{{ data['result'] }}" name="incident-number-{{ data['result'] }}" type="text">
-              </div>
-        
-              <div class="nhsuk-radios__item">
-                <input class="nhsuk-radios__input" id="example-2" name="result{{ data['result'] }}" value="Active" type="radio" onclick="document.getElementById('incident').style.display = 'none'">
-                <label class="nhsuk-label nhsuk-radios__label" for="example-2">
-                  No
-                </label>
-              </div>
-        
             </div>
+
           </fieldset>
         
         </div>
 
         <div class="nhsuk-form-group">
           <button class="nhsuk-button" type="submit">
-            Submit
+            Disable user
           </button>
         </div>
 

@@ -14,15 +14,12 @@
           <svg class="nhsuk-icon nhsuk-icon__chevron-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
             <path d="M8.5 12c0-.3.1-.5.3-.7l5-5c.4-.4 1-.4 1.4 0s.4 1 0 1.4L10.9 12l4.3 4.3c.4.4.4 1 0 1.4s-1 .4-1.4 0l-5-5c-.2-.2-.3-.4-.3-.7z"></path>
           </svg>
-          Back to: search</a>
+          Search again</a>
       </div>
 
       <h1>
         Search result
       </h1>
-
-
-
 
       <div class="result background-white nhsuk-u-padding-4 nhsuk-u-margin-bottom-6">
 
@@ -33,7 +30,7 @@
               Account ID
             </dt>
             <dd class="nhsuk-summary-list__value">
-              2ead33a3-bb11-cd1c-ab11-33bcd33aaed3
+              2eee22a1-bb11-cd1c-ab11-11bcd22aaed2
             </dd>
             <dd class="nhsuk-summary-list__actions">
             </dd>
@@ -55,7 +52,7 @@
               First name
             </dt>
             <dd class="nhsuk-summary-list__value">
-              Tim
+              Chris
             </dd>
             <dd class="nhsuk-summary-list__actions">
             </dd>
@@ -66,7 +63,7 @@
               Last name
             </dt>
             <dd class="nhsuk-summary-list__value">
-              Peake
+              Hadfield
             </dd>
             <dd class="nhsuk-summary-list__actions">
             </dd>
@@ -74,7 +71,7 @@
 
         </dl>
 
-        {% if (data['status'] | default('Active')) == "Disabled" %}
+        {% if (data['result2'] | default('Disabled')) == "Disabled" %}
 
         <dl class="nhsuk-summary-list nhsuk-u-margin-0" style="border-top:#d8dde0 5px solid;">
 
@@ -86,7 +83,7 @@
               Disabled
             </dd>
             <dd class="nhsuk-summary-list__actions">
-              <a href="enable?email=tim.peak2@hotmail.com&accountid=2ead33a3-bb11-cd1c-ab11-33bcd33aaed3">Enable</a>
+              <a href="enable?result=2&email=tim.peak2@hotmail.com&accountid=2eee22a1-bb11-cd1c-ab11-11bcd22aaed2">Enable</a>
             </dd>
           </div>
 
@@ -114,11 +111,7 @@
               Reason
             </dt>
             <dd class="nhsuk-summary-list__value">
-              {% if data['reason'] == "Other" %}
-                {{ data['other-info'] }}
-              {% else %}
-                {{ data['reason'] }}
-              {% endif %}
+              {{ data['reason-2'] | default('P5 registration') }}
             </dd>
             <dd class="nhsuk-summary-list__actions">
             </dd>
@@ -129,10 +122,10 @@
               Incident number
             </dt>
             <dd class="nhsuk-summary-list__value">
-              {{ data['incident-number'] }}
+              {{ data['incident-number-2'] | default('0004938271') }}
             </dd>
             <dd class="nhsuk-summary-list__actions">
-              {% if data['incident-number'] %}
+              {% if data['incident-number-2'] | default('0004938271') %}
                 <a href="404">Change</a>
               {% else %}
                 <a href="404">Add</a>
@@ -154,7 +147,7 @@
               Active
             </dd>
             <dd class="nhsuk-summary-list__actions">
-              <a href="disable?email=tim.peak2@hotmail.com&accountid=2ead33a3-bb11-cd1c-ab11-33bcd33aaed3">Disable</a>
+              <a href="disable?result=2&email=tim.peak2@hotmail.com&accountid=2eee22a1-bb11-cd1c-ab11-11bcd22aaed2">Disable</a>
             </dd>
           </div>
 
@@ -162,7 +155,7 @@
 
         {% endif %}
   
-        <!--<details class="nhsuk-details nhsuk-expander nhsuk-u-margin-bottom-0">
+        <details class="nhsuk-details nhsuk-expander nhsuk-u-margin-bottom-0">
           <summary class="nhsuk-details__summary nhsuk-u-padding-left-0">
             <span class="nhsuk-details__summary-text">
               Account history
@@ -173,7 +166,7 @@
               <li>Disabled on 24/07/2020, incident number: 93039281387</li>
               <li>Enabled on 29/07/2020</li>
               <li>Disabled on 02/08/2020, incident number: 0004938271</li>
-              {% if data['result'] == "Active" %}
+              {% if data['result2'] == "Active" %}
               <li>Enabled on 
                 <script>
                   var today = new Date();
@@ -188,7 +181,7 @@
               {% endif %}
             </ul>
           </div>
-        </details>-->
+        </details>
 
       </div>
 
