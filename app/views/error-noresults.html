@@ -10,9 +10,9 @@
 
       <h1 class="nhsuk-heading-l">No accounts matched your search for: 
         {% if (data['search-id']) and (data['search-email']) %}
-          {{ data['search-id'] }}
+          &quot;{{ data['search-id'] }}&quot;
         {% else %}
-          {{ data['search-email'] }}
+          &quot;{{ data['search-email'] }}&quot;
         {% endif %}
       </h1>
 
