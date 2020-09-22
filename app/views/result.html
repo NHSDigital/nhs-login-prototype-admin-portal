@@ -17,12 +17,7 @@
           Back to: search</a>
       </div>
 
-      <h1>
-        Search result
-      </h1>
-
-
-
+      <h1 class="nhsuk-heading-l">Search result</h1>
 
       <div class="result background-white nhsuk-u-padding-4 nhsuk-u-margin-bottom-6">
 
@@ -72,11 +67,32 @@
             </dd>
           </div>
 
+          {% if data['user-group'] != "nsd" %}
+          
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Proofing level
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              {% if data['cleansed'] == "1" %}
+                P0
+              {% else %}
+                P9
+              {% endif %}
+            </dd>
+            <dd class="nhsuk-summary-list__actions">
+            </dd>
+          </div>
+
+          {% endif %}
+
         </dl>
+
+        
 
         {% if (data['status'] | default('Active')) == "Disabled" %}
 
-        <dl class="nhsuk-summary-list nhsuk-u-margin-0" style="border-top:#d8dde0 5px solid;">
+        <dl class="nhsuk-summary-list nhsuk-u-margin-0" style="border-top:#d8dde0 5px solid;border-bottom:#d8dde0 5px solid;">
 
           <div class="nhsuk-summary-list__row">
             <dt class="nhsuk-summary-list__key">
@@ -86,7 +102,9 @@
               Disabled
             </dd>
             <dd class="nhsuk-summary-list__actions">
-              <a href="enable?email=tim.peak2@hotmail.com&accountid=2ead33a3-bb11-cd1c-ab11-33bcd33aaed3">Enable</a>
+              {% if data['user-group'] != "nsd" %}
+                <a href="enable?email=tim.peak2@hotmail.com&accountid=2ead33a3-bb11-cd1c-ab11-33bcd33aaed3">Enable account</a>
+              {% endif %}
             </dd>
           </div>
 
@@ -162,7 +180,7 @@
               Active
             </dd>
             <dd class="nhsuk-summary-list__actions">
-              <a href="disable?email=tim.peak2@hotmail.com&accountid=2ead33a3-bb11-cd1c-ab11-33bcd33aaed3">Disable</a>
+              <a href="disable?email=tim.peak2@hotmail.com&accountid=2ead33a3-bb11-cd1c-ab11-33bcd33aaed3">Disable account</a>
             </dd>
           </div>
 
@@ -171,74 +189,37 @@
         {% endif %}
 
 
-        {% if data['history'] == "1" %}
+        {% if data['user-group'] != "nsd" %}
 
         <dl class="nhsuk-summary-list nhsuk-u-margin-0">
 
           <div class="nhsuk-summary-list__row">
             <dt class="nhsuk-summary-list__key">
-              Account history
+              Cleanse account
             </dt>
             <dd class="nhsuk-summary-list__value">
-              This account has been disabled before. If you have access to Splunk then you can view the history for this account.
             </dd>
             <dd class="nhsuk-summary-list__actions">
-              <a href="#">View Splunk history</a>
+              <a href="cleanse?email=tim.peak2@hotmail.com&accountid=2ead33a3-bb11-cd1c-ab11-33bcd33aaed3">Cleanse account</a>
             </dd>
           </div>
 
         </dl>
 
-        <!--<div class="nhsuk-u-padding-top-4">
-          <p>
-            <a href="">
-             Account history (Splunk)
-            </a>
-            <span class="nhsuk-hint">
-              This account has been disabled before. If you have access to Splunk then use this link to find the details.
-            </span>
-          </p>
-        </div>
-  
-        <details class="nhsuk-details nhsuk-expander nhsuk-u-margin-bottom-0">
-          <summary class="nhsuk-details__summary nhsuk-u-padding-left-0">
-            <span class="nhsuk-details__summary-text">
-              Account history
-            </span>
-          </summary>
-          <div class="nhsuk-details__text">
-            <ul>
-              {% if data['status'] == "Disabled" %}
-              <li>Disabled on 
-                <script>
-                  var today = new Date();
-                  var dd = String(today.getDate()).padStart(2, '0');
-                  var mm = String(today.getMonth() + 1).padStart(2, '0');
-                  var yyyy = today.getFullYear();
-  
-                  today = dd + '/' + mm + '/' + yyyy;
-                  document.write(today);
-                </script>, incident number: {{ data['incident-number'] }}
-              </li>
-              {% endif %}
-              {% if data['status'] == "Active" %}
-              <li>Disabled on 08/09/2020, incident number: 78840392
-              </li>
-              <li>Enabled on 
-                <script>
-                  var today = new Date();
-                  var dd = String(today.getDate()).padStart(2, '0');
-                  var mm = String(today.getMonth() + 1).padStart(2, '0');
-                  var yyyy = today.getFullYear();
-  
-                  today = dd + '/' + mm + '/' + yyyy;
-                  document.write(today);
-                </script>
-              </li>
-              {% endif %}
-            </ul>
+        <dl class="nhsuk-summary-list nhsuk-u-margin-0">
+
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Account history (Splunk)
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+            </dd>
+            <dd class="nhsuk-summary-list__actions">
+              <a href="#">View history</a>
+            </dd>
           </div>
-        </details>-->
+
+        </dl>
 
         {% endif %}
 

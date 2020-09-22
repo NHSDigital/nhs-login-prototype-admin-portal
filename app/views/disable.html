@@ -40,7 +40,7 @@ function validate() {
           Back to: search result</a>
       </div>
 
-      <form action="result?status=Disabled&history=1" method="POST" name="form_disable" onsubmit="return(validate());">
+      <form action="result?status=Disabled" method="POST" name="form_disable" onsubmit="return(validate());">
 
         <div class="nhsuk-form-group">
 
@@ -50,6 +50,18 @@ function validate() {
                 Provide information to disable this user
               </h1>
             </legend>
+
+            <details class="nhsuk-details nhsuk-expander">
+              <summary class="nhsuk-details__summary">
+                <span class="nhsuk-details__summary-text">
+                  Information about disabling accounts
+                </span>
+              </summary>
+              <div class="nhsuk-details__text">
+                <p>Users with disabled accounts cannot use NHS login and will be shown an error message if they try to log in.</p>
+                <p>Only NHS login second line support and NHS login developers can enable accounts that are disabled.</p>
+              </div>
+            </details>
 
             <p>
               Account ID<br />
