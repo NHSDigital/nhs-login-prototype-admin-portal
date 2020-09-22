@@ -13,11 +13,12 @@
       </h1>
 
       <ul>
-        <li><a href="search">Scenario 1 - user is currently active</a></li>
-        <li><a href="search?status=Disabled&reason=P5%20registration&incident-number=93848472">Scenario 2 - user is currently disabled</a></li>
-        <li><a href="search?history=1&status=Active">Scenario 3 - user is currently active but has history</a></li>
+        <li><a href="search">Scenario 1 - account is currently active</a></li>
+        <li><a href="search?status=Disabled&reason=P5%20registration&incident-number=93848472">Scenario 2 - account is currently disabled</a></li>
+        <li><a href="search?user-group=nsd">Scenario 3 - NSD user</a></li>
         <li><a href="error-noresults?search-email=test@test.com">Error - no accounts found</a></li>
-        <li><a href="error-technical">Error - technical problem</a></li>
+        <li><a href="error-technical-search">Error - search technical problem</a></li>
+        <li><a href="error-technical-disable">Error - disable technical problem</a></li>
         <li><a href="error-inputs"><s>Error - invalid input</s></a></li>
       </ul>
 

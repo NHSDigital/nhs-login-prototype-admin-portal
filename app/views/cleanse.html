@@ -16,31 +16,46 @@
           Back to: search result</a>
       </div>
 
+
+      <h1 class="nhsuk-heading-l">Cleanse this account</h1>
+
+      <details class="nhsuk-details nhsuk-expander">
+        <summary class="nhsuk-details__summary">
+          <span class="nhsuk-details__summary-text">
+            Information about cleansing accounts
+          </span>
+        </summary>
+        <div class="nhsuk-details__text">
+          <p>This process is used when a user account is linked to the wrong demographic details.</p>
+          <p>Cleansing the account means that the account will no longer be linked to any PDS demographics and the proofing level will return to 0.</p>
+        </div>
+      </details>
+
+      <p>
+        Account ID<br />
+        <span class="nhsuk-hint">{{ data['accountid'] }}</span>
+      </p>
+      <p>
+        Email address<br />
+        <span class="nhsuk-hint">{{ data['email'] }}</span>
+      </p>
+
       <fieldset class="nhsuk-fieldset">
-        <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+        <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">
           <h1 class="nhsuk-fieldset__heading">
-            Are you sure you want to enable this user?
+            Are you sure you want to cleanse this account?
           </h1>
         </legend>
-
-        <p>
-          Account ID<br />
-          <span class="nhsuk-hint">{{ data['accountid'] }}</span>
-        </p>
-        <p>
-          Email address<br />
-          <span class="nhsuk-hint">{{ data['email'] }}</span>
-        </p>
-      
+    
         <div class="nhsuk-form-group">
 
-          <form action="result?status=Disabled" method="POST" style="display: inline-block;">
+          <form action="result" method="POST" style="display: inline-block;">
             <button class="nhsuk-button nhsuk-button--secondary nhsuk-u-margin-right-4" type="submit">
               No
             </button>
           </form>
 
-          <form action="result?status=Active" method="POST" style="display: inline-block;">
+          <form action="cleanse-complete?cleansed=1" method="POST" style="display: inline-block;">
             <button class="nhsuk-button" type="submit">
               Yes
             </button>
