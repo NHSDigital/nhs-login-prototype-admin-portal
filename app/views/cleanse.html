@@ -5,6 +5,24 @@
 {% endblock %}
 
 {% block content %}
+
+<script>
+
+  function validate() {
+        
+    if( document.getElementById('incident-number-cleanse').value == "" ) {
+        document.getElementById('incident-error').style.display = 'block';
+        document.getElementById('incident-number-container').classList.add("nhsuk-form-group--error");
+        document.getElementById('incident-number-cleanse').classList.add("nhsuk-input--error");
+        document.getElementById('incident-number-cleanse').focus();
+        return false;
+    }
+  
+    return( true );
+  }
+  
+  </script>
+
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
@@ -16,54 +34,62 @@
           Back to: search result</a>
       </div>
 
+      <form action="result?cleansed=1" method="POST" name="form_disable" onsubmit="return(validate());">
 
-      <h1 class="nhsuk-heading-l">Cleanse this account</h1>
-
-      <details class="nhsuk-details nhsuk-expander">
-        <summary class="nhsuk-details__summary">
-          <span class="nhsuk-details__summary-text">
-            Information about cleansing accounts
-          </span>
-        </summary>
-        <div class="nhsuk-details__text">
-          <p>This process is used when a user account is linked to the wrong demographic details.</p>
-          <p>Cleansing the account means that the account will no longer be linked to any PDS demographics and the proofing level will return to 0.</p>
-        </div>
-      </details>
-
-      <p>
-        Account ID<br />
-        <span class="nhsuk-hint">{{ data['accountid'] }}</span>
-      </p>
-      <p>
-        Email address<br />
-        <span class="nhsuk-hint">{{ data['email'] }}</span>
-      </p>
-
-      <fieldset class="nhsuk-fieldset">
-        <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">
-          <h1 class="nhsuk-fieldset__heading">
-            Are you sure you want to cleanse this account?
-          </h1>
-        </legend>
-    
         <div class="nhsuk-form-group">
 
-          <form action="result" method="POST" style="display: inline-block;">
-            <button class="nhsuk-button nhsuk-button--secondary nhsuk-u-margin-right-4" type="submit">
-              No
-            </button>
-          </form>
+          <fieldset class="nhsuk-fieldset">
+            <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+              <h1 class="nhsuk-fieldset__heading">
+                Provide information to cleanse this account
+              </h1>
+            </legend>
 
-          <form action="cleanse-complete?cleansed=1" method="POST" style="display: inline-block;">
-            <button class="nhsuk-button" type="submit">
-              Yes
-            </button>
-          </form>
-          
+            <details class="nhsuk-details nhsuk-expander">
+              <summary class="nhsuk-details__summary">
+                <span class="nhsuk-details__summary-text">
+                  Information about cleansing accounts
+                </span>
+              </summary>
+              <div class="nhsuk-details__text">
+                <p>This process is used when a user account is linked to the wrong demographic details.</p>
+                <p>Cleansing the account means that the account will no longer be linked to any PDS demographics and the proofing level will return to P0.</p>
+              </div>
+            </details>
+
+            <p>
+              Account ID<br />
+              <span class="nhsuk-hint">{{ data['accountid'] }}</span>
+            </p>
+            <p>
+              Email address<br />
+              <span class="nhsuk-hint">{{ data['email'] }}</span>
+            </p>
+
+            <div class="nhsuk-form-group" id="incident-number-container">
+              <label class="nhsuk-label" for="incident-number-cleanse">
+                Incident number
+              </label>
+              <span class="nhsuk-hint">
+                Enter the Cherwell incident number that relates to this account being cleansed.
+              </span>
+              <span class="nhsuk-error-message" id="incident-error" style="display: none;">
+                Enter an incident number
+              </span>
+              <input class="nhsuk-input" id="incident-number-cleanse" name="incident-number-cleanse" type="text">
+            </div>
+
+          </fieldset>
+        
         </div>
-      
-      </fieldset>
+
+        <div class="nhsuk-form-group">
+          <button class="nhsuk-button" type="submit">
+            Cleanse account
+          </button>
+        </div>
+
+      </form>
 
     </div>
   </div>
