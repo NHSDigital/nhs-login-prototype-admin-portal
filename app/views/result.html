@@ -114,17 +114,12 @@
             </dt>
             <dd class="nhsuk-summary-list__value">
               {{ data['reason'] }}
-              <!--{% if data['reason'] == "Other" %}
-                {{ data['other-info'] }}
-              {% else %}
-                {{ data['reason'] }}
-              {% endif %}-->
             </dd>
             <dd class="nhsuk-summary-list__actions">
             </dd>
           </div>
 
-          <div class="nhsuk-summary-list__row">
+          <!--<div class="nhsuk-summary-list__row">
             <dt class="nhsuk-summary-list__key">
               Date disabled
             </dt>
@@ -151,22 +146,10 @@
               {{ data['incident-number'] }}
             </dd>
             <dd class="nhsuk-summary-list__actions">
-              <!--<a href="change-incident?email=tim.peak2@hotmail.com&accountid=2ead33a3-bb11-cd1c-ab11-33bcd33aaed3">Change</a>-->
             </dd>
-          </div>
+          </div>-->
 
         </dl>
-
-        <!--<div class="nhsuk-u-padding-top-2">
-          <p>
-            <a href="">
-             More information (Splunk)
-            </a>
-            <span class="nhsuk-hint">
-              Find the incident number, date disabled etc
-            </span>
-          </p>
-        </div>-->
 
         {% else %}
 
@@ -198,9 +181,14 @@
               Cleanse account
             </dt>
             <dd class="nhsuk-summary-list__value">
+              {% if data['status'] != "Disabled" %}
+                <span class="nhsuk-hint">The account must be disabled before it can be cleansed.</span>
+              {% endif %}
             </dd>
             <dd class="nhsuk-summary-list__actions">
-              <a href="cleanse?email=tim.peak2@hotmail.com&accountid=2ead33a3-bb11-cd1c-ab11-33bcd33aaed3">Cleanse account</a>
+              {% if data['status'] == "Disabled" %}
+                <a href="cleanse?email=tim.peak2@hotmail.com&accountid=2ead33a3-bb11-cd1c-ab11-33bcd33aaed3">Cleanse account</a>
+              {% endif %}
             </dd>
           </div>
 
