@@ -5,6 +5,30 @@
 {% endblock %}
 
 {% block content %}
+
+<script>
+
+  function validate() {
+        
+    if( document.getElementById('incident-number-enable').value == "" ) {
+        document.getElementById('incident-error').style.display = 'block';
+        document.getElementById('incident-number-container').classList.add("nhsuk-form-group--error");
+        document.getElementById('incident-number-enable').classList.add("nhsuk-input--error");
+        document.getElementById('incident-number-enable').focus();
+        return false;
+    }
+  
+    if( document.querySelectorAll('input[type="radio"]:checked').length === 0 ) {
+        document.getElementById('reason-error').style.display = 'block';
+        document.getElementById('reason-container').classList.add("nhsuk-form-group--error");
+        return false;
+    }
+  
+    return( true );
+  }
+  
+  </script>
+
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
@@ -16,39 +40,50 @@
           Back to: search result</a>
       </div>
 
-      <fieldset class="nhsuk-fieldset">
-        <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
-          <h1 class="nhsuk-fieldset__heading">
-            Are you sure you want to enable this account?
-          </h1>
-        </legend>
+      <form action="result?status=Active" method="POST" name="form_disable" onsubmit="return(validate());">
 
-        <p>
-          Account ID<br />
-          <span class="nhsuk-hint">{{ data['accountid'] }}</span>
-        </p>
-        <p>
-          Email address<br />
-          <span class="nhsuk-hint">{{ data['email'] }}</span>
-        </p>
-      
         <div class="nhsuk-form-group">
 
-          <form action="result?status=Disabled" method="POST" style="display: inline-block;">
-            <button class="nhsuk-button nhsuk-button--secondary nhsuk-u-margin-right-4" type="submit">
-              No
-            </button>
-          </form>
+          <fieldset class="nhsuk-fieldset">
+            <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+              <h1 class="nhsuk-fieldset__heading">
+                Provide information to enable this account
+              </h1>
+            </legend>
 
-          <form action="result?status=Active" method="POST" style="display: inline-block;">
-            <button class="nhsuk-button" type="submit">
-              Yes
-            </button>
-          </form>
-          
+            <p>
+              Account ID<br />
+              <span class="nhsuk-hint">{{ data['accountid'] }}</span>
+            </p>
+            <p>
+              Email address<br />
+              <span class="nhsuk-hint">{{ data['email'] }}</span>
+            </p>
+
+            <div class="nhsuk-form-group" id="incident-number-container">
+              <label class="nhsuk-label" for="incident-number-enable">
+                Incident number
+              </label>
+              <span class="nhsuk-hint">
+                Enter the Cherwell incident number that relates to why this account was disabled.
+              </span>
+              <span class="nhsuk-error-message" id="incident-error" style="display: none;">
+                Enter an incident number
+              </span>
+              <input class="nhsuk-input" id="incident-number-enable" name="incident-number-enable" type="text">
+            </div>
+
+          </fieldset>
+        
         </div>
-      
-      </fieldset>
+
+        <div class="nhsuk-form-group">
+          <button class="nhsuk-button" type="submit">
+            Enable account
+          </button>
+        </div>
+
+      </form>
 
     </div>
   </div>
