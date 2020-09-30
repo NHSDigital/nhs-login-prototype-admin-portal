@@ -1,0 +1,26 @@
+{% extends 'layout-login.html' %}
+
+{% block beforeContent %}
+  {% include "includes/phase-banner.html" %}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <h1 class="nhsuk-heading-l">There is a problem</h1>
+
+      <p>Your NHS login has been disabled so that we can invesigate an issue.</p>
+
+      <p>Reference: <strong>CIDXXXX</strong></p>
+
+      <div class="nhsuk-inset-text">
+        <span class="nhsuk-u-visually-hidden">Information: </span>
+        <p>
+          <a href="https://help.login.nhs.uk/" target="_blank">What does reference CIDXXXX mean?</a>
+        </p>
+      </div>
+
+    </div>
+  </div>
+{% endblock %}
