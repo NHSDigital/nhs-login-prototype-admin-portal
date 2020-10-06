@@ -1,0 +1,30 @@
+{% extends 'layout-login.html' %}
+
+{% block beforeContent %}
+  {% include "includes/phase-banner.html" %}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <h1 class="nhsuk-heading-l">
+        You cannot use your NHS login
+      </h1>
+
+      <p>There is a problem that we are looking at.</p>
+      <p>You will not be able to use your NHS login until we have fixed the problem. This is to keep your health information secure.</p>
+      <p>We will keep you updated by email.</p>
+
+      <p>Reference: <strong>CID2016</strong></p>
+
+      <!--<div class="nhsuk-inset-text">
+        <span class="nhsuk-u-visually-hidden">Information: </span>
+        <p>
+          <a href="https://help.login.nhs.uk/" target="_blank">What does reference CIDXXXX mean?</a>
+        </p>
+      </div>-->
+
+    </div>
+  </div>
+{% endblock %}
