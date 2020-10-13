@@ -10,17 +10,11 @@
 
   function validate() {
         
-    if( document.getElementById('incident-number-enable').value == "" ) {
+    if( document.getElementById('incident-number-mobile').value == "" ) {
         document.getElementById('incident-error').style.display = 'block';
         document.getElementById('incident-number-container').classList.add("nhsuk-form-group--error");
-        document.getElementById('incident-number-enable').classList.add("nhsuk-input--error");
-        document.getElementById('incident-number-enable').focus();
-        return false;
-    }
-  
-    if( document.querySelectorAll('input[type="radio"]:checked').length === 0 ) {
-        document.getElementById('reason-error').style.display = 'block';
-        document.getElementById('reason-container').classList.add("nhsuk-form-group--error");
+        document.getElementById('incident-number-mobile').classList.add("nhsuk-input--error");
+        document.getElementById('incident-number-mobile').focus();
         return false;
     }
   
@@ -40,41 +34,52 @@
           Back to: search result</a>
       </div>
 
-      <form action="result?status=Active" method="POST" name="form_disable" onsubmit="return(validate());">
+      <form action="result?mobileremoved=1" method="POST" name="form_disable" onsubmit="return(validate());">
 
         <div class="nhsuk-form-group">
 
           <fieldset class="nhsuk-fieldset">
             <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
               <h1 class="nhsuk-fieldset__heading">
-                Provide an incident number to enable this account
+                Provide an incident number to remove the mobile number
               </h1>
             </legend>
 
+            <details class="nhsuk-details nhsuk-expander">
+              <summary class="nhsuk-details__summary">
+                <span class="nhsuk-details__summary-text">
+                  Information about removing mobile numbers
+                </span>
+              </summary>
+              <div class="nhsuk-details__text">
+                <p>TBC</p>
+              </div>
+            </details>
+
             <p>
               Account ID<br />
-              <span class="nhsuk-hint">
-                {{ (data['accountid'] | default('2ead33a3-bb11-cd1c-ab11-33bcd33aaed3')) }}
-              </span>
+              <span class="nhsuk-hint">{{ data['accountid'] }}</span>
             </p>
             <p>
               Email address<br />
-              <span class="nhsuk-hint">
-                {{ (data['email'] | default('tim.peak2@hotmail.com')) }}
-              </span>
+              <span class="nhsuk-hint">{{ data['email'] }}</span>
+            </p>
+            <p>
+              Mobile number<br />
+              <span class="nhsuk-hint">+447711223344</span>
             </p>
 
             <div class="nhsuk-form-group" id="incident-number-container">
-              <label class="nhsuk-label" for="incident-number-enable">
+              <label class="nhsuk-label" for="incident-number-mobile">
                 Incident number
               </label>
               <span class="nhsuk-hint">
-                Enter the Cherwell incident number that relates to why this account was disabled.
+                Enter the Cherwell incident number that relates to this mobile number being removed.
               </span>
               <span class="nhsuk-error-message" id="incident-error" style="display: none;">
                 Enter an incident number
               </span>
-              <input class="nhsuk-input" id="incident-number-enable" name="incident-number-enable" type="text">
+              <input class="nhsuk-input" id="incident-number-mobile" name="incident-number-mobile" type="text">
             </div>
 
           </fieldset>
@@ -83,7 +88,7 @@
 
         <div class="nhsuk-form-group">
           <button class="nhsuk-button" type="submit">
-            Enable account
+            Remove mobile number
           </button>
         </div>
 

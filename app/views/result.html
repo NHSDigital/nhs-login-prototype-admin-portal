@@ -28,7 +28,7 @@
               Account ID
             </dt>
             <dd class="nhsuk-summary-list__value">
-              2ead33a3-bb11-cd1c-ab11-33bcd33aaed3
+              {{ (data['accountid'] | default('2ead33a3-bb11-cd1c-ab11-33bcd33aaed3')) }}
             </dd>
             <dd class="nhsuk-summary-list__actions">
             </dd>
@@ -39,7 +39,7 @@
               Email address
             </dt>
             <dd class="nhsuk-summary-list__value">
-              tim.peak2@hotmail.com
+              {{ (data['email'] | default('tim.peak2@hotmail.com')) }}
             </dd>
             <dd class="nhsuk-summary-list__actions">
             </dd>
@@ -50,7 +50,7 @@
               First name
             </dt>
             <dd class="nhsuk-summary-list__value">
-              Tim
+              {{ (data['first-name'] | default('Tim')) }}
             </dd>
             <dd class="nhsuk-summary-list__actions">
             </dd>
@@ -61,13 +61,25 @@
               Last name
             </dt>
             <dd class="nhsuk-summary-list__value">
-              Peake
+              {{ (data['last-name'] | default('Peake')) }}
             </dd>
             <dd class="nhsuk-summary-list__actions">
             </dd>
           </div>
 
           {% if data['user-group'] != "nsd" %}
+          
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Mobile number
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              {{ (data['mobile'] | default('+447711223344')) }}
+            </dd>
+            <dd class="nhsuk-summary-list__actions">
+              <a href="change-mobile">Change mobile number</a>
+            </dd>
+          </div>
           
           <div class="nhsuk-summary-list__row">
             <dt class="nhsuk-summary-list__key">
@@ -103,7 +115,7 @@
             </dd>
             <dd class="nhsuk-summary-list__actions">
               {% if data['user-group'] != "nsd" %}
-                <a href="enable?email=tim.peak2@hotmail.com&accountid=2ead33a3-bb11-cd1c-ab11-33bcd33aaed3">Enable account</a>
+                <a href="enable">Enable account</a>
               {% endif %}
             </dd>
           </div>
@@ -119,36 +131,6 @@
             </dd>
           </div>
 
-          <!--<div class="nhsuk-summary-list__row">
-            <dt class="nhsuk-summary-list__key">
-              Date disabled
-            </dt>
-            <dd class="nhsuk-summary-list__value">
-              <script>
-                var today = new Date();
-                var dd = String(today.getDate()).padStart(2, '0');
-                var mm = String(today.getMonth() + 1).padStart(2, '0');
-                var yyyy = today.getFullYear();
-
-                today = dd + '/' + mm + '/' + yyyy;
-                document.write(today);
-              </script>
-            </dd>
-            <dd class="nhsuk-summary-list__actions">
-            </dd>
-          </div>
-
-          <div class="nhsuk-summary-list__row">
-            <dt class="nhsuk-summary-list__key">
-              Incident number
-            </dt>
-            <dd class="nhsuk-summary-list__value">
-              {{ data['incident-number'] }}
-            </dd>
-            <dd class="nhsuk-summary-list__actions">
-            </dd>
-          </div>-->
-
         </dl>
 
         {% else %}
@@ -163,7 +145,7 @@
               Active
             </dd>
             <dd class="nhsuk-summary-list__actions">
-              <a href="disable?email=tim.peak2@hotmail.com&accountid=2ead33a3-bb11-cd1c-ab11-33bcd33aaed3">Disable account</a>
+              <a href="disable">Disable account</a>
             </dd>
           </div>
 
@@ -187,7 +169,7 @@
             </dd>
             <dd class="nhsuk-summary-list__actions">
               {% if data['status'] == "Disabled" %}
-                <a href="cleanse?email=tim.peak2@hotmail.com&accountid=2ead33a3-bb11-cd1c-ab11-33bcd33aaed3">Cleanse account</a>
+                <a href="cleanse">Cleanse account</a>
               {% endif %}
             </dd>
           </div>

@@ -10,17 +10,19 @@
 
   function validate() {
 
-    if( document.querySelectorAll('input[type="radio"]:checked').length === 0 ) {
+    if( document.getElementById('mobile').value == "" ) {
         document.getElementById('mobile-error').style.display = 'block';
         document.getElementById('mobile-number-container').classList.add("nhsuk-form-group--error");
+        document.getElementById('mobile').classList.add("nhsuk-input--error");
+        document.getElementById('mobile').focus();
         return false;
     }
-
-    if( document.getElementById('incident-number-cleanse').value == "" ) {
+        
+    if( document.getElementById('incident-number-mobile').value == "" ) {
         document.getElementById('incident-error').style.display = 'block';
         document.getElementById('incident-number-container').classList.add("nhsuk-form-group--error");
-        document.getElementById('incident-number-cleanse').classList.add("nhsuk-input--error");
-        document.getElementById('incident-number-cleanse').focus();
+        document.getElementById('incident-number-mobile').classList.add("nhsuk-input--error");
+        document.getElementById('incident-number-mobile').focus();
         return false;
     }
   
@@ -40,42 +42,25 @@
           Back to: search result</a>
       </div>
 
-      <form action="result?cleansed=1" method="POST" name="form_disable" onsubmit="return(validate());">
+      <form action="result" method="POST" name="form_disable" onsubmit="return(validate());">
 
         <div class="nhsuk-form-group">
 
           <fieldset class="nhsuk-fieldset">
             <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
               <h1 class="nhsuk-fieldset__heading">
-                Provide information to cleanse this account
+                Change the mobile number
               </h1>
             </legend>
 
             <details class="nhsuk-details nhsuk-expander">
               <summary class="nhsuk-details__summary">
                 <span class="nhsuk-details__summary-text">
-                  Information about cleansing accounts
+                  Information about changing mobile numbers
                 </span>
               </summary>
               <div class="nhsuk-details__text">
-                <p>This process is used when a user account is linked to the wrong demographic details.</p>
-                <p>Cleansing the account means that the account will no longer be linked to any PDS demographics and the proofing level will return to P0.</p>
-                <p>All fields for this account in the user profile table will be removed <strong>apart from</strong> the following fields:</p>
-                <ul>
-                  <li>account_id</li>
-                  <li>cookie_policy_version</li>
-                  <li>email_address</li>
-                  <li>privacy_policy_version</li>
-                  <li>proofing_levels</li>
-                  <li>terms_and_conditions_version</li>
-                  <li>unverified_phone_number</li>
-                  <li>verified_phone_number</li>
-                </ul>
-                <p>If you choose to remove the mobile number then these fields will be removed:</p>
-                <ul>
-                  <li>unverified_phone_number</li>
-                  <li>verified_phone_number</li>
-                </ul>
+                <p>TBC</p>
               </div>
             </details>
 
@@ -91,9 +76,8 @@
                 {{ (data['email'] | default('tim.peak2@hotmail.com')) }}
               </span>
             </p>
-
             <p>
-              Mobile number<br />
+              Current mobile number<br />
               <span class="nhsuk-hint">
                 {{ (data['mobile'] | default('+447711223344')) }}
               </span>
@@ -101,41 +85,28 @@
 
             <div class="nhsuk-form-group" id="mobile-number-container">
               <label class="nhsuk-label" for="mobile">
-                Would you like to remove the mobile number?
+                New mobile number
               </label>
               <span class="nhsuk-hint">
-                Choose whether to remove the mobile number from the account so that the user is prompted to add one again.
+                Enter the user's new mobile phone number, including the country code. For example: +447711223344
               </span>
               <span class="nhsuk-error-message" id="mobile-error" style="display: none;">
-                Choose whether you want to remove the mobile number
+                Enter a new mobile number
               </span>
-              <div class="nhsuk-radios">
-                <div class="nhsuk-radios__item">
-                  <input class="nhsuk-radios__input" id="option1" name="mobile" value="-" type="radio">
-                  <label class="nhsuk-label nhsuk-radios__label" for="option1">
-                    Yes, remove
-                  </label>
-                </div>
-                <div class="nhsuk-radios__item">
-                  <input class="nhsuk-radios__input" id="option2" name="mobile" value="{{ (data['mobile'] | default('+447711223344')) }}" type="radio">
-                  <label class="nhsuk-label nhsuk-radios__label" for="option2">
-                    No, keep existing mobile number
-                  </label>
-                </div>
-              </div>
+              <input class="nhsuk-input" id="mobile" name="mobile" type="text">
             </div>
 
             <div class="nhsuk-form-group" id="incident-number-container">
-              <label class="nhsuk-label" for="incident-number-cleanse">
+              <label class="nhsuk-label" for="incident-number-mobile">
                 Incident number
               </label>
               <span class="nhsuk-hint">
-                Enter the Cherwell incident number that relates to this account being cleansed.
+                Enter the Cherwell incident number that relates to this mobile number being removed.
               </span>
               <span class="nhsuk-error-message" id="incident-error" style="display: none;">
                 Enter an incident number
               </span>
-              <input class="nhsuk-input" id="incident-number-cleanse" name="incident-number-cleanse" type="text">
+              <input class="nhsuk-input" id="incident-number-mobile" name="incident-number-mobile" type="text">
             </div>
 
           </fieldset>
@@ -144,7 +115,7 @@
 
         <div class="nhsuk-form-group">
           <button class="nhsuk-button" type="submit">
-            Cleanse account
+            Change mobile number
           </button>
         </div>
 
