@@ -65,11 +65,15 @@ function validate() {
 
             <p>
               Account ID<br />
-              <span class="nhsuk-hint">{{ data['accountid'] }}</span>
+              <span class="nhsuk-hint">
+                {{ (data['accountid'] | default('2ead33a3-bb11-cd1c-ab11-33bcd33aaed3')) }}
+              </span>
             </p>
             <p>
               Email address<br />
-              <span class="nhsuk-hint">{{ data['email'] }}</span>
+              <span class="nhsuk-hint">
+                {{ (data['email'] | default('tim.peak2@hotmail.com')) }}
+              </span>
             </p>
 
             <div class="nhsuk-form-group" id="incident-number-container">
