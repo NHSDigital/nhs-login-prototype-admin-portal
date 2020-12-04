@@ -2,20 +2,21 @@
 
 {% block beforeContent %}
   {% include "includes/phase-banner.html" %}
+  <nav class="nhsuk-breadcrumb" aria-label="Breadcrumb">
+    <div class="nhsuk-width-container">
+      <ol class="nhsuk-breadcrumb__list">
+        <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link" href="search">Search</a></li>
+        <li class="nhsuk-breadcrumb__item">Search result</li>
+      </ol>
+      <p class="nhsuk-breadcrumb__back"><a class="nhsuk-breadcrumb__backlink" href="search">Back to: search</a></p>
+    </div>
+  </nav>
 {% endblock %}
 
 {% block content %}
 
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-full">
-
-      <div class="nhsuk-back-link">
-        <a class="nhsuk-back-link__link" href="search">
-          <svg class="nhsuk-icon nhsuk-icon__chevron-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M8.5 12c0-.3.1-.5.3-.7l5-5c.4-.4 1-.4 1.4 0s.4 1 0 1.4L10.9 12l4.3 4.3c.4.4.4 1 0 1.4s-1 .4-1.4 0l-5-5c-.2-.2-.3-.4-.3-.7z"></path>
-          </svg>
-          Back to: search</a>
-      </div>
 
       <h1 class="nhsuk-heading-l">Search result</h1>
 
@@ -171,6 +172,24 @@
 
           <div class="nhsuk-summary-list__row">
             <dt class="nhsuk-summary-list__key">
+              PYI evidence files
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              {% if data['status'] != "Disabled" %}
+                <!--<span class="nhsuk-hint">The account must be disabled before you can view evidence files.</span>-->
+              {% endif %}
+            </dd>
+            <dd class="nhsuk-summary-list__actions">
+              <a href="verification-attempts">View/download files</a>
+            </dd>
+          </div>
+
+        </dl>
+
+        <dl class="nhsuk-summary-list nhsuk-u-margin-0">
+
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
               Cleanse account
             </dt>
             <dd class="nhsuk-summary-list__value">
@@ -181,26 +200,13 @@
             <dd class="nhsuk-summary-list__actions">
               {% if data['status'] == "Disabled" %}
                 <a href="cleanse">Cleanse account</a>
+              {% else %}
+                Cleanse account
               {% endif %}
             </dd>
           </div>
 
         </dl>
-
-        <!--<dl class="nhsuk-summary-list nhsuk-u-margin-0">
-
-          <div class="nhsuk-summary-list__row">
-            <dt class="nhsuk-summary-list__key">
-              Account history (Splunk)
-            </dt>
-            <dd class="nhsuk-summary-list__value">
-            </dd>
-            <dd class="nhsuk-summary-list__actions">
-              <a href="#">View history</a>
-            </dd>
-          </div>
-
-        </dl>-->
 
         {% endif %}
 

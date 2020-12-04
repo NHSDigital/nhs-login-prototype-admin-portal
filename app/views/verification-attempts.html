@@ -1,0 +1,115 @@
+{% extends 'layout.html' %}
+
+{% block beforeContent %}
+  {% include "includes/phase-banner.html" %}
+  <nav class="nhsuk-breadcrumb" aria-label="Breadcrumb">
+    <div class="nhsuk-width-container">
+      <ol class="nhsuk-breadcrumb__list">
+        <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link" href="search">Search</a></li>
+        <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link" href="result">Search result</a></li>
+        <li class="nhsuk-breadcrumb__item">PYI verification attempts</li>
+      </ol>
+      <p class="nhsuk-breadcrumb__back"><a class="nhsuk-breadcrumb__backlink" href="result">Back to: search result</a></p>
+    </div>
+  </nav>
+{% endblock %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <div class="nhsuk-u-margin-bottom-6">
+
+        <h1 class="nhsuk-heading-l">
+          PYI verification attempts
+        </h1>
+
+        <!--<details class="nhsuk-details nhsuk-expander">
+          <summary class="nhsuk-details__summary">
+            <span class="nhsuk-details__summary-text">
+              Information about file evidence retrieval
+            </span>
+          </summary>
+          <div class="nhsuk-details__text">
+            <p>TBC</p>
+          </div>
+        </details>-->
+
+        <p>
+          Account ID<br />
+          <span class="nhsuk-hint">
+            {{ (data['accountid'] | default('2ead33a3-bb11-cd1c-ab11-33bcd33aaed3')) }}
+          </span>
+        </p>
+        <p>
+          Email address<br />
+          <span class="nhsuk-hint">
+            {{ (data['email'] | default('tim.peak2@hotmail.com')) }}
+          </span>
+        </p>
+      
+      </div>
+
+    </div>
+  </div>
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-full">
+
+      <p>Select a verification attempt to see the files that the user submitted.</p>
+
+      <table role="table" class="nhsuk-table-responsive">
+        <caption class="nhsuk-table__caption"></caption>
+        <thead role="rowgroup" class="nhsuk-table__head">
+          <tr role="row">
+            <th role="columnheader" class="" scope="col">
+              ID
+            </th>
+            <th role="columnheader" class="" scope="col">
+              Status
+            </th>
+            <th role="columnheader" class="" scope="col">
+              Created time & date
+            </th>
+            <th role="columnheader" class="" scope="col">
+              Modified time & date
+            </th>
+          </tr>
+        </thead>
+        <tbody class="nhsuk-table__body">
+          <tr role="row" class="nhsuk-table__row">
+            <td role="cell" class="nhsuk-table__cell">
+              <span class="nhsuk-table-responsive__heading">Verification attempt ID </span><a href="files">2ead33a3-bb11-cd1c-ab11-33bcd33aaed3</a>
+            </td>
+            <td role="cell" class="nhsuk-table__cell">
+              <span class="nhsuk-table-responsive__heading">Status </span>Submitted
+            </td>
+            <td role="cell" class="nhsuk-table__cell">
+              <span class="nhsuk-table-responsive__heading">Created time & date </span>11:03, 20/10/2020
+            </td>
+            <td role="cell" class="nhsuk-table__cell">
+              <span class="nhsuk-table-responsive__heading">Modified time & date </span>11:03, 20/10/2020
+            </td>
+          </tr>
+          <tr role="row" class="nhsuk-table__row">
+            <td role="cell" class="nhsuk-table__cell">
+              <span class="nhsuk-table-responsive__heading">Verification attempt ID </span><a href="files">2ead33a3-bb11-cd1c-ab11-33bcd33aaed3</a>
+            </td>
+            <td role="cell" class="nhsuk-table__cell">
+              <span class="nhsuk-table-responsive__heading">Status </span>Not submitted
+            </td>
+            <td role="cell" class="nhsuk-table__cell">
+              <span class="nhsuk-table-responsive__heading">Created time & date </span>08:34, 03/09/2020
+            </td>
+            <td role="cell" class="nhsuk-table__cell">
+              <span class="nhsuk-table-responsive__heading">Modified time & date </span>14:23, 05/09/2020
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+
+{% endblock %}

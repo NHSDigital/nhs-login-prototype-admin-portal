@@ -8,14 +8,17 @@
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
-      <h1>
+      <h1 class="nhsuk-heading-l">
         Admin Portal prototype
       </h1>
 
       <ul>
-        <li><a href="search">Scenario 1 - account is currently active</a></li>
-        <li><a href="search?status=Disabled&reason=P5%20registration&incident-number=93848472">Scenario 2 - account is currently disabled</a></li>
-        <li><a href="search?user-group=nsd">Scenario 3 - NSD user</a></li>
+        <li><a href="search">Search for an account (admin user)</a></li>
+        <li><a href="search?user-group=nsd">Search for an account (NSD user)</a></li>
+      </ul>
+
+      <h2 class="nhsuk-heading-m">Error designs</h2>
+      <ul>
         <li><a href="error-usergroup">Error - user not assigned to usergroup</a></li>
         <li><a href="error-noresults?search-email=test@test.com">Error - no accounts found</a></li>
         <li><a href="error-technical-search">Error - search technical problem</a></li>

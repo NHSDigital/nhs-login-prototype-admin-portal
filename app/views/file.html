@@ -1,0 +1,39 @@
+{% extends 'layout.html' %}
+
+{% block beforeContent %}
+  {% include "includes/phase-banner.html" %}
+  <nav class="nhsuk-breadcrumb" aria-label="Breadcrumb">
+    <div class="nhsuk-width-container">
+      <ol class="nhsuk-breadcrumb__list">
+        <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link" href="search">Search</a></li>
+        <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link" href="result">Search result</a></li>
+        <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link" href="verification-attempts">PYI verification attempts</a></li>
+        <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link" href="files">PYI files</a></li>
+        <li class="nhsuk-breadcrumb__item">File preview</li>
+      </ol>
+      <p class="nhsuk-breadcrumb__back"><a class="nhsuk-breadcrumb__backlink" href="files">Back to: PYI files</a></p>
+    </div>
+  </nav>
+{% endblock %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-full">
+
+        <h1 class="nhsuk-heading-l">
+          File preview
+        </h1>
+
+        <p>{{ (data['fileid'] | default('2ead33a3-bb11-cd1c-ab11-33bcd33aaed3.jpg')) }}</p>
+
+        <div class="nhsuk-u-margin-bottom-4">
+          <img src="https://place-hold.it/500x500"/>
+        </div>
+
+        <p><a href="#">Download this file</a></p>
+
+    </div>
+  </div>
+
+{% endblock %}
