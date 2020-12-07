@@ -194,14 +194,13 @@
             </dt>
             <dd class="nhsuk-summary-list__value">
               {% if data['status'] != "Disabled" %}
-                <span class="nhsuk-hint">The account must be disabled before it can be cleansed.</span>
+                <span class="nhsuk-hint">The account must be <a href="disable">disabled</a> before it can be cleansed.</span>
               {% endif %}
             </dd>
             <dd class="nhsuk-summary-list__actions">
               {% if data['status'] == "Disabled" %}
                 <a href="cleanse">Cleanse account</a>
               {% else %}
-                Cleanse account
               {% endif %}
             </dd>
           </div>

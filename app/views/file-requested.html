@@ -9,7 +9,7 @@
         <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link" href="result">Search result</a></li>
         <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link" href="verification-attempts">PYI verification attempts</a></li>
         <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link" href="files">PYI files</a></li>
-        <li class="nhsuk-breadcrumb__item">File preview</li>
+        <li class="nhsuk-breadcrumb__item">File requested</li>
       </ol>
       <p class="nhsuk-breadcrumb__back"><a class="nhsuk-breadcrumb__backlink" href="files">Back to: PYI files</a></p>
     </div>
@@ -22,27 +22,13 @@
     <div class="nhsuk-grid-column-full">
 
         <h1 class="nhsuk-heading-l">
-          This file has been archived
+          This file has already been requested
         </h1>
 
         <p>{{ (data['fileid'] | default('2ead33a3-bb11-cd1c-ab11-33bcd33aaed3_2ead33a3-bb11-cd1c-ab11-33bcd33aaed3_2ead33a3-bb11-cd1c-ab11-33bcd33aaed3_photoid.jpg')) }}</p>
 
-        <!--<div class="nhsuk-form-group" class="nhsuk-u-padding-top-4">
-            <p><a href="file-retrieve">Request this file</a></p>
-        </div>-->
-
-        <h2 class="nhsuk-heading-m">Request all archived files for this verification attempt</h2>
-
-        <p>
-          Verification attempt ID<br />
-          <span class="nhsuk-hint">
-            {{ (data['vericationid'] | default('2ead33a3-bb11-cd1c-ab11-33bcd33aaed3')) }}
-          </span>
-        </p>
-
-        <form method="POST" action="files-retrieve?files-requested=y">
-            <button class="nhsuk-button" type="submit">Request files</button>
-        </form>
+        <p>You will receive an email once the file is available in the Admin Portal.</p>
+        <p>This can take up to 5 minutes.</p>
 
         <div class="nhsuk-back-link">
           <a class="nhsuk-back-link__link" href="files">
