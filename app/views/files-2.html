@@ -41,10 +41,16 @@
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-full">
 
-      <table role="table" class="nhsuk-table-responsive">
+      <table role="table" class="nhsuk-table-responsive nhsuk-u-margin-bottom-4">
         <caption class="nhsuk-table__caption"></caption>
         <thead role="rowgroup" class="nhsuk-table__head">
           <tr role="row">
+            <th role="columnheader" scope="col">
+              Type
+            </th>
+            <th role="columnheader" scope="col">
+              Status
+            </th>
             <th role="columnheader" scope="col">
               File name
             </th>
@@ -53,54 +59,84 @@
         <tbody class="nhsuk-table__body">
           <tr role="row" class="nhsuk-table__row">
             <td role="cell" class="nhsuk-table__cell">
-              <span class="nhsuk-table-responsive__heading">File name </span>
+              <span class="nhsuk-table-responsive__heading">Type </span>
+              Photo ID
+            </td>
+            <td role="cell" class="nhsuk-table__cell">
+              <span class="nhsuk-table-responsive__heading">Status </span>
               {% if data['files-requested'] == "y" %}
-              <a href="file-requested">
+              Requested
               {% else %}
-              <a href="file">
+              Archived
               {% endif %}
-                2ead33a3-bb11-cd1c-ab11-33bcd33aaed3_2ead33a3-bb11-cd1c-ab11-33bcd33aaed3_2ead33a3-bb11-cd1c-ab11-33bcd33aaed3_photoid
-              </a>
+            </td>
+            <td role="cell" class="nhsuk-table__cell">
+              <span class="nhsuk-table-responsive__heading">File name </span>
+              2ead33a3-bb11-cd1c-ab11-33bcd33aaed3_2ead33a3-bb11-cd1c-ab11-33bcd33aaed3_2ead33a3-bb11-cd1c-ab11-33bcd33aaed3_photoid
             </td>
           </tr>
           <tr role="row" class="nhsuk-table__row">
             <td role="cell" class="nhsuk-table__cell">
+              <span class="nhsuk-table-responsive__heading">Type </span>
+              Face extract
+            </td>
+            <td role="cell" class="nhsuk-table__cell">
+              <span class="nhsuk-table-responsive__heading">Status </span>
+              Available
+            </td>
+            <td role="cell" class="nhsuk-table__cell">
               <span class="nhsuk-table-responsive__heading">File name </span>
-              {% if data['files-requested'] == "y" %}
-              <a href="file-requested">
-              {% else %}
               <a href="https://placehold.it/500x500" target="_blank">
-              {% endif %}
                 2ead33a3-bb11-cd1c-ab11-33bcd33aaed3_2ead33a3-bb11-cd1c-ab11-33bcd33aaed3_2ead33a3-bb11-cd1c-ab11-33bcd33aaed3_faceextract
               </a>
             </td>
           </tr>
           <tr role="row" class="nhsuk-table__row">
             <td role="cell" class="nhsuk-table__cell">
-              <span class="nhsuk-table-responsive__heading">File name </span>
+              <span class="nhsuk-table-responsive__heading">Type </span>
+              Video
+            </td>
+            <td role="cell" class="nhsuk-table__cell">
+              <span class="nhsuk-table-responsive__heading">Status </span>
               {% if data['files-requested'] == "y" %}
-              <a href="file-requested">
+              Requested
               {% else %}
-              <a href="file">
+              Archived
               {% endif %}
-                2ead33a3-bb11-cd1c-ab11-33bcd33aaed3_2ead33a3-bb11-cd1c-ab11-33bcd33aaed3_2ead33a3-bb11-cd1c-ab11-33bcd33aaed3_video
-              </a>
+            </td>
+            <td role="cell" class="nhsuk-table__cell">
+              <span class="nhsuk-table-responsive__heading">File name </span>
+              2ead33a3-bb11-cd1c-ab11-33bcd33aaed3_2ead33a3-bb11-cd1c-ab11-33bcd33aaed3_2ead33a3-bb11-cd1c-ab11-33bcd33aaed3_video
             </td>
           </tr>
           <tr role="row" class="nhsuk-table__row">
             <td role="cell" class="nhsuk-table__cell">
-              <span class="nhsuk-table-responsive__heading">File name </span>
+              <span class="nhsuk-table-responsive__heading">Type </span>
+              Photo ID back
+            </td>
+            <td role="cell" class="nhsuk-table__cell">
+              <span class="nhsuk-table-responsive__heading">Status </span>
               {% if data['files-requested'] == "y" %}
-              <a href="file-requested">
+              Requested
               {% else %}
-              <a href="file">
+              Archived
               {% endif %}
-                2ead33a3-bb11-cd1c-ab11-33bcd33aaed3_2ead33a3-bb11-cd1c-ab11-33bcd33aaed3_2ead33a3-bb11-cd1c-ab11-33bcd33aaed3_photoback
-              </a>
+            </td>
+            <td role="cell" class="nhsuk-table__cell">
+              <span class="nhsuk-table-responsive__heading">File name </span>
+              2ead33a3-bb11-cd1c-ab11-33bcd33aaed3_2ead33a3-bb11-cd1c-ab11-33bcd33aaed3_2ead33a3-bb11-cd1c-ab11-33bcd33aaed3_photoback
             </td>
           </tr>
         </tbody>
       </table>
+
+      {% if data['files-requested'] == "y" %}
+      <button class="nhsuk-button nhsuk-button--disabled" disabled="disabled" type="submit">Request all archived files</button>
+      {% else %}
+      <form method="POST" action="files-retrieve?files-requested=y">
+        <button class="nhsuk-button" type="submit">Request all archived files</button>
+      </form>
+      {% endif %}
 
     </div>
   </div>

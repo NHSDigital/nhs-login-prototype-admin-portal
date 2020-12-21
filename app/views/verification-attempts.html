@@ -39,7 +39,8 @@
               <li>Acted: the user's application has been processed and a decision has been made.</li>
               <li>Archived: the files were processed more than 42 days ago so have been archived.</li>
             </ul>
-            <p><strong>Created time & date:</strong> when the files were added to Amazon S3.</p>
+            <p><strong>Created time & date</strong></p>
+            <p>When the files were added to Amazon S3.</p>
           </div>
         </details>
 
@@ -70,13 +71,13 @@
         <caption class="nhsuk-table__caption"></caption>
         <thead role="rowgroup" class="nhsuk-table__head">
           <tr role="row">
-            <th role="columnheader" class="" scope="col">
+            <th role="columnheader" scope="col">
               ID
             </th>
-            <th role="columnheader" class="" scope="col">
+            <th role="columnheader" scope="col">
               Status
             </th>
-            <th role="columnheader" class="" scope="col">
+            <th role="columnheader" scope="col">
               Created time & date
             </th>
           </tr>
@@ -84,7 +85,12 @@
         <tbody class="nhsuk-table__body">
           <tr role="row" class="nhsuk-table__row">
             <td role="cell" class="nhsuk-table__cell">
-              <span class="nhsuk-table-responsive__heading">Verification attempt ID </span><a href="files">2ead33a3-bb11-cd1c-ab11-33bcd33aaed3</a>
+              <span class="nhsuk-table-responsive__heading">Verification attempt ID </span>
+              {% if data['version'] == "2" %}
+              <a href="files-2">2ead33a3-bb11-cd1c-ab11-33bcd33aaed3</a>
+              {% else %}
+              <a href="files">2ead33a3-bb11-cd1c-ab11-33bcd33aaed3</a>
+              {% endif %}
             </td>
             <td role="cell" class="nhsuk-table__cell">
               <span class="nhsuk-table-responsive__heading">Status </span>Submitted
@@ -95,7 +101,12 @@
           </tr>
           <tr role="row" class="nhsuk-table__row">
             <td role="cell" class="nhsuk-table__cell">
-              <span class="nhsuk-table-responsive__heading">Verification attempt ID </span><a href="files">2ead33a3-bb11-cd1c-ab11-33bcd33aaed3</a>
+              <span class="nhsuk-table-responsive__heading">Verification attempt ID </span>
+              {% if data['version'] == "2" %}
+              <a href="files-2">2ead33a3-bb11-cd1c-ab11-33bcd33aaed3</a>
+              {% else %}
+              <a href="files">2ead33a3-bb11-cd1c-ab11-33bcd33aaed3</a>
+              {% endif %}
             </td>
             <td role="cell" class="nhsuk-table__cell">
               <span class="nhsuk-table-responsive__heading">Status </span>Not submitted
