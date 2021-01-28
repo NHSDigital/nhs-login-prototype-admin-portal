@@ -23,50 +23,15 @@
 
         <h1 class="nhsuk-heading-l">
           PYI verification attempts
-        
-        </h1>
-
-        <details class="nhsuk-details nhsuk-expander">
-          <summary class="nhsuk-details__summary">
-            <span class="nhsuk-details__summary-text">
-              About PYI verification attempts
-            </span>
-          </summary>
-          <div class="nhsuk-details__text">
-            <p><strong>Statuses</strong></p>
-            <ul>
-              <li>Unsubmitted: the user started PYI but has not submitted these files.</li>
-              <li>Submitted: the user has submitted these files as part of their PYI application.</li>
-              <li>Acted: the user's application has been processed and a decision has been made.</li>
-              <li>Archived: the files were processed more than 42 days ago so have been archived.</li>
-            </ul>
-            <p><strong>Created time & date</strong></p>
-            <p>When the files were added to Amazon S3.</p>
-          </div>
-        </details>
-
-        <p>
-          Account ID<br />
-          <span class="nhsuk-hint">
-            {{ (data['accountid'] | default('2ead33a3-bb11-cd1c-ab11-33bcd33aaed3')) }}
-          </span>
-        </p>
-        <p>
-          Email address<br />
-          <span class="nhsuk-hint">
-            {{ (data['email'] | default('tim.peak2@hotmail.com')) }}
-          </span>
-        </p>
       
       </div>
-
     </div>
   </div>
 
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-full">
 
-      <p>Select a verification attempt to see the files that the user submitted.</p>
+      <p>Select a verification instance to see the files that the user submitted.</p>
 
       <table role="table" class="nhsuk-table-responsive">
         <caption class="nhsuk-table__caption"></caption>
