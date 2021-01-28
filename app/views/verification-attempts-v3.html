@@ -1,0 +1,125 @@
+{% extends 'layout.html' %}
+
+{% block beforeContent %}
+  {% include "includes/phase-banner.html" %}
+  <nav class="nhsuk-breadcrumb" aria-label="Breadcrumb">
+    <div class="nhsuk-width-container">
+      <ol class="nhsuk-breadcrumb__list">
+        <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link" href="search">Search</a></li>
+        <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link" href="result">Search result</a></li>
+        <li class="nhsuk-breadcrumb__item">PYI verification attempts</li>
+      </ol>
+      <p class="nhsuk-breadcrumb__back"><a class="nhsuk-breadcrumb__backlink" href="result">Back to: search result</a></p>
+    </div>
+  </nav>
+{% endblock %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <div class="nhsuk-u-margin-bottom-6">
+
+        <h1 class="nhsuk-heading-l">
+          PYI verification attempts
+        
+        </h1>
+
+        <details class="nhsuk-details nhsuk-expander">
+          <summary class="nhsuk-details__summary">
+            <span class="nhsuk-details__summary-text">
+              About PYI verification attempts
+            </span>
+          </summary>
+          <div class="nhsuk-details__text">
+            <p><strong>Statuses</strong></p>
+            <ul>
+              <li>Unsubmitted: the user started PYI but has not submitted these files.</li>
+              <li>Submitted: the user has submitted these files as part of their PYI application.</li>
+              <li>Acted: the user's application has been processed and a decision has been made.</li>
+              <li>Archived: the files were processed more than 42 days ago so have been archived.</li>
+            </ul>
+            <p><strong>Created time & date</strong></p>
+            <p>When the files were added to Amazon S3.</p>
+          </div>
+        </details>
+
+        <p>
+          Account ID<br />
+          <span class="nhsuk-hint">
+            {{ (data['accountid'] | default('2ead33a3-bb11-cd1c-ab11-33bcd33aaed3')) }}
+          </span>
+        </p>
+        <p>
+          Email address<br />
+          <span class="nhsuk-hint">
+            {{ (data['email'] | default('tim.peak2@hotmail.com')) }}
+          </span>
+        </p>
+      
+      </div>
+
+    </div>
+  </div>
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-full">
+
+      <p>Select a verification attempt to see the files that the user submitted.</p>
+
+      <table role="table" class="nhsuk-table-responsive">
+        <caption class="nhsuk-table__caption"></caption>
+        <thead role="rowgroup" class="nhsuk-table__head">
+          <tr role="row">
+            <th role="columnheader" scope="col">
+              Verification instance ID
+            </th>
+            <th role="columnheader" scope="col">
+              
+            </th>
+            <th role="columnheader" scope="col">
+              Created time & date
+            </th>
+          </tr>
+        </thead>
+        <tbody class="nhsuk-table__body">
+          <tr role="row" class="nhsuk-table__row">
+            <td role="cell" class="nhsuk-table__cell">
+              <span class="nhsuk-table-responsive__heading">Verification attempt ID </span>
+              {% if data['version'] == "2" %}
+              <a href="files-v3">2ead33a3-bb11-cd1c-ab11-33bcd33aaed3</a>
+              {% else %}
+              <a href="files-v3">3dad8b56-cd0c-4bb6-8abb-c82bae872674</a>
+              {% endif %}
+            </td>
+            <td role="cell" class="nhsuk-table__cell">
+              <span class="nhsuk-table-responsive__heading">Status </span> <!-- Left this column empty -->
+            </td>
+            <td role="cell" class="nhsuk-table__cell">
+              <span class="nhsuk-table-responsive__heading">Created time & date </span> <p style="margin-right:20px;display: inline-block;">11:03</p> <p style="display: inline-block;">20/10/2020</p>
+            </td>
+          </tr>
+          <tr role="row" class="nhsuk-table__row">
+            <td role="cell" class="nhsuk-table__cell">
+              <span class="nhsuk-table-responsive__heading">Verification attempt ID </span>
+              {% if data['version'] == "2" %}
+              <a href="files-2">3dad8b56-cd0c-4bb6-8abb-c82bae872674</a>
+              {% else %}
+              <a href="files-v3">a62afc2d-3972-4871-80a2-3fb51c1926fb</a>
+              {% endif %}
+            </td>
+            <td role="cell" class="nhsuk-table__cell">
+              <span class="nhsuk-table-responsive__heading">Status </span> <!-- Left this column empty -->
+            </td>
+            <td role="cell" class="nhsuk-table__cell">
+              <span class="nhsuk-table-responsive__heading">Created time & date </span> <p style="margin-right:20px;display: inline-block;">08:34</p> <p style="display: inline-block;">03/09/2020</p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+
+{% endblock %}

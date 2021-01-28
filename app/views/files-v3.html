@@ -1,0 +1,78 @@
+{% extends 'layout.html' %}
+
+{% block beforeContent %}
+  {% include "includes/phase-banner.html" %}
+  <nav class="nhsuk-breadcrumb" aria-label="Breadcrumb">
+    <div class="nhsuk-width-container">
+      <ol class="nhsuk-breadcrumb__list">
+        <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link" href="search">Search</a></li>
+        <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link" href="result">Search result</a></li>
+        <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link" href="verification-attempts-v3">PYI verification attempts</a></li>
+        <li class="nhsuk-breadcrumb__item">PYI files</li>
+      </ol>
+      <p class="nhsuk-breadcrumb__back"><a class="nhsuk-breadcrumb__backlink" href="verification-attempts">Back to: PYI verification attempts</a></p>
+    </div>
+  </nav>
+{% endblock %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <div class="nhsuk-u-margin-bottom-4">
+
+        <h1 class="nhsuk-heading-l">
+          PYI files
+        </h1>
+
+        <p>
+          Verification instance ID<br />
+          <span class="nhsuk-hint">
+            {{ (data['vericationid'] | default('3dad8b56-cd0c-4bb6-8abb-c82bae872674')) }}
+          </span>
+        </p>
+      
+      </div>
+
+    </div>
+  </div>
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-full">
+
+      <table class="nhsuk-table">
+        <thead role="rowgroup" class="nhsuk-table__head">
+          <tr role="row">
+            <th role="columnheader" class="" scope="col">
+              File type
+            </th>
+            <th role="columnheader" class="" scope="col">
+              File name
+            </th>
+          </tr>
+        </thead>
+        <tbody class="nhsuk-table__body">
+          <tr role="row" class="nhsuk-table__row">
+            <td class="nhsuk-table__cell ">Photo ID</td>
+            <td> <a href="preview-file-photo-id" class="nhsuk-link">3dad8b56-cd0c-4bb6-8abb-c82bae872674-3dad8b56-cd0c-4bb6-8abb-c82bae872674_photoid.jpg</a></td>
+          </tr>
+          <tr role="row" class="nhsuk-table__row">
+            <td class="nhsuk-table__cell">Face extract</td>
+            <td> <a href="preview-file-face-extract" class="nhsuk-link">3dad8b56-cd0c-4bb6-8abb-c82bae872674-3dad8b56-cd0c-4bb6-8abb-c82bae872674_faceextract.jpg</a> </td>
+          </tr>
+          <tr role="row" class="nhsuk-table__row">
+            <td class="nhsuk-table__cell">Video</td>
+            <td> <a href="file-requested-v3" class="nhsuk-link">3dad8b56-cd0c-4bb6-8abb-c82bae872674-3dad8b56-cd0c-4bb6-8abb-c82bae872674_video.mp4</a></td>
+          </tr>
+          <tr role="row" class="nhsuk-table__row">
+            <td class="nhsuk-table__cell">Photo ID back</td>
+            <td> <a href="file-requested-v3" class="nhsuk-link">3dad8b56-cd0c-4bb6-8abb-c82bae872674-3dad8b56-cd0c-4bb6-8abb-c82bae872674_photoback.jpg</a> </td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+
+{% endblock %}
