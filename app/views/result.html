@@ -150,7 +150,7 @@
         <dl class="nhsuk-summary-list nhsuk-u-margin-0">
 
           <div class="nhsuk-summary-list__row">
-            <dt class="nhsuk-summary-list__key">
+            <dt class="nhsuk-summary-list__key"> 
               Status
             </dt>
             <dd class="nhsuk-summary-list__value">
@@ -180,7 +180,15 @@
               {% endif %}
             </dd>
             <dd class="nhsuk-summary-list__actions">
-              <a href="verification-attempts-v3">View/download files</a>
+              {% if data['devMode'] %}
+      
+            <a class="dev-mode-text" href="error?errormessage=verification-instances">Error page for...</a>
+      
+      
+      {% endif %}
+
+      
+      <a href="verification-attempts-v3">View/download files</a>
             </dd>
           </div>
 
@@ -211,7 +219,21 @@
 
       </div>
 
-      
+      {% if data['devMode'] %}
+      <details class="nhsuk-details dev-mode" role="group">
+        <summary class="nhsuk-details__summary" role="button" aria-controls="details-content-0"
+        aria-expanded="true">
+          <span class="nhsuk-details__summary-text">
+            Testing scenarios
+          </span>
+        </summary>
+        <div class="nhsuk-details__text">
+          <ul>
+            <li><a href="error?errormessage=verification-instances">Error - Technical problem loading verification instances</a></li>
+          </ul>
+        </div>
+      </details>
+      {% endif %}
 
     </div>
   </div>
