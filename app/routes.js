@@ -41,5 +41,5 @@ function devModeRoute(req, res, next) {
   // Clear all session data
 router.get('/clear-data', (req, res) => {
 	req.session.data = {}
-	res.redirect('/index')
+	res.redirect('/#')
   })

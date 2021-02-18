@@ -72,6 +72,22 @@
         </tbody>
       </table>
 
+      {% if data['devMode'] %}
+      <details class="nhsuk-details dev-mode" role="group">
+        <summary class="nhsuk-details__summary" role="button" aria-controls="details-content-0"
+        aria-expanded="true">
+          <span class="nhsuk-details__summary-text">
+            Testing scenarios
+          </span>
+        </summary>
+        <div class="nhsuk-details__text">
+          <ul>
+            <li><a href="errormessage=evidence-preview">Error - Technical problem loading evidence preview</a></li>
+          </ul>
+        </div>
+      </details>
+      {% endif %}
+
     </div>
   </div>
 
