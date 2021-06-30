@@ -24,6 +24,7 @@
 
         <dl class="nhsuk-summary-list nhsuk-u-margin-0">
 
+    <!-- Account ID -->
           <div class="nhsuk-summary-list__row">
             <dt class="nhsuk-summary-list__key">
               Account ID
@@ -35,6 +36,7 @@
             </dd>
           </div>
         
+    <!-- Email address -->
           <div class="nhsuk-summary-list__row">
             <dt class="nhsuk-summary-list__key">
               Email address
@@ -45,7 +47,13 @@
             <dd class="nhsuk-summary-list__actions">
             </dd>
           </div>
-        
+
+
+    <!-- non NHS App users -->
+
+        {% if data['user-group'] != "nhsapp" %}
+
+    <!-- First name -->
           <div class="nhsuk-summary-list__row">
             <dt class="nhsuk-summary-list__key">
               First name
@@ -56,7 +64,8 @@
             <dd class="nhsuk-summary-list__actions">
             </dd>
           </div>
-        
+    
+    <!-- Last name -->
           <div class="nhsuk-summary-list__row">
             <dt class="nhsuk-summary-list__key">
               Last name
@@ -68,8 +77,10 @@
             </dd>
           </div>
 
-          {% if data['user-group'] != "nsd" %}
-          
+    <!-- if user is not NHS app, & not admin -->
+          {% if data['user-group'] != "admin" %}
+
+    <!-- mobile number -->
           <div class="nhsuk-summary-list__row">
             <dt class="nhsuk-summary-list__key">
               Mobile number
@@ -83,7 +94,9 @@
               -->
             </dd>
           </div>
-          
+
+    
+    <!-- Proofing level -->      
           <div class="nhsuk-summary-list__row">
             <dt class="nhsuk-summary-list__key">
               Proofing level
@@ -99,13 +112,16 @@
             </dd>
           </div>
 
+    <!-- ending the "not admin" clause -->
           {% endif %}
 
         </dl>
 
         
-
+    <!-- if status is not active, it is disabled -->
         {% if (data['status'] | default('Active')) == "Disabled" %}
+
+    <!-- disabled status with some more details -->
 
         <dl class="nhsuk-summary-list nhsuk-u-margin-0" style="border-top:#d8dde0 5px solid;border-bottom:#d8dde0 5px solid;">
 
@@ -149,6 +165,8 @@
 
         {% else %}
 
+      <!-- active status -->
+
         <dl class="nhsuk-summary-list nhsuk-u-margin-0">
 
           <div class="nhsuk-summary-list__row">
@@ -167,10 +185,13 @@
 
         {% endif %}
 
+      <!-- if admin user-group -->
 
-        {% if data['user-group'] != "nsd" %}
+        {% if data['user-group'] === "admin" %}
 
         <dl class="nhsuk-summary-list nhsuk-u-margin-0">
+
+      <!-- evidence files -->
 
           <div class="nhsuk-summary-list__row">
             <dt class="nhsuk-summary-list__key">
@@ -217,13 +238,46 @@
           </div>
 
         </dl>
+        </div>
+
+        {% endif %}
+      
+      <!-- ending the usergroup not nhsapp clause -->
+
+      {% endif %}
+      </dl>
+
+      {% if data['user-group'] === "nhsapp" %}
+
+        <dl class="nhsuk-summary-list nhsuk-u-margin-0">
+
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key" >
+              NHS number
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+            123 456 7890
+            </dd>
+          </div>
+
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              ODS Code
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+            ABCD 123 456 7890
+            </dd>
+          </div>
+          </div>
 
         {% endif %}
 
       </div>
 
+  
 
-    {% if data['user-group'] != "nsd" %}
+
+    {% if data['user-group'] === "admin" %}
 
               <p><a href="result-additional-info">View additional information</a></p>
 
