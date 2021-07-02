@@ -48,6 +48,35 @@
             </dd>
           </div>
 
+  
+    {% if data['user-group'] === "nhsapp" %}
+
+
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key" >
+              NHS number
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+            123 456 7890
+            </dd>
+            <dd class="nhsuk-summary-list__actions">
+            </dd>
+          </div>
+
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              ODS Code
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+            ABCD 123 456 7890
+            </dd>
+            <dd class="nhsuk-summary-list__actions">
+            </dd>
+          </div>
+          </div>
+
+        {% endif %}
+
 
     <!-- non NHS App users -->
 
@@ -246,31 +275,6 @@
 
       {% endif %}
       </dl>
-
-      {% if data['user-group'] === "nhsapp" %}
-
-        <dl class="nhsuk-summary-list nhsuk-u-margin-0">
-
-          <div class="nhsuk-summary-list__row">
-            <dt class="nhsuk-summary-list__key" >
-              NHS number
-            </dt>
-            <dd class="nhsuk-summary-list__value">
-            123 456 7890
-            </dd>
-          </div>
-
-          <div class="nhsuk-summary-list__row">
-            <dt class="nhsuk-summary-list__key">
-              ODS Code
-            </dt>
-            <dd class="nhsuk-summary-list__value">
-            ABCD 123 456 7890
-            </dd>
-          </div>
-          </div>
-
-        {% endif %}
 
       </div>
 
