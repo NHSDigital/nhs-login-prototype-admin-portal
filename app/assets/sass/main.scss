@@ -7,6 +7,9 @@
 @import 'components/related-nav';
 @import 'components/tag';
 @import 'components/devmode';
+@import 'components/search';
+@import 'components/slider';
+@import 'components/range-slider';
 
 ///////////////////////////////////////////
 // Add your custom CSS/Sass styles below... 
@@ -41,3 +44,4 @@
 .show{
     display: block;
 }
+

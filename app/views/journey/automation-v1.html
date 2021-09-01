@@ -1,0 +1,38 @@
+{% extends 'layout-nav.html' %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <h1 class="nhsuk-heading-l">Change automation rate</h1>
+
+<p>Use slider to select automation rate</p>
+
+<br><br>
+
+<div class="range-slider" style='--min:0; --max:100; --step:5; --value:75; --text-value:"75";'>
+  <input type="range" min="0" max="100" step="5" value="75" oninput="this.parentNode.style.setProperty('--value',this.value); this.parentNode.style.setProperty('--text-value', JSON.stringify(this.value))">
+  <output></output>
+  <div class='range-slider__progress'></div>
+
+</div>
+
+
+
+<br><br><br>
+
+        <a href="result" class="nhsuk-button" type="submit">
+          Confirm automation rate
+        </a>
+ (insert pop up)
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+
+
+
