@@ -11,28 +11,32 @@
 
 <p>Use slider to select automation rate</p>
 
-<br><br>
 
-<div class="range-slider" style='--min:0; --max:100; --step:5; --value:75; --text-value:"75";'>
-  <input type="range" min="0" max="100" step="5" value="75" oninput="this.parentNode.style.setProperty('--value',this.value); this.parentNode.style.setProperty('--text-value', JSON.stringify(this.value))">
+
+<div class="range-slider nhsuk-u-margin-bottom-8 nhsuk-u-margin-top-8" style='--min:0; --max:100; --step:5; --value:0; --text-value:"0";'>
+  <input id="slider_value" type="range" min="0" max="100" step="5" value="0" oninput="this.parentNode.style.setProperty('--value',this.value); this.parentNode.style.setProperty('--text-value', JSON.stringify(this.value));">
   <output></output>
   <div class='range-slider__progress'></div>
+
+  <br><br>
 
 </div>
 
 
 
-<br><br><br>
-
-        <a href="result" class="nhsuk-button" type="submit">
-          Confirm automation rate
+        <a href="#" class="nhsuk-button" type="submit">
+        Set automation rate to <span id="slider_value"></span>%
         </a>
- (insert pop up 🐔)
     </div>
   </div>
 </div>
 
 {% endblock %}
-
+<script>
+function show_value(x)
+{
+ document.getElementById("slider_value").innerHTML=x;
+}
+</script>
 
 
