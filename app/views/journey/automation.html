@@ -1,6 +1,16 @@
 {% extends 'layout-nav.html' %}
 
 {% block beforeContent %}
+  <nav class="nhsuk-breadcrumb" aria-label="Breadcrumb">
+    <div class="nhsuk-width-container">
+      <ol class="nhsuk-breadcrumb__list">
+        <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link" href="/index">Home</a></li>
+        <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link" href="/journey">Change user journey</a></li>
+        <li class="nhsuk-breadcrumb__item">Set automation rate</li>
+      </ol>
+      <p class="nhsuk-breadcrumb__back"><a class="nhsuk-breadcrumb__backlink" href="/journey">Back to: Change user journey</a></p>
+    </div>
+  </nav>
 {% endblock %}
 
 {% block content %}
