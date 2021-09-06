@@ -1,0 +1,121 @@
+
+
+  .notification_position {
+    top:0px;
+  }
+
+
+  /* ----------------------------- */
+  /* Automation rate success alert */
+  /* ----------------------------- */
+
+
+  .notification_rate {
+      position:relative;
+      display: flex;
+      float: right;
+      align-items: center;
+      width: 600px;
+      bottom: 150px;
+      left: 10px;
+      height: 90px; 
+      margin: 30px;
+      padding: 0 30px;
+      background-color: #ffffff;
+      border: 3px solid #212b32;
+      background-color: #fff;
+      font-weight: 400;
+      box-shadow: rgba(0, 0, 0, 0.274) 0px 5px 15px;
+      
+  }
+
+  .notification_rate a {
+      text-decoration: none;
+      color: #ffffffee;
+      font-weight: 700;
+      letter-spacing: .5px;
+      padding-top: 30px;
+      transition: 300ms;
+      
+  }
+
+  .notification_rate a:hover {
+      color: #ffffffaa;
+  }
+
+
+  /* ----------------------------- */
+  /* Automation rate error alert */
+  /* ----------------------------- */
+
+
+  .notification_rate_error {
+      position:relative;
+      display: flex;
+      float: right;
+      align-items: center;
+      width: 600px;
+      bottom: 150px;
+      left: 10px;
+      height: 120px; 
+      margin: 30px;
+      padding: 0 30px;
+      border: 3px solid #ff0000;
+      background-color: #fff;
+      font-weight: 400;
+      box-shadow: rgba(0, 0, 0, 0.274) 0px 5px 15px;
+      
+  }
+
+  .notification_rate_error a {
+      text-decoration: none;
+      color: #ffffffee;
+      font-weight: 700;
+      letter-spacing: .5px;
+      padding-top: 30px;
+      transition: 300ms;
+      
+  }
+
+  .notification_rate_error a:hover {
+      color: #ffffffaa;
+  }
+
+
+
+
+
+/* --------- */
+/* Animation */
+/* --------- */
+
+
+.animateOpen{
+animation:moveOpen 6s;
+animation-iteration-count: 1;
+animation-fill-mode: forwards;
+}
+/* Safari and Chrome */
+@keyframes moveOpen 
+{
+from {transform: translate(0,500px);}
+10% {transform: translate(0,20px);}
+12% {transform: translate(0,23px);}
+16% {transform: translate(0,20px);}
+80% {transform: translate(0,20px);}
+85% {transform: translate(0,25px);}
+to {transform: translate(0,500px);}
+}
+
+/* --------- */
+/* Close button */
+/* --------- */
+
+.noti-close {
+position: absolute;
+top: 0;
+right: 0;
+margin: 5px;
+margin-right: 10px;
+padding: 5px;
+}

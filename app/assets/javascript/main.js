@@ -128,3 +128,24 @@ var settings = {
 
 new Knobs(settings)
 
+
+// Confirm Auto Rate (success) notification
+function myFunctionConfirmRate() {
+  var x = document.getElementById("ConfirmRate");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+};
+
+// Confirm Auto Rate (error) notification
+function myFunctionConfirmRateError() {
+  var x = document.getElementById("ConfirmRateError");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+};
+

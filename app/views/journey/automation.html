@@ -7,9 +7,9 @@
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
-      <h1 class="nhsuk-heading-l">Change automation rate</h1>
+      <h1 class="nhsuk-heading-l">Set automation rate</h1>
 
-<p>Use slider to select automation rate</p>
+<p>Use the slider to set the automation rate</p>
 
 
 
@@ -24,19 +24,35 @@
 
 
 
-        <a href="#" class="nhsuk-button" type="submit">
-        Set automation rate to <span id="slider_value"></span>%
+        <a href="#" class="nhsuk-button" type="submit" onclick="myFunctionConfirmRate()">
+        Set automation rate
+        </a>
+        <a href="#" type="submit" onclick="myFunctionConfirmRateError()">
+        Set automation rate (error!)
         </a>
     </div>
   </div>
 </div>
 
+
+   <div id="ConfirmRate" style="display: none">
+        <section class="notification_rate animateOpen">
+        <p class="noti-close" id='noti-close' onclick='this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode); return false;'>&times</p>
+                                <img src="/images/tick.png" height="45" width="45" style="margin-right: 20px"/>
+                                <p style="padding-top: 20px"> <strong>Success</strong> <br>The automation rate has been set to XX%.</p>
+
+        </section>
+    </div>
+
+       <div id="ConfirmRateError" style="display: none">
+        <section class="notification_rate_error animateOpen">
+        <p class="noti-close" id='noti-close' onclick='this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode); return false;'>&times</p>
+                                <img src="/images/warning.png" height="45" width="50" style="margin-right: 20px"/>
+                                <p style="padding-top: 20px; color: red"> <strong>An error occurred</strong> <br>The automation rate has not been set. Check the slider and select the button to try again.</p>
+
+        </section>
+    </div>
+
 {% endblock %}
-<script>
-function show_value(x)
-{
- document.getElementById("slider_value").innerHTML=x;
-}
-</script>
 
 
