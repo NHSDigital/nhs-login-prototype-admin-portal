@@ -1,11 +1,11 @@
-{% extends 'layout.html' %}
+{% extends 'layout-nav.html' %}
+{% set pageSection = "Find a user" %}
 
 {% block beforeContent %}
-  {% include "includes/phase-banner.html" %}
   <nav class="nhsuk-breadcrumb" aria-label="Breadcrumb">
     <div class="nhsuk-width-container">
       <ol class="nhsuk-breadcrumb__list">
-        <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link" href="search">Search</a></li>
+        <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link" href="/search">Search</a></li>
         <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link" href="result">Search result</a></li>
         <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link" href="verification-attempts">PYI verification attempts</a></li>
         <li class="nhsuk-breadcrumb__item">PYI files</li>
@@ -57,7 +57,7 @@
               {% if data['files-requested'] == "y" %}
               <a href="file-requested">
               {% else %}
-              <a href="file">
+              <a href="preview-file-photo-id">
               {% endif %}
                 2ead33a3-bb11-cd1c-ab11-33bcd33aaed3_2ead33a3-bb11-cd1c-ab11-33bcd33aaed3_2ead33a3-bb11-cd1c-ab11-33bcd33aaed3_photoid
               </a>
@@ -69,7 +69,7 @@
               {% if data['files-requested'] == "y" %}
               <a href="file-requested">
               {% else %}
-              <a href="https://placehold.it/500x500" target="_blank">
+              <a href="preview-file-face-extract">
               {% endif %}
                 2ead33a3-bb11-cd1c-ab11-33bcd33aaed3_2ead33a3-bb11-cd1c-ab11-33bcd33aaed3_2ead33a3-bb11-cd1c-ab11-33bcd33aaed3_faceextract
               </a>

@@ -1,7 +1,7 @@
-{% extends 'layout.html' %}
+{% extends 'layout-nav.html' %}
+{% set pageSection = "Find a user" %}
 
 {% block beforeContent %}
-  {% include "includes/phase-banner.html" %}
 {% endblock %}
 
 {% block content %}
@@ -25,11 +25,11 @@
 
         <p>
           Account ID<br />
-          <span class="nhsuk-hint">{{ data['accountid'] }}</span>
+          <span class="nhsuk-hint">{{ data['accountid'] or '1234567890' }}</span>
         </p>
         <p>
           Email address<br />
-          <span class="nhsuk-hint">{{ data['email'] }}</span>
+          <span class="nhsuk-hint">{{ data['email'] or 'name@email.com' }}</span>
         </p>
       
         <form action="result" method="POST">
