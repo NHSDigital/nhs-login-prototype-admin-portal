@@ -1,4 +1,5 @@
 {% extends 'layout-nav.html' %}
+{% set pageSection = "Find a user" %}
 
 {% block beforeContent %}
 {% endblock %}
@@ -24,17 +25,17 @@
           <p></p>
         </div>
       </details> #}
-      
+
       <div class="nhsuk-form-group">
 
           <label class="nhsuk-label" for="three-quarters">
             Email address
           </label>
           <input class="nhsuk-input nhsuk-u-width-three-quarters" id="three-quarters" name="three-quarters" type="text" value="tim.peak2@hotmail.com">
-      
+
         {% if data['user-group'] === "admin" %}
         <p class="nhsuk-u-margin-top-4">or</p>
-        
+
           <label class="nhsuk-label" for="three-quarters">
             Account ID
           </label>
@@ -42,11 +43,11 @@
             Example: 2eee22a1-bb11-cd1c-ab11-11bcd22aaed2
           </span>
           <input class="nhsuk-input nhsuk-u-width-three-quarters" id="three-quarters" name="three-quarters" type="text">
-        
+
         {% endif %}
 
       </div>
-          
+
         <a href="result" class="nhsuk-button" type="submit">
           Search
         </a>

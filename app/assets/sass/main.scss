@@ -14,7 +14,7 @@
 @import 'components/notification';
 
 ///////////////////////////////////////////
-// Add your custom CSS/Sass styles below... 
+// Add your custom CSS/Sass styles below...
 ///////////////////////////////////////////
 
 .background-white{
@@ -47,4 +47,13 @@
     display: block;
 }
 
+// Main nav active state
+.app-header__navigation-item__item--current {
+  @include mq($from: large-desktop) {
+    box-shadow: inset 0 -4px 0 $color_nhsuk-grey-4;
+  }
 
+  .nhsuk-header__navigation-link {
+    font-weight: $nhsuk-font-bold;
+  }
+}
