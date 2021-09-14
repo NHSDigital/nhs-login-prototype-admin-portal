@@ -1,4 +1,6 @@
 {% extends 'layout-nav.html' %}
+{% set pageSection = "Change user journey" %}
+
 
 {% block beforeContent %}
   <nav class="nhsuk-breadcrumb" aria-label="Breadcrumb">
@@ -18,12 +20,14 @@
 
       <h1 class="nhsuk-heading-l">Set automation rate</h1>
 
-<p>Use the slider to set the automation rate</p>
+      <p>The automation rate is currently set to: <b>75%</b>.
+
+      <p>Use the slider to set the automation rate.</p>
 
 
 
-<div class="range-slider nhsuk-u-margin-bottom-8 nhsuk-u-margin-top-8" style='--min:0; --max:100; --step:5; --value:0; --text-value:"0";'>
-  <input id="slider_value" type="range" min="0" max="100" step="5" value="0" oninput="this.parentNode.style.setProperty('--value',this.value); this.parentNode.style.setProperty('--text-value', JSON.stringify(this.value));">
+<div class="range-slider nhsuk-u-margin-bottom-8 nhsuk-u-margin-top-8" style='--min:0; --max:100; --step:5; --value:75; --text-value:"75";'>
+  <input id="slider_value" type="range" min="0" max="100" step="5" value="75" oninput="this.parentNode.style.setProperty('--value',this.value); this.parentNode.style.setProperty('--text-value', JSON.stringify(this.value));">
   <output></output>
   <div class='range-slider__progress'></div>
 
@@ -36,9 +40,6 @@
         <a href="#" class="nhsuk-button" type="submit" onclick="myFunctionConfirmRate()">
         Set automation rate
         </a>
-        <a href="#" type="submit" onclick="myFunctionConfirmRateError()">
-        Set automation rate (error!)
-        </a>
     </div>
   </div>
 </div>
@@ -48,16 +49,9 @@
         <section class="notification_rate animateOpen">
         <p class="noti-close" id='noti-close' onclick='this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode); return false;'>&times</p>
                                 <img src="/images/tick.png" height="45" width="45" style="margin-right: 20px"/>
-                                <p style="padding-top: 20px"> <strong>Success</strong> <br>The automation rate has been set to XX%.</p>
-
-        </section>
-    </div>
-
-       <div id="ConfirmRateError" style="display: none">
-        <section class="notification_rate_error animateOpen">
-        <p class="noti-close" id='noti-close' onclick='this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode); return false;'>&times</p>
-                                <img src="/images/warning.png" height="45" width="50" style="margin-right: 20px"/>
-                                <p style="padding-top: 20px; color: red"> <strong>An error occurred</strong> <br>The automation rate has not been set. Check the slider and select the button to try again.</p>
+                                <p style="padding-top: 20px">
+                                <b style="color:#007f3b">Success</b>
+                                <br>The automation rate has been set to 50%.</p>
 
         </section>
     </div>

@@ -13,6 +13,7 @@ function toggleDevMode(){
 }
 toggleDevMode();
 
+
 // slider
 
 var settings = {
