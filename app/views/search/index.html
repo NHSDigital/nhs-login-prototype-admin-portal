@@ -48,9 +48,20 @@
 
       </div>
 
-        <a href="search/result" class="nhsuk-button" type="submit">
+     {% if data['error'] === "true" %}
+        <a href="search/result" class="nhsuk-button" type="submit" disabled>
           Search
         </a>
+      {% else %}
+
+      <a href="search/result" class="nhsuk-button" type="submit">
+          Search
+        </a>
+
+      {% endif %}
+
+
+
     </div>
   </div>
 </div>
