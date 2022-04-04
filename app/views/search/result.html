@@ -1,6 +1,11 @@
 {% extends 'layout-nav.html' %}
 {% set pageSection = "Find a user" %}
 
+{% block headCSS %}
+  <link href="/css/main.css" rel="stylesheet">
+  <link href="/css/nhsuk.css" rel="stylesheet">
+{% endblock %}
+
 
 {% block beforeContent %}
 
@@ -20,274 +25,128 @@
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-full">
 
-      <h1 class="nhsuk-heading-l">Search result</h1>
+      <h2>Search result</h2>
 
-      <div class="result background-white nhsuk-u-padding-4 nhsuk-u-margin-bottom-6">
-
-        <dl class="nhsuk-summary-list nhsuk-u-margin-0">
-
-    <!-- Account ID -->
-          <div class="nhsuk-summary-list__row">
-            <dt class="nhsuk-summary-list__key">
-              Account ID
-            </dt>
-            <dd class="nhsuk-summary-list__value">
-              {{ (data['accountid'] | default('2ead33a3-bb11-cd1c-ab11-33bcd33aaed3')) }}
-            </dd>
-            <dd class="nhsuk-summary-list__actions">
-            </dd>
-          </div>
-        
-    <!-- Email address -->
-          <div class="nhsuk-summary-list__row">
-            <dt class="nhsuk-summary-list__key">
-              Email address
-            </dt>
-            <dd class="nhsuk-summary-list__value">
-              {{ (data['email'] | default('tim.peak2@hotmail.com')) }}
-            </dd>
-            <dd class="nhsuk-summary-list__actions">
-            </dd>
-          </div>
-
-  
-    {% if data['user-group'] === "nhsapp" %}
-
-
-          <div class="nhsuk-summary-list__row">
-            <dt class="nhsuk-summary-list__key" >
-              NHS number
-            </dt>
-            <dd class="nhsuk-summary-list__value">
-            123 456 7890
-            </dd>
-            <dd class="nhsuk-summary-list__actions">
-            </dd>
-          </div>
-
-          <div class="nhsuk-summary-list__row">
-            <dt class="nhsuk-summary-list__key">
-              ODS Code
-            </dt>
-            <dd class="nhsuk-summary-list__value">
-            ABCD 123 456 7890
-            </dd>
-            <dd class="nhsuk-summary-list__actions">
-            </dd>
-          </div>
-          </div>
-
-        {% endif %}
-
-
-    <!-- non NHS App users -->
-
-        {% if data['user-group'] != "nhsapp" %}
-
-    <!-- First name -->
-          <div class="nhsuk-summary-list__row">
-            <dt class="nhsuk-summary-list__key">
-              First name
-            </dt>
-            <dd class="nhsuk-summary-list__value">
-              {{ (data['first-name'] | default('Tim')) }}
-            </dd>
-            <dd class="nhsuk-summary-list__actions">
-            </dd>
-          </div>
-    
-    <!-- Last name -->
-          <div class="nhsuk-summary-list__row">
-            <dt class="nhsuk-summary-list__key">
-              Last name
-            </dt>
-            <dd class="nhsuk-summary-list__value">
-              {{ (data['last-name'] | default('Peake')) }}
-            </dd>
-            <dd class="nhsuk-summary-list__actions">
-            </dd>
-          </div>
-
-    <!-- if user is not NHS app, & not admin -->
-          {% if data['user-group'] != "admin" %}
-
-    <!-- mobile number -->
-          <div class="nhsuk-summary-list__row">
-            <dt class="nhsuk-summary-list__key">
-              Mobile number
-            </dt>
-            <dd class="nhsuk-summary-list__value">
-              {{ (data['mobile'] | default('+447711223344')) }}
-            </dd>
-            <dd class="nhsuk-summary-list__actions">
-              <!-- this bit is not live yet
-              <a href="change-mobile">Change mobile number</a>
-              -->
-            </dd>
-          </div>
-
-    
-    <!-- Proofing level -->      
-          <div class="nhsuk-summary-list__row">
-            <dt class="nhsuk-summary-list__key">
-              Proofing level
-            </dt>
-            <dd class="nhsuk-summary-list__value">
-              {% if data['cleansed'] == "1" %}
-                P0
-              {% else %}
-                P9
-              {% endif %}
-            </dd>
-            <dd class="nhsuk-summary-list__actions">
-            </dd>
-          </div>
-
-    <!-- ending the "not admin" clause -->
-          {% endif %}
-
-        </dl>
-
-        
-    <!-- if status is not active, it is disabled -->
-        {% if (data['status'] | default('Active')) == "Disabled" %}
-
-    <!-- disabled status with some more details -->
-
-        <dl class="nhsuk-summary-list nhsuk-u-margin-0" style="border-top:#d8dde0 5px solid;border-bottom:#d8dde0 5px solid;">
-
-          <div class="nhsuk-summary-list__row">
-            <dt class="nhsuk-summary-list__key">
-              Status
-            </dt>
-            <dd class="nhsuk-summary-list__value">
-              Disabled
-            </dd>
-            <dd class="nhsuk-summary-list__actions">
-              {% if data['user-group'] != "nsd" %}
-                <a href="enable">Enable account</a>
-              {% endif %}
-            </dd>
-          </div>
-
-          <div class="nhsuk-summary-list__row">
-            <dt class="nhsuk-summary-list__key">
-              Reason
-            </dt>
-            <dd class="nhsuk-summary-list__value">
-              {{ data['reason'] }}
-            </dd>
-            <dd class="nhsuk-summary-list__actions">
-            </dd>
-          </div>
-
-          <div class="nhsuk-summary-list__row">
-            <dt class="nhsuk-summary-list__key">
-              Incident number
-            </dt>
-            <dd class="nhsuk-summary-list__value">
-              {{ data['incident-number'] }}
-            </dd>
-            <dd class="nhsuk-summary-list__actions">
-            </dd>
-          </div>
-
-        </dl>
-
-        {% else %}
-
-      <!-- active status -->
-
-        <dl class="nhsuk-summary-list nhsuk-u-margin-0">
-
-          <div class="nhsuk-summary-list__row">
-            <dt class="nhsuk-summary-list__key"> 
-              Status
-            </dt>
-            <dd class="nhsuk-summary-list__value">
-              Active
-            </dd>
-            <dd class="nhsuk-summary-list__actions">
-              <a href="disable">Disable account</a>
-            </dd>
-          </div>
-
-        </dl>
-
-        {% endif %}
-
-      <!-- if admin user-group -->
-
-        {% if data['user-group'] === "admin" %}
-
-        <dl class="nhsuk-summary-list nhsuk-u-margin-0">
-
-      <!-- evidence files -->
-
-          <div class="nhsuk-summary-list__row">
-            <dt class="nhsuk-summary-list__key">
-              PYI evidence files
-            </dt>
-            <dd class="nhsuk-summary-list__value">
-              {% if data['status'] != "Disabled" %}
-                <!--<span class="nhsuk-hint">The account must be disabled before you can view evidence files.</span>-->
-              {% endif %}
-            </dd>
-            
-            <dd class="nhsuk-summary-list__actions">
-              {% if data['devMode'] %}
       
-            <a class="dev-mode-text" href="error?errormessage=verification-instances">Error page for...</a>
-      
-      
+      {% if data['status'] != "Disabled" %}
+      <div class="nhsuk-table__panel-with-heading-tab">
+        <h3 class="nhsuk-table__heading-tab">
+          Active
+        </h3>
+      {% else %}
+      <div class="nhsuk-table__panel-with-heading-tab">
+        <h3 class="nhsuk-table__heading-tab  disabled-tab">
+          Disabled
+        </h3>    
       {% endif %}
 
-      
-      <a href="verification-attempts-v3">View files</a>
-            </dd>
-          </div>
+        <div class="nhsuk-table-container">
+          <table class="nhsuk-table">
 
-        </dl>
+            <tbody class="nhsuk-table__body">
 
-        <dl class="nhsuk-summary-list nhsuk-u-margin-0">
+              <tr class="nhsuk-table__row">
+                <td class="nhsuk-table__header"><b>Account ID</b></td>
+                <td class="nhsuk-table__cell" colspan="3">{{ (data['accountid'] | default('2ead33a3-bb11-cd1c-ab11-33bcd33aaed3')) }}</td>
+              </tr>
 
-          <div class="nhsuk-summary-list__row">
-            <dt class="nhsuk-summary-list__key">
-              Cleanse account
-            </dt>
-            <dd class="nhsuk-summary-list__value">
-              {% if data['status'] != "Disabled" %}
-                <span class="nhsuk-hint">The account must be <a href="disable">disabled</a> before it can be cleansed.</span>
-              {% endif %}
-            </dd>
-            <dd class="nhsuk-summary-list__actions">
+              <tr class="nhsuk-table__row">
+                <td class="nhsuk-table__header"><b>Email address</b></td>
+                <td class="nhsuk-table__cell" colspan="3">{{ (data['email'] | default('tim.peak2@hotmail.com')) }}</td>
+              </tr>
+
+              <tr class="nhsuk-table__row">
+                <td class="nhsuk-table__header"><b>Mobile number</b></td>
+                <td class="nhsuk-table__cell" colspan="3">{{ (data['mobile'] | default('+447711223344')) }}</td>
+              </tr>
+
+              <tr class="nhsuk-table__row">
+                <td class="nhsuk-table__cell"><b>Name</b></td>
+                <td class="nhsuk-table__cell">{{ (data['first-name'] | default('Tim')) }}</td>
+                <td class="nhsuk-table__cell">{{ (data['middle-name'] | default('James')) }}</td>
+                <td class="nhsuk-table__cell">{{ (data['last-name'] | default('Peake')) }}</td>
+              </tr>
+
+              <tr class="nhsuk-table__row">
+                <td class="nhsuk-table__header"><b>Date of birth</b></td>
+                <td class="nhsuk-table__cell" colspan="3">11/11/1990</td>
+              </tr>
+
+              <tr class="nhsuk-table__row">
+                <td class="nhsuk-table__header"><b>Postcode</b></td>
+                <td class="nhsuk-table__cell" colspan="3">LS1 2OL</td>
+              </tr>
+
+              <tr class="nhsuk-table__row">
+                <td class="nhsuk-table__header"><b>NHS number</b></td>
+                <td class="nhsuk-table__cell" colspan="3">123 456 7890</td>
+              </tr>
+
+              <tr class="nhsuk-table__row">
+                <td class="nhsuk-table__header"><b>ODS code</b></td>
+                <td class="nhsuk-table__cell" colspan="3">ABCD 123 456 7890</td>
+              </tr>
+
+              <tr class="nhsuk-table__row">
+                <td class="nhsuk-table__header"><b>Proofing level</b></td>
+                <td class="nhsuk-table__cell" colspan="3">{% if data['cleansed'] == "1" %} P0 {% else %} P9 {% endif %}</td>
+              </tr>
+
               {% if data['status'] == "Disabled" %}
-                <a href="cleanse">Cleanse account</a>
-              {% else %}
-              {% endif %}
-            </dd>
-          </div>
 
-        </dl>
+              <tr class="nhsuk-table__row">
+                <td class="nhsuk-table__header"><b>Reason</b></td>
+                <td class="nhsuk-table__cell" colspan="2">{{ data['reason'] }}</td>
+              </tr>
+
+              <tr class="nhsuk-table__row">
+                <td class="nhsuk-table__header"><b>Incident number</b></td>
+                <td class="nhsuk-table__cell" colspan="2">{{ data['incident-number'] }}</td>
+              </tr>
+
+              <tr class="nhsuk-table__row">
+                <td class="nhsuk-table__header"><b>PYI evidence files</b></td>
+                <td class="nhsuk-table__cell" colspan="2"><a href="verification-attempts-v3">View files</a></td>
+              </tr>
+
+              <tr class="nhsuk-table__row">
+                <td class="nhsuk-table__header"><b>Cleanse account</b></td>
+                <td class="nhsuk-table__cell" colspan="2"><a href="cleanse">Cleanse account</a></td>
+              </tr> 
+
+              {% endif %}
+    
+
+            </tbody>
+          </table>
+
+        </div>
         </div>
 
-        {% endif %}
-      
-      <!-- ending the usergroup not nhsapp clause -->
-
-      {% endif %}
-      </dl>
-
-      </div>
-
-  
+        
 
 
-    {% if data['user-group'] === "admin" %}
+      <!-- ACTIONS -->
 
-              <p><a href="result-additional-info">View additional information</a></p>
+      <ul class="nhsuk-grid-row nhsuk-card-group nhsuk-u-padding-top-0">
 
-    {% endif %}
+          <div class="nhsuk-grid-column-one-half">
+            <form action="disable">
+              <button class="nhsuk-button nhsuk-button--secondary force-full-width" type="submit">
+                Disable account
+              </button>
+            </form>
+        </div>
+        
+        <div class="nhsuk-grid-column-one-half">
+          <form action="verification-attempts-v3">
+            <button class="nhsuk-button force-full-width" type="submit">
+             View PYI evidence files
+            </button>
+          </form>
+        </div>
+
+      </ul>
 
 
 

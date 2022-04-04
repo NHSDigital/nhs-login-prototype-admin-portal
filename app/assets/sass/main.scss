@@ -58,3 +58,36 @@
     font-weight: $nhsuk-font-bold;
   }
 }
+
+// full width button on mobile
+
+.nhsuk-button.full-width {
+  @include mq($from: mobile) {
+    width: 100%;
+  }
+
+  @include mq($from: tablet) {
+    width: auto;
+  }
+
+  @include mq($from: desktop) {
+    width: auto;
+  }
+}
+
+
+
+// force full-width button on any device
+
+.nhsuk-button.force-full-width {
+    width: 100%;
+}
+
+
+// disabled tab
+
+.disabled-tab {
+  background-color:#466274;
+}
+
+
