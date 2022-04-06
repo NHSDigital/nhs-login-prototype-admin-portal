@@ -111,8 +111,8 @@
               {% else %}
               {% endif %}
 
-
-         {% if data['status'] == "disabled" %} 
+        {% if data['user-group'] != "nhsapp" %}
+          {% if data['status'] == "disabled" %} 
 
               <tr class="nhsuk-table__row">
                 <td class="nhsuk-table__header"><b>Disabled reason</b></td>
@@ -125,6 +125,7 @@
               </tr>
         
           {% endif %}
+        {% endif %}
 
         </tbody>
       </table>
