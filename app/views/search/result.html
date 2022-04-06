@@ -63,14 +63,16 @@
                 <td class="nhsuk-table__header"><b>Mobile number</b></td>
                 <td class="nhsuk-table__cell" colspan="3">{{ (data['mobile'] | default('+447711223344')) }}</td>
               </tr>
+              {% endif %}
+              {% endif %}
 
+              {% if data['user-group'] != "nhsapp" %}
               <tr class="nhsuk-table__row">
                 <td class="nhsuk-table__cell"><b>Name</b></td>
                 <td class="nhsuk-table__cell">{{ (data['first-name'] | default('Tim')) }}</td>
                 <td class="nhsuk-table__cell">{{ (data['middle-name'] | default('James')) }}</td>
                 <td class="nhsuk-table__cell">{{ (data['last-name'] | default('Peake')) }}</td>
               </tr>
-              {% endif %}
               {% endif %}
 
 
@@ -92,13 +94,13 @@
               </tr>
               {% endif %}
 
-              {% if data['user-group'] != "covid" %}
               {% if data['user-group'] != "nsd" %}
               <tr class="nhsuk-table__row">
                 <td class="nhsuk-table__header"><b>NHS number</b></td>
                 <td class="nhsuk-table__cell" colspan="3">123 456 7890</td>
               </tr>
 
+              {% if data['user-group'] != "covid" %}
               <tr class="nhsuk-table__row">
                 <td class="nhsuk-table__header"><b>ODS code</b></td>
                 <td class="nhsuk-table__cell" colspan="3">ABCD 123 456 7890</td>
