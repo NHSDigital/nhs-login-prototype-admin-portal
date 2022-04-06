@@ -45,7 +45,7 @@
 
             <tbody class="nhsuk-table__body">
 
-              {% if data['user-group'] != "covid" %}
+              {% if data['user-group'] != "covidpass" %}
               <tr class="nhsuk-table__row">
                 <td class="nhsuk-table__header"><b>Account ID</b></td>
                 <td class="nhsuk-table__cell" colspan="3">{{ (data['accountid'] | default('2ead33a3-bb11-cd1c-ab11-33bcd33aaed3')) }}</td>
@@ -57,7 +57,7 @@
                 <td class="nhsuk-table__cell" colspan="3">{{ (data['email'] | default('tim.peak2@hotmail.com')) }}</td>
               </tr>
               
-              {% if data['user-group'] != "covid" %}
+              {% if data['user-group'] != "covidpass" %}
               {% if data['user-group'] != "nhsapp" %}
               <tr class="nhsuk-table__row">
                 <td class="nhsuk-table__header"><b>Mobile number</b></td>
@@ -87,7 +87,7 @@
                 <td class="nhsuk-table__cell" colspan="3">LS1 2OL</td>
               </tr>
 
-              {% elif data['user-group'] == "covid" %}
+              {% elif data['user-group'] == "covidpass" %}
               <tr class="nhsuk-table__row">
                 <td class="nhsuk-table__header"><b>Date of birth</b></td>
                 <td class="nhsuk-table__cell" colspan="3">11/11/1990</td>
@@ -100,7 +100,7 @@
                 <td class="nhsuk-table__cell" colspan="3">123 456 7890</td>
               </tr>
 
-              {% if data['user-group'] != "covid" %}
+              {% if data['user-group'] != "covidpass" %}
               <tr class="nhsuk-table__row">
                 <td class="nhsuk-table__header"><b>ODS code</b></td>
                 <td class="nhsuk-table__cell" colspan="3">ABCD 123 456 7890</td>
@@ -110,7 +110,7 @@
               {% else %}
               {% endif %}
 
-              {% if data['user-group'] != "covid" %}
+              {% if data['user-group'] != "covidpass" %}
               {% if data['user-group'] != "nhsapp" %}
               <tr class="nhsuk-table__row">
                 <td class="nhsuk-table__header"><b>Proofing level</b></td>
@@ -128,7 +128,7 @@
               {% endif %}
 
         {% if data['user-group'] != "nhsapp" %}
-        {% if data['user-group'] != "covid" %}
+        {% if data['user-group'] != "covidpass" %}
           {% if data['status'] == "disabled" %} 
 
               <tr class="nhsuk-table__row">
@@ -156,7 +156,7 @@
 
       <!-- ACTIONS -->
 
-      {% if data['user-group'] != "covid" %}
+      {% if data['user-group'] != "covidpass" %}
       {% if data['user-group'] != "nhsapp" %}
 
       <ul class="nhsuk-grid-row nhsuk-card-group nhsuk-u-padding-top-0" style="margin-bottom:20px;">
