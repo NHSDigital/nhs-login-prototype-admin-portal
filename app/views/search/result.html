@@ -76,21 +76,17 @@
               {% endif %}
 
 
-              {% if data['user-group'] == "admin" %}
+              {% if data['user-group'] == "admin" or "covidpass" %}
               <tr class="nhsuk-table__row">
                 <td class="nhsuk-table__header"><b>Date of birth</b></td>
                 <td class="nhsuk-table__cell" colspan="3">11/11/1990</td>
               </tr>
+              {% endif %}
 
+              {% if data['user-group'] == "admin" %}
               <tr class="nhsuk-table__row">
                 <td class="nhsuk-table__header"><b>Postcode</b></td>
                 <td class="nhsuk-table__cell" colspan="3">LS1 2OL</td>
-              </tr>
-
-              {% elif data['user-group'] == "covidpass" %}
-              <tr class="nhsuk-table__row">
-                <td class="nhsuk-table__header"><b>Date of birth</b></td>
-                <td class="nhsuk-table__cell" colspan="3">11/11/1990</td>
               </tr>
               {% endif %}
 
@@ -100,14 +96,10 @@
                 <td class="nhsuk-table__cell" colspan="3">123 456 7890</td>
               </tr>
 
-              {% if data['user-group'] != "covidpass" %}
               <tr class="nhsuk-table__row">
                 <td class="nhsuk-table__header"><b>ODS code</b></td>
                 <td class="nhsuk-table__cell" colspan="3">ABCD 123 456 7890</td>
               </tr>
-              {% else %}
-              {% endif %}
-              {% else %}
               {% endif %}
 
               {% if data['user-group'] != "covidpass" %}
