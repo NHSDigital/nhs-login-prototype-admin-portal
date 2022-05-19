@@ -59,10 +59,12 @@
               
               {% if data['user-group'] != "covidpass" %}
               {% if data['user-group'] != "nhsapp" %}
+              {% if data['user-group'] != "nsd" %}
               <tr class="nhsuk-table__row">
                 <td class="nhsuk-table__header"><b>Mobile number</b></td>
                 <td class="nhsuk-table__cell" colspan="3">{{ (data['mobile'] | default('+447711223344')) }}</td>
               </tr>
+              {% endif %}
               {% endif %}
               {% endif %}
 
@@ -70,7 +72,11 @@
               <tr class="nhsuk-table__row">
                 <td class="nhsuk-table__cell"><b>Name</b></td>
                 <td class="nhsuk-table__cell">{{ (data['first-name'] | default('Tim')) }}</td>
-                <td class="nhsuk-table__cell">{{ (data['middle-name'] | default('James')) }}</td>
+                <td class="nhsuk-table__cell">
+                  {% if data['user-group'] != "nsd" %}
+                  {{ (data['middle-name'] | default('James')) }}
+                  {% endif %}
+                </td>
                 <td class="nhsuk-table__cell">{{ (data['last-name'] | default('Peake')) }}</td>
               </tr>
               {% endif %}
@@ -104,10 +110,12 @@
 
               {% if data['user-group'] != "covidpass" %}
               {% if data['user-group'] != "nhsapp" %}
+              {% if data['user-group'] != "nsd" %}
               <tr class="nhsuk-table__row">
                 <td class="nhsuk-table__header"><b>Proofing level</b></td>
                 <td class="nhsuk-table__cell" colspan="3">{% if data['cleansed'] == "1" %} P0 {% else %} P9 {% endif %}</td>
               </tr>
+              {% endif %}
               {% endif %}
               {% endif %}
 
@@ -119,7 +127,9 @@
               {% else %}
               {% endif %}
 
-        {% if data['user-group'] != "nhsapp" %}
+<!-- this bit has been designed but never implemented, not necessary
+
+         {% if data['user-group'] != "nhsapp" %}
         {% if data['user-group'] != "covidpass" %}
           {% if data['status'] == "disabled" %} 
 
@@ -135,7 +145,7 @@
         
           {% endif %}
         {% endif %}
-        {% endif %}
+        {% endif %} -->
 
         </tbody>
       </table>
