@@ -1,0 +1,421 @@
+{% extends 'layout-nav.html' %}
+{% set pageSection = "Edit user notifications" %}
+
+<!-- this page is only visible to prod-accessreport group -->
+
+{% block beforeContent %}
+  <nav class="nhsuk-breadcrumb" aria-label="Breadcrumb">
+    <div class="nhsuk-width-container">
+      <ol class="nhsuk-breadcrumb__list">
+        <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link" href="/notifications">Edit user notifications</a></li>
+        <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link" href="/notifications/manage-service-banner">Manage the service banner</a></li>
+        <li class="nhsuk-breadcrumb__item">Schedule banner</li>
+      </ol>
+      <p class="nhsuk-breadcrumb__back"><a class="nhsuk-breadcrumb__backlink" href="/notifications/manage-service-banner">Back to: Access and permissions</a></p>
+    </div>
+  </nav>
+{% endblock %}
+
+{% block headCSS %}
+  <link href="/css/main.css" rel="stylesheet">
+  <link href="/css/nhsuk.css" rel="stylesheet">
+
+
+{% endblock %}
+
+{% block content %}
+
+
+<style>
+.date-picker {
+	position: relative;
+	width: 100%;
+	max-width: 60%;
+	height: 100%;
+  display: inline-block;
+  
+
+	cursor: pointer;
+	user-select: none;
+}
+
+.date-picker:hover {
+	background-color: ;
+}
+
+.date-picker .selected-date {
+	width: 100%;
+	height: 100%;
+  border: 2px solid #4c6272;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	color: #212b32;
+	font-size: 22px;
+
+	background-color: #FFF;
+}
+
+.date-picker .selected-date.active {
+	width: 100%;
+	height: 100%;
+  border: 4px solid 	#212b32;
+  outline: 4px solid 	#ffeb3b;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	color: #212b32;
+	font-size: 22px;
+
+}
+
+.date-picker .dates {
+  display: none;
+	background-color: #FFF;
+  width: 100%;
+  height: 100%;
+  margin-top: 24px;
+  margin-bottom: 24px;
+}
+
+.date-picker .dates.active {
+	display: block;
+  float: left;
+  width: 100%;
+  height: 100%;
+
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
+}
+
+.date-picker .dates .month {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	border-bottom: 2px solid 	#d8dde0;
+  color: #212b32;
+	font-size: 19px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  
+}
+
+.date-picker .dates .month .arrows {
+	width: 35px;
+	height: 35px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: #212b32;
+	font-size: 22px;
+}
+
+.date-picker .dates .month .arrows:hover {
+	background-color: #d8dde0;
+  color: #212b32;
+}
+
+.date-picker .dates .month .arrows:active {
+	background-color: #d8dde0;
+  color: #212b32;
+}
+
+.date-picker .dates .days {
+	display: grid;
+	grid-template-columns: repeat(7, 1fr);
+	height: 200px;
+}
+.date-picker .dates .days .day { 
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: #212b32;
+
+  font-size:19px;
+}
+.date-picker .dates .days .day:hover {
+	background-color: #d8dde0;
+}
+.date-picker .dates .days .day.selected {
+	background-color: 		#212b32;
+  color:#FFF;
+}
+.date-picker .dates .days .day.selected:hover {
+	background-color: 		#212b32;
+  color:#FFF;
+}
+
+
+.time-picker{
+  width: 100%;
+	height: 100%;
+  border: 2px solid #4c6272;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	color: #212b32;
+	font-size: 22px;
+
+	background-color: #FFF;
+}
+.time-picker .active{
+  width: 100%;
+	height: 100%;
+  border: 4px solid 	#212b32;
+  outline: 4px solid 	#ffeb3b;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	color: #212b32;
+	font-size: 22px;
+}
+
+</style>
+
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-full">
+
+    <h1 class="nhsuk-heading-l">Schedule banner</h1>
+  </div>
+</div> 
+
+<div class="nhsuk-grid-row nhsuk-u-margin-top-6">
+  <div class="nhsuk-grid-column-full">
+
+    <h2 class="nhsuk-heading-m">Select start date and time</h2>
+  </div>
+</div> 
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-full" style="display: flex; width: 80%;">
+
+      <div style="width:70%;">
+        <div class="nhsuk-form-group" >
+          <label class="nhsuk-label" for="address-town">
+            Start date
+          </label>
+          <div class="date-picker" >
+
+            <div class="selected-date"></div>
+            
+            
+              <div class="dates nhsuk-u-margin-top-4">
+                <div class="month">
+                  <div class="arrows prev-mth">&lt;</div>
+                  <div class="mth"></div>
+                  <div class="arrows next-mth">&gt;</div>
+            	</div>
+          
+                <div class="days dates"></div>
+              	</div>
+            </div>  
+        </div>
+      </div>
+      <div style="width:20%;">
+        <div class="nhsuk-form-group" >
+          <label class="nhsuk-label" for="address-town">
+            Start time
+          </label>
+            <select class="time-picker" id="select-1" name="select-1">
+
+              <option class="option-selected" value="1" selected>12:00 am</option>
+              <option value="2" >01:00</option>
+              <option value="3">02:00</option>
+
+            </select>
+        </div>
+      </div>
+  </div>
+</div>
+
+
+
+<div class="nhsuk-grid-row nhsuk-u-margin-top-4">
+  <div class="nhsuk-grid-column-full">
+
+    <h2 class="nhsuk-heading-m">Select end date and time</h2>
+  </div>
+</div> 
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-full" style="display: flex; width: 80%;">
+
+      <div style="width:70%;">
+        <div class="nhsuk-form-group" >
+          <label class="nhsuk-label" for="address-town">
+            Start date
+          </label>
+          <div class="date-picker2" >
+
+            <div class="selected-date2"></div>
+            
+            
+              <div class="dates2 nhsuk-u-margin-top-4">
+                <div class="month">
+                  <div class="arrows2 prev-mth2">&lt;</div>
+                  <div class="mth2"></div>
+                  <div class="arrows2 next-mth2">&gt;</div>
+                </div>
+          
+                <div class="days2 dates"></div>
+              </div>
+            </div>  
+        </div>
+      </div>
+      <div style="width:20%;">
+        <div class="nhsuk-form-group" >
+          <label class="nhsuk-label" for="address-town">
+            Start time
+          </label>
+          
+        </div>
+        </div>
+      </div>
+  </div>
+</div>
+
+
+
+
+
+
+<script>
+
+
+const date_picker_element = document.querySelector('.date-picker');
+const selected_date_element = document.querySelector('.date-picker .selected-date');
+const dates_element = document.querySelector('.date-picker .dates');
+const mth_element = document.querySelector('.date-picker .dates .month .mth');
+const next_mth_element = document.querySelector('.date-picker .dates .month .next-mth');
+const prev_mth_element = document.querySelector('.date-picker .dates .month .prev-mth');
+const days_element = document.querySelector('.date-picker .dates .days');
+
+
+
+const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+
+let date = new Date();
+let day = date.getDate();
+let month = date.getMonth();
+let year = date.getFullYear();
+
+let selectedDate = date;
+let selectedDay = day;
+let selectedMonth = month;
+let selectedYear = year;
+
+mth_element.textContent = months[month] + ' ' + year;
+
+selected_date_element.textContent = formatDate(date);
+selected_date_element.dataset.value = selectedDate;
+
+populateDates();
+
+// EVENT LISTENERS
+date_picker_element.addEventListener('click', toggleDatePicker);
+next_mth_element.addEventListener('click', goToNextMonth);
+prev_mth_element.addEventListener('click', goToPrevMonth);
+
+// FUNCTIONS
+function toggleDatePicker (e) {
+	if (!checkEventPathForClass(e.path, 'dates')) {
+	dates_element.classList.toggle('active');
+    selected_date_element.classList.toggle('active');
+	}
+}
+
+function goToNextMonth (e) {
+	month++;
+	if (month > 11) {
+		month = 0;
+		year++;
+	}
+	mth_element.textContent = months[month] + ' ' + year;
+	populateDates();
+}
+
+function goToPrevMonth (e) {
+	month--;
+	if (month < 0) {
+		month = 11;
+		year--;
+	}
+	mth_element.textContent = months[month] + ' ' + year;
+	populateDates();
+}
+
+function populateDates (e) {
+	days_element.innerHTML = '';
+	let amount_days = 31;
+
+	if (month == 1) {
+		amount_days = 28;
+	}
+
+	for (let i = 0; i < amount_days; i++) {
+		const day_element = document.createElement('div');
+		day_element.classList.add('day');
+		day_element.textContent = i + 1;
+
+		if (selectedDay == (i + 1) && selectedYear == year && selectedMonth == month) {
+			day_element.classList.add('selected');
+		}
+
+		day_element.addEventListener('click', function () {
+			selectedDate = new Date(year + '-' + (month + 1) + '-' + (i + 1));
+			selectedDay = (i + 1);
+			selectedMonth = month;
+			selectedYear = year;
+
+			selected_date_element.textContent = formatDate(selectedDate);
+			selected_date_element.dataset.value = selectedDate;
+
+			populateDates();
+		});
+
+		days_element.appendChild(day_element);
+	}
+}
+
+// HELPER FUNCTIONS
+function checkEventPathForClass (path, selector) {
+	for (let i = 0; i < path.length; i++) {
+		if (path[i].classList && path[i].classList.contains(selector)) {
+			return true;
+		}
+	}
+	
+	return false;
+}
+function formatDate (d) {
+	let day = d.getDate();
+	if (day < 10) {
+		day = '0' + day;
+	}
+
+	let month = d.getMonth() + 1;
+	if (month < 10) {
+		month = '0' + month;
+	}
+
+	let year = d.getFullYear();
+
+	return day + ' / ' + month + ' / ' + year;
+}
+
+
+</script>
+
+
+
+        
+        
+{% endblock %}
+
+

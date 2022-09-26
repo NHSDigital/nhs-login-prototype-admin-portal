@@ -1,0 +1,143 @@
+{% extends 'layout-nav.html' %}
+{% set pageSection = "Edit user notifications" %}
+
+<!-- this page is only visible to prod-accessreport group -->
+
+{% block beforeContent %}
+  <nav class="nhsuk-breadcrumb" aria-label="Breadcrumb">
+    <div class="nhsuk-width-container">
+      <ol class="nhsuk-breadcrumb__list">
+        <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link" href="/notifications">Edit user notifications</a></li>
+        <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link" href="/notifications/manage-service-banner">Manage the service banner</a></li>
+        <li class="nhsuk-breadcrumb__item">Choose an incident</li>
+      </ol>
+      <p class="nhsuk-breadcrumb__back"><a class="nhsuk-breadcrumb__backlink" href="/notifications/manage-service-banner">Back to: Access and permissions</a></p>
+    </div>
+  </nav>
+{% endblock %}
+
+{% block headCSS %}
+  <link href="/css/main.css" rel="stylesheet">
+  <link href="/css/nhsuk.css" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+
+<style>
+  
+  /* Style the tab */
+  .tab {
+    float: left;
+    background-color: inherit;
+    border-radius: 0%;
+    width: 30%;
+    
+  }
+  
+  /* Style the buttons inside the tab */
+  .tab button {
+    display: block;
+    background-color: inherit;
+    width: 100%;
+    border: none;
+    outline: none;
+    text-align: left;
+    cursor: pointer;
+    transition: 0.3s;
+    color:	#005eb8;
+  }
+  
+  /* Change background color of buttons on hover */
+  .tab button:hover {
+    background-color: #ddd;
+  }
+  
+  /* Create an active/current "tab button" class */
+  .tab button.active {
+    background-color: #ccc;
+  }
+  
+  /* Style the tab content */
+  .tabcontent {
+    float: left;
+    padding-left:32px;
+    background-color: inherit;
+    border-radius: 0%;
+    width: 70%;
+    border-left: none;
+    height: 100%;
+  }
+</style>
+
+
+        
+<h1 class="nhsuk-heading-l">Choose an incident</h1> 
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-full">
+
+
+      
+
+        <div class="tab">
+          <button class="tablinks" onclick="openCategory(event, 'NHS login')" id="defaultOpen"><h3 class="nhsuk-heading-s">NHS login</h3></button>
+          <button class="tablinks" onclick="openCategory(event, '3rd party supplier')"><h3 class="nhsuk-heading-s">3rd party supplier</h3></button>
+          <button class="tablinks" onclick="openCategory(event, 'Partner service')"><h3 class="nhsuk-heading-s">Partner service</h3></button>
+          <button class="tablinks" onclick="openCategory(event, 'Other')"><h3>Other</h3 class="nhsuk-heading-s"></button>
+          <button class="tablinks" onclick="openCategory(event, 'Multiple incidents')"><h3 class="nhsuk-heading-s">Multiple incidents occuring at once</h3></button>
+        </div>
+        
+        <div id="NHS login" class="tabcontent">
+          <h3 class="nhsuk-heading-s">Communicate a network or a technical issue with NHS login regardless of the user volume</h3>
+          <p class="nhsuk-hint">
+          </p>
+        </div>
+        
+        <div id="3rd party supplier" class="tabcontent">
+          <h3>3rd party supplier incidents</h3>
+          <p>Paris is the capital of France.</p> 
+        </div>
+        
+        <div id="Partner service" class="tabcontent">
+          <h3>Partner service incidents</h3>
+          <p>Tokyo is the capital of Japan.</p>
+        </div>
+
+        <div id="Other" class="tabcontent">
+          <h3>Other incidents</h3>
+          <p>Tokyo is the capital of Japan.</p>
+        </div>
+
+        <div id="Multiple incidents" class="tabcontent">
+          <h3>Multiple incidents</h3>
+          <p>Tokyo is the capital of Japan.</p>
+        </div>
+
+      
+    </div>
+  </div>
+
+        <script>
+        function openCategory(evt, categoryName) {
+          var i, tabcontent, tablinks;
+          tabcontent = document.getElementsByClassName("tabcontent");
+          for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+          }
+          tablinks = document.getElementsByClassName("tablinks");
+          for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+          }
+          document.getElementById(categoryName).style.display = "block";
+          evt.currentTarget.className += " active";
+        }
+        
+        // Get the element with id="defaultOpen" and click on it
+        document.getElementById("defaultOpen").click();
+        </script>
+
+        
+        
+{% endblock %}
+
+

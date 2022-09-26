@@ -1,0 +1,247 @@
+{% extends 'layout-nav.html' %}
+{% set pageSection = "Edit user notifications" %}
+
+<!-- this page is only visible to prod-accessreport group -->
+
+{% block beforeContent %}
+  <nav class="nhsuk-breadcrumb" aria-label="Breadcrumb">
+    <div class="nhsuk-width-container">
+      <ol class="nhsuk-breadcrumb__list">
+        <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link" href="/notifications">Edit user notifications</a></li>
+        <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link" href="/notifications/manage-service-banner">Manage the service banner</a></li>
+        <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link" href="/notifications/activate-banner5">Incident categories</a></li>
+        <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link" href="/notifications/activate-banner6">NHS login incidents</a></li>
+        <li class="nhsuk-breadcrumb__item">Incident details</li>
+      </ol>
+      <p class="nhsuk-breadcrumb__back"><a class="nhsuk-breadcrumb__backlink" href="/notifications/manage-service-banner">Back to: Access and permissions</a></p>
+    </div>
+  </nav>
+{% endblock %}
+
+{% block headCSS %}
+  <link href="/css/main.css" rel="stylesheet">
+  <link href="/css/nhsuk.css" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+
+<style>
+    .incident-heading {
+  display: flex;
+  padding-top: 24px;
+  height: fit-content;
+  width: 100%;
+  }
+
+  .incident-title {
+    width: 25%;
+  }
+
+  .incident-intro {
+      color: #212b32;
+      width: 75%;
+      padding-left: 24px;
+  }
+
+  .incident-screenshot {
+      width: 50%;
+      padding-left: 24px;
+  }
+
+  th {
+  border-right:1px solid #768692;
+  border-bottom:1px solid #768692;
+  border-top:1px solid #768692;
+  color: #212b32;
+  padding-left: 24px;
+  background-color: #b3daff;
+  font-size:19px;
+  font-weight: bold;
+  }
+
+  td {
+  border-right:1px solid #768692;
+  border-bottom:1px solid #768692;
+  color: #212b32;
+  padding-left: 24px;
+  }
+
+</style>
+
+
+
+<style>
+  a:visited { 
+   color:	#005eb8; 
+   }
+</style>
+
+
+<div class="nhsuk-back-link">
+  <a class="nhsuk-back-link__link" href="#">
+    <svg class="nhsuk-icon nhsuk-icon__chevron-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" height="24" width="24">
+      <path d="M8.5 12c0-.3.1-.5.3-.7l5-5c.4-.4 1-.4 1.4 0s.4 1 0 1.4L10.9 12l4.3 4.3c.4.4.4 1 0 1.4s-1 .4-1.4 0l-5-5c-.2-.2-.3-.4-.3-.7z"></path>
+    </svg>
+    Go back</a>
+</div>
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds nhsuk-u-margin-top-4">
+
+        <h1 class="nhsuk-heading-l">Registration is not working properly</h1>
+        <p class="" >This could be due to a network or a technical issue regardless of user volume. 
+        </p>
+        <p>It is affecting users registering only.</p>
+        <p>Users are able to log in without any disruption.</p>
+
+    </div>
+  </div>
+
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-full">
+      <h2 class="nhsuk-heading-m nhsuk-u-margin-top-6">Global banner</h2>
+      <table style="width:100%">
+        <tr>
+          <th style="border-left:1px solid #768692;">Content</th>
+          <th style="">Placement</th>
+          <th style="border-right:1px solid #768692;">Screenshot</th>
+        </tr>
+        <tr>
+          <td style="width:40%; border-left:1px solid #768692;">
+            <div  class="">
+              <div class="nhsuk-heading-xs">H1:</div>
+              <div class="nhsuk-u-font-size-19">There is a problem with the service</div>
+            </div>
+    
+    
+            <div  class="nhsuk-u-margin-top-4">
+              <div class="nhsuk-heading-xs">Body:</div>
+              <div class="nhsuk-u-font-size-19"> 
+                <p>We are working to fix a technical issue with NHS login.</p>
+    
+                <p>You can try again later.</p>
+                  
+                <p>If you already have an NHS login account, this will not affect you.</p>
+        
+                <p>Last updated: 22 June 2022, 8.30am</p>
+              </div>
+            </div>
+          </td>
+
+          <td style="width:30%">
+
+            <div  class="">
+              <div class="nhsuk-heading-xs">Page title:</div>
+              <div class="nhsuk-u-font-size-19"> 
+                <p>Across the whole registration journey</p>
+              </div>
+            </div>
+
+            <div  class="nhsuk-u-margin-top-4">
+              <div class="nhsuk-heading-xs">Page URL:</div>
+              <div class="nhsuk-u-font-size-19"> 
+                <p>create-new-account</p>
+              </div>
+            </div>
+
+            <div  class="nhsuk-u-margin-top-4">
+              <div class="nhsuk-heading-xs">Notes:</div>
+              <div class="nhsuk-u-font-size-19"> 
+                <p>Remove the banner if user is logging in only</p>
+              </div>
+            </div>
+
+          </td>
+
+          <td style="width:30%; border-right:1px solid #768692;">
+            <div  class="">
+              <div class="" style="padding-right: 24px;"> 
+                <img style="border:1px solid #768692;" src="/images/banner.png"> 
+              </div>
+            </div>
+          </td>
+
+        </tr>
+      </table>
+    </div>
+  </div>
+
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-full">
+      <h2 class="nhsuk-heading-m nhsuk-u-margin-top-6">2nd notification</h2>
+      <table style="width:100%">
+        <tr>
+          <th style="width:40%; border-left:1px solid #768692;">Content</th>
+          <th>Placement</th>
+          <th>Screenshot</th>
+        </tr>
+        <tr>
+          <td style="width:40%; width:40%; border-left:1px solid #768692;">
+            <div  class="">
+              <div class="nhsuk-heading-xs">H1:</div>
+              <div class="nhsuk-u-font-size-19">There is a problem with the service</div>
+            </div>
+    
+    
+            <div  class="nhsuk-u-margin-top-4">
+              <div class="nhsuk-heading-xs">Body:</div>
+              <div class="nhsuk-u-font-size-19"> 
+                <p>We are working to fix a technical issue with NHS login.</p>
+
+                <p>Try registering later.</p>
+        
+                <p>Last updated: 22 June 2022, 8.30am</p>
+              </div>
+            </div>
+          </td>
+
+          <td style="width:30%">
+
+            <div  class="">
+              <div class="nhsuk-heading-xs">Page title:</div>
+              <div class="nhsuk-u-font-size-19"> 
+                <p>Create new account</p>
+              </div>
+            </div>
+
+            <div  class="nhsuk-u-margin-top-4">
+              <div class="nhsuk-heading-xs">Page URL:</div>
+              <div class="nhsuk-u-font-size-19"> 
+                <p>create-new-account</p>
+              </div>
+            </div>
+
+            <div  class="nhsuk-u-margin-top-4">
+              <div class="nhsuk-heading-xs">Notes:</div>
+              <div class="nhsuk-u-font-size-19"> 
+                <p>Continue to display the 2nd notification until user either drops off or completes their journey</p>
+              </div>
+            </div>
+
+          </td>
+
+          <td style="width:30%">
+            <div  class="">
+              <div class="" style="padding-right: 24px;"> 
+                <img style="border:1px solid #768692;" src="/images/2nd-alert.png"> 
+              </div>
+            </div>
+          </td>
+
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <form action="incident-number" method="post">
+    <button class="nhsuk-button" type="submit">
+      Continue 
+    </button>
+  </form>
+        
+        
+{% endblock %}
+
+

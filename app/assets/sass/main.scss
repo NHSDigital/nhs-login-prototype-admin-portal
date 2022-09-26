@@ -96,3 +96,41 @@
 }
 
 
+.button-as-link {
+  background: none !important;
+  color: $nhsuk-link-color;
+  border: none;
+  padding: 0 !important;
+  font: inherit;
+  cursor: pointer;
+  text-decoration: underline;
+  &:hover { color: $nhsuk-link-hover-color; }
+  &:active { color: $nhsuk-link-active-color; }
+  &:visited { color: $nhsuk-link-visited-color; }
+  &:focus {
+    color: $nhsuk-button-active-color;
+    outline: none;
+  }
+}
+
+.manage-banner-label{
+	background-color: #d8dde0;
+	width: fit-content;
+	color:#212b32;
+	border-radius: 4px;
+  position: absolute;
+  top:25%;
+  left:16%;
+}
+
+.banner-label-container{
+	background-color:#f0f4f5;
+	width: inherit;
+}
+
+.label-text{
+	font-size: 22px;
+	padding-left: 16px;
+	padding-right: 16px;
+	padding-top: 8px;
+}

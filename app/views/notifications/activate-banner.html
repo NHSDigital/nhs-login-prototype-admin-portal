@@ -1,0 +1,242 @@
+{% extends 'layout-nav.html' %}
+{% set pageSection = "Edit user notifications" %}
+
+<!-- this page is only visible to prod-accessreport group -->
+
+{% block beforeContent %}
+  <nav class="nhsuk-breadcrumb" aria-label="Breadcrumb">
+    <div class="nhsuk-width-container">
+      <ol class="nhsuk-breadcrumb__list">
+        <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link" href="/notifications">Edit user notifications</a></li>
+        <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link" href="/notifications/manage-service-banner">Manage the service banner</a></li>
+        <li class="nhsuk-breadcrumb__item">Incident categories</li>
+      </ol>
+      <p class="nhsuk-breadcrumb__back"><a class="nhsuk-breadcrumb__backlink" href="/notifications/manage-service-banner">Back to: Access and permissions</a></p>
+    </div>
+  </nav>
+{% endblock %}
+
+{% block headCSS %}
+  <link href="/css/main.css" rel="stylesheet">
+  <link href="/css/nhsuk.css" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <h1 class="nhsuk-heading-l">Select an incident type</h1>
+
+      <details class="nhsuk-details nhsuk-expander version-list">
+        <summary class="nhsuk-details__summary">
+          <span class="nhsuk-details__summary-text">
+            NHS login 
+          </span>
+        </summary>
+
+        <div class="nhsuk-details__text version-text">
+
+          <p class="nhsuk-hint">
+            This type of incidents could be due to a network or a technical issue with NHS login regardless of the user volume.
+          </p>
+
+          <dl class="release-desc">
+            <dt class="design"><a class="button-as-link" href="activate-banner7" name="" value=""><strong>Incident affecting registration part of the service only</strong></a></dt>
+            <dd class="nhsuk-u-margin-left-0 nhsuk-u-margin-top-3">
+              <p>
+                
+              </p>
+            </dd>
+          </dl>
+
+          <dl class="release-desc">
+            <dt class="design"><button type="submit" class="button-as-link" name="version" value="k"><strong>Incident affecting log in part of the service only</strong></button></dt>
+            <dd class="nhsuk-u-margin-0">
+              <p>
+
+              </p>
+          </dl>
+
+          <dl class="release-desc">
+            <dt class="design"><button type="submit" class="button-as-link" name="version" value="k"><strong>Incident affecting the whole service</strong></button></dt>
+            <dd class="nhsuk-u-margin-0">
+              <p>
+
+              </p>
+          </dl>
+
+        </div>
+
+      </details>
+
+      <details class="nhsuk-details nhsuk-expander version-list">
+        <summary class="nhsuk-details__summary">
+          <span class="nhsuk-details__summary-text">
+            3rd party supplier 
+          </span>
+        </summary>
+        <div class="nhsuk-details__text version-text">
+
+          <p class="nhsuk-hint">
+            This type of incidents could be due to a network or a technical issue with a 3rd party supplier regardless of the user volume.
+          </p>
+
+          <dl class="release-desc">
+            <dt class="design"><button type="submit" class="button-as-link" name="" value=""><strong>iProov</strong></button></dt>
+            <dd class="nhsuk-u-margin-left-0 nhsuk-u-margin-top-3">
+              <p></p>
+            </dd>
+          </dl>
+
+          <dl class="release-desc">
+            <dt class="design"><button type="submit" class="button-as-link" name="version" value="k"><strong>NAM</strong></button></dt>
+            <dd class="nhsuk-u-margin-0">
+              <p>
+
+              </p>
+          </dl>
+
+          <dl class="release-desc">
+            <dt class="design"><button type="submit" class="button-as-link" name="version" value="k"><strong>NHS Spine</strong></button></dt>
+            <dd class="nhsuk-u-margin-0">
+              <p>
+
+              </p>
+          </dl>
+
+          <dl class="release-desc">
+            <dt class="design"><button type="submit" class="button-as-link" name="version" value="k"><strong>Paycasso</strong></button></dt>
+            <dd class="nhsuk-u-margin-0">
+              <p>
+
+              </p>
+          </dl>
+
+          <dl class="release-desc">
+            <dt class="design"><button type="submit" class="button-as-link" name="version" value="k"><strong>Gov.uk notify</strong></button></dt>
+            <dd class="nhsuk-u-margin-0">
+              <p>
+
+              </p>
+          </dl>
+
+          <dl class="release-desc">
+            <dt class="design"><button type="submit" class="button-as-link" name="version" value="k"><strong>Voodoo</strong></button></dt>
+            <dd class="nhsuk-u-margin-0">
+              <p>
+
+              </p>
+          </dl>
+
+          <dl class="release-desc">
+            <dt class="design"><button type="submit" class="button-as-link" name="version" value="k"><strong><p> AWS is not sending OTPs</strong></button></dt>
+            <dd class="nhsuk-u-margin-0">
+              <p>
+
+              </p>
+          </dl>
+
+        </div>
+
+      </details>
+
+      <details class="nhsuk-details nhsuk-expander version-list">
+        <summary class="nhsuk-details__summary">
+          <span class="nhsuk-details__summary-text">
+            Partner service
+          </span>
+        </summary>
+        <div class="nhsuk-details__text version-text">
+
+          <p class="nhsuk-hint">
+            This type of incidents could be due to a network or a technical issue with a partner service regardless of the user volume.
+          </p>
+          
+          <dl class="release-desc">
+            <dt class="design"><button type="submit" class="button-as-link" name="version" value="k"><strong>Incident affecting the whole service</strong></button></dt>
+            <dd class="nhsuk-u-margin-0">
+              <p>
+
+              </p>
+          </dl>
+
+          <dl class="release-desc">
+            <dt class="design"><button type="submit" class="button-as-link" name="version" value="k"><strong><p>Incident affecting a specific feature within partner service</strong></button></dt>
+            <dd class="nhsuk-u-margin-0">
+              <p>
+
+              </p>
+          </dl>
+      </details>
+
+      <details class="nhsuk-details nhsuk-expander version-list">
+        <summary class="nhsuk-details__summary">
+          <span class="nhsuk-details__summary-text">
+            Other external causes
+          </span>
+        </summary>
+        <div class="nhsuk-details__text version-text">
+          <dl class="release-desc">
+            <dt class="design"><button type="submit" class="button-as-link" name="version" value="k"><strong>High volume of traffic</strong></button></dt>
+            <dd class="nhsuk-u-margin-0">
+              <p>
+
+              </p>
+          </dl>
+
+          <dl class="release-desc">
+            <dt class="design"><button type="submit" class="button-as-link" name="version" value="k"><strong>National incident/ announcement causing public concern</strong></button></dt>
+            <dd class="nhsuk-u-margin-0">
+              <p>
+
+              </p>
+          </dl>
+
+          <dl class="release-desc">
+            <dt class="design"><button type="submit" class="button-as-link" name="version" value="k"><strong>Add new incident</strong></button></dt>
+            <dd class="nhsuk-u-margin-0">
+              <p>
+
+              </p>
+          </dl>
+      </details>
+
+      <details class="nhsuk-details nhsuk-expander version-list">
+        <summary class="nhsuk-details__summary">
+          <span class="nhsuk-details__summary-text">
+            Multiple incidents occuring at once 
+          </span>
+        </summary>
+        <div class="nhsuk-details__text version-text">
+          <dl class="release-desc">
+            <dt class="design"><button type="submit" class="button-as-link" name="version" value="k"><strong>High volume of traffic</strong></button></dt>
+            <dd class="nhsuk-u-margin-0">
+              <p>
+
+              </p>
+          </dl>
+
+          <dl class="release-desc">
+            <dt class="design"><button type="submit" class="button-as-link" name="version" value="k"><strong>National incident/ announcement causing public concern</strong></button></dt>
+            <dd class="nhsuk-u-margin-0">
+              <p>
+
+              </p>
+          </dl>
+
+          <dl class="release-desc">
+            <dt class="design"><button type="submit" class="button-as-link" name="version" value="k"><strong>Add new incident</strong></button></dt>
+            <dd class="nhsuk-u-margin-0">
+              <p>
+
+              </p>
+          </dl>
+      </details>
+
+
+
+        
+        
+{% endblock %}
+
+

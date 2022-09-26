@@ -1,0 +1,168 @@
+{% extends 'layout-nav.html' %}
+{% set pageSection = "Edit user notifications" %}
+
+<!-- this page is only visible to prod-accessreport group -->
+
+{% block beforeContent %}
+  <nav class="nhsuk-breadcrumb" aria-label="Breadcrumb">
+    <div class="nhsuk-width-container">
+      <ol class="nhsuk-breadcrumb__list">
+        <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link" href="/notifications">Edit user notifications</a></li>
+        <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link" href="/notifications/manage-service-banner">Manage the service banner</a></li>
+        <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link" href="/notifications/activate-banner5">Incident categories</a></li>
+        <li class="nhsuk-breadcrumb__item">NHS login incidents</li>
+      </ol>
+      <p class="nhsuk-breadcrumb__back"><a class="nhsuk-breadcrumb__backlink" href="/notifications/manage-service-banner">Back to: Access and permissions</a></p>
+    </div>
+  </nav>
+{% endblock %}
+
+{% block headCSS %}
+  <link href="/css/main.css" rel="stylesheet">
+  <link href="/css/nhsuk.css" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<style>
+  
+  /* Style the tab */
+  .tab {
+    float: left;
+    background-color: inherit;
+    color: #212b32;
+  }
+  
+  /* Style the buttons inside the tab */
+  .tab button {
+    display: block;
+    margin-bottom: 32px;
+    background-color: #fff;
+    border: 1px solid #d8dde0;
+    outline: none;
+    text-align: left;
+    cursor: pointer;
+    transition: 0.3s;
+    color:	#212b32;
+    width: 100%;
+  }
+  
+  /* Change background color of buttons on hover */
+  .tab button:hover {
+    border: 1px solid #005eb8;
+  }
+  
+  /* Create an active/current "tab button" class */
+  .tab button.active {
+    border: 1px solid #005eb8;
+  }
+  
+  /* Style the tab content */
+  .tabcontent {
+    background-color: inherit;
+  }
+
+  .tabcontent-option {
+  padding-top: 24px;
+  padding-left: 24px;
+  padding-right: 24px;
+  }
+
+  
+  /* Style the incident category cards */
+
+  .incident-heading {
+  display: flex;
+  padding-top: 24px;
+  padding-left: 24px;
+  padding-right: 24px;
+  height: fit-content;
+  width: 100%;
+  }
+
+  .incident-title {
+    width: 25%;
+  }
+
+  .incident-intro {
+      color: #4c6272;
+      width: 75%;
+      padding-left: 24px;
+  }
+
+  .change-incident {
+  float: right;
+  }
+
+</style>
+
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-full">
+    <div class="">
+    <h1 class="nhsuk-heading-xs">NHS login incidents</h1>
+    </div>
+
+    <form>
+
+      <div class="nhsuk-form-group">
+    
+        <fieldset class="nhsuk-fieldset" aria-describedby="contact-hint">
+          <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+            <h1 class="nhsuk-fieldset__heading">
+              Select the group of users affected
+            </h1>
+          </legend>
+    
+          <div class="nhsuk-hint" id="contact-hint">
+            Select all that apply
+          </div>
+    
+          <div class="nhsuk-checkboxes">
+    
+            <div class="nhsuk-checkboxes__item">
+              <input class="nhsuk-checkboxes__input" id="contact" name="incident" type="checkbox" value="a">
+              <label class="nhsuk-label nhsuk-checkboxes__label" for="contact">
+                New users registering
+              </label>
+            </div>
+    
+            <div class="nhsuk-checkboxes__item">
+              <input class="nhsuk-checkboxes__input" id="contact-2" name="incident" type="checkbox" value="b">
+              <label class="nhsuk-label nhsuk-checkboxes__label" for="contact-2">
+                Existing users logging in
+              </label>
+            </div>
+    
+            <div class="nhsuk-checkboxes__item">
+              <input class="nhsuk-checkboxes__input" id="contact-3" name="incident" type="checkbox" value="c">
+              <label class="nhsuk-label nhsuk-checkboxes__label" for="contact-3">
+                Existing users uplifting
+              </label>
+            </div>
+    
+          </div>
+        </fieldset>
+    
+      </div>
+    
+    </form>
+
+
+      
+    <form action="activate-banner7" method="post">
+      <button class="nhsuk-button" type="submit">
+        Continue
+      </button>
+    </form>
+    
+
+
+
+
+
+        <script>
+        </script> 
+        
+{% endblock %}
+
+
