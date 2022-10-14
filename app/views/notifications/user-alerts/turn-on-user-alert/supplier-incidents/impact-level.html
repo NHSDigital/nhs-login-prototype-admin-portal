@@ -1,0 +1,148 @@
+{% extends 'layout-nav.html' %}
+{% set pageSection = "Edit user notifications" %}
+
+<!-- this page is only visible to prod-accessreport group -->
+
+{% block beforeContent %}
+  <nav class="nhsuk-breadcrumb" aria-label="Breadcrumb">
+    <div class="nhsuk-width-container">
+      <ol class="nhsuk-breadcrumb__list">
+        <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link" href="/notifications">Edit user notifications</a></li>
+        <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link" href="/notifications/user-alerts/manage-user-alerts">Manage user alerts</a></li>
+        <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link" href="/notifications/user-alerts/turn-on-user-alert/select-incident">Incident categories</a></li>
+        <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link" href="/notifications/user-alerts/turn-on-user-alert/supplier-incidents/supplier-incidents" >Supplier incidents</a></li>
+        <li class="nhsuk-breadcrumb__item">Incident details</li>
+      </ol>
+    </div>
+  </nav>
+{% endblock %}
+
+{% block headCSS %}
+  <link href="/css/main.css" rel="stylesheet">
+  <link href="/css/nhsuk.css" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+
+<style>
+  a:visited { 
+      color:	#005eb8; 
+      }
+</style>
+
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-full"> 
+
+      <h1 class="nhsuk-heading-s" style="color: 	#4c6272">
+        NAM incident
+      </h1>
+
+
+      {% if data.change === 'true' %}
+      <form action="{% if data.down === 'false' %} /notifications/user-alerts/turn-on-user-alert/supplier-incidents/service-not-working-properly/confirm-choices {% else %} /notifications/user-alerts/turn-on-user-alert/supplier-incidents/service-down/confirm-choices {% endif %}" method="post">
+        <div class="nhsuk-form-group">
+
+          <fieldset class="nhsuk-fieldset">
+            <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+              <h1 class="nhsuk-fieldset__heading">
+                How severe is the impact?
+              </h1>
+            </legend>
+        
+            <div class="nhsuk-radios nhsuk-u-margin-top-2">
+        
+              <div class="nhsuk-radios__item">
+                <input class="nhsuk-radios__input" id="can" name="impact" type="radio" value="Service is not working properly" aria-describedby="can-continue-item-hint">
+                <label class="nhsuk-label nhsuk-radios__label" for="can-continue">
+                  Service is not working properly
+                </label>
+                <div class="nhsuk-hint nhsuk-radios__hint" id="can-continue-item-hint">
+                  Users may or may not be able to continue their journey
+                </div>
+              </div>
+        
+              <div class="nhsuk-radios__item">
+                <input class="nhsuk-radios__input" id="cannot" name="impact" type="radio" value="Service is down" aria-describedby="cannot-continue-item-hint">
+                <label class="nhsuk-label nhsuk-radios__label" for="cannot-continue">
+                  Service is down
+                </label>
+                <div class="nhsuk-hint nhsuk-radios__hint" id="cannot-continue-item-hint">
+                  Users cannot continue their journey
+                </div>
+              </div>
+        
+            </div>
+          </fieldset>
+        </div>
+        <button class="nhsuk-button" type="submit">
+        Continue with changes
+        </button>
+      </form>
+      <p>
+        {% if data.down === 'false' %}
+        <a class="nhsuk-link" href="/notifications/user-alerts/turn-on-user-alert/supplier-incidents/service-not-working-properly/confirm-choices">
+        Cancel changes and return to: Confirm incident details
+        </a>
+        {% else %}
+        <a class="nhsuk-link" href="/notifications/user-alerts/turn-on-user-alert/supplier-incidents/service-down/confirm-choices">
+          Cancel changes and return to: Confirm incident details
+        </a>
+        {% endif %}
+      </p> 
+      {% else %}
+      <form action="/impact-level-answer" method="post">
+        <div class="nhsuk-form-group">
+
+          <fieldset class="nhsuk-fieldset">
+            <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+              <h1 class="nhsuk-fieldset__heading">
+                How severe is the impact?
+              </h1>
+            </legend>
+        
+            <div class="nhsuk-radios nhsuk-u-margin-top-2">
+        
+              <div class="nhsuk-radios__item">
+                <input class="nhsuk-radios__input" id="can" name="impact" type="radio" value="Service is not working properly" aria-describedby="can-continue-item-hint">
+                <label class="nhsuk-label nhsuk-radios__label" for="can-continue">
+                  Service is not working properly
+                </label>
+                <div class="nhsuk-hint nhsuk-radios__hint" id="can-continue-item-hint">
+                  Users may or may not be able to continue their journey
+                </div>
+              </div>
+        
+              <div class="nhsuk-radios__item">
+                <input class="nhsuk-radios__input" id="cannot" name="impact" type="radio" value="Service is down" aria-describedby="cannot-continue-item-hint">
+                <label class="nhsuk-label nhsuk-radios__label" for="cannot-continue">
+                  Service is down
+                </label>
+                <div class="nhsuk-hint nhsuk-radios__hint" id="cannot-continue-item-hint">
+                  Users cannot continue their journey
+                </div>
+              </div>
+        
+            </div>
+          </fieldset>
+        </div>
+        <button class="nhsuk-button" type="submit">
+          Continue
+        </button>
+      </form>
+      {% endif %}
+    </div>
+  </div>
+
+
+  <script>
+    
+    function clearData() {
+      sessionStorage.clear();
+    }
+  </script>
+        
+        
+{% endblock %}
+
+

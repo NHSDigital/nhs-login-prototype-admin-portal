@@ -1,0 +1,173 @@
+{% extends 'layout-nav.html' %}
+{% set pageSection = "Edit user notifications" %}
+
+<!-- this page is only visible to prod-accessreport group -->
+
+{% block beforeContent %}
+  <nav class="nhsuk-breadcrumb" aria-label="Breadcrumb">
+    <div class="nhsuk-width-container">
+      <ol class="nhsuk-breadcrumb__list">
+        <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link" href="/notifications">Edit user notifications</a></li>
+        <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link" href="/notifications/user-alerts/manage-user-alerts">Manage user alerts</a></li>
+        <li class="nhsuk-breadcrumb__item">Edit active user alert</li>
+      </ol>
+    </div>
+  </nav>
+{% endblock %}
+
+{% block headCSS %}
+  <link href="/css/main.css" rel="stylesheet">
+  <link href="/css/nhsuk.css" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<style>
+  a:visited { 
+    color:	#005eb8; 
+    }
+</style>
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds nhsuk-u-margin-top-0">
+
+        <h1 class="nhsuk-heading-l">Edit active user alert</h1>
+
+    </div>
+  </div>
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds nhsuk-u-margin-top-4">
+      {% if data.namplanned === 'true' %}
+      <h1 class="nhsuk-heading-m">Planned service maintenance: NAM is not working properly</h1>
+      {% endif %}
+      {% if data.namplanned === 'false' %}
+      <h1 class="nhsuk-heading-m">NAM is not working properly</h1>
+      {% endif %}
+      {% if data.namdownplanned === 'true' %}
+      <h1 class="nhsuk-heading-m">Planned service maintenance: NAM is down</h1>
+      {% endif %}
+      {% if data.namdownplanned === 'false' %}
+      <h1 class="nhsuk-heading-m">NAM is down</h1>
+      {% endif %}
+        
+
+    </div>
+  </div>
+
+  <dl class="nhsuk-summary-list">
+
+    <div class="nhsuk-summary-list__row">
+      <dt class="nhsuk-summary-list__key">
+        Category
+      </dt>
+      <dd class="nhsuk-summary-list__value">
+        3rd party supplier incident
+        <p class="nhsuk-hint">Network or a technical issue with a supplier regardless of the user volume</p>
+      </dd>
+  
+      <dd class="nhsuk-summary-list__actions" style="display:none;">
+  
+        <a href="#">
+          Change<span class="nhsuk-u-visually-hidden"> name</span>
+        </a>
+  
+      </dd>
+  
+    </div>
+
+    <div class="nhsuk-summary-list__row">
+      <dt class="nhsuk-summary-list__key">
+        Affected supplier
+      </dt>
+      <dd class="nhsuk-summary-list__value">
+        NAM
+        <p class="nhsuk-hint">Affecting IDVM, POL and log in journey</p>
+      </dd>
+  
+      <dd class="nhsuk-summary-list__actions" style="display:none;">
+  
+        <a href="#">
+          Change<span class="nhsuk-u-visually-hidden"> name</span>
+        </a>
+  
+      </dd>
+  
+    </div>
+  
+    <div class="nhsuk-summary-list__row">
+      <dt class="nhsuk-summary-list__key">
+        How severe is the impact?
+      </dt>
+      <dd class="nhsuk-summary-list__value">
+        Service is down
+        <p class="nhsuk-hint">Users cannot continue their journey</p>
+      </dd>
+  
+      <dd class="nhsuk-summary-list__actions">
+  
+        <a href="edit-impact-level">
+          Change<span class="nhsuk-u-visually-hidden"> date of birth</span>
+        </a>
+  
+      </dd>
+  
+    </div>
+  
+    <div class="nhsuk-summary-list__row">
+      <dt class="nhsuk-summary-list__key">
+       Is it a planned service maintenance?
+      </dt>
+      <dd class="nhsuk-summary-list__value">
+        No
+      </dd>
+  
+      <dd class="nhsuk-summary-list__actions">
+  
+        <a href="edit-is-it-planned">
+          Change<span class="nhsuk-u-visually-hidden"> contact information</span>
+        </a>
+  
+      </dd>
+  
+    </div>
+    {% if data.namdownplanned === 'true' %}
+    <div class="nhsuk-summary-list__row" style="display:;">
+      <dt class="nhsuk-summary-list__key">
+       When is it scheduled to happen?
+      </dt>
+      <dd class="nhsuk-summary-list__value">
+       <p>Start:<span class="nhsuk-u-padding-3">02 February 2023, 00:00</span></p>
+       <p>End:<span class="nhsuk-u-padding-4">02 February 2023, 23:30</span></p>
+      </dd>
+  
+      <dd class="nhsuk-summary-list__actions">
+  
+        <a href="#">
+          Change<span class="nhsuk-u-visually-hidden"> contact information</span>
+        </a>
+  
+      </dd>
+  
+    </div>
+    {% endif %}
+  
+  </dl> 
+
+
+
+  <form action="edit-NAM-down" method="post">
+    <button class="nhsuk-button" type="submit" style="{% if data.edit === 'true' %} display: block;{% else %} display:none;{% endif %}">
+      Continue with changes
+    </button>
+  </form>
+
+
+      <p>
+        <a class="nhsuk-link" href="/notifications/user-alerts/manage-user-alerts?active=true&edit=false" style="display:block;">
+        Cancel changes and return to: Manage user alerts
+        </a>
+      </p>  
+        
+{% endblock %}
+
+

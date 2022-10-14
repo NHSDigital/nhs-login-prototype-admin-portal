@@ -1,0 +1,72 @@
+{% extends 'layout-nav.html' %}
+{% set pageSection = "Edit user notifications" %}
+
+<!-- this page is only visible to prod-accessreport group -->
+
+{% block beforeContent %}
+  <nav class="nhsuk-breadcrumb" aria-label="Breadcrumb">
+    <div class="nhsuk-width-container">
+      <ol class="nhsuk-breadcrumb__list">
+        <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link" href="/notifications">Edit user notifications</a></li>
+        <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link" href="/notifications/user-alerts/manage-user-alerts?active=true">Manage user alerts</a></li>
+        <li class="nhsuk-breadcrumb__item">User alert active</li>
+      </ol>
+    </div>
+  </nav>
+{% endblock %}
+
+{% block headCSS %}
+  <link href="/css/main.css" rel="stylesheet">
+  <link href="/css/nhsuk.css" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+
+<style>
+  a:visited { 
+   color:	#005eb8; 
+   }
+</style>
+
+
+
+  <div class="nhsuk-grid-row nhsuk-u-margin-bottom-4">
+    <div class="nhsuk-grid-column-two-thirds">
+      <div style="">
+        {% if data.namplanned === 'true' %}
+        <h1 class="nhsuk-heading-l">User alert is now active for incident: Planned service maintenance: NAM is not working properly</h1>
+        {% else %}
+        <h1 class="nhsuk-heading-l">User alert is now active for incident: NAM is not working properly</h1>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-two-thirds">
+
+    <h2 class="nhsuk-heading-s" style="{% if data.incidentnumber === 'false' %} display:none; {% else %} display:block {% endif %}">Support reference number: 
+      <span>
+        <a class="nhsuk-card__link nhsuk-u-padding-left-2" href="#">
+          abcd020223
+        </a>
+      </span>
+    </h2>
+       
+   
+    
+      <p class="mhsuk-body-l">
+        <a href="/notifications/user-alerts/manage-user-alerts?active=true">
+          Return to manage user alerts
+        </a>
+      </p>
+      
+
+  </div>
+</div>
+
+        
+{% endblock %}
+
+

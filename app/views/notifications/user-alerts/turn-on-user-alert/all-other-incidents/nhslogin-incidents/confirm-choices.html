@@ -1,0 +1,139 @@
+{% extends 'layout-nav.html' %}
+{% set pageSection = "Edit user notifications" %}
+
+<!-- this page is only visible to prod-accessreport group -->
+
+{% block beforeContent %}
+  <nav class="nhsuk-breadcrumb" aria-label="Breadcrumb">
+    <div class="nhsuk-width-container">
+      <ol class="nhsuk-breadcrumb__list">
+        <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link" href="/notifications">Edit user notifications</a></li>
+        <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link" href="/notifications/manage-user-alerts">Manage user alerts</a></li>
+        <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link" href="/notifications/">Incident categories</a></li>
+        <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link" href="/notifications/">NHS login incidents</a></li>
+        <li class="nhsuk-breadcrumb__item">Incident details</li>
+      </ol>
+    </div>
+  </nav>
+{% endblock %}
+
+{% block headCSS %}
+  <link href="/css/main.css" rel="stylesheet">
+  <link href="/css/nhsuk.css" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+
+<style>
+  a:visited { 
+   color:	#005eb8; 
+   }
+</style>
+
+
+<div class="nhsuk-back-link">
+  <a class="nhsuk-back-link__link" href="#">
+    <svg class="nhsuk-icon nhsuk-icon__chevron-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" height="24" width="24">
+      <path d="M8.5 12c0-.3.1-.5.3-.7l5-5c.4-.4 1-.4 1.4 0s.4 1 0 1.4L10.9 12l4.3 4.3c.4.4.4 1 0 1.4s-1 .4-1.4 0l-5-5c-.2-.2-.3-.4-.3-.7z"></path>
+    </svg>
+    Go back</a>
+</div>
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds nhsuk-u-margin-top-4">
+
+        <h1 class="nhsuk-heading-l">Confirm incident details</h1>
+
+    </div>
+  </div>
+
+  <dl class="nhsuk-summary-list">
+
+    <div class="nhsuk-summary-list__row">
+      <dt class="nhsuk-summary-list__key">
+        Category
+      </dt>
+      <dd class="nhsuk-summary-list__value">
+        NHS login incident
+        <p class="nhsuk-hint">Network or a technical issue with NHS login regardless of the user volume</p>
+      </dd>
+  
+      <dd class="nhsuk-summary-list__actions">
+  
+        <a href="#">
+          Change<span class="nhsuk-u-visually-hidden"> name</span>
+        </a>
+  
+      </dd>
+  
+    </div>
+
+    <div class="nhsuk-summary-list__row">
+      <dt class="nhsuk-summary-list__key">
+        Impact on service
+      </dt>
+      <dd class="nhsuk-summary-list__value">
+        Registration only
+        <p class="nhsuk-hint">Affecting users registering only. Users can continue to log in without distruption.</p>
+      </dd>
+  
+      <dd class="nhsuk-summary-list__actions">
+  
+        <a href="#">
+          Change<span class="nhsuk-u-visually-hidden"> name</span>
+        </a>
+  
+      </dd>
+  
+    </div>
+  
+    <div class="nhsuk-summary-list__row">
+      <dt class="nhsuk-summary-list__key">
+        How severe is the impact?
+      </dt>
+      <dd class="nhsuk-summary-list__value">
+        Service is not working properly
+        <p class="nhsuk-hint">Users may or may not be able to continue their journey</p>
+      </dd>
+  
+      <dd class="nhsuk-summary-list__actions">
+  
+        <a href="#">
+          Change<span class="nhsuk-u-visually-hidden"> date of birth</span>
+        </a>
+  
+      </dd>
+  
+    </div>
+  
+    <div class="nhsuk-summary-list__row">
+      <dt class="nhsuk-summary-list__key">
+       Is it a planned service maintenance?
+      </dt>
+      <dd class="nhsuk-summary-list__value">
+        No
+      </dd>
+  
+      <dd class="nhsuk-summary-list__actions">
+  
+        <a href="#">
+          Change<span class="nhsuk-u-visually-hidden"> contact information</span>
+        </a>
+  
+      </dd>
+  
+    </div>
+  
+  </dl>
+
+
+  <form action="registration-issue" method="post">
+    <button class="nhsuk-button" type="submit">
+      Confirm
+    </button>
+  </form>
+        
+        
+{% endblock %}
+
+

@@ -1,0 +1,366 @@
+{% extends 'layout-nav.html' %}
+{% set pageSection = "Edit user notifications" %}
+
+<!-- this page is only visible to prod-accessreport group -->
+
+{% block beforeContent %}
+  <nav class="nhsuk-breadcrumb" aria-label="Breadcrumb">
+    <div class="nhsuk-width-container">
+      <ol class="nhsuk-breadcrumb__list">
+        <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link" href="/notifications">Edit user notifications</a></li>
+        <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link" href="/notifications/user-alerts/manage-user-alerts">Manage user alerts</a></li>
+        <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link" href="/notifications/user-alerts/schedule-user-alert/select-incident">Incident categories</a></li>
+        <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link" href="/notifications/user-alerts/schedule-user-alert/select-incident/supplier-incidents">Supplier incidents</a></li>
+        <li class="nhsuk-breadcrumb__item">NAM incident</li>
+      </ol>
+    </div>
+  </nav>
+{% endblock %}
+
+{% block headCSS %}
+  <link href="/css/main.css" rel="stylesheet">
+  <link href="/css/nhsuk.css" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+
+<style>
+    .incident-heading {
+  display: flex;
+  padding-top: 24px;
+  height: fit-content;
+  width: 100%;
+  }
+
+  .incident-title {
+    width: 25%;
+  }
+
+  .incident-intro {
+      color: #212b32;
+      width: 75%;
+      padding-left: 24px;
+  }
+
+  .incident-screenshot {
+      width: 50%;
+      padding-left: 24px;
+  }
+
+  th {
+  border-right:1px solid #768692;
+  border-bottom:1px solid #768692;
+  border-top:1px solid #768692;
+  color: #212b32;
+  padding-left: 24px;
+  background-color: #b3daff;
+  font-size:19px;
+  font-weight: bold;
+  }
+
+  td {
+  border-right:1px solid #768692;
+  border-bottom:1px solid #768692;
+  color: #212b32;
+  padding-left: 24px;
+  }
+
+
+
+  
+
+</style>
+
+
+<div class="nhsuk-back-link">
+  <a class="nhsuk-back-link__link" href="#">
+    <svg class="nhsuk-icon nhsuk-icon__chevron-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" height="24" width="24">
+      <path d="M8.5 12c0-.3.1-.5.3-.7l5-5c.4-.4 1-.4 1.4 0s.4 1 0 1.4L10.9 12l4.3 4.3c.4.4.4 1 0 1.4s-1 .4-1.4 0l-5-5c-.2-.2-.3-.4-.3-.7z"></path>
+    </svg>
+    Go back to: Confirm incident details</a>
+</div>
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds nhsuk-u-margin-top-4">
+
+        <h1 class="nhsuk-heading-l">NAM is down</h1>
+        <p class="" >Service is unavailable. Users cannot continue to this part of the service due to a network or a technical issue regardless of user volume. 
+        </p>
+        
+        <p class="nhsuk-u-font-weight-bold">Journeys affected:</p>
+        <ul class="nhsuk-list nhsuk-list--bullet">
+          <li>IDVM</li>
+          <li>POL</li>
+          <li>log in journey</li>
+        </ul>
+
+        <p class="nhsuk-u-font-weight-bold">Users affected:</p>
+        <ul class="nhsuk-list nhsuk-list--bullet">
+          <li>new users registering for the first time</li>
+          <li>existing users logging in for the first time</li>
+          <li>existing users uplifting to P9</li>
+        </ul>
+
+    </div>
+  </div>
+
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-full">
+      <h2 class="nhsuk-heading-m nhsuk-u-margin-top-6">Global alert</h2>
+      <table style="width:100%">
+        <tr>
+          <th style="border-left:1px solid #768692;">Content</th>
+          <th style="">Placement</th>
+          <th style="border-right:1px solid #768692;">Screenshot</th>
+        </tr>
+        <tr>
+          <td style="width:40%; border-left:1px solid #768692;">
+            <div  class="">
+              <div class="nhsuk-heading-xs">H1:</div>
+              <div class="nhsuk-u-font-size-19">There is a problem with the service</div>
+            </div>
+    
+    
+            <div  class="nhsuk-u-margin-top-4">
+              <div class="nhsuk-heading-xs">Body:</div>
+              <div class="nhsuk-u-font-size-19"> 
+                <p>We are working to fix a technical issue with NHS login.</p>
+    
+                <p>This can affect your access to the service. You can try again later.</p>
+                  
+                <p>If you already have an NHS login account and logged in at least once before, it will not affect you.</p>
+        
+                <p>Last updated: 22 June 2022, 8.30am</p>
+              </div>
+            </div>
+          </td>
+
+          <td style="width:30%">
+
+            <div  class="">
+              <div class="nhsuk-heading-xs">Page title:</div>
+              <div class="nhsuk-u-font-size-19"> 
+                <p>Across the whole journey</p>
+              </div>
+            </div>
+
+            <div  class="nhsuk-u-margin-top-4">
+              <div class="nhsuk-heading-xs">Page URL:</div>
+              <div class="nhsuk-u-font-size-19"> 
+                <p>Across the whole journey</p>
+              </div>
+            </div>
+
+            <div  class="nhsuk-u-margin-top-4">
+              <div class="nhsuk-heading-xs">Notes:</div>
+              <div class="nhsuk-u-font-size-19"> 
+                <p>Remove and don't display for existing users who have logged in at least once before. These users will be able to log in as usual.</p>
+              </div>
+            </div>
+
+          </td>
+
+          <td style="width:30%; border-right:1px solid #768692;">
+            <div  class="">
+              <div class="" style="padding-right: 24px;"> 
+                <img style="border:1px solid #768692;" src="/images/banner.png"> 
+              </div>
+            </div>
+          </td>
+
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-full">
+      <h2 class="nhsuk-heading-m nhsuk-u-margin-top-6">Reminder alert</h2>
+      <table style="width:100%">
+        <tr>
+          <th style="width:40%; border-left:1px solid #768692;">Content</th>
+          <th>Placement</th>
+          <th>Screenshot</th>
+        </tr>
+        <tr>
+          <td style="width:40%; width:40%; border-left:1px solid #768692;">
+            <div  class="">
+              <div class="nhsuk-heading-xs">H1:</div>
+              <div class="nhsuk-u-font-size-19">We are having issues connecting to GP systems</div>
+            </div>
+    
+    
+            <div  class="nhsuk-u-margin-top-4">
+              <div class="nhsuk-heading-xs">Body:</div>
+              <div class="nhsuk-u-font-size-19"> 
+                <p>We are working to fix it.</p>
+
+                <p>This can affect your access to the service.</p>
+
+                <p>You can try again later</p>
+        
+                <p>Last updated: 22 June 2022, 8.30am</p>
+              </div>
+            </div>
+          </td>
+
+          <td style="width:30%">
+
+            <div  class="">
+              <div class="nhsuk-heading-xs">Page title:</div>
+              <div class="nhsuk-u-font-size-19"> 
+                <p>We found your NHS login</p>
+              </div>
+            </div>
+
+            <div  class="nhsuk-u-margin-top-0">
+              <div class="nhsuk-heading-xs">Page URL:</div>
+              <div class="nhsuk-u-font-size-19"> 
+                <p>login-existing-account-alert</p>
+              </div>
+            </div>
+
+            <div  class="nhsuk-u-margin-top-6">
+              <div class="nhsuk-heading-xs">Page title:</div>
+              <div class="nhsuk-u-font-size-19"> 
+                <p>Use your GP record to prove who you are</p>
+              </div>
+            </div>
+
+            <div  class="nhsuk-u-margin-top-0">
+              <div class="nhsuk-heading-xs">Page URL:</div>
+              <div class="nhsuk-u-font-size-19"> 
+                <p>use-gp-checks</p>
+              </div>
+            </div>
+
+            <div  class="nhsuk-u-margin-top-6">
+              <div class="nhsuk-heading-xs">Page title:</div>
+              <div class="nhsuk-u-font-size-19"> 
+                <p>Prove who you are without sending a photo of your ID</p>
+              </div>
+            </div>
+
+            <div  class="nhsuk-u-margin-top-0">
+              <div class="nhsuk-heading-xs">Page URL:</div>
+              <div class="nhsuk-u-font-size-19"> 
+                <p>POL-details</p>
+              </div>
+            </div>
+
+            <div  class="nhsuk-u-margin-top-6" style="display:none;">
+              <div class="nhsuk-heading-xs">Notes:</div>
+              <div class="nhsuk-u-font-size-19"> 
+                <p>Continue to display it on all pages for the rest of the IDVM, POL and log in journey</p>
+              </div>
+            </div>
+
+          </td>
+
+          <td style="width:30%">
+            <div  class="">
+
+              <div class="" style="padding-right: 24px;"> 
+                <img style="border:1px solid #768692;" src="/images/2nd-alert.png"> 
+              </div>
+
+              <div class="nhsuk-u-margin-top-4" style="padding-right: 24px;"> 
+                <img style="border:1px solid #768692;" src="/images/2nd-alert.png"> 
+              </div>
+
+              <div class="nhsuk-u-margin-top-4" style="padding-right: 24px;"> 
+                <img style="border:1px solid #768692;" src="/images/2nd-alert.png"> 
+              </div>
+
+            </div>
+          </td>
+
+        </tr>
+      </table>
+    </div>
+  </div>
+
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-full">
+      <h2 class="nhsuk-heading-m nhsuk-u-margin-top-6">Interrupt screen</h2>
+      <table style="width:100%">
+        <tr>
+          <th style="width:40%; border-left:1px solid #768692;">Content</th>
+          <th>Placement</th>
+          <th>Screenshot</th>
+        </tr>
+        <tr>
+          <td style="width:40%; width:40%; border-left:1px solid #768692;">
+            <div  class="">
+              <div class="nhsuk-heading-xs">H1:</div>
+              <div class="nhsuk-u-font-size-19">Service is currently unavailable</div>
+            </div>
+    
+    
+            <div  class="nhsuk-u-margin-top-4">
+              <div class="nhsuk-heading-xs">Body:</div>
+              <div class="nhsuk-u-font-size-19"> 
+                <p>There is currently a problem with NHS login. We are working to fix it.</p>
+
+                <p>You can try again later</p>
+        
+                <p>Last updated: 22 June 2022, 8.30am</p>
+              </div>
+            </div>
+          </td>
+
+          <td style="width:30%">
+
+            <div  class="">
+              <div class="nhsuk-heading-xs">Page title:</div>
+              <div class="nhsuk-u-font-size-19"> 
+                <p>Service is currently unavailable</p>
+              </div>
+            </div>
+
+            <div  class="nhsuk-u-margin-top-4">
+              <div class="nhsuk-heading-xs">Page URL:</div>
+              <div class="nhsuk-u-font-size-19"> 
+                <p>service-unavailable</p>
+              </div>
+            </div>
+
+            <div  class="nhsuk-u-margin-top-4">
+              <div class="nhsuk-heading-xs">Direct users to this page after selecting:</div>
+              <div class="nhsuk-u-font-size-19"> 
+                
+                <ul class="nhsuk-list nhsuk-list--bullet">
+                  <li>'Agree and continue' from the page: Use your GP record to prove who you are</li>
+                  <li>radio button 'Yes - I use online services' and then 'Continue' from the page: Prove who you are without sending a photo of your ID</li>
+                  <li>'Continue' from the page: We found your NHS login</li>
+                </ul>
+              </div>
+            </div>
+
+          </td>
+
+          <td style="width:30%">
+            <div  class="">
+              <div class="" style="padding-right: 24px;"> 
+                <img style="border:1px solid #768692;" src="/images/2nd-alert.png"> 
+              </div>
+            </div>
+          </td>
+
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <form action="incident-number?namdownplanned=false" method="post">
+    <button class="nhsuk-button" type="submit">
+      Continue
+    </button>
+  </form>
+        
+        
+{% endblock %}
+
+
