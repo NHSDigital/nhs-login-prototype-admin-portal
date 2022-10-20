@@ -1,11 +1,11 @@
 {% extends 'layout-nav.html' %}
-{% set pageSection = "Edit user notifications" %}
+{% set pageSection = "Manage user notifications" %}
 
 {% block beforeContent %}
   <nav class="nhsuk-breadcrumb" aria-label="Breadcrumb">
     <div class="nhsuk-width-container">
       <ol class="nhsuk-breadcrumb__list">
-        <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link" href="/notifications">Edit user notifications</a></li>
+        <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link" href="/notifications">Manage user notifications</a></li>
         <li class="nhsuk-breadcrumb__item">Manage user alerts</li>
       </ol>
     </div>
@@ -22,8 +22,18 @@
 
 <style>
    a:visited { 
-    color:	#005eb8; 
-    }
+   color:	#005eb8; 
+}
+
+
+.active-alert-card-action-link {
+  text-decoration: none;
+  cursor:pointer;
+}
+
+.active-alert-card-action-link:hover {
+  color:	#7C2855;
+}
 
     /* The Modal (background) */
 .modal {
@@ -63,12 +73,12 @@
       <ul class="nhsuk-grid-row nhsuk-card-group nhsuk-u-padding-top-0">
 
 
-    <div class="nhsuk-grid-column-one-half" id="turn-alert-on" style="{% if data.active === 'true' %} display: none;{% else %} display:block;{% endif %}">
+    <div class="nhsuk-grid-column-one-half" id="turn-alert-on">
           <li class="beta-hub-main-topic nhsuk-card-group__item">
             <div class="nhsuk-card nhsuk-card--clickable ">
               <div class="nhsuk-card__content beta-card__content">
                   <a class="nhsuk-card__link"  href="turn-on-user-alert/select-incident">
-                    <b>Turn on a user alert</b>
+                    <b>Turn on user alerts</b>
                   </a>
                 {# <div class="nhsuk-card__description"><p>Hac habitasse platea dictumst quisque sagittis purus sit amet.</p></div> #}
                 <div class="beta-hub-arrow">
@@ -82,7 +92,7 @@
 </div>
 </div>
 
-<div class="nhsuk-grid-row nhsuk-u-margin-top-6" id="active" style="{% if data.active === 'true' %} display: block;{% else %} display:none;{% endif %}">
+<div class="nhsuk-grid-row nhsuk-u-margin-top-4" id="active" style="{% if data.active === 'true' %} display: block;{% else %} display:none;{% endif %}">
 
   <div class="nhsuk-grid-column-full">
     <h2 class="nhsuk-heading-m">Active user alerts</h2>
@@ -91,43 +101,88 @@
 
 
     <div class="nhsuk-grid-column-one-half">
-          <li class="beta-hub-main-topic nhsuk-card-group__item">
+          
             <div class="nhsuk-card nhsuk-card ">
               <div class="nhsuk-card__content beta-card__content">
-                <h3 class="nhsuk-heading-xs">
-                  {% if data.namplanned === 'true' %}
-                  <b>Planned service maintenance: NAM is not working properly</b>
+                {% if data.edit === 'true' %}
+                <h3>
+                  {% if data['impact'] === 'Service is not working as expected' %}
+                  {% if data['is-it-planned'] === 'Yes' %}
+                  <b class="nhsuk-heading-xs" style="line-height: 100%;">NAM is not working as expected</b>
+                  <b class="nhsuk-heading-xs nhsuk-u-padding-bottom-4" style="line-height: 0%;">Planned maintenance</b>
                   {% endif %}
-                  {% if data.namplanned === 'false' %}
-                  <b>NAM is not working properly</b>
                   {% endif %}
-                  {% if data.namdownplanned === 'true' %}
-                  <b>Planned service maintenance: NAM is down</b>
+                  {% if data['impact'] === 'Service is not working as expected' %}
+                  {% if data['is-it-planned'] === 'No' %}
+                  <b class="nhsuk-heading-xs">NAM is not working as expected</b>
                   {% endif %}
-                  {% if data.namdownplanned === 'false' %}
-                  <b>NAM is down</b>
+                  {% endif %}
+                  {% if data['impact'] === 'Service is down' %}
+                  {% if data['is-it-planned'] === 'Yes' %}
+                  <b class="nhsuk-heading-xs" style="line-height: 100%;">NAM is down</b>
+                  <b class="nhsuk-heading-xs nhsuk-u-padding-bottom-4" style="line-height: 0%;">Planned maintenance</b>
+                  {% endif %}
+                  {% endif %}
+                  {% if data['impact'] === 'Service is down' %}
+                  {% if data['is-it-planned'] === 'No' %}
+                  <b class="nhsuk-heading-xs">NAM is down</b>
+                  {% endif %}
                   {% endif %}
                 </h3>
-                <div class="nhsuk-card__description nhsuk-u-margin-top-0"><p>Start date: 02 February 2023, 08:00</p></div>
-                <div class="nhsuk-card__description nhsuk-u-margin-top-0">
-                  {% if data.incidentnumber === 'false' %}
-                  <a href="turn-on-user-alert/supplier-incidents/service-down/incident-number?incidentnumber=false" 
-                    class="nhsuk-link">Add a support reference number
+                {% else %}
+                <h3>
+                  {% if data.namplanned === 'true' %}
+                  <b class="nhsuk-heading-xs" style="line-height: 100%;">NAM is not working as expected</b>
+                  <b class="nhsuk-heading-xs nhsuk-u-padding-bottom-4" style="line-height: 0%;">Planned maintenance</b>
+                  {% endif %}
+                  {% if data.namplanned === 'false' %}
+                  <b class="nhsuk-heading-xs">NAM is not working as expected</b>
+                  {% endif %}
+                  {% if data.namdownplanned === 'true' %}
+                  <b class="nhsuk-heading-xs" style="line-height: 100%;">NAM is down</b>
+                  <b class="nhsuk-heading-xs nhsuk-u-padding-bottom-4" style="line-height: 0%;">Planned maintenance</b>
+                  {% endif %}
+                  {% if data.namdownplanned === 'false' %}
+                  <b class="nhsuk-heading-xs">NAM is down</b>
+                  {% endif %}
+                </h3>
+                {% endif %}
+                <div class="nhsuk-u-margin-top-4">
+                  <div class="nhsuk-card__description " ><p style="line-height:100%;">Start date: 2 February 2023, 8am</p></div>
+                  {% if data['is-it-planned'] === 'Yes' %}
+                  <div class="nhsuk-card__description"><p style="line-height: 50%;">End date: 2 February 2023, midnight</p></div>
+                  {% endif %}
+                </div>
+                <div class="nhsuk-card__description nhsuk-u-margin-top-4">
+                  {% if data['incident-number'] === 'No' %}
+                  <a href="turn-on-user-alert/supplier-incidents/support-number" 
+                    class="nhsuk-link">Add support reference number
                   </a>
                   {% else %}
-                  <a href="#" class="nhsuk-link">View details on Splunk</a>
+                  <div class="nhsuk-card__description nhsuk-u-margin-top-6">
+                    <p style="line-height:100%;">Support reference number:</p>
+                    <p class="nhsuk-u-font-weight-bold" style="line-height: 0%;">ABCD12345678</p>
+                  </div>
+
+                  <div class="nhsuk-u-margin-top-4">
+                    <a href="#" class="nhsuk-link">View details on Splunk</a>
+                  </div>
+                  
                   {% endif %}
                 </div>
                 <div class="nhsuk-card__description nhsuk-u-margin-top-6 nhsuk-u-margin-bottom-6">
-                  <a class="nhsuk-u-padding-right-4"  href="edit-user-alert/edit" style=" text-decoration: none; border-right: 1px solid; border-right: 1px solid; cursor:pointer;">Edit</a> 
-                  <a class="nhsuk-u-padding-left-4" id="openModal" style="cursor:pointer;" >Turn off</a>
+                  <div>
+                    <a  class="active-alert-card-action-link" href="edit-user-alert/incident-details?change=false&edit=false">Edit incident details</a> 
+                  </div>
+                  <div class="nhsuk-u-margin-top-4">
+                    <a class="active-alert-card-action-link" id="openModal" >Turn off user alerts for this incident</a>
+                  </div>
                 </div>
                 <hr class="nhsuk-section-break nhsuk-section-break--m nhsuk-section-break--visible">
-                <p class="nhsuk-hint">Turned on by:</p>
-                <p class="nhsuk-hint">Admin Name on 02 February 2023</p>
+                <p class="nhsuk-hint" >User alerts turned on by:</p>
+                <p class="nhsuk-hint" >Admin Name on 2 February 2023</p>
               </div>
             </div>
-          </li>
           
     </div>
 
@@ -138,22 +193,31 @@
 <div id="myModal" class="modal">
 
   <!-- Modal content -->
-  <div class="modal-content">
+  <div class="modal-content nhsuk-u-padding-6">
     <div id="alert-off-confirm" style="display:block;">
       {% if data.namplanned === 'true' %}
-      <h1 class="nhsuk-heading-m">Confirm you want to turn off user alert for incident: Planned service maintenance: NAM is not working properly</h1>
+      <h1 class="nhsuk-heading-l">Do you want to turn off user alerts for this incident?
+        <span class="nhsuk-heading-m nhsuk-u-padding-top-4" style="line-height: 100%;">NAM is not working as expected</span>
+        <span class="nhsuk-heading-m nhsuk-u-padding-bottom-4" style="line-height: 0%;">Planned maintenance</span>
+      </h1>
       {% endif %}
       {% if data.namplanned === 'false' %}
-      <h1 class="nhsuk-heading-m">Confirm you want to turn off user alert for incident: NAM is not working properly</h1>
+      <h1 class="nhsuk-heading-l">Do you want to turn off user alerts for this incident?
+        <span class="nhsuk-heading-m nhsuk-u-padding-top-4 nhsuk-u-padding-bottom-2" style="line-height: 100%;">NAM is not working as expected</span>
+      </h1>
       {% endif %}
       {% if data.namdownplanned === 'true' %}
-      <h1 class="nhsuk-heading-m">Confirm you want to turn off user alert for incident: Planned service maintenance: NAM is down</h1>
+      <h1 class="nhsuk-heading-l">Do you want to turn off user alerts for this incident?
+        <span class="nhsuk-heading-m nhsuk-u-padding-top-4" style="line-height: 100%;">NAM is down</span>
+        <span class="nhsuk-heading-m nhsuk-u-padding-bottom-4" style="line-height: 0%;">Planned maintenance</span>
+      </h1>
       {% endif %}
       {% if data.namdownplanned === 'false' %}
-      <h1 class="nhsuk-heading-m">Confirm you want to turn off user alert for incident: NAM is down</h1>
+      <h1 class="nhsuk-heading-l">Do you want to turn off user alerts for this incident?
+        <span class="nhsuk-heading-m nhsuk-u-padding-top-4 nhsuk-u-padding-bottom-2" style="line-height: 100%;">NAM is down</span>
+      </h1>
       {% endif %} 
-    <p class="" style="display:;">All in journey alerts for this incident will be removed</span></p>
-    <div class="nhsuk-form-group nhsuk-u-margin-top-4" >
+    <div class="nhsuk-form-group nhsuk-u-margin-top-4">
                   
       <fieldset class="nhsuk-fieldset" aria-describedby="example-hint">
 
@@ -163,22 +227,22 @@
                   <input class="nhsuk-checkboxes__input" onclick="conFirm();" id="confirm" name="example" type="checkbox" value="">
                   {% if data.namplanned === 'true' %}
                   <label class="nhsuk-label nhsuk-checkboxes__label " for="example-1">
-                    Yes, I want to turn off user alert for incident: Planned service maintenance: NAM is not working properly
+                        Yes, I want to turn off user alerts for this incident
                   </label>
                   {% endif %}
                   {% if data.namplanned === 'false' %}
                   <label class="nhsuk-label nhsuk-checkboxes__label " for="example-1">
-                    Yes, I want to turn off user alert for incident: NAM is not working properly
+                    Yes, I want to turn off user alerts for this incident
                   </label>
                   {% endif %}
                   {% if data.namdownplanned === 'true' %}
                   <label class="nhsuk-label nhsuk-checkboxes__label " for="example-1">
-                    Yes, I want to turn off user alert for incident: Planned service maintenance: NAM is down
+                    Yes, I want to turn off user alerts for this incident
                   </label>
                   {% endif %}
                   {% if data.namdownplanned === 'false' %}
                   <label class="nhsuk-label nhsuk-checkboxes__label " for="example-1">
-                    Yes, I want to turn off user alert for incident: NAM is down
+                    Yes, I want to turn off user alerts for this incident
                   </label>
                   {% endif %}  
               </div>
@@ -201,10 +265,31 @@
       <div style="display: flex;">
       <svg xmlns="http://www.w3.org/2000/svg" height="32px" width="32px" viewBox="0 0 512 512"><path fill="#212b32"d="M256 512c141.4 0 256-114.6 256-256S397.4 0 256 0S0 114.6 0 256S114.6 512 256 512zM216 336h24V272H216c-13.3 0-24-10.7-24-24s10.7-24 24-24h48c13.3 0 24 10.7 24 24v88h8c13.3 0 24 10.7 24 24s-10.7 24-24 24H216c-13.3 0-24-10.7-24-24s10.7-24 24-24zm40-144c-17.7 0-32-14.3-32-32s14.3-32 32-32s32 14.3 32 32s-14.3 32-32 32z"/></svg>
       <div class="nhsuk-u-padding-left-4">
-        <h1 class="nhsuk-heading-m">User alert has been turned off for incident: NAM is down</h1>
+        {% if data.namplanned === 'true' %}
+      <h1 class="nhsuk-heading-m">User alerts have been turned off for:
+        <span class="nhsuk-heading-m nhsuk-u-padding-top-4" style="line-height: 100%;">NAM is not working as expected</span>
+        <span class="nhsuk-heading-m nhsuk-u-padding-bottom-3" style="line-height: 0%;">Planned maintenance</span>
+      </h1>
+      {% endif %}
+      {% if data.namplanned === 'false' %}
+      <h1 class="nhsuk-heading-m">User alerts have been turned off for:
+        <span class="nhsuk-heading-m nhsuk-u-padding-top-4 " style="line-height: 100%;">NAM is not working as expected</span>
+      </h1>
+      {% endif %}
+      {% if data.namdownplanned === 'true' %}
+      <h1 class="nhsuk-heading-m">User alerts have been turned off for:
+        <span class="nhsuk-heading-m nhsuk-u-padding-top-4" style="line-height: 100%;">NAM is down</span>
+        <span class="nhsuk-heading-m nhsuk-u-padding-bottom-3" style="line-height: 0%;">Planned maintenance</span>
+      </h1>
+      {% endif %}
+      {% if data.namdownplanned === 'false' %}
+      <h1 class="nhsuk-heading-m">User alerts have been turned off for:
+        <span class="nhsuk-heading-m nhsuk-u-padding-top-4 " style="line-height: 100%;">NAM is down</span>
+      </h1>
+      {% endif %}
 
-        <div class="form-group nhsuk-u-margin-bottom-0 nhsuk-u-margin-top-0" >
-          <p class="nhsuk-u-margin-bottom-0 nhsuk-u-margin-top-0 " style="display:inline-block;">
+        <div class="form-group" >
+          <p style="display:inline-block;">
             <span class="">
               <a  href="/notifications/user-alerts/manage-user-alerts?active=false" class="close2" id="">Close</a>
             </span>
@@ -288,40 +373,6 @@ function turnOff() {
 
 </script>
 
-
-
- <!-- ------------------   Scheduling for future  ---------------------------
-    -----------------------   Scheduling for future  ---------------------------
-    -----------------------   Scheduling for future  ---------------------------
-
-<div class="nhsuk-grid-row nhsuk-u-margin-top-6" style="{% if data.scheduled === 'true' %} display: block;{% else %} display:none;{% endif %}">
-
-  <div class="nhsuk-grid-column-full">
-    <h2 class="nhsuk-heading-m">Scheduled user alerts</h2>
-
-      <ul class="nhsuk-grid-row nhsuk-card-group nhsuk-u-padding-top-0">
-
-
-    <div class="nhsuk-grid-column-one-half">
-          <li class="beta-hub-main-topic nhsuk-card-group__item">
-            <div class="nhsuk-card nhsuk-card ">
-              <div class="nhsuk-card__content beta-card__content">
-                <h3 class="nhsuk-heading-xs">
-                    <b>iProov is down</b>
-                </h3>
-                <div class="nhsuk-card__description nhsuk-u-margin-top-0"><p>Start date: 02 February 2023, 08:00</p></div> 
-                <div class="nhsuk-card__description nhsuk-u-margin-top-0"><p>End date: Not set</p></div> 
-                <div class="nhsuk-card__description nhsuk-u-margin-top-6"><a class="nhsuk-u-padding-right-4" >View details</a> <a class="nhsuk-u-padding-left-4 nhsuk-u-padding-right-4" style="border-left: 1px solid; border-right: 1px solid">Edit</a> <a class="nhsuk-u-padding-left-4">Cancel</a></div>
-              </div>
-            </div>
-          </li>
-          <p class="nhsuk-hint nhsuk-u-font-size-19">Scheduled by: Admin Name on 01 February 2023</p>
-    </div>
-
-</div>
-</div>
-
--->
 
 </div>
 

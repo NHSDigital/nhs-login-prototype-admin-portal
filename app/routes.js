@@ -15,37 +15,7 @@ router.get('/error', (req, res) => {
 }) 
 
 
- 
-// Run this code when a form is submitted to 'impact question'
-router.post('/impact-level-answer', function (req, res) {
-	// Make a variable and give it the value from 'enter name for the radio button'
-	var impact = req.session.data['impact']
-	 // Check whether the variable matches a condition
-	if (impact == "Service is down"){
-	  // Send user to 
-	  res.redirect('/notifications/user-alerts/turn-on-user-alert/supplier-incidents/service-down/is-it-planned')
-	} else {
-	  // Send user to 
-	  res.redirect('/notifications/user-alerts/turn-on-user-alert/supplier-incidents/service-not-working-properly/is-it-planned')
-	}
-   })
-
-// Run this code when a form is submitted to 'maintenance question service down'
-router.post('/is-it-planned-down', function (req, res) {
-
-	// Make a variable and give it the value from 'enter name for the radio button'
-	var planned = req.session.data['is-it-planned-down']
-	 // Check whether the variable matches a condition
-	if (planned == "Yes"){
-	  // Send user to date and time page
-	  res.redirect('/notifications/user-alerts/turn-on-user-alert/supplier-incidents/service-down/planned-date-time')
-	} else {
-	  // Send user to confirm choices page
-	  res.redirect('/notifications/user-alerts/turn-on-user-alert/supplier-incidents/service-down/confirm-choices')
-	}
-   })  
-
-// Run this code when a form is submitted to 'maintenance question - service not working properly'
+// Run this code when a form is submitted to 'is it planned maintenance question service '
 router.post('/is-it-planned', function (req, res) {
 
 	// Make a variable and give it the value from 'enter name for the radio button'
@@ -53,29 +23,135 @@ router.post('/is-it-planned', function (req, res) {
 	 // Check whether the variable matches a condition
 	if (planned == "Yes"){
 	  // Send user to date and time page
-	  res.redirect('/notifications/user-alerts/turn-on-user-alert/supplier-incidents/service-not-working-properly/planned-date-time')
+	  res.redirect('/notifications/user-alerts/turn-on-user-alert/supplier-incidents/planned-maintenance')
 	} else {
 	  // Send user to confirm choices page
-	  res.redirect('/notifications/user-alerts/turn-on-user-alert/supplier-incidents/service-not-working-properly/confirm-choices')
-	}
-   })	
-
-// Run this code when a form is submitted to 'confirm choices service down'
-router.post('/NAM-down-template', function (req, res) {
-
-	// Make a variable and give it the value from 'enter name for the radio button'
-	var planned = req.session.data['is-it-planned-down']
-	 // Check whether the variable matches a condition
-	if (planned == "Yes"){
-	  // Send user to date and time page
-	  res.redirect('/notifications/user-alerts/turn-on-user-alert/supplier-incidents/service-down/Nam-down-planned-maintenance')
-	} else {
-	  // Send user to confirm choices page
-	  res.redirect('/notifications/user-alerts/turn-on-user-alert/supplier-incidents/service-down/Nam-down')
+	  res.redirect('/notifications/user-alerts/turn-on-user-alert/supplier-incidents/support-number')
 	}
    })  
 
-// Run this code when a form is submitted to 'confirm choicesservice not working properly'
+// Run this code when a form is submitted to 'is it planned maintenance question service '
+router.post('/is-it-planned-change', function (req, res) {
+
+	// Make a variable and give it the value from 'enter name for the radio button'
+	var planned = req.session.data['is-it-planned']
+	 // Check whether the variable matches a condition
+	if (planned == "Yes"){
+	  // Send user to date and time page
+	  res.redirect('/notifications/user-alerts/turn-on-user-alert/supplier-incidents/planned-maintenance')
+	} else {
+	  // Send user to confirm choices page
+	  res.redirect('/notifications/user-alerts/turn-on-user-alert/supplier-incidents/incident-details')
+	}
+   })   
+
+// Run this code when a form is submitted to 'is it planned maintenance question from edit'
+router.post('/is-it-planned-edit', function (req, res) {
+
+	// Make a variable and give it the value from 'enter name for the radio button'
+	var planned = req.session.data['is-it-planned']
+	 // Check whether the variable matches a condition
+	if (planned == "Yes"){
+	  // Send user to date and time page
+	  res.redirect('/notifications/user-alerts/edit-user-alert/planned-maintenance')
+	} else {
+	  // Send user to confirm choices page
+	  res.redirect('/notifications/user-alerts/edit-user-alert/incident-details?change=true')
+	}
+   })   
+
+// Run this code when a form is submitted to 'maintenance end date time question /service down'
+router.post('/date-time', function (req, res) {
+
+	// Make a variable and give it the value from 'enter name for the radio button'
+	var planned = req.session.data['do-you-know-end-date-time']
+	 // Check whether the variable matches a condition
+	if (planned == "dontknow"){
+	  // Send user to date and time page
+	  res.redirect('/notifications/user-alerts/turn-on-user-alert/supplier-incidents/support-number')
+	} else {
+	  // Send user to confirm choices page
+	  res.redirect('/notifications/user-alerts/turn-on-user-alert/supplier-incidents/planned-date-time')
+	}
+   })   
+   
+// Run this code when a form is submitted to 'maintenance end date time question /service down'
+router.post('/date-time-change', function (req, res) {
+
+	// Make a variable and give it the value from 'enter name for the radio button'
+	var planned = req.session.data['do-you-know-end-date-time']
+	 // Check whether the variable matches a condition
+	if (planned == "dontknow"){
+	  // Send user to date and time page
+	  res.redirect('/notifications/user-alerts/turn-on-user-alert/supplier-incidents/incident-details')
+	} else {
+	  // Send user to confirm choices page
+	  res.redirect('/notifications/user-alerts/turn-on-user-alert/supplier-incidents/planned-date-time')
+	}
+   })    
+
+// Run this code when a form is submitted to 'maintenance end date time question from edit'
+router.post('/date-time-edit', function (req, res) {
+
+	// Make a variable and give it the value from 'enter name for the radio button'
+	var planned = req.session.data['do-you-know-end-date-time']
+	 // Check whether the variable matches a condition
+	if (planned == "dontknow"){
+	  // Send user to date and time page
+	  res.redirect('/notifications/user-alerts/edit-user-alert/incident-details?change=true')
+	} else {
+	  // Send user to confirm choices page
+	  res.redirect('/notifications/user-alerts/edit-user-alert/planned-date-time')
+	}
+   })  
+    
+
+// Run this code when a form is submitted to 'confirm incident details'
+router.post('/NAM-down-template', function (req, res) {
+
+	// Make a variable and give it the value from 'enter name for the radio button'
+	var planned = req.session.data['is-it-planned']
+	 // Check whether the variable matches a condition
+	if (planned == "Yes"){
+	  // Send user to date and time page
+	  res.redirect('/notifications/user-alerts/turn-on-user-alert/supplier-incidents/Nam-down-planned-maintenance')
+	} else {
+	  // Send user to confirm choices page
+	  res.redirect('/notifications/user-alerts/turn-on-user-alert/supplier-incidents/Nam-down')
+	}
+   })  
+
+// Run this code when a form is submitted to 'incident details edit service down'
+router.post('/NAM-down-template-edit', function (req, res) {
+
+	// Make a variable and give it the value from 'enter name for the radio button'
+	var planned = req.session.data['is-it-planned']
+	 // Check whether the variable matches a condition
+	if (planned == "Yes"){
+	  // Send user to date and time page
+	  res.redirect('/notifications/user-alerts/edit-user-alert/NAM-down-planned-maintenance?change=true&namdownplanned=true')
+	} else {
+	  // Send user to confirm choices page
+	  res.redirect('/notifications/user-alerts/edit-user-alert/NAM-down?change=true&namdownplanned=false')
+	}
+   })  
+   
+// Run this code when a form is submitted to 'incident details edit service not working properly'
+router.post('/NAM-template-edit', function (req, res) {
+
+	// Make a variable and give it the value from 'enter name for the radio button'
+	var planned = req.session.data['is-it-planned']
+	 // Check whether the variable matches a condition
+	if (planned == "Yes"){
+	  // Send user to date and time page
+	  res.redirect('/notifications/user-alerts/edit-user-alert/NAM-not-working-properly-planned-maintenance?change=true&namplanned=true')
+	} else {
+	  // Send user to confirm choices page
+	  res.redirect('/notifications/user-alerts/edit-user-alert/NAM-not-working-properly?change=true&namplanned=false')
+	}
+   })    
+
+// Run this code when a form is submitted to 'confirm incident details'
 router.post('/NAM-template', function (req, res) {
 
 	// Make a variable and give it the value from 'enter name for the radio button'
@@ -83,10 +159,10 @@ router.post('/NAM-template', function (req, res) {
 	 // Check whether the variable matches a condition
 	if (planned == "Yes"){
 	  // Send user to date and time page
-	  res.redirect('/notifications/user-alerts/turn-on-user-alert/supplier-incidents/service-not-working-properly/Nam-not-working-properly-planned-maintenance')
+	  res.redirect('/notifications/user-alerts/turn-on-user-alert/supplier-incidents/Nam-not-working-properly-planned-maintenance')
 	} else {
 	  // Send user to confirm choices page
-	  res.redirect('/notifications/user-alerts/turn-on-user-alert/supplier-incidents/service-not-working-properly/Nam-not-working-properly')
+	  res.redirect('/notifications/user-alerts/turn-on-user-alert/supplier-incidents/Nam-not-working-properly')
 	}
    }) 
 
