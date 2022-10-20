@@ -1,0 +1,208 @@
+{% extends 'layout-nav.html' %}
+{% set pageSection = "Manage user notifications" %}
+
+<!-- this page is only visible to prod-accessreport group -->
+
+{% block beforeContent %}
+<nav class="nhsuk-breadcrumb" aria-label="Breadcrumb">
+  <div class="nhsuk-width-container">
+    <ol class="nhsuk-breadcrumb__list">
+      <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link" href="/notifications">Manage user notifications</a></li>
+      <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link" href="/notifications/user-alerts/manage-user-alerts">Manage user alerts</a></li>
+      <li class="nhsuk-breadcrumb__item">Edit active user alert</li>
+    </ol>
+  </div>
+</nav>
+{% endblock %}
+
+{% block headCSS %}
+  <link href="/css/main.css" rel="stylesheet">
+  <link href="/css/nhsuk.css" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+
+<style>
+a:visited { 
+    color:	#005eb8; 
+    }
+</style>
+
+
+
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds" >
+
+        <h1 class="nhsuk-heading-l">Edit active user alert</h1>
+    </div>
+  </div>
+
+
+  <div class="nhsuk-width-container nhsuk-u-margin-top-4">
+    {% if data['impact'] === 'Service is not working as expected' %}
+    {% if data['is-it-planned'] === 'Yes' %}
+    <h1 class="nhsuk-heading-m" style="line-height: 100%;">NAM is not working as expected</h1>
+    <h1 class="nhsuk-heading-m nhsuk-u-padding-bottom-4" style="line-height: 0%;">Planned maintenance</h1>
+    {% endif %}
+    {% endif %}
+    {% if data['impact'] === 'Service is not working as expected' %}
+    {% if data['is-it-planned'] === 'No' %}
+    <h1 class="nhsuk-heading-m nhsuk-u-padding-bottom-2">NAM is not working as expected</h1>
+    {% endif %}
+    {% endif %}
+    {% if data['impact'] === 'Service is down' %}
+    {% if data['is-it-planned'] === 'Yes' %}
+    <h1 class="nhsuk-heading-m" style="line-height: 100%;">NAM is down</h1>
+    <h1 class="nhsuk-heading-m nhsuk-u-padding-bottom-4" style="line-height: 0%;">Planned maintenance</h1>
+    {% endif %}
+    {% endif %}
+    {% if data['impact'] === 'Service is down' %}
+    {% if data['is-it-planned'] === 'No' %}
+    <h1 class="nhsuk-heading-m nhsuk-u-padding-bottom-2">NAM is down</h1>
+    {% endif %}
+    {% endif %}
+    <hr class="nhsuk-section-break nhsuk-section-break--visible">
+  </div>
+
+
+  <dl class="nhsuk-summary-list nhsuk-u-margin-top-4">
+
+    <div class="nhsuk-summary-list__row">
+      <dt class="nhsuk-summary-list__key">
+        Incident type
+      </dt>
+      <dd class="nhsuk-summary-list__value">
+        3rd party supplier incident
+        <p class="nhsuk-hint">Network or a technical issue with a supplier regardless of the user volume</p>
+      </dd>
+  
+      <dd class="nhsuk-summary-list__actions" >
+  
+        <a href="#">
+          <span class="nhsuk-u-visually-hidden"> name</span>
+        </a>
+  
+      </dd>
+  
+    </div>
+
+    <div class="nhsuk-summary-list__row">
+      <dt class="nhsuk-summary-list__key">
+        Affected supplier
+      </dt>
+      <dd class="nhsuk-summary-list__value">
+        NAM
+        <p class="nhsuk-hint">Affecting IDVM, POL and log in journey</p>
+      </dd>
+  
+      <dd class="nhsuk-summary-list__actions" >
+  
+        <a href="#">
+          <span class="nhsuk-u-visually-hidden"> name</span>
+        </a>
+  
+      </dd>
+  
+    </div>
+  
+    <div class="nhsuk-summary-list__row">
+      <dt class="nhsuk-summary-list__key">
+        What is the impact on the service?
+      </dt>
+      <dd class="nhsuk-summary-list__value">
+        {{ data['impact'] }}
+        {% if data['impact'] === 'Service is down' %}
+        <p class="nhsuk-hint">Users cannot continue their journey</p>
+        {% endif %}
+        {% if data['impact'] === 'Service is not working as expected' %}
+        <p class="nhsuk-hint">Users may or may not be able to continue their journey</p>
+        {% endif %}
+      </dd>
+  
+      <dd class="nhsuk-summary-list__actions">
+  
+        <a href="impact-level">
+          Change
+        </a>
+  
+      </dd>
+  
+    </div>
+  
+    <div class="nhsuk-summary-list__row">
+      <dt class="nhsuk-summary-list__key">
+       Is it planned maintenance?
+      </dt>
+
+      <dd class="nhsuk-summary-list__value">
+        {{ data['is-it-planned'] }}
+      </dd>
+  
+      <dd class="nhsuk-summary-list__actions">
+  
+        <a href="is-it-planned">
+          Change
+        </a>
+  
+      </dd>
+  
+    </div>
+
+
+    {% if data['is-it-planned'] === 'Yes' %}
+    
+    <div class="nhsuk-summary-list__row">
+      <dt class="nhsuk-summary-list__key">
+       When does the maintenance end?
+      </dt>
+      {% if data['do-you-know-end-date-time'] === 'both' %}
+      <dd class="nhsuk-summary-list__value">
+       <p>2 February 2023 at 11.30pm</p>
+      </dd>
+      {% endif %}
+      {% if data['do-you-know-end-date-time'] === 'date' %}
+      <dd class="nhsuk-summary-list__value">
+       <p> 2 February 2023</p>
+      </dd>
+      {% endif %}
+      {% if data['do-you-know-end-date-time'] === 'dontknow' %}
+      <dd class="nhsuk-summary-list__value">
+       <p>Not known</p>
+      </dd>
+      {% endif %}
+  
+      <dd class="nhsuk-summary-list__actions">
+  
+        <a href="planned-maintenance">
+          Change<span class="nhsuk-u-visually-hidden"></span>
+        </a>
+  
+      </dd>
+  
+    </div>
+
+    {% endif %}
+
+
+  
+  </dl> 
+
+
+  <form action="{% if data['impact'] === 'Service is down' %}/NAM-down-template-edit{% else %}/NAM-template-edit{% endif %}" method="post">
+    <button class="nhsuk-button" type="submit" style="{% if data.change === 'true' %} display: block;{% else %} display:none;{% endif %}">
+      Continue with changes
+    </button>
+  </form>
+
+
+      <p>
+        <a class="nhsuk-link" href="/notifications/user-alerts/manage-user-alerts?active=true&edit=false">
+        Cancel changes and return to manage user alerts
+        </a>
+      </p> 
+        
+        
+{% endblock %}
+
+

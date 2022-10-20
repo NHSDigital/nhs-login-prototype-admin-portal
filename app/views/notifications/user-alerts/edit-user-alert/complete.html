@@ -1,0 +1,101 @@
+{% extends 'layout-nav.html' %}
+{% set pageSection = "Manage user notifications" %}
+
+<!-- this page is only visible to prod-accessreport group -->
+
+{% block beforeContent %}
+  <nav class="nhsuk-breadcrumb" aria-label="Breadcrumb">
+    <div class="nhsuk-width-container">
+      <ol class="nhsuk-breadcrumb__list">
+        <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link" href="/notifications">Manage user notifications</a></li>
+        <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link" href="/notifications/user-alerts/manage-user-alerts?active=true">Manage user alerts</a></li>
+        <li class="nhsuk-breadcrumb__item">Edit active user alert</li>
+      </ol>
+    </div>
+  </nav>
+{% endblock %}
+
+{% block headCSS %}
+  <link href="/css/main.css" rel="stylesheet">
+  <link href="/css/nhsuk.css" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+
+<style>
+  a:visited { 
+   color:	#005eb8; 
+  }
+
+  .complete{
+    background-color:	#007f3b;
+    color:#fff;
+    text-align: center;
+  }
+
+</style>
+
+
+
+  <div class="nhsuk-grid-row nhsuk-u-margin-bottom-4">
+    <div class="nhsuk-grid-column-two-thirds">
+      <div class="complete nhsuk-u-padding-7" >
+        <div>
+          <h1 class="nhsuk-heading-xl nhsuk-u-margin-bottom-6">
+            Incident type has been changed to:
+          </h1>
+          {% if data['impact'] === 'Service is not working as expected' %}
+          {% if data['is-it-planned'] === 'Yes' %}
+          <h2 class="nhsuk-heading-l" style="line-height: 100%;">NAM is not working as expected</h2>
+          <h2 class="nhsuk-heading-l nhsuk-u-padding-bottom-4" style="line-height: 0%;">Planned maintenance</h2>
+          {% endif %}
+          {% endif %}
+          {% if data['impact'] === 'Service is not working as expected' %}
+          {% if data['is-it-planned'] === 'No' %}
+          <h2 class="nhsuk-heading-l nhsuk-u-padding-bottom-2">NAM is not working as expected</h2>
+          {% endif %}
+          {% endif %}
+          {% if data['impact'] === 'Service is down' %}
+          {% if data['is-it-planned'] === 'Yes' %}
+          <h2 class="nhsuk-heading-l" style="line-height: 100%;">NAM is down</h2>
+          <h2 class="nhsuk-heading-l nhsuk-u-padding-bottom-4" style="line-height: 0%;">Planned maintenance</h2>
+          {% endif %}
+          {% endif %}
+          {% if data['impact'] === 'Service is down' %}
+          {% if data['is-it-planned'] === 'No' %}
+          <h2 class="nhsuk-heading-l nhsuk-u-padding-bottom-2">NAM is down</h2>
+          {% endif %}
+          {% endif %}
+        </div>
+        {% if data['incident-number'] != 'No' %}
+
+        <p class="nhsuk-body-l nhsuk-u-padding-top-4" style="line-height: 0%;">
+          Support reference number:
+        </p>
+        
+        <h3 class="nhsuk-heading-l" style="line-height:0%;">
+          ABCD12345678
+        </h3>
+          
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-two-thirds">
+      <p class="mhsuk-body-l">
+        <a href="/notifications/user-alerts/manage-user-alerts?active=true&edit=true">
+          Return to manage user alerts
+        </a>
+      </p>
+      
+
+  </div>
+</div>
+
+        
+{% endblock %}
+
+

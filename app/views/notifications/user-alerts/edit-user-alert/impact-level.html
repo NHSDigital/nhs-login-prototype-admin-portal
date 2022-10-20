@@ -1,0 +1,98 @@
+{% extends 'layout-nav.html' %}
+{% set pageSection = "Manage user notifications" %}
+
+<!-- this page is only visible to prod-accessreport group -->
+
+{% block beforeContent %}
+  <nav class="nhsuk-breadcrumb" aria-label="Breadcrumb">
+    <div class="nhsuk-width-container">
+      <ol class="nhsuk-breadcrumb__list">
+        <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link" href="/notifications">Manage user notifications</a></li>
+        <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link" href="/notifications/user-alerts/manage-user-alerts">Manage user alerts</a></li>
+        <li class="nhsuk-breadcrumb__item">Edit active user alert</li>
+      </ol>
+    </div>
+  </nav>
+{% endblock %}
+
+{% block headCSS %}
+  <link href="/css/main.css" rel="stylesheet">
+  <link href="/css/nhsuk.css" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<style>
+  a:visited { 
+    color:	#005eb8; 
+    }
+</style>
+
+<div class="nhsuk-width-container">
+  <h1 class="nhsuk-heading-s nhsuk-u-padding-bottom-2" style="color: 	#4c6272; padding-bottom: 0px;">NAM incident</h1>
+</div>
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-full"> 
+      <form action="incident-details?change=true" method="post">
+      <div class="nhsuk-form-group">
+
+        <fieldset class="nhsuk-fieldset">
+          <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+            <h1 class="nhsuk-fieldset__heading">
+              What is the impact on the service?
+            </h1>
+          </legend>
+      
+          <div class="nhsuk-radios nhsuk-u-margin-top-2">
+      
+            <div class="nhsuk-radios__item">
+              <input class="nhsuk-radios__input" id="impact" name="impact" type="radio" value="Service is not working as expected" aria-describedby="example-hints-1-item-hint">
+              <label class="nhsuk-label nhsuk-radios__label" for="example-hints-1">
+                Service is not working as expected
+              </label>
+              <div class="nhsuk-hint nhsuk-radios__hint" id="example-hints-1-item-hint">
+                Users may or may not be able to continue their journey
+              </div>
+            </div>
+      
+            <div class="nhsuk-radios__item">
+              <input class="nhsuk-radios__input" id="impact" name="impact" type="radio" value="Service is down" aria-describedby="example-hints-2-item-hint">
+              <label class="nhsuk-label nhsuk-radios__label" for="example-hints-2">
+                Service is down
+              </label>
+              <div class="nhsuk-hint nhsuk-radios__hint" id="example-hints-2-item-hint">
+                Users cannot continue their journey
+              </div>
+            </div>
+      
+          </div>
+        </fieldset>
+      
+      </div>
+      
+        <button class="nhsuk-button" type="submit">
+          Continue with changes
+        </button>
+      </form>
+
+      <p>
+        <a class="nhsuk-link" href="incident-details?edit=false">
+        Cancel changes and return to incident details
+        </a>
+      </p>
+      
+    </div>
+  </div>
+
+
+  <script>
+    
+    function clearData() {
+      sessionStorage.clear();
+    }
+  </script>
+        
+        
+{% endblock %}
+
+
