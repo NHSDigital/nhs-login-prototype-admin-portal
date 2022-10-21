@@ -114,7 +114,7 @@ router.post('/NAM-down-template', function (req, res) {
 	 // Check whether the variable matches a condition
 	if (planned == "Yes"){
 	  // Send user to date and time page
-	  res.redirect('/notifications/user-alerts/turn-on-user-alert/supplier-incidents/Nam-down-planned-maintenance')
+	  res.redirect('/notifications/user-alerts/turn-on-user-alert/supplier-incidents/NAM-down-planned')
 	} else {
 	  // Send user to confirm choices page
 	  res.redirect('/notifications/user-alerts/turn-on-user-alert/supplier-incidents/Nam-down')
@@ -129,7 +129,7 @@ router.post('/NAM-down-template-edit', function (req, res) {
 	 // Check whether the variable matches a condition
 	if (planned == "Yes"){
 	  // Send user to date and time page
-	  res.redirect('/notifications/user-alerts/edit-user-alert/NAM-down-planned-maintenance?change=true&namdownplanned=true')
+	  res.redirect('/notifications/user-alerts/edit-user-alert/NAM-down-planned?change=true&namdownplanned=true')
 	} else {
 	  // Send user to confirm choices page
 	  res.redirect('/notifications/user-alerts/edit-user-alert/NAM-down?change=true&namdownplanned=false')
@@ -144,10 +144,10 @@ router.post('/NAM-template-edit', function (req, res) {
 	 // Check whether the variable matches a condition
 	if (planned == "Yes"){
 	  // Send user to date and time page
-	  res.redirect('/notifications/user-alerts/edit-user-alert/NAM-not-working-properly-planned-maintenance?change=true&namplanned=true')
+	  res.redirect('/notifications/user-alerts/edit-user-alert/NAM-not-working-as-expected-planned?change=true&namplanned=true')
 	} else {
 	  // Send user to confirm choices page
-	  res.redirect('/notifications/user-alerts/edit-user-alert/NAM-not-working-properly?change=true&namplanned=false')
+	  res.redirect('/notifications/user-alerts/edit-user-alert/NAM-not-working-as-expected?change=true&namplanned=false')
 	}
    })    
 
@@ -159,10 +159,10 @@ router.post('/NAM-template', function (req, res) {
 	 // Check whether the variable matches a condition
 	if (planned == "Yes"){
 	  // Send user to date and time page
-	  res.redirect('/notifications/user-alerts/turn-on-user-alert/supplier-incidents/Nam-not-working-properly-planned-maintenance')
+	  res.redirect('/notifications/user-alerts/turn-on-user-alert/supplier-incidents/NAM-not-working-as-expected-planned')
 	} else {
 	  // Send user to confirm choices page
-	  res.redirect('/notifications/user-alerts/turn-on-user-alert/supplier-incidents/Nam-not-working-properly')
+	  res.redirect('/notifications/user-alerts/turn-on-user-alert/supplier-incidents/NAM-not-working-as-expected')
 	}
    }) 
 
