@@ -1,0 +1,890 @@
+{% extends 'layout-nav.html' %}
+{% set pageSection = "Manage user notifications" %}
+
+<!-- this page is only visible to prod-accessreport group -->
+
+{% block beforeContent %}
+<nav class="nhsuk-breadcrumb" aria-label="Breadcrumb">
+  <div class="nhsuk-width-container">
+    <ol class="nhsuk-breadcrumb__list">
+      <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link" href="/notifications">Manage user notifications</a></li>
+      <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link" href="/notifications/user-alerts/manage-user-alerts">Manage user alerts</a></li>
+      <li class="nhsuk-breadcrumb__item">Edit active user alert</li>
+    </ol>
+  </div>
+</nav>
+{% endblock %}
+
+
+
+{% block headCSS %}
+  <link href="/css/main.css" rel="stylesheet">
+  <link href="/css/nhsuk.css" rel="stylesheet">
+{% endblock %}
+
+
+
+{% block content %}
+
+<style>
+
+  a:visited { 
+  color:	#005eb8; 
+  }
+
+  .alert-header {
+  
+  padding-top: 8px;
+  margin: 0%;
+  background-color: #fff;
+  }
+
+  .alert-header-tab {
+  color: 	#4c6272;
+  text-align: center;
+  font-size: 20px;
+  font-weight:600;
+  background-color: #d8dde0;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  padding-top: 16px;
+  padding-bottom: 14px;
+  margin-bottom: 0%;
+  }
+
+  .alert-header-tab-selected {
+  color: #005eb8;
+  text-align: center;
+  font-size: 24px;
+  font-weight: 900;
+  background-color: #fff;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  padding-top: 16px;
+  padding-bottom: 8px;
+  margin-bottom: 0%;
+  border: 1px solid #d8dde0;
+  border-bottom:0px;
+  }
+
+       /* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding: 1.5em; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.685); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  max-width: 640px;
+  overflow: auto;
+  overflow-x: hidden;
+  padding: 1.5em;
+  position: relative;
+  width: 100%;
+  height:fit-content;
+} 
+
+</style>
+
+<style>
+  .nhsuk-warning-text {
+  position: relative;
+  padding: 10px 0; }
+
+  .nhsuk-warning-text__icon {
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -webkit-user-select: none;
+  background: #212b32;
+  border-radius: 50%;
+  border: 3px solid #212b32;
+  color: #fff;
+  display: inline-block;
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 29px;
+  min-height: 29px;
+  position: relative;
+  text-align: center;
+  user-select: none;
+  width: 35px; }
+
+  .nhsuk-warning-text__icon_global {
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -webkit-user-select: none;
+  background: #212b32;
+  border-radius: 50%;
+  border: 3px solid #212b32;
+  color: #fff;
+  display: inline-block;
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 29px;
+  min-height: 29px;
+  position: relative;
+  text-align: center;
+  user-select: none;
+  width: 35px; }
+
+
+</style>
+
+
+
+<div class="nhsuk-back-link">
+  <a class="nhsuk-back-link__link" href="#">
+    <svg class="nhsuk-icon nhsuk-icon__chevron-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" height="24" width="24">
+      <path d="M8.5 12c0-.3.1-.5.3-.7l5-5c.4-.4 1-.4 1.4 0s.4 1 0 1.4L10.9 12l4.3 4.3c.4.4.4 1 0 1.4s-1 .4-1.4 0l-5-5c-.2-.2-.3-.4-.3-.7z"></path>
+    </svg>
+    Back to: Confirm incident details</a>
+</div>
+
+  <div class="nhsuk-grid-row">
+
+    <div class="nhsuk-grid-column-full nhsuk-u-margin-top-4">
+      <h1 class="nhsuk-heading-l" style="line-height: 100%;">NAM is down</h1>   
+      <h1 class="nhsuk-heading-l" style="line-height: 0%;">Planned maintenance</h1>
+    </div>
+    <div class="nhsuk-grid-column-two-thirds nhsuk-u-margin-top-4">
+        <p >
+          Service will be unavailable due to a planned maintenance. Users will not be able to access the affected journeys.
+        </p>
+          <details class="nhsuk-details ">
+            <summary class="nhsuk-details__summary">
+              <span class="nhsuk-details__summary-text">
+                Journeys affected
+              </span>
+            </summary>
+            <div class="nhsuk-details__text">
+              <ul class="nhsuk-list nhsuk-list--bullet">
+                <li>IDVM</li>
+                <li>POL</li>
+                <li>log in journey</li>
+              </ul>
+            </div>
+          </details>
+          <details class="nhsuk-details ">
+            <summary class="nhsuk-details__summary">
+              <span class="nhsuk-details__summary-text">
+                Users affected
+              </span>
+            </summary>
+            <div class="nhsuk-details__text">
+              <ul class="nhsuk-list nhsuk-list--bullet">
+                <li>new users registering for the first time</li>
+                <li>existing users logging in for the first time</li>
+                <li>existing users uplifting to P9</li>
+              </ul>
+            </div>
+          </details>
+    </div>
+  </div>
+
+
+<div class="nhsuk-grid-row" style="display:none;">
+      <div class="nhsuk-grid-column-full nhsuk-u-margin-top-4">
+        <h1 class="nhsuk-heading-l">User alerts</h1>
+      </div> 
+</div>
+      
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-full nhsuk-u-margin-top-4" >
+    <div class="nhsuk-grid-column-one-third nhsuk-u-padding-0" onclick="globalAlert()" style="cursor:pointer;">
+      <h2 class="alert-header-tab-selected" id="global-alert">
+        Global alert
+      </h2>
+    </div>
+    <div class="nhsuk-grid-column-one-third nhsuk-u-padding-right-3 nhsuk-u-padding-left-3" onclick="reminderAlert()" style="cursor:pointer;">
+      <h2 class="alert-header-tab" id="reminder-alert">
+        Reminder alert
+      </h2>
+    </div>
+    <div class="nhsuk-grid-column-one-third nhsuk-u-padding-0" onclick="interruptScreen()" style="cursor:pointer;">
+      <h2 class="alert-header-tab" id="interrupt-screen">
+        Interrupt screen
+      </h2>
+    </div>
+  </div>
+</div>
+
+
+<div class="nhsuk-grid-row " >
+  <div class="nhsuk-grid-column-full">
+   <div id="globalalert" style=" display:none; border-bottom: 1px solid #d8dde0;  border-right: 1px solid #d8dde0; border-left: 1px solid #d8dde0; background-color: #fff;">
+       <h2 class="nhsuk-heading-m alert-header"></h2>
+       <div class="nhsuk-grid-row nhsuk-u-padding-4">
+          <div class=" nhsuk-grid-column-one-half " >
+            <div class=" nhsuk-u-padding-bottom-1 " style="background-color: #ffdddb; padding:16px; ;">
+              <div class="" aria-labelledby="error-summary-title" role="service status information" tabindex="-1" >
+                <div class=" " style="display:flex; flex-direction:row;">
+                  <div>
+                    <span class="nhsuk-warning-text__icon_global" aria-hidden="true" style="display:;">!</span>
+                  </div>
+                  <div class="nhsuk-u-margin-left-4" aria-labelledby="error-summary-title" role="alert" tabindex="-1" >
+                    <div>
+                      {% if data['is-it-planned'] === 'Yes' %}
+                      <h1 class="nhsuk-error-summary__title nhsuk-heading-l" style="padding-right: 16px;" id="error-summary-title">
+                        We are carrying out essential maintenance on the service
+                      </h1>
+                      {% else %}
+                      <h1 class="nhsuk-error-summary__title nhsuk-heading-l" style=" padding-right: 16px;" id="error-summary-title">
+                        There is a problem with the service
+                      </h1>
+                      {% endif %}
+                    <div id="show-details" style="display:none; padding-bottom: 16px;" class="nhsuk-u-font-size-19">
+                      <a href="#" onclick="ExpandBanner()" class="nhsuk-link nhsuk-link--no-visited-state">Show details</a>
+                    </div>
+                    </div>
+                    <div class="" id="BannerContent" style="display:block;">
+                      <div class="nhsuk-error-summary__body">
+                        
+                        {% if data['impact'] === 'Service is not working as expected' %}
+                        {% if data['is-it-planned'] === 'Yes' %}
+                        {% if data['do-you-know-end-date-time'] === 'both' %}
+                        <p> 
+                          This could affect your access to the service.
+                        </p>
+                        <p>
+                          We expect this work to finish on 1 February 2023 at 8pm.
+                        </p>
+                        {% endif %}
+                        {% endif %}
+                        {% endif %}
+
+                        {% if data['impact'] === 'Service is not working as expected' %}
+                        {% if data['is-it-planned'] === 'Yes' %}
+                        {% if data['do-you-know-end-date-time'] === 'date' %}
+                        <p> 
+                          This could affect your access to the service.
+                        </p>
+                        <p>
+                          We expect this work to finish on 1 February 2023.
+                        </p>
+                        {% endif %}
+                        {% endif %}
+                        {% endif %}
+
+                        {% if data['impact'] === 'Service is not working as expected' %}
+                        {% if data['is-it-planned'] === 'Yes' %}
+                        {% if data['do-you-know-end-date-time'] === 'dontknow' %}
+                        <p> 
+                          This could affect your access to the service.
+                        </p>
+                        <p>
+                          We are working to complete it as soon as possible.
+                        </p>
+                        {% endif %}
+                        {% endif %}
+                        {% endif %}
+            
+                        {% if data['impact'] === 'Service is down' %}
+                        {% if data['is-it-planned'] === 'Yes' %}
+                        {% if data['do-you-know-end-date-time'] === 'both' %}
+                        <p> 
+                          This could affect your access to the service.
+                        </p>
+                        <p>
+                          We expect this work to finish on 1 February 2023 at 8pm.
+                        </p>
+                        {% endif %}
+                        {% endif %}
+                        {% endif %}
+
+                        {% if data['impact'] === 'Service is down' %}
+                        {% if data['is-it-planned'] === 'Yes' %}
+                        {% if data['do-you-know-end-date-time'] === 'date' %}
+                        <p> 
+                          This could affect your access to the service.
+                        </p>
+                        <p>
+                          We expect this work to finish on 1 February 2023.
+                        </p>
+                        {% endif %}
+                        {% endif %}
+                        {% endif %}
+            
+                        {% if data['impact'] === 'Service is down' %}
+                        {% if data['is-it-planned'] === 'Yes' %}
+                        {% if data['do-you-know-end-date-time'] === 'dontknow' %}
+                        <p> 
+                          This could affect your access to the service.
+                        </p>
+                        <p>
+                          We are working to complete it as soon as possible.
+                        </p>
+                        {% endif %}
+                        {% endif %}
+                        {% endif %}
+            
+                        
+                        {% if data['impact'] === 'Service is not working as expected' %}
+                        {% if data['is-it-planned'] === 'No' %}
+                        <p> 
+                          We are working to fix a technical issue with NHS login.
+                        </p>
+                        <p> 
+                          This could affect your access to the service.
+                        </p>
+                        {% endif %}
+                        {% endif %}
+            
+                        {% if data['impact'] === 'Service is down' %}
+                        {% if data['is-it-planned'] === 'No' %}
+                        <p> 
+                          We are working to fix a technical issue with NHS login.
+                        </p>
+                        <p> 
+                          This could affect your access to the service.
+                        </p>
+                        {% endif %}
+                        {% endif %}
+                
+                        
+                        <p>
+                          If you already have an NHS login account and have logged in at least once before, this will not affect you.
+                        </p>
+                        <ul class="nhsuk-list nhsuk-error-summary__list">
+                          <li>
+                            <p class=" nhsuk-body ">Last updated: 1 February 2023 at 8.30am</p>
+                          </li>
+                        </ul>
+            
+                      </div>
+                      <button class="nhsuk-button nhsuk-button--secondary full-width" type="submit" id="MinimiseBanner" onclick="MinimiseBanner()" style="">
+                        Hide this message
+                      </button>
+                    </div>
+                  </div>
+                </div>           
+            </div>
+            </div>
+          </div>
+          <div class=" nhsuk-grid-column-one-half" >
+            <details class="nhsuk-details nhsuk-expander">
+              <summary class="nhsuk-details__summary">
+                <span class="nhsuk-details__summary-text">
+                  See how it looks on a page
+                </span>
+              </summary>
+              <div class="nhsuk-details__text">
+                <img src="/images/2nd-alert.png" style="cursor:zoom-in;"> 
+              </div>
+            </details>
+            <details class="nhsuk-details nhsuk-expander ">
+              <summary class="nhsuk-details__summary">
+                <span class="nhsuk-details__summary-text">
+                  Where and when users will see it
+                </span>
+              </summary>
+              <div class="nhsuk-details__text">
+                <p>
+                  All users will see this alert at the beginning of the journey.
+                </p>
+                <p>
+                  At the point in the journey when we know a user is not affected by this incident, we will stop showing the alert to them.
+                </p>
+                <p>
+                  We will continue to show the alert to affected users.
+                </p>
+              </div>
+            </details>
+          </div>
+        </div>     
+    </div>
+  </div>
+</div>
+
+
+
+<div class="nhsuk-grid-row " >
+  <div class="nhsuk-grid-column-full">
+   <div id="reminderalert" style=" display:none; border-bottom: 1px solid #d8dde0;  border-right: 1px solid #d8dde0; border-left: 1px solid #d8dde0; background-color: #fff;">
+    <h2 class="nhsuk-heading-m alert-header"></h2>
+       <div class="nhsuk-grid-row nhsuk-u-padding-4">
+          <div class=" nhsuk-grid-column-one-half " >
+            <div class="" aria-labelledby="error-summary-title" style="padding: 16px; margin-top: 8px;  border: 2px solid #ED8B00;" role="alert" tabindex="-1">
+              <div class=" " style="display:flex; flex-direction:row;">
+                <div class="">
+                  <span class="nhsuk-warning-text__icon" aria-hidden="true" style="display:;">!</span>
+                <svg style="display:none;"version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 485.811 485.811" style="enable-background:new 0 0 485.811 485.811;" xml:space="preserve" height="32px" width="32px" >
+                  <path style="fill:#ED8B00;" d="M476.099,353.968l-170.2-294.8c-27.8-48.7-98.1-48.7-125.8,0l-170.3,294.8c-27.8,48.7,6.8,109.2,62.9,109.2h339.9
+                  C468.699,463.168,503.899,402.068,476.099,353.968z M242.899,397.768c-14.8,0-27.1-12.3-27.1-27.1s12.3-27.1,27.1-27.1
+                  c14.8,0,27.1,12.3,26.5,27.8C270.099,385.468,257.099,397.768,242.899,397.768z M267.599,222.568c-1.2,21-2.5,41.9-3.7,62.9
+                  c-0.6,6.8-0.6,13-0.6,19.7c-0.6,11.1-9.3,19.7-20.4,19.7s-19.7-8-20.4-19.1c-1.8-32.7-3.7-64.8-5.5-97.5
+                  c-0.6-8.6-1.2-17.3-1.9-25.9c0-14.2,8-25.9,21-29.6c13-3.1,25.9,3.1,31.5,15.4c1.9,4.3,2.5,8.6,2.5,13.6
+                  C269.499,195.468,268.199,209.068,267.599,222.568z"/>
+                  </svg>
+          
+                </div>
+                <div class="nhsuk-u-margin-left-4" aria-labelledby="error-summary-title" role="alert" tabindex="-1" >
+                  {% if data['is-it-planned'] === 'Yes' %}
+                  <h2 class="nhsuk-error-summary__title" id="error-summary-title">
+                    Connecting to GP systems is currently unavailable
+                  </h2>
+                  {% else %}
+                  <h2 class="nhsuk-error-summary__title" id="error-summary-title">
+                    We are having issues connecting to GP systems
+                  </h2>
+                  {% endif %}
+                <div class="nhsuk-error-summary__body">
+                  {% if data['impact'] === 'Service is not working as expected' %}
+                  {% if data['is-it-planned'] === 'Yes' %}
+                  {% if data['do-you-know-end-date-time'] === 'both' %}
+                  <p>
+                    We are carrying out essential maintenance on the service.
+                  </p>
+                  <p>
+                    This could affect your access to the service.
+                  </p>
+                  <p>
+                    We expect this work to finish on 1 February 2023 at 8pm.
+                  </p>
+                  {% endif %}
+                  {% endif %}
+                  {% endif %}
+
+
+                  {% if data['impact'] === 'Service is not working as expected' %}
+                  {% if data['is-it-planned'] === 'Yes' %}
+                  {% if data['do-you-know-end-date-time'] === 'date' %}
+                  <p>
+                    We are carrying out essential maintenance on the service.
+                  </p>
+                  <p>
+                    This could affect your access to the service.
+                  </p>
+                  <p>
+                    We expect this work to finish on 1 February 2023.
+                  </p>
+                  {% endif %}
+                  {% endif %}
+                  {% endif %}
+
+                  {% if data['impact'] === 'Service is down' %}
+                  {% if data['is-it-planned'] === 'Yes' %}
+                  {% if data['do-you-know-end-date-time'] === 'both' %}
+                  <p>
+                    We are carrying out essential maintenance on the service.
+                  </p>
+                  <p>
+                    You will not be able to access this part of the service now.
+                  </p>
+                  <p>
+                    We expect this work to finish on 1 February 2023 at 8pm.
+                  </p>
+
+                  {% endif %}
+                  {% endif %}
+                  {% endif %}
+
+                  {% if data['impact'] === 'Service is down' %}
+                  {% if data['is-it-planned'] === 'Yes' %}
+                  {% if data['do-you-know-end-date-time'] === 'date' %}
+                  <p>
+                    We are carrying out essential maintenance on the service.
+                  </p>
+                  <p>
+                    You will not be able to access this part of the service now.
+                  </p>
+                  <p>
+                    We expect this work to finish on 1 February 2023.
+                  </p>
+
+                  {% endif %}
+                  {% endif %}
+                  {% endif %}
+
+                  {% if data['impact'] === 'Service is not working as expected' %}
+                  {% if data['is-it-planned'] === 'Yes' %}
+                  {% if data['do-you-know-end-date-time'] === 'dontknow' %}
+                  <p>
+                    We are carrying out essential maintenance on the service.
+                  </p>
+                  <p>
+                    This could affect your access to the service.
+                  </p>
+                  <p>
+                    We are working to complete it as soon as possible.
+                  </p>
+                  
+                  {% endif %}
+                  {% endif %}
+                  {% endif %}
+
+                  {% if data['impact'] === 'Service is down' %}
+                  {% if data['is-it-planned'] === 'Yes' %}
+                  {% if data['do-you-know-end-date-time'] === 'dontknow' %}
+                  <p>
+                    We are carrying out essential maintenance on the service.
+                  </p>
+                  <p>
+                    You will not be able to access this part of the service now.
+                  </p>
+                  <p>
+                    We are working to complete it as soon as possible.
+                  </p>
+                  
+                  {% endif %}
+                  {% endif %}
+                  {% endif %}
+
+                  {% if data['impact'] === 'Service is not working as expected' %}
+                  {% if data['is-it-planned'] === 'No' %}
+                  <p>
+                    We are working to fix it.
+                  </p>
+                  <p>
+                    This could affect your access to the service.
+                  </p>
+                  {% endif %}
+                  {% endif %}
+
+                  {% if data['impact'] === 'Service is down' %}
+                  {% if data['is-it-planned'] === 'No' %}
+                  <p>
+                    We are working to fix it.
+                  </p>
+                  <p>
+                    You will not be able to access this part of the service now.
+                  </p>
+                  {% endif %}
+                  {% endif %}
+              
+                  <p>
+                    You can try again later.
+                  </p>
+                  <ul class="nhsuk-list nhsuk-error-summary__list">
+                  <li>
+                    <p class=" nhsuk-body ">Last updated: 1 February 2023 at 8.30am</p>
+                  </li>
+                  </ul>
+                </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class=" nhsuk-grid-column-one-half" >
+            <details class="nhsuk-details nhsuk-expander">
+              <summary class="nhsuk-details__summary">
+                <span class="nhsuk-details__summary-text">
+                  See how it looks on a page
+                </span>
+              </summary>
+              <div class="nhsuk-details__text">
+                <img src="/images/2nd-alert.png" style="cursor:zoom-in;"> 
+              </div>
+            </details>
+            <details class="nhsuk-details nhsuk-expander">
+              <summary class="nhsuk-details__summary">
+                <span class="nhsuk-details__summary-text">
+                  Where and when users will see it
+                </span>
+              </summary>
+              <div class="nhsuk-details__text">
+                <p>
+                  This will be displayed at the beginning of:
+                </p>
+                <ul class="nhsuk-list nhsuk-list--bullet">
+                  <li>IDVM journey on page 'Use your GP record to prove who you are'</li>
+                  <li>POL journey on page 'Prove who you are without sending a photo of your ID'</li>
+                  <li>Log in journey on page 'We found your NHS login' </li>
+                </ul>
+              </div>
+            </details>
+          </div>
+        </div>     
+    </div>
+  </div>
+</div>
+
+
+
+<div class="nhsuk-grid-row " >
+  <div class="nhsuk-grid-column-full">
+   <div id="interruptscreen" style=" display:block; border-bottom: 1px solid #d8dde0;  border-right: 1px solid #d8dde0; border-left: 1px solid #d8dde0; background-color: #fff;">
+    <h2 class="nhsuk-heading-m alert-header"></h2>
+       <div class="nhsuk-grid-row nhsuk-u-padding-4">
+          <div class=" nhsuk-grid-column-one-half " >
+            <div>
+              <img src="/images/2nd-alert.png" style="cursor:zoom-in;"> 
+            </div>
+          </div>
+          <div class=" nhsuk-grid-column-one-half" >
+            <details class="nhsuk-details nhsuk-expander">
+              <summary class="nhsuk-details__summary">
+                <span class="nhsuk-details__summary-text">
+                  Where and when users will see it
+                </span>
+              </summary>
+              <div class="nhsuk-details__text">
+                <p>
+                  Users will be directed to this page after they select:
+                </p>
+                <ul class="nhsuk-list nhsuk-list--bullet">
+                  <li>'Agree and continue' at the beginning of IDVM on page 'Use your GP record to prove who you are'</li>
+                  <li>'Yes - I use online services' and then 'Continue' at the beginning of POL on page 'Prove who you are without sending a photo of your ID'</li>
+                  <li>'Continue' at the beginning of log in journey on page 'We found your NHS login'</li>
+                </ul>
+              </div>
+            </details>
+          </div>
+        </div>     
+    </div>
+  </div>
+</div>
+
+
+<div class="nhsuk-grid-row nhsuk-u-margin-top-4">
+  <div class="nhsuk-grid-column-full" >
+    <button class="nhsuk-button" id="openModal" type="submit">
+      Continue with changes
+    </button>
+  
+    <p>
+      <a class="nhsuk-link" href="incident-details?edit=false">
+      Cancel changes and return to incident details
+      </a>
+    </p>
+</div>
+</div>
+
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content nhsuk-u-padding-6">
+    <div id="alert-off-confirm" style="display:block;">
+      {% if data['impact'] === 'Service is not working as expected' %}
+      {% if data['is-it-planned'] === 'Yes' %}
+      <h1 class="nhsuk-heading-l">Do you want to make changes to active user alert?
+      </h1>
+      <h2 class="nhsuk-heading-m" style="text-align:center;">Incident type will change to:
+        <span class="nhsuk-heading-m nhsuk-u-padding-top-2" style="line-height: 100%;">NAM is not working as expected</span>
+        <span class="nhsuk-heading-m nhsuk-u-padding-bottom-2" style="line-height: 0%;">Planned maintenance</span>
+      </h2>
+      {% endif %}
+      {% endif %}
+      {% if data['impact'] === 'Service is not working as expected' %}
+      {% if data['is-it-planned'] === 'No' %}
+      <h1 class="nhsuk-heading-l">Do you want to make changes to active user alert?
+      </h1>
+      <h2 class="nhsuk-heading-m" style="text-align:center;">Incident type will change to:
+        <span class="nhsuk-heading-m nhsuk-u-padding-top-2 nhsuk-u-padding-bottom-2" style="line-height: 100%;">NAM is not working as expected</span>
+      </h2>
+      {% endif %}
+      {% endif %}
+      {% if data['impact'] === 'Service is down' %}
+      {% if data['is-it-planned'] === 'Yes' %}
+      <h1 class="nhsuk-heading-l">Do you want to make changes to active user alert?
+      </h1>
+      <h2 class="nhsuk-heading-m" style="text-align:center;">Incident type will change to:
+        <span class="nhsuk-heading-m nhsuk-u-padding-top-2" style="line-height: 100%;">NAM is down</span>
+        <span class="nhsuk-heading-m nhsuk-u-padding-bottom-2" style="line-height: 0%;">Planned maintenance</span>
+      </h2>
+      {% endif %}
+      {% endif %}
+      {% if data['impact'] === 'Service is down' %}
+      {% if data['is-it-planned'] === 'No' %}
+      <h1 class="nhsuk-heading-l">Do you want to make changes to active user alert?
+      </h1>
+      <h2 class="nhsuk-heading-m">Incident type will change to:
+        <span class="nhsuk-heading-m nhsuk-u-padding-top-2 nhsuk-u-padding-bottom-2" style="line-height: 100%;">NAM is down</span>
+      </h2>
+      {% endif %} 
+      {% endif %}
+    <p class="nhsuk-hint">
+      Changes will be effective immediately
+     </p>
+    <div class="nhsuk-form-group nhsuk-u-margin-top-4" >
+                  
+      <fieldset class="nhsuk-fieldset" aria-describedby="example-hint">
+
+          <div class="nhsuk-checkboxes">
+  
+              <div class="nhsuk-checkboxes__item">
+                  <input class="nhsuk-checkboxes__input" onclick="conFirm();" id="confirm" name="example" type="checkbox" value="">
+                  <label class="nhsuk-label nhsuk-checkboxes__label " for="example-1">
+                    Yes, I want to make changes to active user alert
+                  </label>
+              </div>
+          </div>
+      </fieldset>
+    </div> 
+    <div class="form-group nhsuk-u-margin-bottom-0 nhsuk-u-margin-top-0" >
+      <form action="complete?edit=true" method="post">
+        <button class="nhsuk-button full-width nhsuk-u-margin-bottom-3 nhsuk-u-margin-top-0"  id="modal-link" style="width:100%;" disabled="disabled">
+          Confirm changes
+        </button>
+      </form>
+    </div>
+    <div class="form-group nhsuk-u-margin-bottom-0 nhsuk-u-margin-top-0" >
+        <p class="nhsuk-u-margin-bottom-0 nhsuk-u-margin-top-3 " style="display:inline-block;">
+          <span class="close">
+            <a  href="#" class="" id="">Cancel</a>
+          </span>
+        </p>
+    </div>
+    </div>
+  </div>
+
+</div>
+
+
+<script>
+
+  function reminderAlert() {
+    var reminderAlert = document.getElementById("reminderalert");
+    var globalAlert = document.getElementById("globalalert");
+    var interruptScreen = document.getElementById("interruptscreen");
+  
+    document.getElementById("reminder-alert").className = "alert-header-tab-selected";
+    document.getElementById("global-alert").className = "alert-header-tab";
+    document.getElementById("interrupt-screen").className = "alert-header-tab";
+  
+    if (reminderAlert.style.display === "none") {
+      reminderAlert.style.display = "block";
+      } else{
+      reminderAlert.style.display = "block";
+    }
+    if (globalAlert.style.display === "block") {
+      globalAlert.style.display = "none";
+      } else{
+      globalAlert.style.display = "none"; 
+    }
+    if (interruptScreen.style.display === "block") {
+      interruptScreen.style.display = "none";
+      } else{
+      interruptScreen.style.display = "none"; 
+    }
+  }
+  
+  function interruptScreen() {
+    var reminderAlert = document.getElementById("reminderalert");
+    var globalAlert = document.getElementById("globalalert");
+    var interruptScreen = document.getElementById("interruptscreen");
+  
+    document.getElementById("reminder-alert").className = "alert-header-tab";
+    document.getElementById("global-alert").className = "alert-header-tab";
+    document.getElementById("interrupt-screen").className = "alert-header-tab-selected";
+  
+    if (interruptScreen.style.display === "none") {
+      interruptScreen.style.display = "block";
+    } else {
+      interruptScreen.style.display = "block";
+    }
+    if (globalAlert.style.display === "block") {
+      globalAlert.style.display = "none";
+    } else {
+      globalAlert.style.display = "none";
+    }
+    if (reminderAlert.style.display === "block") {
+      reminderAlert.style.display = "none";
+    } else {
+      reminderAlert.style.display = "none";
+    }
+  }
+  
+  function globalAlert() {
+    var reminderAlert = document.getElementById("reminderalert");
+    var globalAlert = document.getElementById("globalalert");
+    var interruptScreen = document.getElementById("interruptscreen");
+  
+    document.getElementById("reminder-alert").className = "alert-header-tab";
+    document.getElementById("global-alert").className = "alert-header-tab-selected";
+    document.getElementById("interrupt-screen").className = "alert-header-tab";
+  
+    if (globalAlert.style.display === "none") {
+      globalAlert.style.display = "block";
+    } else {
+      globalAlert.style.display = "block";
+    }
+    if (reminderAlert.style.display === "block") {
+      reminderAlert.style.display = "none";
+    } else {
+      reminderAlert.style.display = "none";
+    }
+    if (interruptScreen.style.display === "block") {
+      interruptScreen.style.display = "none";
+    } else {
+      interruptScreen.style.display = "none";
+    }
+  }
+  
+  
+</script>
+
+
+<script>
+  // Get the modal
+  var modal = document.getElementById("myModal");
+  
+  // Get the button that opens the modal
+  var btn = document.getElementById("openModal");
+  
+  // Get the <span> element that closes the modal
+  var span = document.getElementsByClassName("close")[0];
+  
+  // Get the <a> element that closes the feedback modal
+    var a = document.getElementsByClassName("close2")[0];
+  
+  // When the user clicks the button, open the modal 
+  btn.onclick = function() {
+    modal.style.display = "flex";
+  }
+  
+  // When the user clicks on <span> (x), close the modal
+  span.onclick = function() {
+    modal.style.display = "none";
+    let inputs = document.getElementById('confirm');
+    inputs.checked = false;
+    document.getElementById('modal-link').setAttribute("disabled", '')
+  }
+  
+  // When the user clicks on <a> (x), close the modal
+    a.onclick = function() {
+    modal.style.display = "none";
+    let inputs = document.getElementById('confirm');
+    inputs.checked = false;
+    document.getElementById('modal-link').setAttribute("disabled", '')
+  }
+  
+  // When the user clicks anywhere outside of the modal, close it
+  window.onclick = function(event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+      let inputs = document.getElementById('confirm');
+      inputs.checked = false;
+      document.getElementById('modal-link').setAttribute("disabled", '')
+  
+  
+      }
+    
+  }
+  
+  function conFirm() {
+          if((document.getElementById('confirm').checked)) {
+              document.getElementById('modal-link').removeAttribute("disabled")
+          } else {
+              document.getElementById('modal-link').setAttribute("disabled", '')
+          }
+  }
+  
+
+  
+  </script>
+  
+{% endblock %}
+
+
