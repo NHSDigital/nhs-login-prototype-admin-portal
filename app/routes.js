@@ -117,7 +117,7 @@ router.post('/NAM-down-template', function (req, res) {
 	  res.redirect('/notifications/user-alerts/turn-on-user-alert/supplier-incidents/NAM-down-planned')
 	} else {
 	  // Send user to confirm choices page
-	  res.redirect('/notifications/user-alerts/turn-on-user-alert/supplier-incidents/Nam-down')
+	  res.redirect('/notifications/user-alerts/turn-on-user-alert/supplier-incidents/NAM-down')
 	}
    })  
 
