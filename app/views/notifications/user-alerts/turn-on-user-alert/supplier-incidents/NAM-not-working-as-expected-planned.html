@@ -356,13 +356,13 @@
               </summary>
               <div class="nhsuk-details__text">
                 <p>
-                  This will be displayed at the beginning of the journey for all users.
+                  All users will see this alert at the beginning of the journey.
                 </p>
                 <p>
-                  At the point it is known  that a user is not affected by this incident, it will no longer be displayed for that user.
+                  At the point in the journey when we know a user is not affected by this incident, we will stop showing the alert to them.
                 </p>
                 <p>
-                  It will continue to be shown only to affected users until they either complete their journey or exit the service.
+                  We will continue to show the alert to affected users.
                 </p>
               </div>
             </details>
@@ -579,7 +579,7 @@
 
 <div class="nhsuk-grid-row nhsuk-u-margin-top-4">
   <div class="nhsuk-grid-column-full" >
-  <form action="complete?namdownplanned=false" method="post" >
+  <form action="complete?namplanned=true" method="post" >
     <button class="nhsuk-button" type="submit">
       Turn on user alerts for this incident
     </button>

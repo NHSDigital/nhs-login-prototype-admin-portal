@@ -108,42 +108,42 @@
                 <h3>
                   {% if data['impact'] === 'Service is not working as expected' %}
                   {% if data['is-it-planned'] === 'Yes' %}
-                  <b class="nhsuk-heading-xs" style="line-height: 100%;">NAM is not working as expected</b>
-                  <b class="nhsuk-heading-xs nhsuk-u-padding-bottom-4" style="line-height: 0%;">Planned maintenance</b>
+                  <b class="nhsuk-heading-s" style="line-height: 100%;">NAM is not working as expected</b>
+                  <b class="nhsuk-heading-s nhsuk-u-padding-bottom-4" style="line-height: 0%;">Planned maintenance</b>
                   {% endif %}
                   {% endif %}
                   {% if data['impact'] === 'Service is not working as expected' %}
                   {% if data['is-it-planned'] === 'No' %}
-                  <b class="nhsuk-heading-xs">NAM is not working as expected</b>
+                  <b class="nhsuk-heading-s">NAM is not working as expected</b>
                   {% endif %}
                   {% endif %}
                   {% if data['impact'] === 'Service is down' %}
                   {% if data['is-it-planned'] === 'Yes' %}
-                  <b class="nhsuk-heading-xs" style="line-height: 100%;">NAM is down</b>
-                  <b class="nhsuk-heading-xs nhsuk-u-padding-bottom-4" style="line-height: 0%;">Planned maintenance</b>
+                  <b class="nhsuk-heading-s" style="line-height: 100%;">NAM is down</b>
+                  <b class="nhsuk-heading-s nhsuk-u-padding-bottom-4" style="line-height: 0%;">Planned maintenance</b>
                   {% endif %}
                   {% endif %}
                   {% if data['impact'] === 'Service is down' %}
                   {% if data['is-it-planned'] === 'No' %}
-                  <b class="nhsuk-heading-xs">NAM is down</b>
+                  <b class="nhsuk-heading-s">NAM is down</b>
                   {% endif %}
                   {% endif %}
                 </h3>
                 {% else %}
                 <h3>
                   {% if data.namplanned === 'true' %}
-                  <b class="nhsuk-heading-xs" style="line-height: 100%;">NAM is not working as expected</b>
-                  <b class="nhsuk-heading-xs nhsuk-u-padding-bottom-4" style="line-height: 0%;">Planned maintenance</b>
+                  <b class="nhsuk-heading-s" style="line-height: 100%;">NAM is not working as expected</b>
+                  <b class="nhsuk-heading-s nhsuk-u-padding-bottom-4" style="line-height: 0%;">Planned maintenance</b>
                   {% endif %}
                   {% if data.namplanned === 'false' %}
-                  <b class="nhsuk-heading-xs">NAM is not working as expected</b>
+                  <b class="nhsuk-heading-s">NAM is not working as expected</b>
                   {% endif %}
                   {% if data.namdownplanned === 'true' %}
-                  <b class="nhsuk-heading-xs" style="line-height: 100%;">NAM is down</b>
-                  <b class="nhsuk-heading-xs nhsuk-u-padding-bottom-4" style="line-height: 0%;">Planned maintenance</b>
+                  <b class="nhsuk-heading-s" style="line-height: 100%;">NAM is down</b>
+                  <b class="nhsuk-heading-s nhsuk-u-padding-bottom-4" style="line-height: 0%;">Planned maintenance</b>
                   {% endif %}
                   {% if data.namdownplanned === 'false' %}
-                  <b class="nhsuk-heading-xs">NAM is down</b>
+                  <b class="nhsuk-heading-s">NAM is down</b>
                   {% endif %}
                 </h3>
                 {% endif %}
