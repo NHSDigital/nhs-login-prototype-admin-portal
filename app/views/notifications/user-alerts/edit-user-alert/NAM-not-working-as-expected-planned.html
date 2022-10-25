@@ -152,7 +152,11 @@
   user-select: none;
   width: 35px; }
 
-
+  .incident-details-box-pop-up{
+    background-color:  #f0f4f5; 
+    color:#212b32;
+    padding-left: 48px;
+  }
 </style>
 
 
@@ -645,14 +649,15 @@
       {% if data['is-it-planned'] === 'Yes' %}
       <h1 class="nhsuk-heading-m">Do you want to make changes to incident details?</h1>
       <p class="nhsuk-hint">Changes will be effective immediately</p>
-      <div class="nhsuk-u-padding-4 nhsuk-u-margin-bottom-4" style="background-color: #f0f4f5;">
-        <h2 class="nhsuk-heading-s">Incident details will change to:</h2>
+      <div class="incident-details-box-pop-up">
+      <div class="nhsuk-u-padding-top-4 nhsuk-u-padding-bottom-4 nhsuk-u-margin-bottom-4">
+        <h2 class="nhsuk-heading-s nhsuk-u-padding-bottom-2">Incident details will change to:</h2>
         <div>
-          <p class="nhsuk-heading-xs" style="line-height: 100%;">NAM is not working as expected</p>
+          <p class="nhsuk-heading-xs" style="line-height: 50%;">NAM is not working as expected</p>
           <p class="nhsuk-heading-xs" style="line-height: 0%;">Planned maintenance</p>
         </div>
-        <div class="nhsuk-u-padding-top-2">
-          <p class="nhsuk-heading-xs" style="line-height:100%;">Maintenance end date:</p>
+        <div class="nhsuk-u-padding-top-3">
+          <p class="nhsuk-heading-xs" style="line-height:50%;">Maintenance end date:</p>
           {% if data['do-you-know-end-date-time'] === 'both' %}
           <p class="nhsuk-heading-xs" style="line-height: 0%;">2 February 2023, 11.30pm</p>
           {% endif %}
@@ -663,6 +668,7 @@
           <p class="nhsuk-heading-xs" style="line-height: 0%;">Not known</p>
           {% endif %}
         </div>
+      </div>
       </div>
       {% endif %}
       {% endif %}
@@ -670,11 +676,13 @@
       {% if data['is-it-planned'] === 'No' %}
       <h1 class="nhsuk-heading-m">Do you want to make changes to incident details?</h1>
       <p class="nhsuk-hint">Changes will be effective immediately</p>
-      <div class="nhsuk-u-padding-4 nhsuk-u-margin-bottom-4" style="background-color: #f0f4f5;">
+      <div class="incident-details-box-pop-up">
+      <div class="nhsuk-u-padding-top-4 nhsuk-u-padding-bottom-4 nhsuk-u-margin-bottom-4">
         <h2 class="nhsuk-heading-s">Incident details will change to:</h2>
         <div>
           <p class="nhsuk-heading-xs" style="line-height: 100%;">NAM is not working as expected</p>
         </div>
+      </div>
       </div>
       {% endif %}
       {% endif %}
@@ -682,14 +690,15 @@
       {% if data['is-it-planned'] === 'Yes' %}
       <h1 class="nhsuk-heading-m">Do you want to make changes to incident details?</h1>
       <p class="nhsuk-hint">Changes will be effective immediately</p>
-      <div class="nhsuk-u-padding-4 nhsuk-u-margin-bottom-4" style="background-color: #f0f4f5;">
-        <h2 class="nhsuk-heading-s">Incident details will change to:</h2>
+      <div class="incident-details-box-pop-up">
+      <div class="nhsuk-u-padding-top-4 nhsuk-u-padding-bottom-4 nhsuk-u-margin-bottom-4">
+        <h2 class="nhsuk-heading-s nhsuk-u-padding-bottom-2">Incident details will change to:</h2>
         <div>
-          <p class="nhsuk-heading-xs" style="line-height: 100%;">NAM is down</p>
+          <p class="nhsuk-heading-xs" style="line-height: 50%;">NAM is down</p>
           <p class="nhsuk-heading-xs" style="line-height: 0%;">Planned maintenance</p>
         </div>
-        <div class="nhsuk-u-padding-top-2">
-          <p class="nhsuk-heading-xs" style="line-height:100%;">Maintenance end date:</p>
+        <div class="nhsuk-u-padding-top-3">
+          <p class="nhsuk-heading-xs" style="line-height:50%;">Maintenance end date:</p>
           {% if data['do-you-know-end-date-time'] === 'both' %}
           <p class="nhsuk-heading-xs" style="line-height: 0%;">2 February 2023, 11.30pm</p>
           {% endif %}
@@ -701,17 +710,20 @@
           {% endif %}
         </div>
       </div>
+      </div>
       {% endif %}
       {% endif %}
       {% if data['impact'] === 'Service is down' %}
       {% if data['is-it-planned'] === 'No' %}
       <h1 class="nhsuk-heading-m">Do you want to make changes to incident details?</h1>
       <p class="nhsuk-hint">Changes will be effective immediately</p>
-      <div class="nhsuk-u-padding-4 nhsuk-u-margin-bottom-4" style="background-color: #f0f4f5;">
+      <div class="incident-details-box-pop-up">
+      <div class="nhsuk-u-padding-top-4 nhsuk-u-padding-bottom-4 nhsuk-u-margin-bottom-4">
         <h2 class="nhsuk-heading-s">Incident details will change to:</h2>
         <div>
           <p class="nhsuk-heading-xs" style="line-height: 100%;">NAM is down</p>
         </div>
+      </div>
       </div>
       {% endif %} 
       {% endif %}
