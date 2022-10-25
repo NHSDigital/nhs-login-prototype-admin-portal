@@ -63,6 +63,12 @@
   height:fit-content;
 }
 
+.incident-details-box-pop-up{
+    background-color:  #f0f4f5; 
+    color:#212b32;
+    padding-left: 48px;
+}
+
 </style>
 
 <div class="nhsuk-grid-row">
@@ -203,28 +209,153 @@
   <!-- Modal content -->
   <div class="modal-content nhsuk-u-padding-6">
     <div id="alert-off-confirm" style="display:block;">
+      {% if data.edit === 'true' %}
+
+      {% if data['impact'] === 'Service is not working as expected' %}
+      {% if data['is-it-planned'] === 'Yes' %}
+      <h1 class="nhsuk-heading-m">Do you want to turn off user alerts for this incident?</h1>
+      <div class="incident-details-box-pop-up">
+      <div class="nhsuk-u-padding-top-6 nhsuk-u-padding-bottom-4 nhsuk-u-margin-bottom-4">
+        <div>
+          <p class="nhsuk-heading-s" style="line-height: 50%;">NAM is not working as expected</p>
+          <p class="nhsuk-heading-s" style="line-height: 0%;">Planned maintenance</p>
+        </div>
+        <div class="nhsuk-u-padding-top-3">
+          <p class="nhsuk-heading-s" style="line-height:50%;">Maintenance end date:</p>
+          {% if data['do-you-know-end-date-time'] === 'both' %}
+          <p class="nhsuk-heading-s" style="line-height: 0%;">2 February 2023, 11.30pm</p>
+          {% endif %}
+          {% if data['do-you-know-end-date-time'] === 'date' %}
+          <p class="nhsuk-heading-s" style="line-height: 0%;">2 February 2023</p>
+          {% endif %}
+          {% if data['do-you-know-end-date-time'] === 'dontknow' %}
+          <p class="nhsuk-heading-s" style="line-height: 0%;">Not known</p>
+          {% endif %}
+        </div>
+      </div>
+      </div>
+      {% endif %}
+      {% endif %}
+      {% if data['impact'] === 'Service is not working as expected' %}
+      {% if data['is-it-planned'] === 'No' %}
+      <h1 class="nhsuk-heading-m">Do you want to turn off user alerts for this incident?</h1>
+      <div class="incident-details-box-pop-up">
+      <div class="nhsuk-u-padding-top-6 nhsuk-u-padding-bottom-4 nhsuk-u-margin-bottom-4">
+        <div>
+          <p class="nhsuk-heading-s" style="line-height: 100%;">NAM is not working as expected</p>
+        </div>
+      </div>
+      </div>
+      {% endif %}
+      {% endif %}
+      {% if data['impact'] === 'Service is down' %}
+      {% if data['is-it-planned'] === 'Yes' %}
+      <h1 class="nhsuk-heading-m">Do you want to turn off user alerts for this incident?</h1>
+      <div class="incident-details-box-pop-up">
+      <div class="nhsuk-u-padding-top-6 nhsuk-u-padding-bottom-4 nhsuk-u-margin-bottom-4">
+        <div>
+          <p class="nhsuk-heading-s" style="line-height: 50%;">NAM is down</p>
+          <p class="nhsuk-heading-s" style="line-height: 0%;">Planned maintenance</p>
+        </div>
+        <div class="nhsuk-u-padding-top-3">
+          <p class="nhsuk-heading-s" style="line-height:50%;">Maintenance end date:</p>
+          {% if data['do-you-know-end-date-time'] === 'both' %}
+          <p class="nhsuk-heading-s" style="line-height: 0%;">2 February 2023, 11.30pm</p>
+          {% endif %}
+          {% if data['do-you-know-end-date-time'] === 'date' %}
+          <p class="nhsuk-heading-s" style="line-height: 0%;">2 February 2023</p>
+          {% endif %}
+          {% if data['do-you-know-end-date-time'] === 'dontknow' %}
+          <p class="nhsuk-heading-s" style="line-height: 0%;">Not known</p>
+          {% endif %}
+        </div>
+      </div>
+      </div>
+      {% endif %}
+      {% endif %}
+      {% if data['impact'] === 'Service is down' %}
+      {% if data['is-it-planned'] === 'No' %}
+      <h1 class="nhsuk-heading-m">Do you want to turn off user alerts for this incident?</h1>
+      <div class="incident-details-box-pop-up">
+      <div class="nhsuk-u-padding-top-6 nhsuk-u-padding-bottom-4 nhsuk-u-margin-bottom-4">
+        <div>
+          <p class="nhsuk-heading-s" style="line-height: 100%;">NAM is down</p>
+        </div>
+      </div>
+      </div>
+      {% endif %} 
+      {% endif %}
+
+      {% else %}
+
       {% if data.namplanned === 'true' %}
-      <h1 class="nhsuk-heading-l">Do you want to turn off user alerts for this incident?
-        <span class="nhsuk-heading-m nhsuk-u-padding-top-4" style="line-height: 100%;">NAM is not working as expected</span>
-        <span class="nhsuk-heading-m nhsuk-u-padding-bottom-4" style="line-height: 0%;">Planned maintenance</span>
-      </h1>
+      <h1 class="nhsuk-heading-m">Do you want to turn off user alerts for this incident?</h1>
+      <div class="incident-details-box-pop-up">
+      <div class="nhsuk-u-padding-top-6 nhsuk-u-padding-bottom-4 nhsuk-u-margin-bottom-4">
+        <div>
+          <p class="nhsuk-heading-s" style="line-height: 50%;">NAM is not working as expected</p>
+          <p class="nhsuk-heading-s" style="line-height: 0%;">Planned maintenance</p>
+        </div>
+        <div class="nhsuk-u-padding-top-3">
+          <p class="nhsuk-heading-s" style="line-height:50%;">Maintenance end date:</p>
+          {% if data['do-you-know-end-date-time'] === 'both' %}
+          <p class="nhsuk-heading-s" style="line-height: 0%;">2 February 2023, 11.30pm</p>
+          {% endif %}
+          {% if data['do-you-know-end-date-time'] === 'date' %}
+          <p class="nhsuk-heading-s" style="line-height: 0%;">2 February 2023</p>
+          {% endif %}
+          {% if data['do-you-know-end-date-time'] === 'dontknow' %}
+          <p class="nhsuk-heading-s" style="line-height: 0%;">Not known</p>
+          {% endif %}
+        </div>
+      </div>
+      </div>
       {% endif %}
       {% if data.namplanned === 'false' %}
-      <h1 class="nhsuk-heading-l">Do you want to turn off user alerts for this incident?
-        <span class="nhsuk-heading-m nhsuk-u-padding-top-4 nhsuk-u-padding-bottom-2" style="line-height: 100%;">NAM is not working as expected</span>
-      </h1>
+      <h1 class="nhsuk-heading-m">Do you want to turn off user alerts for this incident?</h1>
+      <div class="incident-details-box-pop-up">
+      <div class="nhsuk-u-padding-top-6 nhsuk-u-padding-bottom-4 nhsuk-u-margin-bottom-4">
+        <div>
+          <p class="nhsuk-heading-s" style="line-height: 100%;">NAM is not working as expected</p>
+        </div>
+      </div>
+      </div>
       {% endif %}
       {% if data.namdownplanned === 'true' %}
-      <h1 class="nhsuk-heading-l">Do you want to turn off user alerts for this incident?
-        <span class="nhsuk-heading-m nhsuk-u-padding-top-4" style="line-height: 100%;">NAM is down</span>
-        <span class="nhsuk-heading-m nhsuk-u-padding-bottom-4" style="line-height: 0%;">Planned maintenance</span>
-      </h1>
+      <h1 class="nhsuk-heading-m">Do you want to turn off user alerts for this incident?</h1>
+      <div class="incident-details-box-pop-up">
+      <div class="nhsuk-u-padding-top-6 nhsuk-u-padding-bottom-4 nhsuk-u-margin-bottom-4">
+        <div>
+          <p class="nhsuk-heading-s" style="line-height: 50%;">NAM is down</p>
+          <p class="nhsuk-heading-s" style="line-height: 0%;">Planned maintenance</p>
+        </div>
+        <div class="nhsuk-u-padding-top-3">
+          <p class="nhsuk-heading-s" style="line-height:50%;">Maintenance end date:</p>
+          {% if data['do-you-know-end-date-time'] === 'both' %}
+          <p class="nhsuk-heading-s" style="line-height: 0%;">2 February 2023, 11.30pm</p>
+          {% endif %}
+          {% if data['do-you-know-end-date-time'] === 'date' %}
+          <p class="nhsuk-heading-s" style="line-height: 0%;">2 February 2023</p>
+          {% endif %}
+          {% if data['do-you-know-end-date-time'] === 'dontknow' %}
+          <p class="nhsuk-heading-s" style="line-height: 0%;">Not known</p>
+          {% endif %}
+        </div>
+      </div>
+      </div>
       {% endif %}
       {% if data.namdownplanned === 'false' %}
-      <h1 class="nhsuk-heading-l">Do you want to turn off user alerts for this incident?
-        <span class="nhsuk-heading-m nhsuk-u-padding-top-4 nhsuk-u-padding-bottom-2" style="line-height: 100%;">NAM is down</span>
-      </h1>
-      {% endif %} 
+      <h1 class="nhsuk-heading-m">Do you want to turn off user alerts for this incident?</h1>
+      <div class="incident-details-box-pop-up">
+      <div class="nhsuk-u-padding-top-6 nhsuk-u-padding-bottom-4 nhsuk-u-margin-bottom-4">
+        <div>
+          <p class="nhsuk-heading-s" style="line-height: 100%;">NAM is down</p>
+        </div>
+      </div>
+      </div>
+      {% endif %}
+      {% endif %}
+
     <div class="nhsuk-form-group nhsuk-u-margin-top-4">
                   
       <fieldset class="nhsuk-fieldset" aria-describedby="example-hint">
@@ -233,26 +364,9 @@
   
               <div class="nhsuk-checkboxes__item">
                   <input class="nhsuk-checkboxes__input" onclick="conFirm();" id="confirm" name="example" type="checkbox" value="">
-                  {% if data.namplanned === 'true' %}
                   <label class="nhsuk-label nhsuk-checkboxes__label " for="example-1">
                         Yes, I want to turn off user alerts for this incident
                   </label>
-                  {% endif %}
-                  {% if data.namplanned === 'false' %}
-                  <label class="nhsuk-label nhsuk-checkboxes__label " for="example-1">
-                    Yes, I want to turn off user alerts for this incident
-                  </label>
-                  {% endif %}
-                  {% if data.namdownplanned === 'true' %}
-                  <label class="nhsuk-label nhsuk-checkboxes__label " for="example-1">
-                    Yes, I want to turn off user alerts for this incident
-                  </label>
-                  {% endif %}
-                  {% if data.namdownplanned === 'false' %}
-                  <label class="nhsuk-label nhsuk-checkboxes__label " for="example-1">
-                    Yes, I want to turn off user alerts for this incident
-                  </label>
-                  {% endif %}  
               </div>
           </div>
       </fieldset>
