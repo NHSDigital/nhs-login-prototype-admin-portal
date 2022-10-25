@@ -29,49 +29,24 @@
 <style>
 
 	a:visited { 
-      color:	#005eb8; 
-      }
-
+	  color:	#005eb8; 
+	  }
+	::placeholder{
+	color:#212b32;
+	}
 	.inp-wrapper {
 	  display: flex;
-	  gap: 3em;
+	  gap:32px;
 	}
 
 	label {
 	  color: #212b32;
 	  display: block;
-	}
-
-
-	.timeend {
-	  font-size: 19px;
-	  padding: 16px;
-	  color: #212b32;
-	  border:transparent solid 2px;
-	  outline: transparent solid 2px;
-	  border-radius: 0.2em;
-	  margin-top: 0.6em;
-	  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
-	}
-
-	.timeend.default {
-	  font-size: 19px;
-	  padding: 1em;
-	  color: #212b32;
-	  border:transparent solid 2px;
-	  outline: transparent solid 2px;
-	  border-radius: 0.2em;
-	  margin-top: 0.6em;
-	  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
-	}
-
-	.timeend:focus{
-		border: 2px solid 	#212b32;
-  		outline: 2px solid 	#ffeb3b;
-	}
+	}	
 
 	.dateend {
 	  font-size: 19px;
+	  width:240px;
 	  padding: 16px;
 	  color: #212b32;
 	  border:transparent solid 2px;
@@ -83,6 +58,7 @@
 
 	.dateend.default {
 	  font-size: 19px;
+	  width:240px;
 	  padding: 16px;
 	  color: #212b32;
 	  border:transparent solid 2px;
@@ -94,7 +70,7 @@
 
 	.dateend:focus{
 		border: 2px solid 	#212b32;
-  		outline: 2px solid 	#ffeb3b;
+		  outline: 2px solid 	#ffeb3b;
 	}
 
 
@@ -109,8 +85,8 @@
 .dates {
   display: none;
   background-color: #FFF;
-  width: 80%;
-  height: 100%;
+  width: 360px;
+  height: 300px;
   margin-top: 24px;
   margin-bottom: 24px;
 }
@@ -121,7 +97,6 @@
   float: left;
   width: 80%;
   height: 100%;
-
   box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
 }
 
@@ -130,30 +105,31 @@
   justify-content: space-between;
   align-items: center;
   border-bottom: 2px solid 	#d8dde0;
-  color: #212b32;
-  font-size: 19px;
+  color: #1a8fff;
+  font-size: 22px;
+  font-weight: 600;
   padding-top: 8px;
   padding-bottom: 8px;
   
 }
 
 .dates .month .arrows {
-	width: 35px;
-	height: 35px;
+	width: 40px;
+	height:40px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	color: #212b32;
-	font-size: 22px;
+	font-size: 24px;
 }
 
 .dates .month .arrows:hover {
-  background-color: #d8dde0;
+  background-color: #b3daff;
   color: #212b32;
 }
 
 .dates .month .arrows:active {
-  background-color: #d8dde0;
+  background-color: #b3daff;
   color: #212b32;
 }
 
@@ -165,34 +141,165 @@
 	cursor: pointer;
 }
 
-
 .dates .days .day { 
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	color: #212b32;
-
-    font-size:19px;
+	font-size:19px;
 }
 
 
 .dates .days .day:hover {
-	background-color: #d8dde0;
+	background-color: #b3daff;
+	color: #005eb8;
 }
 
 
 .dates .days .day.selected {
-	background-color: #212b32;
-    color:#FFF;
+	background-color: #1a8fff;
+	color:#FFF;
 }
 
 
 .dates .days .day.selected:hover {
-	background-color: #212b32;
-    color:#FFF;
+	background-color: #1a8fff;
+	color:#FFF;
 }
 
 
+.timeend {
+	  font-size: 19px;
+	  text-align: center;
+	  width:132px;
+	  padding: 16px;
+	  color: #212b32;
+	  border:transparent solid 2px;
+	  outline: transparent solid 2px;
+	  border-radius: 0.2em;
+	  margin-top: 0.6em;
+	  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
+	}
+
+	.timeend.default {
+	  font-size: 19px;
+	  text-align: center;
+	  width:132px;
+	  padding: 1em;
+	  color: #212b32;
+	  border:transparent solid 2px;
+	  outline: transparent solid 2px;
+	  border-radius: 0.2em;
+	  margin-top: 0.6em;
+	  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
+	}
+
+	.timeend:focus{
+		border: 2px solid 	#212b32;
+		  outline: 2px solid 	#ffeb3b;
+	}
+
+.times {
+  background-color: #FFF;
+  margin-left:272px;
+  margin-top: 24px;
+  margin-bottom: 24px;
+  width: 240px;
+  max-height: 300px;
+  overflow-y: scroll;
+  display:flex;
+}
+
+.hours {
+	margin:16px;
+	margin-top:0px;
+	display: grid;
+	grid-template-columns: repeat(1, 1fr);
+	cursor: pointer;
+	height:0%;
+}
+
+.hour{
+	width:72px;
+	padding:8px;
+	margin:4px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: #212b32;
+	font-size:19px;
+	background-color: #fff;
+	border: 1px solid transparent;
+	border-radius: 0.2em;
+}
+
+.hour:hover{
+	width:72px;
+	padding:8px;
+	margin:4px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: #005eb8;
+	font-size:19px;
+	background-color: #b3daff;
+	border: 1px solid #b3daff;
+	border-radius: 0.2em;
+}
+
+.am{
+	background-color: #fff;
+	color:#768692;
+	border: 1px solid #d8dde0;
+	font-size: 19px;
+	padding:16px;
+	border-radius: 0.2em;
+	width: 72px;
+	position: absolute;
+	margin-top: 80px;
+	cursor:pointer;
+}
+
+.am-selected{
+	background-color: #1a8fff;
+	color:#fff;
+	border: none;
+	font-size: 19px;
+	font-weight:900;
+	padding: 16px;
+	border-radius: 0.2em;
+	width: 72px;
+	position: absolute;
+	margin-top: 80px;
+}
+
+.pm{
+	margin-top:16px;
+	background-color: #fff;
+	color:#768692;
+	border: 1px solid #d8dde0;
+	font-size: 19px;
+	padding:16px;
+	border-radius: 0.2em;
+	width: 72px;
+	position: absolute;
+	margin-bottom: 96px;
+	cursor:pointer;
+}
+
+.pm-selected{
+	margin-top:16px;
+	background-color: #1a8fff;
+	color:#fff;
+	border: none;
+	font-size: 19px;
+	font-weight:900;
+	padding: 16px;
+	border-radius: 0.2em;
+	width: 72px;
+	position: absolute;
+	margin-bottom: 96px;
+}
 	
 </style>
 
@@ -225,32 +332,54 @@
 	</div>
 </div> 
 
+
 <div class="nhsuk-grid-row nhsuk-u-margin-top-2">
-	<div class="nhsuk-grid-column-one-half">
+	<div class="nhsuk-grid-column-full">
 
 
-		<div class="inp-wrapper">
+	<div class="inp-wrapper">
 		<div class="date-wrapper" id="date">
 			<label class="nhsuk-label" for="date">Date</label>
-			<input class="selected-date dateend" type="text" placeholder="DD/MM/YYYY" id="dateend" />
+			<input class="selected-date dateend" type="text" placeholder="DD/MM/YYYY" id="dateend"/>
+
 		</div>
+
 		{% if data['do-you-know-end-date-time'] === 'both' %}
-		<div class="date-wrapper" id="date">
+
+		<div class="time-wrapper" id="time" >
 			<label class="nhsuk-label" for="date">Time</label>
-			<select class="timeend">
-				<option selected>--:--</option>
-				<option>00:00</option>
-				<option>00:30</option>
-				<option>01:00</option>
-				<option>01:30</option>
-			</select>
+			<input class="timeend" placeholder="--:--" id="timeinput"/>
 		</div>
 		{% endif %}
 		
-		
+	</div>
+	{% if data['do-you-know-end-date-time'] === 'both' %}
+	<div style="width:50%">
+
+		<div class="times nhsuk-u-margin-top-4" id="timepicker" style="display:none;">
+			
+			<div class="hours" style="width:50%;" id="hour">
+				<p class="hour">0:00</p><p class="hour">0:30</p><p class="hour">1:00</p><p class="hour">1:30</p><p class="hour">2:00</p>
+				<p class="hour">2:30</p><p class="hour">3:00</p><p class="hour">3:30</p><p class="hour">4:00</p><p class="hour">4:30</p>
+				<p class="hour">5:00</p><p class="hour">5:30</p><p class="hour">6:00</p><p class="hour">6:30</p><p class="hour">7:00</p><p class="hour">7:30</p>
+				<p class="hour">8:00</p><p class="hour">8:30</p><p class="hour">9:00</p><p class="hour">9:30</p><p class="hour">10:00</p><p class="hour">10:30</p>
+				<p class="hour">11:00</p><p class="hour">11:30</p>
+			</div>	
+
+			<div style="width:50%; height: 300px;">
+				<div style="height: 150px;">
+				<button class="am-selected" id="am" onclick="amButton()">AM</button>
+				</div>
+				<div style="height: 150px;">
+				<button class="pm" id="pm" onclick="pmButton()">PM</button>
+				</div>
+			</div>
+			
 		</div>
-
-
+		
+	</div>
+	{% endif %}
+	<div style="width:50%">
 		<div class="dates nhsuk-u-margin-top-4" id="calendar" style="display:none;">
 			<div class="month">
 			  <div class="arrows prev-mth">&lt;</div>
@@ -260,9 +389,11 @@
 		
 			<div id="date-selected" class="days dates"></div>
 		</div>
-
+	</div>	
 		
-	</div>
+	</div>	
+
+	
 </div>
 
 {% if data.change === 'true' %}
@@ -297,163 +428,208 @@
 
 
 <script>
-
-
-
-
-const targetDiv = document.getElementById("calendar");
-const input1 = document.getElementById("dateend");
-const date1 = document.getElementById("date");
-const btn3 = document.getElementById("date-selected");
-
-date1.onclick = function () {
-  if (targetDiv.style.display !== "block") {
-    targetDiv.style.display = "block";
-  } else {
-    targetDiv.style.display = "none";
-  }
-};
-
-btn3.onclick = function () {
-  if (targetDiv.style.display !== "none") {
-    targetDiv.style.display = "none";
-  } else {
-    targetDiv.style.display = "block";
-  }
-  document.getElementById("dateend").placeholder ='02/02/2022'
-};
-
-
-
-</script>
-
-
-<script>
-
-
-	const date_picker_element = document.querySelector('.date-wrapper');
-	const selected_date_element = document.querySelector('.selected-date');
-	const dates_element = document.querySelector('.dates');
-	const mth_element = document.querySelector('.dates .month .mth');
-	const next_mth_element = document.querySelector('.dates .month .next-mth');
-	const prev_mth_element = document.querySelector('.dates .month .prev-mth');
-	const days_element = document.querySelector('.dates .days');
 	
+	const calendar = document.getElementById("calendar");
+	const date1 = document.getElementById("date");
+	const btn3 = document.getElementById("date-selected");
+	const input2 = document.getElementById("timeinput");
+	const time = document.getElementById("timepicker");
+	const btn4 = document.getElementById("hour");
 	
+	date1.onclick = function () {
+	  if (calendar.style.display !== "block") {
+		calendar.style.display = "block";
+	  } else {
+		calendar.style.display = "none";
+	  }
+	};
 	
-	const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+	btn3.onclick = function () {
+	  if (calendar.style.display !== "none") {
+		calendar.style.display = "none";
+	  } else {
+		calendar.style.display = "block";
+	  }
+	  document.getElementById("dateend").placeholder ='02/02/2022'
+	};
+
+	btn4.onclick = function () {
+	  if (time.style.display !== "none") {
+		time.style.display = "none";
+	  } else {
+		time.style.display = "flex";
+	  }
+	  document.getElementById("timeinput").placeholder ='12.30 PM';
+	};
 	
-	let date = new Date();
-	let day = date.getDate();
-	let month = date.getMonth();
-	let year = date.getFullYear();
-	
-	let selectedDate = date;
-	let selectedDay = day;
-	let selectedMonth = month;
-	let selectedYear = year;
-	
-	mth_element.textContent = months[month] + ' ' + year;
-	
-	selected_date_element.textContent = formatDate(date);
-	selected_date_element.dataset.value = selectedDate;
-	
-	populateDates();
-	
-	// EVENT LISTENERS
-	date_picker_element.addEventListener('click', toggleDatePicker);
-	next_mth_element.addEventListener('click', goToNextMonth);
-	prev_mth_element.addEventListener('click', goToPrevMonth);
-	
-	// FUNCTIONS
-	function toggleDatePicker (e) {
-		if (!checkEventPathForClass(e.path, 'dates')) {
-			dates_element.classList.toggle('active');
-		selected_date_element.classList.toggle('active');
-		}
+	input2.onclick = function () {
+	  if (time.style.display !== "none") {
+		time.style.display = "none";
+		document.getElementById("timeinput").placeholder ='--:--';
+	  } else {
+		time.style.display = "flex";
+		document.getElementById("timeinput").placeholder =' ';
+	  }
+	  
+	};
+
+	function amButton() {
+
+	var am = document.getElementById("am");
+  	var pm = document.getElementById("pm");
+
+  	document.getElementById("am").className = "am-selected";
+  	document.getElementById("pm").className = "pm";
 	}
+
+	function pmButton() {
+
+	var am = document.getElementById("am");
+  	var pm = document.getElementById("pm");
+
+  	document.getElementById("am").className = "am";
+  	document.getElementById("pm").className = "pm-selected";
+	}
+
+	document.addEventListener('mouseup', function(e) {
+    if (!calendar.contains(e.target)) {
+        calendar.style.display = 'none';
+    }
+	});
+
+	document.addEventListener('mouseup', function(e) {
+    if (!time.contains(e.target)) {
+        time.style.display = 'none';
+    }
+	});
+	</script>
 	
-	function goToNextMonth (e) {
-		month++;
-		if (month > 11) {
-			month = 0;
-			year++;
-		}
+	
+	<script>
+	
+	
+		const date_picker_element = document.querySelector('.date-wrapper');
+		const selected_date_element = document.querySelector('.selected-date');
+		const dates_element = document.querySelector('.dates');
+		const mth_element = document.querySelector('.dates .month .mth');
+		const next_mth_element = document.querySelector('.dates .month .next-mth');
+		const prev_mth_element = document.querySelector('.dates .month .prev-mth');
+		const days_element = document.querySelector('.dates .days');
+		
+		
+		
+		const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+		
+		let date = new Date();
+		let day = date.getDate();
+		let month = date.getMonth();
+		let year = date.getFullYear();
+		
+		let selectedDate = date;
+		let selectedDay = day;
+		let selectedMonth = month;
+		let selectedYear = year;
+		
 		mth_element.textContent = months[month] + ' ' + year;
+		
+		selected_date_element.textContent = formatDate(date);
+		selected_date_element.dataset.value = selectedDate;
+		
 		populateDates();
-	}
-	
-	function goToPrevMonth (e) {
-		month--;
-		if (month < 0) {
-			month = 11;
-			year--;
-		}
-		mth_element.textContent = months[month] + ' ' + year;
-		populateDates();
-	}
-	
-	function populateDates (e) {
-		days_element.innerHTML = '';
-		let amount_days = 31;
-	
-		if (month == 1) {
-			amount_days = 28;
-		}
-	
-		for (let i = 0; i < amount_days; i++) {
-			const day_element = document.createElement('div');
-			day_element.classList.add('day');
-			day_element.textContent = i + 1;
-	
-			if (selectedDay == (i + 1) && selectedYear == year && selectedMonth == month) {
-				day_element.classList.add('selected');
-			}
-	
-			day_element.addEventListener('click', function () {
-				selectedDate = new Date(year + '-' + (month + 1) + '-' + (i + 1));
-				selectedDay = (i + 1);
-				selectedMonth = month;
-				selectedYear = year;
-	
-				selected_date_element.textContent = formatDate(selectedDate);
-				selected_date_element.dataset.value = selectedDate;
-	
-				populateDates();
-			});
-	
-			days_element.appendChild(day_element);
-		}
-	}
-	
-	// HELPER FUNCTIONS
-	function checkEventPathForClass (path, selector) {
-		for (let i = 0; i < path.length; i++) {
-			if (path[i].classList && path[i].classList.contains(selector)) {
-				return true;
+		
+		// EVENT LISTENERS
+		date_picker_element.addEventListener('click', toggleDatePicker);
+		next_mth_element.addEventListener('click', goToNextMonth);
+		prev_mth_element.addEventListener('click', goToPrevMonth);
+		
+		// FUNCTIONS
+		function toggleDatePicker (e) {
+			if (!checkEventPathForClass(e.path, 'dates')) {
+				dates_element.classList.toggle('active');
+			selected_date_element.classList.toggle('active');
 			}
 		}
 		
-		return false;
-	}
-	function formatDate (d) {
-		let day = d.getDate();
-		if (day < 10) {
-			day = '0' + day;
+		function goToNextMonth (e) {
+			month++;
+			if (month > 11) {
+				month = 0;
+				year++;
+			}
+			mth_element.textContent = months[month] + ' ' + year;
+			populateDates();
 		}
-	
-		let month = d.getMonth() + 1;
-		if (month < 10) {
-			month = '0' + month;
+		
+		function goToPrevMonth (e) {
+			month--;
+			if (month < 0) {
+				month = 11;
+				year--;
+			}
+			mth_element.textContent = months[month] + ' ' + year;
+			populateDates();
 		}
-	
-		let year = d.getFullYear();
-	
-		return day + ' / ' + month + ' / ' + year;
-	}
-	
-	
-</script>   
+		
+		function populateDates (e) {
+			days_element.innerHTML = '';
+			let amount_days = 31;
+			if (month == 1) {
+				amount_days = 28;
+			}
+		
+			for (let i = 0; i < amount_days; i++) {
+				const day_element = document.createElement('div');
+				day_element.classList.add('day');
+				day_element.textContent = i + 1;
+		
+				if (selectedDay == (i + 1) && selectedYear == year && selectedMonth == month) {
+					day_element.classList.add('selected');
+				}
+		
+				day_element.addEventListener('click', function () {
+					selectedDate = new Date(year + '-' + (month + 1) + '-' + (i + 1));
+					selectedDay = (i + 1);
+					selectedMonth = month;
+					selectedYear = year;
+		
+					selected_date_element.textContent = formatDate(selectedDate);
+					selected_date_element.dataset.value = selectedDate;
+		
+					populateDates();
+				});
+		
+				days_element.appendChild(day_element);
+			}
+		}
+		
+		// HELPER FUNCTIONS
+		function checkEventPathForClass (path, selector) {
+			for (let i = 0; i < path.length; i++) {
+				if (path[i].classList && path[i].classList.contains(selector)) {
+					return true;
+				}
+			}
+			
+			return false;
+		}
+		function formatDate (d) {
+			let day = d.getDate();
+			if (day < 10) {
+				day = '0' + day;
+			}
+		
+			let month = d.getMonth() + 1;
+			if (month < 10) {
+				month = '0' + month;
+			}
+		
+			let year = d.getFullYear();
+		
+			return day + ' / ' + month + ' / ' + year;
+		}
+		
+		
+	</script>  
 
 
         

@@ -150,7 +150,15 @@
                 <div class="nhsuk-u-margin-top-4">
                   <div class="nhsuk-card__description " ><p style="line-height:100%;">Start date: 2 February 2023, 8am</p></div>
                   {% if data['is-it-planned'] === 'Yes' %}
-                  <div class="nhsuk-card__description"><p style="line-height: 50%;">End date: 2 February 2023, midnight</p></div>
+                  {% if data['do-you-know-end-date-time'] === 'dontknow' %}
+                  <div class="nhsuk-card__description"><p style="line-height: 50%;">End date: Not known</p></div>
+                  {% endif %}
+                  {% if data['do-you-know-end-date-time'] === 'both' %}
+                  <div class="nhsuk-card__description"><p style="line-height: 50%;">End date: 2 February 2023, 11.30pm</p></div>
+                  {% endif %}
+                  {% if data['do-you-know-end-date-time'] === 'date' %}
+                  <div class="nhsuk-card__description"><p style="line-height: 50%;">End date: 2 February 2023</p></div>
+                  {% endif %}
                   {% endif %}
                 </div>
                 <div class="nhsuk-card__description nhsuk-u-margin-top-4">

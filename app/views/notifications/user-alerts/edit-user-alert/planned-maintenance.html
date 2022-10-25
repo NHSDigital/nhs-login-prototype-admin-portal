@@ -262,24 +262,24 @@
 
 
 
-const targetDiv = document.getElementById("calendar");
+const calendar = document.getElementById("calendar");
 const input1 = document.getElementById("dateend");
 const date1 = document.getElementById("date");
 const btn3 = document.getElementById("date-selected");
 
 date1.onclick = function () {
-  if (targetDiv.style.display !== "block") {
-    targetDiv.style.display = "block";
+  if (calendar.style.display !== "block") {
+    calendar.style.display = "block";
   } else {
-    targetDiv.style.display = "none";
+    calendar.style.display = "none";
   }
 };
 
 btn3.onclick = function () {
-  if (targetDiv.style.display !== "none") {
-    targetDiv.style.display = "none";
+  if (calendar.style.display !== "none") {
+    calendar.style.display = "none";
   } else {
-    targetDiv.style.display = "block";
+    calendar.style.display = "block";
   }
   document.getElementById("dateend").placeholder ='02/02/2022'
 };

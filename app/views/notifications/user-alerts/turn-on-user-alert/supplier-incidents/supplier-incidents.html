@@ -101,6 +101,29 @@
    }
 </style>
 
+<style>
+
+  .nhsuk-warning-text__icon_global {
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -webkit-user-select: none;
+  background: #212b32;
+  border-radius: 50%;
+  border: 3px solid #212b32;
+  color: #fff;
+  display: inline-block;
+  font-size: 19px;
+  font-weight: 700;
+  line-height: 22px;
+  min-height: 22px;
+  position: relative;
+  text-align: center;
+  user-select: none;
+  width: 28px; }
+
+
+</style>
+
 
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-full">
@@ -114,6 +137,33 @@
         <h2 class="nhsuk-heading-m">Select the supplier that is affected</h2>
       </div>
 
+      {% if data.active === 'true' %}
+
+      <li class="nhsuk-grid-column-two-thirds nhsuk-card-group__item">
+        
+        <div class="nhsuk-card" >
+          <div class="nhsuk-card__content" style="background-color: #cccccc75"> 
+            <h2 class="nhsuk-card__heading nhsuk-heading-m">
+              <a class="nhsuk-card__link" href="#" style="color: #4c6272; pointer-events: none; text-decoration: none;"> NAM</a>
+            </h2>
+            <p class="nhsuk-card__description nhsuk-hint">Network or a technical issue regardless of the user volume</p>
+            <hr>
+            <div style="display: flex; flex-direction:row;">
+              <div>
+                <span class="nhsuk-warning-text__icon_global" aria-hidden="true">!</span>
+              </div>
+              <div class="nhsuk-card__description nhsuk-u-font-weight-bold nhsuk-u-padding-left-4">
+                There are already active user alerts for this incident type. You can 
+                <a class="nhsuk-card__link" href="/notifications/user-alerts/edit-user-alert/incident-details?change=false&edit=false">edit incident details</a>.
+              </div>
+            </div>
+          </div>
+        </div>
+    
+      </li>
+
+      {% else %}
+
       <li class="nhsuk-grid-column-two-thirds nhsuk-card-group__item">
     
         <div class="nhsuk-card nhsuk-card--clickable">
@@ -126,6 +176,8 @@
         </div>
     
       </li>
+
+      {% endif %}
 
       <li class="nhsuk-grid-column-two-thirds nhsuk-card-group__item" >
       

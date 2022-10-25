@@ -52,6 +52,20 @@
   margin-bottom: 0%;
   }
 
+  .alert-header-tab:hover {
+  color: 	#005eb8;
+  text-align: center;
+  text-decoration: underline;
+  font-size: 20px;
+  font-weight:600;
+  background-color: #d8dde0;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  padding-top: 16px;
+  padding-bottom: 14px;
+  margin-bottom: 0%;
+  }
+
   .alert-header-tab-selected {
   color: #005eb8;
   text-align: center;
@@ -357,9 +371,9 @@
                         </ul>
             
                       </div>
-                      <button class="nhsuk-button nhsuk-button--secondary full-width" type="submit" id="MinimiseBanner" onclick="MinimiseBanner()" style="">
+                       <div class="nhsuk-button nhsuk-button--secondary full-width" style="pointer-events:none;" id="MinimiseBanner">
                         Hide this message
-                      </button>
+                      </div>
                     </div>
                   </div>
                 </div>           
@@ -627,45 +641,79 @@
     <div id="alert-off-confirm" style="display:block;">
       {% if data['impact'] === 'Service is not working as expected' %}
       {% if data['is-it-planned'] === 'Yes' %}
-      <h1 class="nhsuk-heading-l">Do you want to make changes to active user alert?
-      </h1>
-      <h2 class="nhsuk-heading-m" >Incident type will change to:
-        <span class="nhsuk-heading-m nhsuk-u-padding-top-2" style="line-height: 100%;">NAM is not working as expected</span>
-        <span class="nhsuk-heading-m nhsuk-u-padding-bottom-2" style="line-height: 0%;">Planned maintenance</span>
-      </h2>
+      <h1 class="nhsuk-heading-m">Do you want to make changes to incident details?</h1>
+      <p class="nhsuk-hint">Changes will be effective immediately</p>
+      <div class="nhsuk-u-padding-4 nhsuk-u-margin-bottom-4" style="background-color: #f0f4f5;">
+        <h2 class="nhsuk-heading-s">Incident details will change to:</h2>
+        <div>
+          <p class="nhsuk-heading-xs" style="line-height: 100%;">NAM is not working as expected</p>
+          <p class="nhsuk-heading-xs" style="line-height: 0%;">Planned maintenance</p>
+        </div>
+        <div class="nhsuk-u-padding-top-2">
+          <p class="nhsuk-heading-xs" style="line-height:100%;">Maintenance end date:</p>
+          {% if data['do-you-know-end-date-time'] === 'both' %}
+          <p class="nhsuk-heading-xs" style="line-height: 0%;">2 February 2023, 11.30pm</p>
+          {% endif %}
+          {% if data['do-you-know-end-date-time'] === 'date' %}
+          <p class="nhsuk-heading-xs" style="line-height: 0%;">2 February 2023</p>
+          {% endif %}
+          {% if data['do-you-know-end-date-time'] === 'dontknow' %}
+          <p class="nhsuk-heading-xs" style="line-height: 0%;">Not known</p>
+          {% endif %}
+        </div>
+      </div>
       {% endif %}
       {% endif %}
       {% if data['impact'] === 'Service is not working as expected' %}
       {% if data['is-it-planned'] === 'No' %}
-      <h1 class="nhsuk-heading-l">Do you want to make changes to active user alert?
-      </h1>
-      <h2 class="nhsuk-heading-m" >Incident type will change to:
-        <span class="nhsuk-heading-m nhsuk-u-padding-top-2 nhsuk-u-padding-bottom-2" style="line-height: 100%;">NAM is not working as expected</span>
-      </h2>
+      <h1 class="nhsuk-heading-m">Do you want to make changes to incident details?</h1>
+      <p class="nhsuk-hint">Changes will be effective immediately</p>
+      <div class="nhsuk-u-padding-4 nhsuk-u-margin-bottom-4" style="background-color: #f0f4f5;">
+        <h2 class="nhsuk-heading-s">Incident details will change to:</h2>
+        <div>
+          <p class="nhsuk-heading-xs" style="line-height: 100%;">NAM is not working as expected</p>
+        </div>
+      </div>
       {% endif %}
       {% endif %}
       {% if data['impact'] === 'Service is down' %}
       {% if data['is-it-planned'] === 'Yes' %}
-      <h1 class="nhsuk-heading-l">Do you want to make changes to active user alert?
-      </h1>
-      <h2 class="nhsuk-heading-m" >Incident type will change to:
-        <span class="nhsuk-heading-m nhsuk-u-padding-top-2" style="line-height: 100%;">NAM is down</span>
-        <span class="nhsuk-heading-m nhsuk-u-padding-bottom-2" style="line-height: 0%;">Planned maintenance</span>
-      </h2>
+      <h1 class="nhsuk-heading-m">Do you want to make changes to incident details?</h1>
+      <p class="nhsuk-hint">Changes will be effective immediately</p>
+      <div class="nhsuk-u-padding-4 nhsuk-u-margin-bottom-4" style="background-color: #f0f4f5;">
+        <h2 class="nhsuk-heading-s">Incident details will change to:</h2>
+        <div>
+          <p class="nhsuk-heading-xs" style="line-height: 100%;">NAM is down</p>
+          <p class="nhsuk-heading-xs" style="line-height: 0%;">Planned maintenance</p>
+        </div>
+        <div class="nhsuk-u-padding-top-2">
+          <p class="nhsuk-heading-xs" style="line-height:100%;">Maintenance end date:</p>
+          {% if data['do-you-know-end-date-time'] === 'both' %}
+          <p class="nhsuk-heading-xs" style="line-height: 0%;">2 February 2023, 11.30pm</p>
+          {% endif %}
+          {% if data['do-you-know-end-date-time'] === 'date' %}
+          <p class="nhsuk-heading-xs" style="line-height: 0%;">2 February 2023</p>
+          {% endif %}
+          {% if data['do-you-know-end-date-time'] === 'dontknow' %}
+          <p class="nhsuk-heading-xs" style="line-height: 0%;">Not known</p>
+          {% endif %}
+        </div>
+      </div>
       {% endif %}
       {% endif %}
       {% if data['impact'] === 'Service is down' %}
       {% if data['is-it-planned'] === 'No' %}
-      <h1 class="nhsuk-heading-l">Do you want to make changes to active user alert?
-      </h1>
-      <h2 class="nhsuk-heading-m">Incident type will change to:
-        <span class="nhsuk-heading-m nhsuk-u-padding-top-2 nhsuk-u-padding-bottom-2" style="line-height: 100%;">NAM is down</span>
-      </h2>
+      <h1 class="nhsuk-heading-m">Do you want to make changes to incident details?</h1>
+      <p class="nhsuk-hint">Changes will be effective immediately</p>
+      <div class="nhsuk-u-padding-4 nhsuk-u-margin-bottom-4" style="background-color: #f0f4f5;">
+        <h2 class="nhsuk-heading-s">Incident details will change to:</h2>
+        <div>
+          <p class="nhsuk-heading-xs" style="line-height: 100%;">NAM is down</p>
+        </div>
+      </div>
       {% endif %} 
       {% endif %}
-    <p class="nhsuk-hint">
-      Changes will be effective immediately
-     </p>
+    
     <div class="nhsuk-form-group nhsuk-u-margin-top-4" >
                   
       <fieldset class="nhsuk-fieldset" aria-describedby="example-hint">
@@ -675,7 +723,7 @@
               <div class="nhsuk-checkboxes__item">
                   <input class="nhsuk-checkboxes__input" onclick="conFirm();" id="confirm" name="example" type="checkbox" value="">
                   <label class="nhsuk-label nhsuk-checkboxes__label " for="example-1">
-                    Yes, I want to make changes to active user alert
+                    Yes, I want to make changes to incident details
                   </label>
               </div>
           </div>
@@ -684,7 +732,7 @@
     <div class="form-group nhsuk-u-margin-bottom-0 nhsuk-u-margin-top-0" >
       <form action="complete?edit=true" method="post">
         <button class="nhsuk-button full-width nhsuk-u-margin-bottom-3 nhsuk-u-margin-top-0"  id="modal-link" style="width:100%;" disabled="disabled">
-          Confirm changes
+          Confirm changes and update active user alerts
         </button>
       </form>
     </div>
