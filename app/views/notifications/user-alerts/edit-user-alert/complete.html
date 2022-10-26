@@ -27,17 +27,10 @@
    color:	#005eb8; 
   }
 
-  .complete{
-    background-color:	#007f3b;
-    color:#fff;  
-  }
-
   .incident-details-box{
-    background-color:  #f0f4f5; 
+    background-color:  #d8dde0; 
     color:#212b32;
-    align-items: center;
-    justify-content: center;
-    display: flex;
+    padding-left: 48px;
   }
 
 </style>
@@ -46,16 +39,16 @@
 
   <div class="nhsuk-grid-row nhsuk-u-margin-bottom-4">
     <div class="nhsuk-grid-column-two-thirds">
-      <div class="complete nhsuk-u-padding-7" >
+      <div>
         <div>
-          <h1 class=" nhsuk-u-margin-bottom-6" style="text-align: center;">
+          <h1 class=" nhsuk-u-margin-bottom-6">
             <span class="nhsuk-heading-xl" style="line-height: 100%;">User alerts are updated</span>
             <span class="nhsuk-heading-l" style="line-height: 0%;">Incident details have been changed</span>
           </h1>
           {% if data['impact'] === 'Service is not working as expected' %}
           {% if data['is-it-planned'] === 'Yes' %}
           <div class="incident-details-box">
-          <div class="nhsuk-u-margin-bottom-4 nhsuk-u-padding-top-6">
+          <div class="nhsuk-u-margin-bottom-4 nhsuk-u-padding-top-6 nhsuk-u-padding-bottom-4">
             <div>
               <p class="nhsuk-heading-s" style="line-height: 50%;">NAM is not working as expected</p>
               <p class="nhsuk-heading-s" style="line-height: 0%;">Planned maintenance</p>
@@ -79,7 +72,7 @@
           {% if data['impact'] === 'Service is not working as expected' %}
           {% if data['is-it-planned'] === 'No' %}
           <div class="incident-details-box">
-          <div class="nhsuk-u-margin-bottom-4 nhsuk-u-padding-top-6">
+          <div class="nhsuk-u-margin-bottom-4 nhsuk-u-padding-top-6 nhsuk-u-padding-bottom-4">
           <div>
               <p class="nhsuk-heading-s" style="line-height: 100%;">NAM is not working as expected</p>
             </div>
@@ -90,7 +83,7 @@
           {% if data['impact'] === 'Service is down' %}
           {% if data['is-it-planned'] === 'Yes' %}
           <div class="incident-details-box">
-          <div class="nhsuk-u-margin-bottom-4 nhsuk-u-padding-top-6">
+          <div class="nhsuk-u-margin-bottom-4 nhsuk-u-padding-top-6 nhsuk-u-padding-bottom-4">
             <div>
               <p class="nhsuk-heading-s" style="line-height: 50%;">NAM is down</p>
               <p class="nhsuk-heading-s" style="line-height: 0%;">Planned maintenance</p>
@@ -114,7 +107,7 @@
           {% if data['impact'] === 'Service is down' %}
           {% if data['is-it-planned'] === 'No' %}
           <div class="incident-details-box">
-          <div class="nhsuk-u-margin-bottom-4 nhsuk-u-padding-top-6">
+          <div class="nhsuk-u-margin-bottom-4 nhsuk-u-padding-top-6 nhsuk-u-padding-bottom-4">
           <div>
               <p class="nhsuk-heading-s" style="line-height: 100%;">NAM is down</p>
             </div>
@@ -125,11 +118,11 @@
         </div>
         {% if data['incident-number'] != 'No' %}
 
-        <p class="nhsuk-body-l nhsuk-u-padding-top-6" style="line-height: 0%; text-align: center;">
+        <p class="nhsuk-body-l nhsuk-u-padding-top-4" style="line-height: 0%;">
           Support reference number:
         </p>
         
-        <h3 class="nhsuk-heading-l" style="line-height:0%; text-align: center;">
+        <h3 class="nhsuk-heading-l" style="line-height:0%;">
           ABCD12345678
         </h3>
           
