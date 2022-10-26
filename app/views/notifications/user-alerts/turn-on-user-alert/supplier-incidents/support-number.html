@@ -117,7 +117,7 @@
 
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-two-thirds">
-    <form role="form" action="incident-details" method="post">
+    <form role="form" action="incident-details" method="post" onsubmit="return(validate());">
       <div class="nhsuk-form-group ">
 
         <fieldset class="nhsuk-fieldset">
@@ -128,7 +128,12 @@
           </legend>
       
           <div class="nhsuk-radios nhsuk-u-margin-top-2">
-            <div class="nhsuk-radios nhsuk-radios--conditional">
+            <div class="nhsuk-radios nhsuk-radios--conditional" id="support-ref-number-radios">
+
+            <span class="nhsuk-error-message" id="support-ref-number-error" style="display: none;">
+              Choose if you know the support reference number
+            </span>
+
             <div class="nhsuk-radios__item">
               <input class="nhsuk-radios__input" id="incident-number" name="incident-number" type="radio" value="Yes" aria-controls="conditional-incident-number" aria-expanded="false">
               <label class="nhsuk-label nhsuk-radios__label" for="incident-number">
@@ -138,17 +143,20 @@
       
             <div class="nhsuk-radios__conditional nhsuk-radios__conditional--hidden" id="conditional-incident-number">
       
-              <div class="nhsuk-form-group">
+              <div class="nhsuk-form-group" id="incident-number-field">
                 <label class="nhsuk-label nhsuk-u-font-weight-bold" for="incident-number">
                   Enter support reference number
                 </label>
+                <span class="nhsuk-error-message" id="incident-number-empty-error" style="display: none;">
+                  Enter support reference number for this incident
+                </span>
                 <input class="nhsuk-input nhsuk-u-width-full" id="incident-number-input" name="incident-number-input" type="text">
               </div>
       
             </div>
       
             <div class="nhsuk-radios__item">
-              <input class="nhsuk-radios__input" id="incident-number" name="incident-number" type="radio" value="No">
+              <input class="nhsuk-radios__input" id="incident-number-no" name="incident-number" type="radio" value="No">
               <label class="nhsuk-label nhsuk-radios__label" for="incident-number">
                 No, I don't know the support reference number
               </label>
@@ -171,6 +179,37 @@
 </div> 
 {% endif %}
 
+
+<script>
+
+  function validate() {
+
+    
+      
+        if( document.getElementById('incident-number').checked ) {
+            if( document.getElementById('incident-number-input').value == "" ) {
+            document.getElementById('incident-number-empty-error').style.display = 'block';
+            document.getElementById('incident-number-field').classList.add("nhsuk-form-group--error");
+            document.getElementById('incident-number').classList.add("nhsuk-input--error");
+            document.getElementById('incident-number-input').focus();
+            document.getElementById('support-ref-number-error').style.display = 'none';
+            document.getElementById('support-ref-number-radios').classList.remove("nhsuk-form-group--error");
+            return false;
+            }
+        }
+
+        if( document.querySelectorAll('input[type="radio"]:checked').length === 0 ) {
+          document.getElementById('support-ref-number-error').style.display = 'block';
+          document.getElementById('support-ref-number-radios').classList.add("nhsuk-form-group--error");
+          return false;
+        }
+      
+        return( true );    
+        
+  }
+
+  
+</script>
 
 {% endblock %}
 

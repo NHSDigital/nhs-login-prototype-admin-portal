@@ -31,9 +31,7 @@
 	a:visited { 
 	  color:	#005eb8; 
 	  }
-	::placeholder{
-	color:#212b32;
-	}
+	
 	.inp-wrapper {
 	  display: flex;
 	  gap:32px;
@@ -335,9 +333,16 @@
 
 <div class="nhsuk-grid-row nhsuk-u-margin-top-2">
 	<div class="nhsuk-grid-column-full">
-
-
-	<div class="inp-wrapper">
+		
+		<span class="nhsuk-error-message" id="date-time-error" style="display: none;">
+			{% if data['do-you-know-end-date-time'] === 'both' %}
+			Select the maintenance end date and time
+			{% else %}
+			Select the maintenance end date
+			{% endif %}
+		</span>
+		
+	<div class="inp-wrapper" id="date-time-field">
 		<div class="date-wrapper" id="date">
 			<label class="nhsuk-label" for="date">Date</label>
 			<input class="selected-date dateend" type="text" placeholder="DD/MM/YYYY" id="dateend"/>
@@ -417,7 +422,7 @@
 {% else %}
 <div class="nhsuk-grid-row nhsuk-u-margin-top-4">
 	<div class="nhsuk-grid-column-one-half">
-		<form action="support-number" method="post">
+		<form action="support-number" method="post" onsubmit="return(validate());">
 			<button class="nhsuk-button" type="submit">
 			  Continue
 			</button>
@@ -450,7 +455,7 @@
 	  } else {
 		calendar.style.display = "block";
 	  }
-	  document.getElementById("dateend").placeholder ='02/02/2022'
+	  document.getElementById("dateend").value ='02/02/2022'
 	};
 
 	btn4.onclick = function () {
@@ -459,16 +464,16 @@
 	  } else {
 		time.style.display = "flex";
 	  }
-	  document.getElementById("timeinput").placeholder ='12.30 PM';
+	  document.getElementById("timeinput").value ='12.30 PM';
 	};
 	
 	input2.onclick = function () {
 	  if (time.style.display !== "none") {
 		time.style.display = "none";
-		document.getElementById("timeinput").placeholder ='--:--';
+		document.getElementById("timeinput").value ='--:--';
 	  } else {
 		time.style.display = "flex";
-		document.getElementById("timeinput").placeholder =' ';
+		document.getElementById("timeinput").value =' ';
 	  }
 	  
 	};
@@ -502,10 +507,10 @@
         time.style.display = 'none';
     }
 	});
-	</script>
+</script>
 	
 	
-	<script>
+<script>
 	
 	
 		const date_picker_element = document.querySelector('.date-wrapper');
@@ -629,9 +634,28 @@
 		}
 		
 		
-	</script>  
+</script>  
 
+<script>
 
+function validate() {
+	if( document.getElementById('dateend').value == "" ) {
+      document.getElementById('date-time-error').style.display = 'block';
+      document.getElementById('date-time-field').classList.add("nhsuk-form-group--error");
+      document.getElementById('dateend').classList.add("nhsuk-input--error");
+      document.getElementById('dateend').focus();
+      return false;
+  	}
+
+	  if( document.getElementById('timeinput').value == "" ) {
+      document.getElementById('date-time-error').style.display = 'block';
+      document.getElementById('date-time-field').classList.add("nhsuk-form-group--error");
+      document.getElementById('timeinput').classList.add("nhsuk-input--error");
+      document.getElementById('timeinput').focus();
+      return false;
+  	}
+}
+</script>
         
 {% endblock %}
 

@@ -62,7 +62,7 @@
             </legend>
         
             <div class="nhsuk-radios nhsuk-u-margin-top-2">
-
+              
               <div class="nhsuk-radios__item">
                 <input class="nhsuk-radios__input" id="planned" name="is-it-planned" type="radio" value="Yes">
                 <label class="nhsuk-label nhsuk-radios__label" for="planned">
@@ -91,7 +91,7 @@
       </p> 
       {% else %}
       
-      <form role="form" action="/is-it-planned" method="post">
+      <form role="form" action="/is-it-planned" method="post" onsubmit="return(validate());">
       <div class="nhsuk-form-group ">
 
         <fieldset class="nhsuk-fieldset">
@@ -101,8 +101,10 @@
             </h1>
           </legend>
       
-          <div class="nhsuk-radios nhsuk-u-margin-top-2">
-
+          <div class="nhsuk-radios nhsuk-u-margin-top-2" id="is-it-planned-radios">
+            <span class="nhsuk-error-message" id="is-it-planned-error" style="display: none;">
+              Choose if it is a planned maintenance
+            </span>
             <div class="nhsuk-radios__item">
               <input class="nhsuk-radios__input" id="planned" name="is-it-planned" type="radio" value="Yes">
               <label class="nhsuk-label nhsuk-radios__label" for="planned">
@@ -133,7 +135,20 @@
   </div>
 
 
+  <script>
 
+    function validate() {
+        
+          if( document.querySelectorAll('input[type="radio"]:checked').length === 0 ) {
+              document.getElementById('is-it-planned-error').style.display = 'block';
+              document.getElementById('is-it-planned-radios').classList.add("nhsuk-form-group--error");
+              return false;
+          }
+        
+          return( true );
+        }
+    
+  </script>
         
         
 {% endblock %}

@@ -29,9 +29,7 @@
 	a:visited { 
 	  color:	#005eb8; 
 	  }
-	::placeholder{
-	color:#212b32;
-	}
+	
 	.inp-wrapper {
 	  display: flex;
 	  gap:32px;
@@ -433,7 +431,7 @@
 	  } else {
 		calendar.style.display = "block";
 	  }
-	  document.getElementById("dateend").placeholder ='02/02/2022'
+	  document.getElementById("dateend").value ='02/02/2022'
 	};
 
 	btn4.onclick = function () {
@@ -442,7 +440,7 @@
 	  } else {
 		time.style.display = "flex";
 	  }
-	  document.getElementById("timeinput").placeholder ='12.30 PM';
+	  document.getElementById("timeinput").value ='12.30 PM';
 	};
 	
 	input2.onclick = function () {
@@ -451,7 +449,7 @@
 		document.getElementById("timeinput").placeholder ='--:--';
 	  } else {
 		time.style.display = "flex";
-		document.getElementById("timeinput").placeholder =' ';
+		document.getElementById("timeinput").value =' ';
 	  }
 	  
 	};
