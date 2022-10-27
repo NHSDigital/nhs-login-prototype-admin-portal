@@ -443,17 +443,6 @@
 	btn3.onclick = function () {
 	  calendar.style.display = "none";
 	  document.getElementById("dateinput").value ='02/02/2022'
-	  document.getElementById('timeinput').focus();
-	  time.style.display = "flex";
-	  doneButtonDiv.style.display = "block";
-	  if (document.getElementById("timeinput").value ==='1.30 AM') {
-		document.getElementById("timeinput").value ='1.30 AM';
-	  } else {
-	 
-	  if (document.getElementById("timeinput").value ==='1.30 PM') {
-		document.getElementById("timeinput").value ='1.30 PM';
-	  }
-	  } 
 	};
 
 	btn4.onclick = function () {
@@ -476,17 +465,19 @@
 	};
 	
 	input2.onclick = function () {
-	  time.style.display = "flex"; 
-	  doneButtonDiv.style.display = "block";
-
-	  if (document.getElementById("timeinput").value ==='1.30 AM') {
-		document.getElementById("timeinput").value ='1.30 AM';
+	  if (time.style.display !== "none") {
+		time.style.display = "none";
+		document.getElementById("timeinput").value ='--:--';
 	  } else {
-	 
-	  if (document.getElementById("timeinput").value ==='1.30 PM') {
-		document.getElementById("timeinput").value ='1.30 PM';
+		time.style.display = "flex";
+		document.getElementById("timeinput").value =' ';
 	  }
-	  } 
+
+	  if (doneButtonDiv.style.display !== "none") {
+		doneButtonDiv.style.display = "none";
+	  } else {
+		doneButtonDiv.style.display = "block";
+	  }
 	  
 	};
 
