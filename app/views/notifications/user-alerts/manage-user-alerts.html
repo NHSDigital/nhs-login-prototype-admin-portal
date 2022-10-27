@@ -217,21 +217,31 @@
       <div class="incident-details-box-pop-up">
       <div class="nhsuk-u-padding-top-6 nhsuk-u-padding-bottom-4 nhsuk-u-margin-bottom-4">
         <div>
-          <p class="nhsuk-heading-s" style="line-height: 50%;">NAM is not working as expected</p>
+          <p class="nhsuk-heading-s" style="line-height: 0%;">NAM is not working as expected</p>
           <p class="nhsuk-heading-s" style="line-height: 0%;">Planned maintenance</p>
         </div>
-        <div class="nhsuk-u-padding-top-3">
-          <p class="nhsuk-heading-s" style="line-height:50%;">Maintenance end date:</p>
+        <div class="nhsuk-u-padding-top-4">
+          <p class="nhsuk-heading-s" style="line-height:0%;">Maintenance end date:</p>
           {% if data['do-you-know-end-date-time'] === 'both' %}
           <p class="nhsuk-heading-s" style="line-height: 0%;">2 February 2023, 11.30pm</p>
           {% endif %}
-          {% if data['do-you-know-end-date-time'] === 'date' %}
+          {% if data['do-you-know-end-date-time'] === 'date' %} 
           <p class="nhsuk-heading-s" style="line-height: 0%;">2 February 2023</p>
           {% endif %}
           {% if data['do-you-know-end-date-time'] === 'dontknow' %}
           <p class="nhsuk-heading-s" style="line-height: 0%;">Not known</p>
           {% endif %}
         </div>
+        {% if data['incident-number'] != 'No' %}
+        <div class="nhsuk-u-padding-top-4">
+          <p class="nhsuk-heading-s" style="line-height: 0%;">
+            Support reference number:
+          </p>
+          <p class="nhsuk-heading-s" style="line-height:0%;">
+            ABCD12345678
+          </p>
+        </div>
+        {% endif %}
       </div>
       </div>
       {% endif %}
@@ -242,8 +252,18 @@
       <div class="incident-details-box-pop-up">
       <div class="nhsuk-u-padding-top-6 nhsuk-u-padding-bottom-4 nhsuk-u-margin-bottom-4">
         <div>
-          <p class="nhsuk-heading-s" style="line-height: 100%;">NAM is not working as expected</p>
+          <p class="nhsuk-heading-s" style="line-height: 0%;">NAM is not working as expected</p>
         </div>
+        {% if data['incident-number'] != 'No' %}
+        <div class="nhsuk-u-padding-top-4">
+          <p class="nhsuk-heading-s" style="line-height: 0%;">
+            Support reference number:
+          </p>
+          <p class="nhsuk-heading-s" style="line-height:0%;">
+            ABCD12345678
+          </p>
+        </div>
+        {% endif %}
       </div>
       </div>
       {% endif %}
@@ -254,11 +274,11 @@
       <div class="incident-details-box-pop-up">
       <div class="nhsuk-u-padding-top-6 nhsuk-u-padding-bottom-4 nhsuk-u-margin-bottom-4">
         <div>
-          <p class="nhsuk-heading-s" style="line-height: 50%;">NAM is down</p>
+          <p class="nhsuk-heading-s" style="line-height: 0%;">NAM is down</p>
           <p class="nhsuk-heading-s" style="line-height: 0%;">Planned maintenance</p>
         </div>
-        <div class="nhsuk-u-padding-top-3">
-          <p class="nhsuk-heading-s" style="line-height:50%;">Maintenance end date:</p>
+        <div class="nhsuk-u-padding-top-4">
+          <p class="nhsuk-heading-s" style="line-height:0%;">Maintenance end date:</p>
           {% if data['do-you-know-end-date-time'] === 'both' %}
           <p class="nhsuk-heading-s" style="line-height: 0%;">2 February 2023, 11.30pm</p>
           {% endif %}
@@ -269,6 +289,16 @@
           <p class="nhsuk-heading-s" style="line-height: 0%;">Not known</p>
           {% endif %}
         </div>
+        {% if data['incident-number'] != 'No' %}
+        <div class="nhsuk-u-padding-top-4">
+          <p class="nhsuk-heading-s" style="line-height: 0%;">
+            Support reference number:
+          </p>
+          <p class="nhsuk-heading-s" style="line-height:0%;">
+            ABCD12345678
+          </p>
+        </div>
+        {% endif %}
       </div>
       </div>
       {% endif %}
@@ -279,8 +309,18 @@
       <div class="incident-details-box-pop-up">
       <div class="nhsuk-u-padding-top-6 nhsuk-u-padding-bottom-4 nhsuk-u-margin-bottom-4">
         <div>
-          <p class="nhsuk-heading-s" style="line-height: 100%;">NAM is down</p>
+          <p class="nhsuk-heading-s" style="line-height: 0%;">NAM is down</p>
         </div>
+        {% if data['incident-number'] != 'No' %}
+        <div class="nhsuk-u-padding-top-4">
+          <p class="nhsuk-heading-s" style="line-height: 0%;">
+            Support reference number:
+          </p>
+          <p class="nhsuk-heading-s" style="line-height:0%;">
+            ABCD12345678
+          </p>
+        </div>
+        {% endif %}
       </div>
       </div>
       {% endif %} 
@@ -293,11 +333,11 @@
       <div class="incident-details-box-pop-up">
       <div class="nhsuk-u-padding-top-6 nhsuk-u-padding-bottom-4 nhsuk-u-margin-bottom-4">
         <div>
-          <p class="nhsuk-heading-s" style="line-height: 50%;">NAM is not working as expected</p>
+          <p class="nhsuk-heading-s" style="line-height: 0%;">NAM is not working as expected</p>
           <p class="nhsuk-heading-s" style="line-height: 0%;">Planned maintenance</p>
         </div>
-        <div class="nhsuk-u-padding-top-3">
-          <p class="nhsuk-heading-s" style="line-height:50%;">Maintenance end date:</p>
+        <div class="nhsuk-u-padding-top-4">
+          <p class="nhsuk-heading-s" style="line-height:0%;">Maintenance end date:</p>
           {% if data['do-you-know-end-date-time'] === 'both' %}
           <p class="nhsuk-heading-s" style="line-height: 0%;">2 February 2023, 11.30pm</p>
           {% endif %}
@@ -308,6 +348,16 @@
           <p class="nhsuk-heading-s" style="line-height: 0%;">Not known</p>
           {% endif %}
         </div>
+        {% if data['incident-number'] != 'No' %}
+        <div class="nhsuk-u-padding-top-4">
+          <p class="nhsuk-heading-s" style="line-height: 0%;">
+            Support reference number:
+          </p>
+          <p class="nhsuk-heading-s" style="line-height:0%;">
+            ABCD12345678
+          </p>
+        </div>
+        {% endif %}
       </div>
       </div>
       {% endif %}
@@ -316,8 +366,18 @@
       <div class="incident-details-box-pop-up">
       <div class="nhsuk-u-padding-top-6 nhsuk-u-padding-bottom-4 nhsuk-u-margin-bottom-4">
         <div>
-          <p class="nhsuk-heading-s" style="line-height: 100%;">NAM is not working as expected</p>
+          <p class="nhsuk-heading-s" style="line-height: 0%;">NAM is not working as expected</p>
         </div>
+        {% if data['incident-number'] != 'No' %}
+        <div class="nhsuk-u-padding-top-4">
+          <p class="nhsuk-heading-s" style="line-height: 0%;">
+            Support reference number:
+          </p>
+          <p class="nhsuk-heading-s" style="line-height:0%;">
+            ABCD12345678
+          </p>
+        </div>
+        {% endif %}
       </div>
       </div>
       {% endif %}
@@ -326,11 +386,11 @@
       <div class="incident-details-box-pop-up">
       <div class="nhsuk-u-padding-top-6 nhsuk-u-padding-bottom-4 nhsuk-u-margin-bottom-4">
         <div>
-          <p class="nhsuk-heading-s" style="line-height: 50%;">NAM is down</p>
+          <p class="nhsuk-heading-s" style="line-height: 0%;">NAM is down</p>
           <p class="nhsuk-heading-s" style="line-height: 0%;">Planned maintenance</p>
         </div>
-        <div class="nhsuk-u-padding-top-3">
-          <p class="nhsuk-heading-s" style="line-height:50%;">Maintenance end date:</p>
+        <div class="nhsuk-u-padding-top-4">
+          <p class="nhsuk-heading-s" style="line-height:0%;">Maintenance end date:</p>
           {% if data['do-you-know-end-date-time'] === 'both' %}
           <p class="nhsuk-heading-s" style="line-height: 0%;">2 February 2023, 11.30pm</p>
           {% endif %}
@@ -341,6 +401,16 @@
           <p class="nhsuk-heading-s" style="line-height: 0%;">Not known</p>
           {% endif %}
         </div>
+        {% if data['incident-number'] != 'No' %}
+        <div class="nhsuk-u-padding-top-4">
+          <p class="nhsuk-heading-s" style="line-height: 0%;">
+            Support reference number:
+          </p>
+          <p class="nhsuk-heading-s" style="line-height:0%;">
+            ABCD12345678
+          </p>
+        </div>
+        {% endif %}
       </div>
       </div>
       {% endif %}
@@ -349,8 +419,18 @@
       <div class="incident-details-box-pop-up">
       <div class="nhsuk-u-padding-top-6 nhsuk-u-padding-bottom-4 nhsuk-u-margin-bottom-4">
         <div>
-          <p class="nhsuk-heading-s" style="line-height: 100%;">NAM is down</p>
+          <p class="nhsuk-heading-s" style="line-height: 0%;">NAM is down</p>
         </div>
+        {% if data['incident-number'] != 'No' %}
+        <div class="nhsuk-u-padding-top-4">
+          <p class="nhsuk-heading-s" style="line-height: 0%;">
+            Support reference number:
+          </p>
+          <p class="nhsuk-heading-s" style="line-height:0%;">
+            ABCD12345678
+          </p>
+        </div>
+        {% endif %}
       </div>
       </div>
       {% endif %}
@@ -392,21 +472,31 @@
         <div class="incident-details-box-pop-up">
         <div class="nhsuk-u-padding-top-6 nhsuk-u-padding-bottom-4 nhsuk-u-margin-bottom-4">
           <div>
-            <p class="nhsuk-heading-s" style="line-height: 50%;">NAM is not working as expected</p>
-            <p class="nhsuk-heading-s" style="line-height: 0%;">Planned maintenance</p>
+            <p class="nhsuk-heading-m" style="line-height: 50%;">NAM is not working as expected</p>
+            <p class="nhsuk-heading-m" style="line-height: 0%;">Planned maintenance</p>
           </div>
-          <div class="nhsuk-u-padding-top-3">
-            <p class="nhsuk-heading-s" style="line-height:50%;">Maintenance end date:</p>
+          <div class="nhsuk-u-padding-top-4">
+            <p class="nhsuk-heading-m" style="line-height:50%;">Maintenance end date:</p>
             {% if data['do-you-know-end-date-time'] === 'both' %}
-            <p class="nhsuk-heading-s" style="line-height: 0%;">2 February 2023, 11.30pm</p>
+            <p class="nhsuk-heading-m" style="line-height: 0%;">2 February 2023, 11.30pm</p>
             {% endif %}
             {% if data['do-you-know-end-date-time'] === 'date' %}
-            <p class="nhsuk-heading-s" style="line-height: 0%;">2 February 2023</p>
+            <p class="nhsuk-heading-m" style="line-height: 0%;">2 February 2023</p>
             {% endif %}
             {% if data['do-you-know-end-date-time'] === 'dontknow' %}
-            <p class="nhsuk-heading-s" style="line-height: 0%;">Not known</p>
+            <p class="nhsuk-heading-m" style="line-height: 0%;">Not known</p>
             {% endif %}
           </div>
+          {% if data['incident-number'] != 'No' %}
+          <div class="nhsuk-u-padding-top-4">
+            <p class="nhsuk-heading-m" style="line-height: 50%;">
+              Support reference number:
+            </p>
+            <p class="nhsuk-heading-m" style="line-height:0%;">
+              ABCD12345678
+            </p>
+          </div>
+          {% endif %}
         </div>
         </div>
         {% endif %}
@@ -417,8 +507,18 @@
         <div class="incident-details-box-pop-up">
         <div class="nhsuk-u-padding-top-6 nhsuk-u-padding-bottom-4 nhsuk-u-margin-bottom-4">
           <div>
-            <p class="nhsuk-heading-s" style="line-height: 100%;">NAM is not working as expected</p>
+            <p class="nhsuk-heading-m" style="line-height: 50%;">NAM is not working as expected</p>
           </div>
+          {% if data['incident-number'] != 'No' %}
+          <div class="nhsuk-u-padding-top-4">
+            <p class="nhsuk-heading-m" style="line-height: 50%;">
+              Support reference number:
+            </p>
+            <p class="nhsuk-heading-m" style="line-height:0%;">
+              ABCD12345678
+            </p>
+          </div>
+          {% endif %}
         </div>
         </div>
         {% endif %}
@@ -429,21 +529,31 @@
         <div class="incident-details-box-pop-up">
         <div class="nhsuk-u-padding-top-6 nhsuk-u-padding-bottom-4 nhsuk-u-margin-bottom-4">
           <div>
-            <p class="nhsuk-heading-s" style="line-height: 50%;">NAM is down</p>
-            <p class="nhsuk-heading-s" style="line-height: 0%;">Planned maintenance</p>
+            <p class="nhsuk-heading-m" style="line-height: 50%;">NAM is down</p>
+            <p class="nhsuk-heading-m" style="line-height: 0%;">Planned maintenance</p>
           </div>
-          <div class="nhsuk-u-padding-top-3">
-            <p class="nhsuk-heading-s" style="line-height:50%;">Maintenance end date:</p>
+          <div class="nhsuk-u-padding-top-4">
+            <p class="nhsuk-heading-m" style="line-height:50%;">Maintenance end date:</p>
             {% if data['do-you-know-end-date-time'] === 'both' %}
-            <p class="nhsuk-heading-s" style="line-height: 0%;">2 February 2023, 11.30pm</p>
+            <p class="nhsuk-heading-m" style="line-height: 0%;">2 February 2023, 11.30pm</p>
             {% endif %}
             {% if data['do-you-know-end-date-time'] === 'date' %}
-            <p class="nhsuk-heading-s" style="line-height: 0%;">2 February 2023</p>
+            <p class="nhsuk-heading-m" style="line-height: 0%;">2 February 2023</p>
             {% endif %}
             {% if data['do-you-know-end-date-time'] === 'dontknow' %}
-            <p class="nhsuk-heading-s" style="line-height: 0%;">Not known</p>
+            <p class="nhsuk-heading-m" style="line-height: 0%;">Not known</p>
             {% endif %}
           </div>
+          {% if data['incident-number'] != 'No' %}
+          <div class="nhsuk-u-padding-top-4">
+            <p class="nhsuk-heading-m" style="line-height: 50%;">
+              Support reference number:
+            </p>
+            <p class="nhsuk-heading-m" style="line-height:0%;">
+              ABCD12345678
+            </p>
+          </div>
+          {% endif %}
         </div>
         </div>
         {% endif %}
@@ -454,8 +564,18 @@
         <div class="incident-details-box-pop-up">
         <div class="nhsuk-u-padding-top-6 nhsuk-u-padding-bottom-4 nhsuk-u-margin-bottom-4">
           <div>
-            <p class="nhsuk-heading-s" style="line-height: 100%;">NAM is down</p>
+            <p class="nhsuk-heading-m" style="line-height: 50%;">NAM is down</p>
           </div>
+          {% if data['incident-number'] != 'No' %}
+          <div class="nhsuk-u-padding-top-4">
+            <p class="nhsuk-heading-m" style="line-height: 50%;">
+              Support reference number:
+            </p>
+            <p class="nhsuk-heading-m" style="line-height:0%;">
+              ABCD12345678
+            </p>
+          </div>
+          {% endif %}
         </div>
         </div>
         {% endif %} 
@@ -468,21 +588,31 @@
         <div class="incident-details-box-pop-up">
         <div class="nhsuk-u-padding-top-6 nhsuk-u-padding-bottom-4 nhsuk-u-margin-bottom-4">
           <div>
-            <p class="nhsuk-heading-s" style="line-height: 50%;">NAM is not working as expected</p>
-            <p class="nhsuk-heading-s" style="line-height: 0%;">Planned maintenance</p>
+            <p class="nhsuk-heading-m" style="line-height: 50%;">NAM is not working as expected</p>
+            <p class="nhsuk-heading-m" style="line-height: 0%;">Planned maintenance</p>
           </div>
-          <div class="nhsuk-u-padding-top-3">
-            <p class="nhsuk-heading-s" style="line-height:50%;">Maintenance end date:</p>
+          <div class="nhsuk-u-padding-top-4">
+            <p class="nhsuk-heading-m" style="line-height:50%;">Maintenance end date:</p>
             {% if data['do-you-know-end-date-time'] === 'both' %}
-            <p class="nhsuk-heading-s" style="line-height: 0%;">2 February 2023, 11.30pm</p>
+            <p class="nhsuk-heading-m" style="line-height: 0%;">2 February 2023, 11.30pm</p>
             {% endif %}
             {% if data['do-you-know-end-date-time'] === 'date' %}
-            <p class="nhsuk-heading-s" style="line-height: 0%;">2 February 2023</p>
+            <p class="nhsuk-heading-m" style="line-height: 0%;">2 February 2023</p>
             {% endif %}
             {% if data['do-you-know-end-date-time'] === 'dontknow' %}
-            <p class="nhsuk-heading-s" style="line-height: 0%;">Not known</p>
+            <p class="nhsuk-heading-m" style="line-height: 0%;">Not known</p>
             {% endif %}
           </div>
+          {% if data['incident-number'] != 'No' %}
+          <div class="nhsuk-u-padding-top-4">
+            <p class="nhsuk-heading-m" style="line-height: 50%;">
+              Support reference number:
+            </p>
+            <p class="nhsuk-heading-m" style="line-height:0%;">
+              ABCD12345678
+            </p>
+          </div>
+          {% endif %}
         </div>
         </div>
         {% endif %}
@@ -491,8 +621,18 @@
         <div class="incident-details-box-pop-up">
         <div class="nhsuk-u-padding-top-6 nhsuk-u-padding-bottom-4 nhsuk-u-margin-bottom-4">
           <div>
-            <p class="nhsuk-heading-s" style="line-height: 100%;">NAM is not working as expected</p>
+            <p class="nhsuk-heading-m" style="line-height: 50%;">NAM is not working as expected</p>
           </div>
+          {% if data['incident-number'] != 'No' %}
+          <div class="nhsuk-u-padding-top-4">
+            <p class="nhsuk-heading-m" style="line-height: 50%;">
+              Support reference number:
+            </p>
+            <p class="nhsuk-heading-m" style="line-height:0%;">
+              ABCD12345678
+            </p>
+          </div>
+          {% endif %}
         </div>
         </div>
         {% endif %}
@@ -501,19 +641,19 @@
         <div class="incident-details-box-pop-up">
         <div class="nhsuk-u-padding-top-6 nhsuk-u-padding-bottom-4 nhsuk-u-margin-bottom-4">
           <div>
-            <p class="nhsuk-heading-s" style="line-height: 50%;">NAM is down</p>
-            <p class="nhsuk-heading-s" style="line-height: 0%;">Planned maintenance</p>
+            <p class="nhsuk-heading-m" style="line-height: 50%;">NAM is down</p>
+            <p class="nhsuk-heading-m" style="line-height: 0%;">Planned maintenance</p>
           </div>
-          <div class="nhsuk-u-padding-top-3">
-            <p class="nhsuk-heading-s" style="line-height:50%;">Maintenance end date:</p>
+          <div class="nhsuk-u-padding-top-4">
+            <p class="nhsuk-heading-m" style="line-height:50%;">Maintenance end date:</p>
             {% if data['do-you-know-end-date-time'] === 'both' %}
-            <p class="nhsuk-heading-s" style="line-height: 0%;">2 February 2023, 11.30pm</p>
+            <p class="nhsuk-heading-m" style="line-height: 0%;">2 February 2023, 11.30pm</p>
             {% endif %}
             {% if data['do-you-know-end-date-time'] === 'date' %}
-            <p class="nhsuk-heading-s" style="line-height: 0%;">2 February 2023</p>
+            <p class="nhsuk-heading-m" style="line-height: 0%;">2 February 2023</p>
             {% endif %}
             {% if data['do-you-know-end-date-time'] === 'dontknow' %}
-            <p class="nhsuk-heading-s" style="line-height: 0%;">Not known</p>
+            <p class="nhsuk-heading-m" style="line-height: 0%;">Not known</p>
             {% endif %}
           </div>
         </div>
@@ -524,8 +664,18 @@
         <div class="incident-details-box-pop-up">
         <div class="nhsuk-u-padding-top-6 nhsuk-u-padding-bottom-4 nhsuk-u-margin-bottom-4">
           <div>
-            <p class="nhsuk-heading-s" style="line-height: 100%;">NAM is down</p>
+            <p class="nhsuk-heading-m" style="line-height: 50%;">NAM is down</p>
           </div>
+          {% if data['incident-number'] != 'No' %}
+          <div class="nhsuk-u-padding-top-4">
+            <p class="nhsuk-heading-m" style="line-height: 50%;">
+              Support reference number:
+            </p>
+            <p class="nhsuk-heading-m" style="line-height:0%;">
+              ABCD12345678
+            </p>
+          </div>
+          {% endif %}
         </div>
         </div>
         {% endif %}
