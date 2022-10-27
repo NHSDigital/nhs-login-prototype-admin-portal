@@ -81,20 +81,11 @@
 	  
 	}
 .dates {
-  display: none;
   background-color: #FFF;
   width: 360px;
   height: 300px;
   margin-top: 24px;
   margin-bottom: 24px;
-}
-
-
-.dates.active {
-  display: block;
-  float: left;
-  width: 80%;
-  height: 100%;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
 }
 
@@ -137,6 +128,7 @@
 	height: 200px;
 	width: 100%;
 	cursor: pointer;
+	box-shadow: none;
 }
 
 .dates .days .day { 
@@ -200,17 +192,18 @@
 .times {
   background-color: #FFF;
   margin-left:272px;
-  margin-top: 24px;
   margin-bottom: 24px;
   width: 240px;
   max-height: 300px;
   overflow-y: scroll;
   display:flex;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
 }
 
 .hours {
 	margin:16px;
 	margin-top:0px;
+	padding-top:16px;
 	display: grid;
 	grid-template-columns: repeat(1, 1fr);
 	cursor: pointer;
@@ -298,6 +291,21 @@
 	position: absolute;
 	margin-bottom: 96px;
 }
+
+.time-picker-done-button{
+	display:none; 
+	height: 0px; 
+	width: 240px; 
+	background-color:#fff; 
+	position:absolute; 
+	margin-left:272px; 
+	font-size:19px; 
+	text-align: right; 
+	padding-right: 36px; 
+	padding-top: 16px;
+}
+
+
 	
 </style>
 
@@ -345,7 +353,7 @@
 	<div class="inp-wrapper" id="date-time-field">
 		<div class="date-wrapper" id="date">
 			<label class="nhsuk-label" for="date">Date</label>
-			<input class="selected-date dateend" type="text" placeholder="DD/MM/YYYY" id="dateend"/>
+			<input class="selected-date dateend" type="text" placeholder="DD/MM/YYYY" id="dateinput"/> 
 
 		</div>
 
@@ -359,7 +367,11 @@
 		
 	</div>
 	{% if data['do-you-know-end-date-time'] === 'both' %}
-	<div style="width:50%">
+	<div style="width:50%" >
+
+		<div class="time-picker-done-button" id="time-picker-done-div">
+			<a style="cursor:pointer;" id="time-picker-done-button">Done</a>
+		</div>
 
 		<div class="times nhsuk-u-margin-top-4" id="timepicker" style="display:none;">
 			
@@ -379,6 +391,9 @@
 				<button class="pm" id="pm" onclick="pmButton()">PM</button>
 				</div>
 			</div>
+
+
+			
 			
 		</div>
 		
@@ -435,36 +450,31 @@
 <script>
 	
 	const calendar = document.getElementById("calendar");
-	const date1 = document.getElementById("date");
+	const date1 = document.getElementById("dateinput");
 	const btn3 = document.getElementById("date-selected");
 	const input2 = document.getElementById("timeinput");
 	const time = document.getElementById("timepicker");
+	const doneButtonDiv = document.getElementById("time-picker-done-div");
+	const doneButton = document.getElementById("time-picker-done-button");
 	const btn4 = document.getElementById("hour");
 	
 	date1.onclick = function () {
-	  if (calendar.style.display !== "block") {
 		calendar.style.display = "block";
-	  } else {
-		calendar.style.display = "none";
-	  }
 	};
 	
 	btn3.onclick = function () {
-	  if (calendar.style.display !== "none") {
-		calendar.style.display = "none";
-	  } else {
-		calendar.style.display = "block";
-	  }
-	  document.getElementById("dateend").value ='02/02/2022'
+	  calendar.style.display = "none";
+	  document.getElementById("dateinput").value ='02/02/2022'
+	  document.getElementById('timeinput').focus();
+	  time.style.display = "flex";
+	  document.getElementById("timeinput").value =' ';
+	  doneButtonDiv.style.display = "block";
 	};
 
-	btn4.onclick = function () {
-	  if (time.style.display !== "none") {
+	doneButton.onclick = function () {
 		time.style.display = "none";
-	  } else {
-		time.style.display = "flex";
-	  }
-	  document.getElementById("timeinput").value ='12.30 PM';
+		doneButtonDiv.style.display = "none";
+	  	document.getElementById("timeinput").value ='12.30 PM';
 	};
 	
 	input2.onclick = function () {
@@ -474,6 +484,12 @@
 	  } else {
 		time.style.display = "flex";
 		document.getElementById("timeinput").value =' ';
+	  }
+
+	  if (doneButtonDiv.style.display !== "none") {
+		doneButtonDiv.style.display = "none";
+	  } else {
+		doneButtonDiv.style.display = "block";
 	  }
 	  
 	};
@@ -505,6 +521,7 @@
 	document.addEventListener('mouseup', function(e) {
     if (!time.contains(e.target)) {
         time.style.display = 'none';
+		doneButtonDiv.style.display = 'none';
     }
 	});
 </script>
