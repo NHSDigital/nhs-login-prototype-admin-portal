@@ -26,7 +26,7 @@ router.post('/is-it-planned', function (req, res) {
 	  res.redirect('/notifications/user-alerts/turn-on-user-alert/supplier-incidents/planned-maintenance')
 	} else {
 	  // Send user to confirm choices page
-	  res.redirect('/notifications/user-alerts/turn-on-user-alert/supplier-incidents/support-number')
+	  res.redirect('/notifications/user-alerts/turn-on-user-alert/supplier-incidents/impact-level')
 	}
    })  
 
@@ -68,7 +68,7 @@ router.post('/date-time', function (req, res) {
 	 // Check whether the variable matches a condition
 	if (planned == "dontknow"){
 	  // Send user to date and time page
-	  res.redirect('/notifications/user-alerts/turn-on-user-alert/supplier-incidents/support-number')
+	  res.redirect('/notifications/user-alerts/turn-on-user-alert/supplier-incidents/impact-level')
 	} else {
 	  // Send user to confirm choices page
 	  res.redirect('/notifications/user-alerts/turn-on-user-alert/supplier-incidents/planned-date-time')
