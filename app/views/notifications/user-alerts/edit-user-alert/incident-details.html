@@ -108,30 +108,6 @@ a:visited {
   
     <div class="nhsuk-summary-list__row">
       <dt class="nhsuk-summary-list__key">
-        What is the impact on the service?
-      </dt>
-      <dd class="nhsuk-summary-list__value">
-        {{ data['impact'] }}
-        {% if data['impact'] === 'Service is down' %}
-        <p class="nhsuk-hint">Users cannot continue their journey</p>
-        {% endif %}
-        {% if data['impact'] === 'Service is not working as expected' %}
-        <p class="nhsuk-hint">Users may or may not be able to continue their journey</p>
-        {% endif %}
-      </dd>
-  
-      <dd class="nhsuk-summary-list__actions">
-  
-        <a href="impact-level">
-          Change
-        </a>
-  
-      </dd>
-  
-    </div>
-  
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">
        Is it planned maintenance?
       </dt>
 
@@ -141,7 +117,7 @@ a:visited {
   
       <dd class="nhsuk-summary-list__actions">
   
-        <a href="is-it-planned">
+        <a href="is-it-planned?backlink=true">
           Change
         </a>
   
@@ -174,7 +150,7 @@ a:visited {
   
       <dd class="nhsuk-summary-list__actions">
   
-        <a href="planned-maintenance">
+        <a href="planned-maintenance?backlink=false">
           Change<span class="nhsuk-u-visually-hidden"></span>
         </a>
   
@@ -184,7 +160,29 @@ a:visited {
 
     {% endif %}
 
-
+    <div class="nhsuk-summary-list__row">
+      <dt class="nhsuk-summary-list__key">
+        What is the impact on the service?
+      </dt>
+      <dd class="nhsuk-summary-list__value">
+        {{ data['impact'] }}
+        {% if data['impact'] === 'Service is down' %}
+        <p class="nhsuk-hint">Users cannot continue their journey</p>
+        {% endif %}
+        {% if data['impact'] === 'Service is not working as expected' %}
+        <p class="nhsuk-hint">Users may or may not be able to continue their journey</p>
+        {% endif %}
+      </dd>
+  
+      <dd class="nhsuk-summary-list__actions">
+  
+        <a href="impact-level">
+          Change
+        </a>
+  
+      </dd>
+  
+    </div>
   
   </dl> 
 
