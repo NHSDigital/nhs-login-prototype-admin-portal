@@ -238,6 +238,20 @@
 	border-radius: 0.2em;
 }
 
+.hour-selected{
+	width:72px;
+	padding:8px;
+	margin:4px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: #005eb8;
+	font-size:19px;
+	background-color: #b3daff;
+	border: 1px solid #b3daff;
+	border-radius: 0.2em;
+}
+
 .am{
 	background-color: #fff;
 	color:#768692;
@@ -376,7 +390,7 @@
 		<div class="times nhsuk-u-margin-top-4" id="timepicker" style="display:none;">
 			
 			<div class="hours" style="width:50%;" id="hour">
-				<p class="hour">0:00</p><p class="hour">0:30</p><p class="hour">1:00</p><p class="hour">1:30</p><p class="hour">2:00</p>
+				<p class="hour">12:00</p><p class="hour">12:30</p><p class="hour">1:00</p><p class="hour" id="time-selected">1:30</p><p class="hour">2:00</p>
 				<p class="hour">2:30</p><p class="hour">3:00</p><p class="hour">3:30</p><p class="hour">4:00</p><p class="hour">4:30</p>
 				<p class="hour">5:00</p><p class="hour">5:30</p><p class="hour">6:00</p><p class="hour">6:30</p><p class="hour">7:00</p><p class="hour">7:30</p>
 				<p class="hour">8:00</p><p class="hour">8:30</p><p class="hour">9:00</p><p class="hour">9:30</p><p class="hour">10:00</p><p class="hour">10:30</p>
@@ -467,30 +481,48 @@
 	  document.getElementById("dateinput").value ='02/02/2022'
 	  document.getElementById('timeinput').focus();
 	  time.style.display = "flex";
-	  document.getElementById("timeinput").value =' ';
 	  doneButtonDiv.style.display = "block";
+	  if (document.getElementById("timeinput").value ==='1.30 AM') {
+		document.getElementById("timeinput").value ='1.30 AM';
+	  } else {
+	 
+	  if (document.getElementById("timeinput").value ==='1.30 PM') {
+		document.getElementById("timeinput").value ='1.30 PM';
+	  }
+	  } 
+	};
+
+	btn4.onclick = function () {
+	document.getElementById('time-selected').classList.add("hour-selected");
+	if (document.getElementById("pm").className !== "pm-selected") {
+	document.getElementById("timeinput").value ='1.30 AM';
+	} else {
+	document.getElementById("timeinput").value ='1.30 PM';
+	}
 	};
 
 	doneButton.onclick = function () {
-		time.style.display = "none";
-		doneButtonDiv.style.display = "none";
-	  	document.getElementById("timeinput").value ='12.30 PM';
+	time.style.display = "none";
+	doneButtonDiv.style.display = "none";
+	if (document.getElementById("pm").className !== "pm-selected") {
+	document.getElementById("timeinput").value ='1.30 AM';
+	} else {
+	document.getElementById("timeinput").value ='1.30 PM';
+	}
 	};
 	
 	input2.onclick = function () {
-	  if (time.style.display !== "none") {
-		time.style.display = "none";
-		document.getElementById("timeinput").value ='--:--';
-	  } else {
-		time.style.display = "flex";
-		document.getElementById("timeinput").value =' ';
-	  }
+	  time.style.display = "flex"; 
+	  doneButtonDiv.style.display = "block";
 
-	  if (doneButtonDiv.style.display !== "none") {
-		doneButtonDiv.style.display = "none";
+	  if (document.getElementById("timeinput").value ==='1.30 AM') {
+		document.getElementById("timeinput").value ='1.30 AM';
 	  } else {
-		doneButtonDiv.style.display = "block";
+	 
+	  if (document.getElementById("timeinput").value ==='1.30 PM') {
+		document.getElementById("timeinput").value ='1.30 PM';
 	  }
+	  } 
 	  
 	};
 
@@ -501,7 +533,10 @@
 
   	document.getElementById("am").className = "am-selected";
   	document.getElementById("pm").className = "pm";
+	if (document.getElementById("timeinput").value !== " ") {
+	document.getElementById("timeinput").value ='1.30 AM'
 	}
+	};
 
 	function pmButton() {
 
@@ -510,7 +545,10 @@
 
   	document.getElementById("am").className = "am";
   	document.getElementById("pm").className = "pm-selected";
+	if (document.getElementById("timeinput").value !== " ") {
+	document.getElementById("timeinput").value ='1.30 PM'
 	}
+	};
 
 	document.addEventListener('mouseup', function(e) {
     if (!calendar.contains(e.target)) {
