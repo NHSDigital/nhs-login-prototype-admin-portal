@@ -33,108 +33,89 @@
     padding-left: 48px;
   }
 
+  .complete{
+    background-color:	#d8dde0;
+    color:#212b32;
+    text-align: center;
+   }
+
 </style>
 
 
 
-  <div class="nhsuk-grid-row nhsuk-u-margin-bottom-4">
-    <div class="nhsuk-grid-column-two-thirds">
-      <div>
-        <div>
-          <h1 class=" nhsuk-u-margin-bottom-6">
-            <span class="nhsuk-heading-xl" style="line-height: 100%;">User alerts are updated</span>
-            <span class="nhsuk-heading-l" style="line-height: 0%;">Incident details have been changed</span>
-          </h1>
-          {% if data['impact'] === 'Service is not working as expected' %}
-          {% if data['is-it-planned'] === 'Yes' %}
-          <div class="incident-details-box">
-          <div class="nhsuk-u-margin-bottom-4 nhsuk-u-padding-top-6 nhsuk-u-padding-bottom-4">
-            <div>
-              <p class="nhsuk-heading-s" style="line-height: 50%;">NAM is not working as expected</p>
-              <p class="nhsuk-heading-s" style="line-height: 0%;">Planned maintenance</p>
-            </div>
-            <div class="nhsuk-u-padding-top-4">
-              <p class="nhsuk-heading-s" style="line-height:50%;">Maintenance end date:</p>
-              {% if data['do-you-know-end-date-time'] === 'both' %}
-              <p class="nhsuk-heading-s" style="line-height: 0%;">2 February 2023, 11.30pm</p>
-              {% endif %}
-              {% if data['do-you-know-end-date-time'] === 'date' %}
-              <p class="nhsuk-heading-s" style="line-height: 0%;">2 February 2023</p>
-              {% endif %}
-              {% if data['do-you-know-end-date-time'] === 'dontknow' %}
-              <p class="nhsuk-heading-s" style="line-height: 0%;">Not known</p>
-              {% endif %}
-            </div>
-          </div>
-          </div>
-          {% endif %}
-          {% endif %}
-          {% if data['impact'] === 'Service is not working as expected' %}
-          {% if data['is-it-planned'] === 'No' %}
-          <div class="incident-details-box">
-          <div class="nhsuk-u-margin-bottom-4 nhsuk-u-padding-top-6 nhsuk-u-padding-bottom-4">
-          <div>
-              <p class="nhsuk-heading-s" style="line-height: 100%;">NAM is not working as expected</p>
-            </div>
-          </div>
-          </div>
-          {% endif %}
-          {% endif %}
-          {% if data['impact'] === 'Service is down' %}
-          {% if data['is-it-planned'] === 'Yes' %}
-          <div class="incident-details-box">
-          <div class="nhsuk-u-margin-bottom-4 nhsuk-u-padding-top-6 nhsuk-u-padding-bottom-4">
-            <div>
-              <p class="nhsuk-heading-s" style="line-height: 50%;">NAM is down</p>
-              <p class="nhsuk-heading-s" style="line-height: 0%;">Planned maintenance</p>
-            </div>
-            <div class="nhsuk-u-padding-top-4">
-              <p class="nhsuk-heading-s" style="line-height:50%;">Maintenance end date:</p>
-              {% if data['do-you-know-end-date-time'] === 'both' %}
-              <p class="nhsuk-heading-s" style="line-height: 0%;">2 February 2023, 11.30pm</p>
-              {% endif %}
-              {% if data['do-you-know-end-date-time'] === 'date' %}
-              <p class="nhsuk-heading-s" style="line-height: 0%;">2 February 2023</p>
-              {% endif %}
-              {% if data['do-you-know-end-date-time'] === 'dontknow' %}
-              <p class="nhsuk-heading-s" style="line-height: 0%;">Not known</p>
-              {% endif %}
-            </div>
-          </div>
-          </div>
-          {% endif %}
-          {% endif %}
-          {% if data['impact'] === 'Service is down' %}
-          {% if data['is-it-planned'] === 'No' %}
-          <div class="incident-details-box">
-          <div class="nhsuk-u-margin-bottom-4 nhsuk-u-padding-top-6 nhsuk-u-padding-bottom-4">
-          <div>
-              <p class="nhsuk-heading-s" style="line-height: 100%;">NAM is down</p>
-            </div>
-          </div>
-          </div>
-          {% endif %}
-          {% endif %}
-        </div>
-        {% if data['incident-number'] != 'No' %}
-
-        <p class="nhsuk-body-l nhsuk-u-padding-top-4" style="line-height: 0%;">
-          Support reference number:
-        </p>
-        
-        <h3 class="nhsuk-heading-l" style="line-height:0%;">
-          ABCD12345678
-        </h3>
-          
+<div class="nhsuk-grid-row" >
+  <div class="nhsuk-grid-column-two-thirds">
+    <div class="complete nhsuk-u-padding-7" >
+    <div>
+      <h1 class="nhsuk-heading-xl nhsuk-u-margin-bottom-6">
+        User alerts are updated
+      </h1>
+      {% if data['impact'] === 'Service is not working as expected' %}
+      {% if data['is-it-planned'] === 'Yes' %}
+      <h2 class="nhsuk-heading-l" style="line-height: 100%;">NAM is not working as expected</h2>
+      <h2 class="nhsuk-heading-l nhsuk-u-padding-bottom-6" style="line-height: 0%;">Planned maintenance</h2>
+      <div class="nhsuk-u-padding-bottom-2">
+        <p class="nhsuk-heading-l" style="line-height:0%;">Maintenance end date:</p>
+        {% if data['do-you-know-end-date-time'] === 'both' %}
+        <p class="nhsuk-heading-l" style="line-height: 0%;">2 February 2023, 11.30pm</p>
+        {% endif %}
+        {% if data['do-you-know-end-date-time'] === 'date' %}
+        <p class="nhsuk-heading-l" style="line-height: 0%;">2 February 2023</p>
+        {% endif %}
+        {% if data['do-you-know-end-date-time'] === 'dontknow' %}
+        <p class="nhsuk-heading-l" style="line-height: 0%;">Not known</p>
         {% endif %}
       </div>
+      {% endif %}
+      {% endif %}
+      {% if data['impact'] === 'Service is not working as expected' %}
+      {% if data['is-it-planned'] === 'No' %}
+      <h2 class="nhsuk-heading-l">NAM is not working as expected</h2>
+      {% endif %}
+      {% endif %}
+      {% if data['impact'] === 'Service is down' %}
+      {% if data['is-it-planned'] === 'Yes' %}
+      <h2 class="nhsuk-heading-l" style="line-height: 100%;">NAM is down</h2>
+      <h2 class="nhsuk-heading-l nhsuk-u-padding-bottom-6" style="line-height: 0%;">Planned maintenance</h2>
+      <div class="nhsuk-u-padding-bottom-2">
+        <p class="nhsuk-heading-l" style="line-height:0%;">Maintenance end date:</p>
+        {% if data['do-you-know-end-date-time'] === 'both' %}
+        <p class="nhsuk-heading-l" style="line-height: 0%;">2 February 2023, 11.30pm</p>
+        {% endif %}
+        {% if data['do-you-know-end-date-time'] === 'date' %}
+        <p class="nhsuk-heading-l" style="line-height: 0%;">2 February 2023</p>
+        {% endif %}
+        {% if data['do-you-know-end-date-time'] === 'dontknow' %}
+        <p class="nhsuk-heading-l" style="line-height: 0%;">Not known</p>
+        {% endif %}
+      </div>
+      {% endif %}
+      {% endif %}
+      {% if data['impact'] === 'Service is down' %}
+      {% if data['is-it-planned'] === 'No' %}
+      <h2 class="nhsuk-heading-l">NAM is down</h2>
+      {% endif %}
+      {% endif %}
     </div>
+    {% if data['incident-number'] != 'No' %}
+
+    <p class="nhsuk-body-l nhsuk-u-padding-top-6" style="line-height: 0%;">
+      Support reference number:
+    </p>
+    
+    <h3 class="nhsuk-heading-l" style="line-height:0%;">
+      ABCD12345678
+    </h3>
+      
+    {% endif %}
   </div>
+  </div>
+</div>
 
 
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-two-thirds">
-      <p class="mhsuk-body-l">
+      <p class="mhsuk-body-l nhsuk-u-padding-top-4">
         <a href="/notifications/user-alerts/manage-user-alerts?active=true&edit=true">
           Return to manage user alerts
         </a>
