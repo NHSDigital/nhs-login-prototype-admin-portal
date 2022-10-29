@@ -30,6 +30,10 @@
 
 <style>
 
+a:visited { 
+    color:	#005eb8; 
+    }
+
   .alert-header {
   
   padding-top: 8px;
@@ -79,31 +83,36 @@
   border-bottom:0px;
   }
 
+   /* The Modal (background) */
+.modal-image-zoom {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding: 1.5em; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.685); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content-image-zoom {
+  background-color: #fefefe;
+  margin: auto;
+  overflow: auto;
+  overflow-x: hidden;
+  padding: 1.5em;
+  position: relative;
+  width: 60%;
+  height:fit-content;
+}
+
 </style>
 
 <style>
-  .nhsuk-warning-text {
-  position: relative;
-  padding: 10px 0; }
-
-  .nhsuk-warning-text__icon {
-  -moz-user-select: none;
-  -ms-user-select: none;
-  -webkit-user-select: none;
-  background: #212b32;
-  border-radius: 50%;
-  border: 3px solid #212b32;
-  color: #fff;
-  display: inline-block;
-  font-size: 30px;
-  font-weight: 700;
-  line-height: 29px;
-  min-height: 29px;
-  position: relative;
-  text-align: center;
-  user-select: none;
-  width: 35px; }
-
   .nhsuk-warning-text__icon_global {
   -moz-user-select: none;
   -ms-user-select: none;
@@ -205,7 +214,7 @@
               <div class="" aria-labelledby="error-summary-title" role="service status information" tabindex="-1" >
                 <div class=" " style="display:flex; flex-direction:row;">
                   <div>
-                    <span class="nhsuk-warning-text__icon_global" aria-hidden="true" style="display:;">!</span>
+                    <span class="nhsuk-warning-text__icon_global" aria-hidden="true">!</span>
                   </div>
                   <div class="nhsuk-u-margin-left-4" aria-labelledby="error-summary-title" role="alert" tabindex="-1" >
                     <div>
@@ -356,7 +365,7 @@
                 </span>
               </summary>
               <div class="nhsuk-details__text">
-                <img src="/images/globalAlert.png" style="cursor:zoom-in;"> 
+                <img src="/images/global-alert-example.png" style="cursor:zoom-in;" id="openModal-globalAlert"> 
               </div>
             </details>
             <details class="nhsuk-details nhsuk-expander ">
@@ -393,15 +402,7 @@
             <div class="" aria-labelledby="error-summary-title" style="padding: 16px; margin-top: 8px;  border: 2px solid #ED8B00;" role="alert" tabindex="-1">
               <div class=" " style="display:flex; flex-direction:row;">
                 <div class="">
-                  <span class="nhsuk-warning-text__icon" aria-hidden="true" style="display:;">!</span>
-                <svg style="display:none;"version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 485.811 485.811" style="enable-background:new 0 0 485.811 485.811;" xml:space="preserve" height="32px" width="32px" >
-                  <path style="fill:#ED8B00;" d="M476.099,353.968l-170.2-294.8c-27.8-48.7-98.1-48.7-125.8,0l-170.3,294.8c-27.8,48.7,6.8,109.2,62.9,109.2h339.9
-                  C468.699,463.168,503.899,402.068,476.099,353.968z M242.899,397.768c-14.8,0-27.1-12.3-27.1-27.1s12.3-27.1,27.1-27.1
-                  c14.8,0,27.1,12.3,26.5,27.8C270.099,385.468,257.099,397.768,242.899,397.768z M267.599,222.568c-1.2,21-2.5,41.9-3.7,62.9
-                  c-0.6,6.8-0.6,13-0.6,19.7c-0.6,11.1-9.3,19.7-20.4,19.7s-19.7-8-20.4-19.1c-1.8-32.7-3.7-64.8-5.5-97.5
-                  c-0.6-8.6-1.2-17.3-1.9-25.9c0-14.2,8-25.9,21-29.6c13-3.1,25.9,3.1,31.5,15.4c1.9,4.3,2.5,8.6,2.5,13.6
-                  C269.499,195.468,268.199,209.068,267.599,222.568z"/>
-                  </svg>
+                 <span class="nhsuk-warning-text__icon_global" aria-hidden="true">!</span>
           
                 </div>
                 <div class="nhsuk-u-margin-left-4" aria-labelledby="error-summary-title" role="alert" tabindex="-1" >
@@ -559,7 +560,7 @@
                 </span>
               </summary>
               <div class="nhsuk-details__text">
-                <img src="/images/reminder-alert.png" style="cursor:zoom-in;"> 
+                <img src="/images/reminder-alert-example.png" style="cursor:zoom-in;" id="openModal-reminderAlert"> 
               </div>
             </details>
             <details class="nhsuk-details nhsuk-expander">
@@ -593,7 +594,7 @@
            <div class="nhsuk-grid-row nhsuk-u-padding-4">
           <div class=" nhsuk-grid-column-one-half " >
             <div>
-              <img src="/images/interruptScreen.png" style="cursor:zoom-in;"> 
+              <img src="/images/interruptScreen.png" style="cursor:zoom-in;" id="openModal-interruptScreen"> 
             </div>
           </div>
           <div class=" nhsuk-grid-column-one-half" >
@@ -640,6 +641,101 @@
     </svg>
     Back to: Confirm incident details</a>
 </div>
+
+
+<div id="myModal" class="modal-image-zoom">
+
+  <!-- Modal content -->
+  <div class="modal-content-image-zoom nhsuk-u-padding-6">
+    <div style="display:block;">
+      <div style="float:right;">
+        <p class="nhsuk-u-margin-bottom-0 nhsuk-u-margin-bottom-3" style="display:inline-block; ">
+          <span class="close">
+            <a  href="#" class="" id="">Close</a>
+          </span>
+        </p>
+      </div>
+      <img src="/images/global-alert-example.png" id="globalAlertimage" style="display:none;">
+      <img src="/images/reminder-alert-example.png" id="reminderAlertimage" style="display:none;">
+      <img src="/images/interruptScreen.png" id="interruptScreenimage" style="display:none;">
+    </div>
+  </div>
+
+</div>
+
+<script>
+  // Get the modal
+  var modal = document.getElementById("myModal");
+  
+  // Get the button that opens the global alert modal
+  var btn = document.getElementById("openModal-globalAlert");
+
+  // Get the button that opens the reminder alert modal
+  var btn2 = document.getElementById("openModal-reminderAlert");
+
+  // Get the button that opens the interrupt screen modal
+  var btn3 = document.getElementById("openModal-interruptScreen");
+  
+  // Get the <span> element that closes the modal
+  var span = document.getElementsByClassName("close")[0];
+  
+  // Get the <a> element that closes the feedback modal
+    var a = document.getElementsByClassName("close2")[0];
+  
+  // When the user clicks the button, open the modal 
+  btn.onclick = function() {
+    modal.style.display = "flex";
+    document.getElementById('globalAlertimage').style.display = "block";
+    document.getElementById('reminderAlertimage').style.display = "none";
+    document.getElementById('interruptScreenimage').style.display = "none";
+  }
+
+  btn2.onclick = function() {
+    modal.style.display = "flex";
+    document.getElementById('reminderAlertimage').style.display = "block";
+    document.getElementById('globalAlertimage').style.display = "none";
+    document.getElementById('interruptScreenimage').style.display = "none";
+  }
+
+
+  btn3.onclick = function() {
+    modal.style.display = "flex";
+    document.getElementById('interruptScreenimage').style.display = "block";
+    document.getElementById('reminderAlertimage').style.display = "none";
+    document.getElementById('globalAlertimage').style.display = "none";
+  }
+
+  
+  // When the user clicks on <span> (x), close the modal
+  span.onclick = function() {
+    modal.style.display = "none";
+    let inputs = document.getElementById('confirm');
+    inputs.checked = false;
+    document.getElementById('modal-link').setAttribute("disabled", '')
+  }
+  
+  // When the user clicks on <a> (x), close the modal
+    a.onclick = function() {
+    modal.style.display = "none";
+    let inputs = document.getElementById('confirm');
+    inputs.checked = false;
+    document.getElementById('modal-link').setAttribute("disabled", '')
+  }
+  
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+
+
+    }
+  
+}
+  
+
+  
+</script>
+
 
 <script>
 
