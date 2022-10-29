@@ -679,9 +679,6 @@ a:visited {
   // Get the <span> element that closes the modal
   var span = document.getElementsByClassName("close")[0];
   
-  // Get the <a> element that closes the feedback modal
-    var a = document.getElementsByClassName("close2")[0];
-  
   // When the user clicks the button, open the modal 
   btn.onclick = function() {
     modal.style.display = "flex";
@@ -709,17 +706,6 @@ a:visited {
   // When the user clicks on <span> (x), close the modal
   span.onclick = function() {
     modal.style.display = "none";
-    let inputs = document.getElementById('confirm');
-    inputs.checked = false;
-    document.getElementById('modal-link').setAttribute("disabled", '')
-  }
-  
-  // When the user clicks on <a> (x), close the modal
-    a.onclick = function() {
-    modal.style.display = "none";
-    let inputs = document.getElementById('confirm');
-    inputs.checked = false;
-    document.getElementById('modal-link').setAttribute("disabled", '')
   }
   
 // When the user clicks anywhere outside of the modal, close it
