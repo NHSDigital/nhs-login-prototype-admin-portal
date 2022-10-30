@@ -3,7 +3,7 @@
 
 {% block pageTitle %}
 Edit active user alerts - When does the maintenance end?
-{% endblock %
+{% endblock %}
 
 <!-- this page is only visible to prod-accessreport group -->
 
@@ -32,305 +32,8 @@ Edit active user alerts - When does the maintenance end?
 
 	a:visited { 
 	  color:	#005eb8; 
-	  }
-	
-	.datetime-wrapper {
-	  display: flex;
-	  gap:32px;
 	}
 
-	label {
-	  color: #212b32;
-	  display: block;
-	}	
-
-.dateend {
-	  font-size: 19px;
-	  width:200px;
-	  padding: 16px;
-	  color: #212b32;
-	  border:transparent solid 2px;
-	  outline: transparent solid 2px;
-	  border-radius: 0.2em;
-	  margin-top: 0.6em;
-	  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
-}
-
-.dateend:focus{
-  border: 2px solid 	#212b32;
-  outline: 2px solid 	#ffeb3b;
-}
-
-.timeend {
-	  font-size: 19px;
-	  text-align: center;
-	  width:132px;
-	  padding: 16px;
-	  color: #212b32;
-	  border:transparent solid 2px;
-	  outline: transparent solid 2px;
-	  border-radius: 0.2em;
-	  margin-top: 0.6em;
-	  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
-}
-
-
-.timeend:focus{
-	border: 2px solid 	#212b32;
-	outline: 2px solid 	#ffeb3b;
-}
-
-.times {
-  background-color: #FFF;
-  margin-left:232px;
-  margin-bottom: 24px;
-  width: 240px;
-  max-height: 300px;
-  overflow-y: scroll;
-  display:flex;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
-}
-
-.hours {
-	margin:16px;
-	margin-top:0px;
-	padding-top:16px;
-	display: grid;
-	grid-template-columns: repeat(1, 1fr);
-	cursor: pointer;
-	height:0%;
-}
-
-.hour{
-	width:72px;
-	padding:8px;
-	margin:4px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	color: #212b32;
-	font-size:19px;
-	background-color: #fff;
-	border: 1px solid transparent;
-	border-radius: 0.2em;
-}
-
-.hour:hover{
-	width:72px;
-	padding:8px;
-	margin:4px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	color: #005eb8;
-	font-size:19px;
-	background-color: #b3daff;
-	border: 1px solid #b3daff;
-	border-radius: 0.2em;
-}
-
-.hour-selected{
-	width:72px;
-	padding:8px;
-	margin:4px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	color: #005eb8;
-	font-size:19px;
-	background-color: #b3daff;
-	border: 1px solid #b3daff;
-	border-radius: 0.2em;
-}
-
-.am{
-	background-color: #fff;
-	color:#768692;
-	border: 1px solid #d8dde0;
-	font-size: 19px;
-	padding:16px;
-	border-radius: 0.2em;
-	width: 72px;
-	position: absolute;
-	margin-top: 80px;
-	cursor:pointer;
-}
-
-.am-selected{
-	background-color: #1a8fff;
-	color:#fff;
-	border: none;
-	font-size: 19px;
-	font-weight:900;
-	padding: 16px;
-	border-radius: 0.2em;
-	width: 72px;
-	position: absolute;
-	margin-top: 80px;
-}
-
-.pm{
-	margin-top:16px;
-	background-color: #fff;
-	color:#768692;
-	border: 1px solid #d8dde0;
-	font-size: 19px;
-	padding:16px;
-	border-radius: 0.2em;
-	width: 72px;
-	position: absolute;
-	margin-bottom: 96px;
-	cursor:pointer;
-}
-
-.pm-selected{
-	margin-top:16px;
-	background-color: #1a8fff;
-	color:#fff;
-	border: none;
-	font-size: 19px;
-	font-weight:900;
-	padding: 16px;
-	border-radius: 0.2em;
-	width: 72px;
-	position: absolute;
-	margin-bottom: 96px;
-}
-
-.time-picker-done-button{
-	display:none; 
-	height: 0px; 
-	width: 240px; 
-	background-color:#fff; 
-	position:absolute; 
-	margin-left:232px; 
-	font-size:19px; 
-	text-align: right; 
-	padding-right: 36px; 
-	padding-top: 16px;
-}
-
-.datescontainer {
-  background-color: #FFF;
-  width: fit-content;
-  height: fit-content;
-  margin-top: 24px;
-  margin-bottom: 24px;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
-}
-
-.dayscontainer {
-	display: grid;
-	grid-template-columns: repeat(7, 1fr);
-	box-shadow: none;
-	padding:8px;
-}
-
-.daynew { 
-	padding:8px;
-	padding-top:4px;
-	padding-bottom:4px;
-	margin:4px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	color: #212b32;
-	font-size:19px;
-	background-color: #fff;
-	border: 1px solid transparent;
-	border-radius: 0.2em;
-	cursor: pointer;
-}
-
-.daypast { 
-	padding:8px;
-	padding-top:4px;
-	padding-bottom:4px;
-	margin:4px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	color: #aeb7bd;
-	font-size:19px;
-	background-color: #fff;
-	border: 1px solid transparent;
-	border-radius: 0.2em;
-	pointer-events: none;
-}
-
-.daynew:hover {
-	background-color: #b3daff;
-	color: #005eb8;
-}
-
-
-.dayselected {
-	background-color: #1a8fff;
-	color:#FFF;
-	padding:8px;
-	padding-top:4px;
-	padding-bottom:4px;
-	margin:4px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	font-size:19px;
-	border: 1px solid transparent;
-	border-radius: 0.2em;
-	cursor: pointer;
-}
-
-
-.dayselected:hover {
-	background-color: #1a8fff;
-	color:#FFF;
-}
-
-.datescontainer .month {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 2px solid 	#d8dde0;
-  color: #1a8fff;
-  font-size: 22px;
-  font-weight: 600;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  
-}
-
-.arrows {
-	width: 40px;
-	height:40px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	color: #212b32;
-	font-size: 24px;
-	cursor:pointer;
-}
-
-.arrows-disabled {
-	width: 40px;
-	height:40px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	color: #aeb7bd;
-	font-size: 24px;
-	pointer-events: none;
-}
-
-.arrows:hover {
-  background-color: #b3daff;
-  color: #212b32;
-}
-
-.arrows:active {
-  background-color: #b3daff;
-  color: #212b32;
-}
-	
 </style>
 
 <div class="nhsuk-width-container">
@@ -462,6 +165,7 @@ Edit active user alerts - When does the maintenance end?
 	</a>
 </div>
 
+
 <script>
 	
 	const calendar = document.getElementById("calendar");
@@ -486,30 +190,37 @@ Edit active user alerts - When does the maintenance end?
 
 	btn4.onclick = function () {
 	document.getElementById('time-selected').classList.add("hour-selected");
-	if (document.getElementById("pm").className !== "pm-selected") {
-	document.getElementById("timeinput").value ='1.30 AM';
-	} else {
+	if (document.getElementById("pm").className === "pm-selected") {
 	document.getElementById("timeinput").value ='1.30 PM';
+	} else {
+	document.getElementById("timeinput").value ='1.30 AM';	
 	}
 	};
 
 	doneButton.onclick = function () {
 	time.style.display = "none";
 	doneButtonDiv.style.display = "none";
-	if (document.getElementById("pm").className !== "pm-selected") {
-	document.getElementById("timeinput").value ='1.30 AM';
-	} else {
+	if (document.getElementById("timeinput").value ==='') {
+	document.getElementById("timeinput").value ='';
+	} else
+	if (document.getElementById("pm").className === "pm-selected") {
 	document.getElementById("timeinput").value ='1.30 PM';
+	} else {
+	document.getElementById("timeinput").value ='1.30 AM';
 	}
 	};
 	
 	input2.onclick = function () {
 		time.style.display = "flex";
 		doneButtonDiv.style.display = "block";
-	  if (document.getElementById("timeinput").value ='--:--') {
-		 document.getElementById("timeinput").value =' ';
-	  } 
-	  
+	  if (document.getElementById("timeinput").value ==='') {
+		 document.getElementById("timeinput").value ='';
+	  } else 
+	  if (document.getElementById("timeinput").value ==='1.30 PM'){
+		document.getElementById("timeinput").value ='1.30 PM';
+	  } else {
+	  	document.getElementById("timeinput").value ='1.30 AM';
+	  }
 	};
 
 	function amButton() {
@@ -519,6 +230,11 @@ Edit active user alerts - When does the maintenance end?
 
   	document.getElementById("am").className = "am-selected";
   	document.getElementById("pm").className = "pm";
+	if (document.getElementById("timeinput").value ===''){
+	document.getElementById("timeinput").value ='';
+	} else {
+	document.getElementById("timeinput").value ='1.30 AM';
+	}
 	};
 
 	function pmButton() {
@@ -528,6 +244,11 @@ Edit active user alerts - When does the maintenance end?
 
   	document.getElementById("am").className = "am";
   	document.getElementById("pm").className = "pm-selected";
+	if (document.getElementById("timeinput").value ===''){
+	document.getElementById("timeinput").value ='';
+	} else {
+	document.getElementById("timeinput").value ='1.30 PM';
+	}
 	};
 
 	document.addEventListener('mouseup', function(e) {
@@ -541,9 +262,6 @@ Edit active user alerts - When does the maintenance end?
 	});
 
 </script>
-	
-
-
 
         
 {% endblock %}

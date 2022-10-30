@@ -25,106 +25,12 @@ Select supplier
 {% endblock %}
 
 {% block content %}
-<style>
-  
-  /* Style the tab */
-  .tab {
-    float: left;
-    background-color: inherit;
-    color: #212b32;
-  }
-  
-  /* Style the buttons inside the tab */
-  .tab button {
-    display: block;
-    margin-bottom: 32px;
-    background-color: #fff;
-    border: 1px solid #d8dde0;
-    outline: none;
-    text-align: left;
-    cursor: pointer;
-    transition: 0.3s;
-    color:	#212b32;
-    width: 100%;
-  }
-  
-  /* Change background color of buttons on hover */
-  .tab button:hover {
-    border: 1px solid #005eb8;
-  }
-  
-  /* Create an active/current "tab button" class */
-  .tab button.active {
-    border: 1px solid #005eb8;
-  }
-  
-  /* Style the tab content */
-  .tabcontent {
-    background-color: inherit;
-  }
-
-  .tabcontent-option {
-  padding-top: 24px;
-  padding-left: 24px;
-  padding-right: 24px;
-  }
-
-  
-  /* Style the incident type cards */
-
-  .incident-heading {
-  display: flex;
-  padding-top: 24px;
-  padding-left: 24px;
-  padding-right: 24px;
-  height: fit-content;
-  width: 100%;
-  }
-
-  .incident-title {
-    width: 25%;
-  }
-
-  .incident-intro {
-      color: #4c6272;
-      width: 75%;
-      padding-left: 24px;
-  }
-
-  .change-incident {
-  float: right;
-  }
-
-</style>
 
 
 <style>
   a:visited { 
    color:	#005eb8; 
    }
-</style>
-
-<style>
-
-  .nhsuk-warning-text__icon_global {
-  -moz-user-select: none;
-  -ms-user-select: none;
-  -webkit-user-select: none;
-  background: #212b32;
-  border-radius: 50%;
-  border: 3px solid #212b32;
-  color: #fff;
-  display: inline-block;
-  font-size: 19px;
-  font-weight: 700;
-  line-height: 22px;
-  min-height: 22px;
-  position: relative;
-  text-align: center;
-  user-select: none;
-  width: 28px; }
-
-
 </style>
 
 
@@ -153,7 +59,7 @@ Select supplier
             <hr>
             <div style="display: flex; flex-direction:row;">
               <div>
-                <span class="nhsuk-warning-text__icon_global" aria-hidden="true">!</span>
+                <span class="nhsuk-warning-small__icon" aria-hidden="true">!</span>
               </div>
               <div class="nhsuk-card__description nhsuk-u-font-weight-bold nhsuk-u-padding-left-4">
                 There are already active user alerts for this incident type. You can 
