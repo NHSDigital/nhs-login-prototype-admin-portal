@@ -1,5 +1,8 @@
 {% extends 'layout-nav.html' %}
 {% set pageSection = "Manage user notifications" %}
+{% block pageTitle %}
+When does the maintenance end?
+{% endblock %}
 
 <!-- this page is only visible to prod-accessreport group -->
 
@@ -420,9 +423,9 @@
 					<p class="daypast"> </p><p class="daypast"> </p><p class="daypast"> </p><p class="daypast"> </p>
 					<p class="daypast">1</p><p class="daypast">2</p><p class="daypast">3</p><p class="daypast">4</p><p class="daypast">5</p><p class="daypast">6</p><p class="daypast">7</p>
 					<p class="daypast">8</p><p class="daypast">9</p><p class="daynew dayselected" id="current">10</p><p class="daynew">11</p><p class="daynew">12</p><p class="daynew">13</p><p class="daynew">14</p>
-					<p class="daynew" id="day-selected">15</p><p class="daynew">16</p><p class="daynew">17</p><p class="daynew">18</p><p class="daynew">19</p><p class="daynew">20</p><p class="daynew">21</p>
+					<p class="daynew">15</p><p class="daynew">16</p><p class="daynew">17</p><p class="daynew">18</p><p class="daynew">19</p><p class="daynew">20</p><p class="daynew">21</p>
 					<p class="daynew">22</p><p class="daynew">23</p><p class="daynew">24</p><p class="daynew">25</p><p class="daynew">26</p><p class="daynew">27</p><p class="daynew">28</p>
-					<p class="daynew">29</p><p class="daynew">30</p><p class="daynew">31</p>
+					<p class="daynew">29</p><p class="daynew" id="day-selected">30</p><p class="daynew">31</p>
 			</div>	
 		</div>
 	</div>	
@@ -490,7 +493,7 @@
 	
 	btn3.onclick = function () {
 	  calendar.style.display = "none";
-	  document.getElementById("dateinput").value ='15/11/2022'
+	  document.getElementById("dateinput").value ='30/11/2022'
 	  document.getElementById('current').classList.remove("dayselected");
 	  document.getElementById('day-selected').classList.add("dayselected");
 	};

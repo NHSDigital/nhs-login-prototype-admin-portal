@@ -1,5 +1,8 @@
 {% extends 'layout-nav.html' %}
 {% set pageSection = "Manage user notifications" %}
+{% block pageTitle %}
+Confirm incident details
+{% endblock %}
 
 <!-- this page is only visible to prod-accessreport group -->
 
@@ -107,12 +110,12 @@ a:visited {
       </dt>
       {% if data['do-you-know-end-date-time'] === 'both' %}
       <dd class="nhsuk-summary-list__value">
-       <p>2 February 2023 at 11.30pm</p>
+       <p>30 November 2022 at 1.30pm</p>
       </dd>
       {% endif %}
       {% if data['do-you-know-end-date-time'] === 'date' %}
       <dd class="nhsuk-summary-list__value">
-       <p> 2 February 2023</p>
+       <p> 30 November 2022</p>
       </dd>
       {% endif %}
       {% if data['do-you-know-end-date-time'] === 'dontknow' %}

@@ -1,5 +1,8 @@
 {% extends 'layout-nav.html' %}
 {% set pageSection = "Manage user notifications" %}
+{% block pageTitle %}
+User alerts are active
+{% endblock %}
 
 <!-- this page is only visible to prod-accessreport group -->
 
@@ -51,10 +54,10 @@
         <div class="nhsuk-u-padding-bottom-2">
           <p class="nhsuk-heading-l" style="line-height:0%;">Maintenance end date:</p>
           {% if data['do-you-know-end-date-time'] === 'both' %}
-          <p class="nhsuk-heading-l" style="line-height: 0%;">2 February 2023, 11.30pm</p>
+          <p class="nhsuk-heading-l" style="line-height: 0%;">30 November 2022, 1.30pm</p>
           {% endif %}
           {% if data['do-you-know-end-date-time'] === 'date' %}
-          <p class="nhsuk-heading-l" style="line-height: 0%;">2 February 2023</p>
+          <p class="nhsuk-heading-l" style="line-height: 0%;">30 November 2022</p>
           {% endif %}
           {% if data['do-you-know-end-date-time'] === 'dontknow' %}
           <p class="nhsuk-heading-l" style="line-height: 0%;">Not known</p>
@@ -74,10 +77,10 @@
         <div class="nhsuk-u-padding-bottom-2">
           <p class="nhsuk-heading-l" style="line-height:0%;">Maintenance end date:</p>
           {% if data['do-you-know-end-date-time'] === 'both' %}
-          <p class="nhsuk-heading-l" style="line-height: 0%;">2 February 2023, 11.30pm</p>
+          <p class="nhsuk-heading-l" style="line-height: 0%;">30 November 2022, 1.30pm</p>
           {% endif %}
           {% if data['do-you-know-end-date-time'] === 'date' %}
-          <p class="nhsuk-heading-l" style="line-height: 0%;">2 February 2023</p>
+          <p class="nhsuk-heading-l" style="line-height: 0%;">30 November 2022</p>
           {% endif %}
           {% if data['do-you-know-end-date-time'] === 'dontknow' %}
           <p class="nhsuk-heading-l" style="line-height: 0%;">Not known</p>

@@ -1,5 +1,8 @@
 {% extends 'layout-nav.html' %}
 {% set pageSection = "Manage user notifications" %}
+{% block pageTitle %}
+  Manage user alerts
+{% endblock %}
 
 {% block beforeContent %}
   <nav class="nhsuk-breadcrumb" aria-label="Breadcrumb">
@@ -154,16 +157,16 @@
                 </h3>
                 {% endif %}
                 <div class="nhsuk-u-margin-top-4">
-                  <div class="nhsuk-card__description " ><p style="line-height:100%;">Start date: 2 February 2023 at 8am</p></div>
+                  <div class="nhsuk-card__description " ><p style="line-height:100%;">Start date: 30 November 2022 at 8am</p></div>
                   {% if data['is-it-planned'] === 'Yes' %}
                   {% if data['do-you-know-end-date-time'] === 'dontknow' %}
                   <div class="nhsuk-card__description"><p style="line-height: 50%;">End date: Not known</p></div>
                   {% endif %}
                   {% if data['do-you-know-end-date-time'] === 'both' %}
-                  <div class="nhsuk-card__description"><p style="line-height: 50%;">End date: 2 February 2023, 11.30pm</p></div>
+                  <div class="nhsuk-card__description"><p style="line-height: 50%;">End date: 30 November 2022, 1.30pm</p></div>
                   {% endif %}
                   {% if data['do-you-know-end-date-time'] === 'date' %}
-                  <div class="nhsuk-card__description"><p style="line-height: 50%;">End date: 2 February 2023</p></div>
+                  <div class="nhsuk-card__description"><p style="line-height: 50%;">End date: 30 November 2022</p></div>
                   {% endif %}
                   {% endif %}
                 </div>
@@ -194,7 +197,7 @@
                 </div>
                 <hr class="nhsuk-section-break nhsuk-section-break--m nhsuk-section-break--visible">
                 <p class="nhsuk-hint" >User alerts turned on by:</p>
-                <p class="nhsuk-hint" >Admin Name on 2 February 2023</p>
+                <p class="nhsuk-hint" >Admin Name on 30 November 2022</p>
               </div>
             </div>
           
@@ -223,10 +226,10 @@
         <div class="nhsuk-u-padding-top-4">
           <p class="nhsuk-heading-s" style="line-height:0%;">Maintenance end date:</p>
           {% if data['do-you-know-end-date-time'] === 'both' %}
-          <p class="nhsuk-heading-s" style="line-height: 0%;">2 February 2023, 11.30pm</p>
+          <p class="nhsuk-heading-s" style="line-height: 0%;">30 November 2022, 1.30pm</p>
           {% endif %}
           {% if data['do-you-know-end-date-time'] === 'date' %} 
-          <p class="nhsuk-heading-s" style="line-height: 0%;">2 February 2023</p>
+          <p class="nhsuk-heading-s" style="line-height: 0%;">30 November 2022</p>
           {% endif %}
           {% if data['do-you-know-end-date-time'] === 'dontknow' %}
           <p class="nhsuk-heading-s" style="line-height: 0%;">Not known</p>
@@ -280,10 +283,10 @@
         <div class="nhsuk-u-padding-top-4">
           <p class="nhsuk-heading-s" style="line-height:0%;">Maintenance end date:</p>
           {% if data['do-you-know-end-date-time'] === 'both' %}
-          <p class="nhsuk-heading-s" style="line-height: 0%;">2 February 2023, 11.30pm</p>
+          <p class="nhsuk-heading-s" style="line-height: 0%;">30 November 2022, 1.30pm</p>
           {% endif %}
           {% if data['do-you-know-end-date-time'] === 'date' %}
-          <p class="nhsuk-heading-s" style="line-height: 0%;">2 February 2023</p>
+          <p class="nhsuk-heading-s" style="line-height: 0%;">30 November 2022</p>
           {% endif %}
           {% if data['do-you-know-end-date-time'] === 'dontknow' %}
           <p class="nhsuk-heading-s" style="line-height: 0%;">Not known</p>
@@ -339,10 +342,10 @@
         <div class="nhsuk-u-padding-top-4">
           <p class="nhsuk-heading-s" style="line-height:0%;">Maintenance end date:</p>
           {% if data['do-you-know-end-date-time'] === 'both' %}
-          <p class="nhsuk-heading-s" style="line-height: 0%;">2 February 2023, 11.30pm</p>
+          <p class="nhsuk-heading-s" style="line-height: 0%;">30 November 2022, 1.30pm</p>
           {% endif %}
           {% if data['do-you-know-end-date-time'] === 'date' %}
-          <p class="nhsuk-heading-s" style="line-height: 0%;">2 February 2023</p>
+          <p class="nhsuk-heading-s" style="line-height: 0%;">30 November 2022</p>
           {% endif %}
           {% if data['do-you-know-end-date-time'] === 'dontknow' %}
           <p class="nhsuk-heading-s" style="line-height: 0%;">Not known</p>
@@ -392,10 +395,10 @@
         <div class="nhsuk-u-padding-top-4">
           <p class="nhsuk-heading-s" style="line-height:0%;">Maintenance end date:</p>
           {% if data['do-you-know-end-date-time'] === 'both' %}
-          <p class="nhsuk-heading-s" style="line-height: 0%;">2 February 2023, 11.30pm</p>
+          <p class="nhsuk-heading-s" style="line-height: 0%;">30 November 2022, 1.30pm</p>
           {% endif %}
           {% if data['do-you-know-end-date-time'] === 'date' %}
-          <p class="nhsuk-heading-s" style="line-height: 0%;">2 February 2023</p>
+          <p class="nhsuk-heading-s" style="line-height: 0%;">30 November 2022</p>
           {% endif %}
           {% if data['do-you-know-end-date-time'] === 'dontknow' %}
           <p class="nhsuk-heading-s" style="line-height: 0%;">Not known</p>
@@ -478,10 +481,10 @@
           <div class="nhsuk-u-padding-top-4">
             <p class="nhsuk-heading-m" style="line-height:50%;">Maintenance end date:</p>
             {% if data['do-you-know-end-date-time'] === 'both' %}
-            <p class="nhsuk-heading-m" style="line-height: 0%;">2 February 2023, 11.30pm</p>
+            <p class="nhsuk-heading-m" style="line-height: 0%;">30 November 2022, 1.30pm</p>
             {% endif %}
             {% if data['do-you-know-end-date-time'] === 'date' %}
-            <p class="nhsuk-heading-m" style="line-height: 0%;">2 February 2023</p>
+            <p class="nhsuk-heading-m" style="line-height: 0%;">30 November 2022</p>
             {% endif %}
             {% if data['do-you-know-end-date-time'] === 'dontknow' %}
             <p class="nhsuk-heading-m" style="line-height: 0%;">Not known</p>
@@ -535,10 +538,10 @@
           <div class="nhsuk-u-padding-top-4">
             <p class="nhsuk-heading-m" style="line-height:50%;">Maintenance end date:</p>
             {% if data['do-you-know-end-date-time'] === 'both' %}
-            <p class="nhsuk-heading-m" style="line-height: 0%;">2 February 2023, 11.30pm</p>
+            <p class="nhsuk-heading-m" style="line-height: 0%;">30 November 2022, 1.30pm</p>
             {% endif %}
             {% if data['do-you-know-end-date-time'] === 'date' %}
-            <p class="nhsuk-heading-m" style="line-height: 0%;">2 February 2023</p>
+            <p class="nhsuk-heading-m" style="line-height: 0%;">30 November 2022</p>
             {% endif %}
             {% if data['do-you-know-end-date-time'] === 'dontknow' %}
             <p class="nhsuk-heading-m" style="line-height: 0%;">Not known</p>
@@ -594,10 +597,10 @@
           <div class="nhsuk-u-padding-top-4">
             <p class="nhsuk-heading-m" style="line-height:50%;">Maintenance end date:</p>
             {% if data['do-you-know-end-date-time'] === 'both' %}
-            <p class="nhsuk-heading-m" style="line-height: 0%;">2 February 2023, 11.30pm</p>
+            <p class="nhsuk-heading-m" style="line-height: 0%;">30 November 2022, 1.30pm</p>
             {% endif %}
             {% if data['do-you-know-end-date-time'] === 'date' %}
-            <p class="nhsuk-heading-m" style="line-height: 0%;">2 February 2023</p>
+            <p class="nhsuk-heading-m" style="line-height: 0%;">30 November 2022</p>
             {% endif %}
             {% if data['do-you-know-end-date-time'] === 'dontknow' %}
             <p class="nhsuk-heading-m" style="line-height: 0%;">Not known</p>
@@ -647,10 +650,10 @@
           <div class="nhsuk-u-padding-top-4">
             <p class="nhsuk-heading-m" style="line-height:50%;">Maintenance end date:</p>
             {% if data['do-you-know-end-date-time'] === 'both' %}
-            <p class="nhsuk-heading-m" style="line-height: 0%;">2 February 2023, 11.30pm</p>
+            <p class="nhsuk-heading-m" style="line-height: 0%;">30 November 2022, 1.30pm</p>
             {% endif %}
             {% if data['do-you-know-end-date-time'] === 'date' %}
-            <p class="nhsuk-heading-m" style="line-height: 0%;">2 February 2023</p>
+            <p class="nhsuk-heading-m" style="line-height: 0%;">30 November 2022</p>
             {% endif %}
             {% if data['do-you-know-end-date-time'] === 'dontknow' %}
             <p class="nhsuk-heading-m" style="line-height: 0%;">Not known</p>
