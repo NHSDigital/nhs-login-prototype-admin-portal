@@ -32,7 +32,7 @@
 	  color:	#005eb8; 
 	  }
 	
-	.inp-wrapper {
+	.datetime-wrapper {
 	  display: flex;
 	  gap:32px;
 	}
@@ -42,9 +42,9 @@
 	  display: block;
 	}	
 
-	.dateend {
+.dateend {
 	  font-size: 19px;
-	  width:240px;
+	  width:200px;
 	  padding: 16px;
 	  color: #212b32;
 	  border:transparent solid 2px;
@@ -52,111 +52,12 @@
 	  border-radius: 0.2em;
 	  margin-top: 0.6em;
 	  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
-	}
-
-	.dateend.default {
-	  font-size: 19px;
-	  width:240px;
-	  padding: 16px;
-	  color: #212b32;
-	  border:transparent solid 2px;
-	  outline: transparent solid 2px;
-	  border-radius: 0.2em;
-	  margin-top: 0.6em;
-	  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
-	}
-
-	.dateend:focus{
-		border: 2px solid 	#212b32;
-		  outline: 2px solid 	#ffeb3b;
-	}
-
-
-
-	::-webkit-calendar-picker-indicator {
-	  background-color: #d8dde0;
-	  padding: 0.2em;
-	  cursor: pointer;
-	  border-radius: 0.1em;
-	  
-	}
-.dates {
-  background-color: #FFF;
-  width: 360px;
-  height: 300px;
-  margin-top: 24px;
-  margin-bottom: 24px;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
 }
 
-.dates .month {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 2px solid 	#d8dde0;
-  color: #1a8fff;
-  font-size: 22px;
-  font-weight: 600;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  
+.dateend:focus{
+  border: 2px solid 	#212b32;
+  outline: 2px solid 	#ffeb3b;
 }
-
-.dates .month .arrows {
-	width: 40px;
-	height:40px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	color: #212b32;
-	font-size: 24px;
-}
-
-.dates .month .arrows:hover {
-  background-color: #b3daff;
-  color: #212b32;
-}
-
-.dates .month .arrows:active {
-  background-color: #b3daff;
-  color: #212b32;
-}
-
-.dates .days {
-	display: grid;
-	grid-template-columns: repeat(7, 1fr);
-	height: 200px;
-	width: 100%;
-	cursor: pointer;
-	box-shadow: none;
-}
-
-.dates .days .day { 
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	color: #212b32;
-	font-size:19px;
-}
-
-
-.dates .days .day:hover {
-	background-color: #b3daff;
-	color: #005eb8;
-}
-
-
-.dates .days .day.selected {
-	background-color: #1a8fff;
-	color:#FFF;
-}
-
-
-.dates .days .day.selected:hover {
-	background-color: #1a8fff;
-	color:#FFF;
-}
-
 
 .timeend {
 	  font-size: 19px;
@@ -169,29 +70,17 @@
 	  border-radius: 0.2em;
 	  margin-top: 0.6em;
 	  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
-	}
+}
 
-	.timeend.default {
-	  font-size: 19px;
-	  text-align: center;
-	  width:132px;
-	  padding: 1em;
-	  color: #212b32;
-	  border:transparent solid 2px;
-	  outline: transparent solid 2px;
-	  border-radius: 0.2em;
-	  margin-top: 0.6em;
-	  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
-	}
 
-	.timeend:focus{
-		border: 2px solid 	#212b32;
-		  outline: 2px solid 	#ffeb3b;
-	}
+.timeend:focus{
+	border: 2px solid 	#212b32;
+	outline: 2px solid 	#ffeb3b;
+}
 
 .times {
   background-color: #FFF;
-  margin-left:272px;
+  margin-left:232px;
   margin-bottom: 24px;
   width: 240px;
   max-height: 300px;
@@ -312,14 +201,133 @@
 	width: 240px; 
 	background-color:#fff; 
 	position:absolute; 
-	margin-left:272px; 
+	margin-left:232px; 
 	font-size:19px; 
 	text-align: right; 
 	padding-right: 36px; 
 	padding-top: 16px;
 }
 
+.datescontainer {
+  background-color: #FFF;
+  width: fit-content;
+  height: fit-content;
+  margin-top: 24px;
+  margin-bottom: 24px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
+}
 
+.dayscontainer {
+	display: grid;
+	grid-template-columns: repeat(7, 1fr);
+	box-shadow: none;
+	padding:8px;
+}
+
+.daynew { 
+	padding:8px;
+	padding-top:4px;
+	padding-bottom:4px;
+	margin:4px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: #212b32;
+	font-size:19px;
+	background-color: #fff;
+	border: 1px solid transparent;
+	border-radius: 0.2em;
+	cursor: pointer;
+}
+
+.daypast { 
+	padding:8px;
+	padding-top:4px;
+	padding-bottom:4px;
+	margin:4px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: #aeb7bd;
+	font-size:19px;
+	background-color: #fff;
+	border: 1px solid transparent;
+	border-radius: 0.2em;
+	pointer-events: none;
+}
+
+.daynew:hover {
+	background-color: #b3daff;
+	color: #005eb8;
+}
+
+
+.dayselected {
+	background-color: #1a8fff;
+	color:#FFF;
+	padding:8px;
+	padding-top:4px;
+	padding-bottom:4px;
+	margin:4px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size:19px;
+	border: 1px solid transparent;
+	border-radius: 0.2em;
+	cursor: pointer;
+}
+
+
+.dayselected:hover {
+	background-color: #1a8fff;
+	color:#FFF;
+}
+
+.datescontainer .month {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid 	#d8dde0;
+  color: #1a8fff;
+  font-size: 22px;
+  font-weight: 600;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  
+}
+
+.arrows {
+	width: 40px;
+	height:40px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: #212b32;
+	font-size: 24px;
+	cursor:pointer;
+}
+
+.arrows-disabled {
+	width: 40px;
+	height:40px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: #aeb7bd;
+	font-size: 24px;
+	pointer-events: none;
+}
+
+.arrows:hover {
+  background-color: #b3daff;
+  color: #212b32;
+}
+
+.arrows:active {
+  background-color: #b3daff;
+  color: #212b32;
+}
 	
 </style>
 
@@ -349,24 +357,23 @@
 		
 		<span class="nhsuk-error-message" id="date-time-error" style="display: none;">
 			{% if data['do-you-know-end-date-time'] === 'both' %}
-			Select the maintenance end date and time
+			Enter the date and time when the maintenance ends
 			{% else %}
-			Select the maintenance end date
+			Enter the date when the maintenance ends
 			{% endif %}
 		</span>
 		
-	<div class="inp-wrapper" id="date-time-field">
+	<div class="datetime-wrapper" id="date-time-field">
 		<div class="date-wrapper" id="date">
 			<label class="nhsuk-label" for="date">Date</label>
-			<input class="selected-date dateend" type="text" placeholder="DD/MM/YYYY" id="dateinput"/> 
-
+			<input class="dateend" type="text" placeholder="DD/MM/YYYY" id="dateinput"/> 
 		</div>
 
 		{% if data['do-you-know-end-date-time'] === 'both' %}
 
 		<div class="time-wrapper" id="time" >
 			<label class="nhsuk-label" for="date">Time</label>
-			<input class="timeend" placeholder="--:--" id="timeinput"/>
+			<input class="timeend" placeholder="--:--" id="timeinput" readonly/>
 		</div>
 		{% endif %}
 		
@@ -398,21 +405,25 @@
 			</div>
 
 
-			
-			
 		</div>
 		
 	</div>
 	{% endif %}
 	<div style="width:50%">
-		<div class="dates nhsuk-u-margin-top-4" id="calendar" style="display:none;">
+		<div class="datescontainer nhsuk-u-margin-top-4 dates" id="calendar" style="display:none;">
 			<div class="month">
-			  <div class="arrows prev-mth">&lt;</div>
-			  <div class="mth"></div>
-			  <div class="arrows next-mth">&gt;</div>
+				<div class="arrows-disabled">&lt;</div>
+				<div class="mth">November 2022</div>
+				<div class="arrows">&gt;</div>
 			</div>
-		
-			<div id="date-selected" class="days dates"></div>
+			<div class="dayscontainer" style="width:50%;" id="date-selected">
+					<p class="daypast"> </p><p class="daypast"> </p><p class="daypast"> </p><p class="daypast"> </p>
+					<p class="daypast">1</p><p class="daypast">2</p><p class="daypast">3</p><p class="daypast">4</p><p class="daypast">5</p><p class="daypast">6</p><p class="daypast">7</p>
+					<p class="daypast">8</p><p class="daypast">9</p><p class="daynew dayselected" id="current">10</p><p class="daynew">11</p><p class="daynew">12</p><p class="daynew">13</p><p class="daynew">14</p>
+					<p class="daynew" id="day-selected">15</p><p class="daynew">16</p><p class="daynew">17</p><p class="daynew">18</p><p class="daynew">19</p><p class="daynew">20</p><p class="daynew">21</p>
+					<p class="daynew">22</p><p class="daynew">23</p><p class="daynew">24</p><p class="daynew">25</p><p class="daynew">26</p><p class="daynew">27</p><p class="daynew">28</p>
+					<p class="daynew">29</p><p class="daynew">30</p><p class="daynew">31</p>
+			</div>	
 		</div>
 	</div>	
 		
@@ -479,7 +490,9 @@
 	
 	btn3.onclick = function () {
 	  calendar.style.display = "none";
-	  document.getElementById("dateinput").value ='02/02/2022'
+	  document.getElementById("dateinput").value ='15/11/2022'
+	  document.getElementById('current').classList.remove("dayselected");
+	  document.getElementById('day-selected').classList.add("dayselected");
 	};
 
 	btn4.onclick = function () {
@@ -502,19 +515,11 @@
 	};
 	
 	input2.onclick = function () {
-	  if (time.style.display !== "none") {
-		time.style.display = "none";
-		document.getElementById("timeinput").value ='--:--';
-	  } else {
 		time.style.display = "flex";
-		document.getElementById("timeinput").value =' ';
-	  }
-
-	  if (doneButtonDiv.style.display !== "none") {
-		doneButtonDiv.style.display = "none";
-	  } else {
 		doneButtonDiv.style.display = "block";
-	  }
+	  if (document.getElementById("timeinput").value ='--:--') {
+		 document.getElementById("timeinput").value =' ';
+	  } 
 	  
 	};
 
@@ -525,9 +530,6 @@
 
   	document.getElementById("am").className = "am-selected";
   	document.getElementById("pm").className = "pm";
-	if (document.getElementById("timeinput").value !== " ") {
-	document.getElementById("timeinput").value ='1.30 AM'
-	}
 	};
 
 	function pmButton() {
@@ -537,160 +539,29 @@
 
   	document.getElementById("am").className = "am";
   	document.getElementById("pm").className = "pm-selected";
-	if (document.getElementById("timeinput").value !== " ") {
-	document.getElementById("timeinput").value ='1.30 PM'
-	}
 	};
 
 	document.addEventListener('mouseup', function(e) {
     if (!calendar.contains(e.target)) {
         calendar.style.display = 'none';
     }
-	});
-
-	document.addEventListener('mouseup', function(e) {
-    if (!time.contains(e.target)) {
+	if (!time.contains(e.target)) {
         time.style.display = 'none';
 		doneButtonDiv.style.display = 'none';
     }
 	});
+
 </script>
 	
-	
-<script>
-	
-	
-		const date_picker_element = document.querySelector('.date-wrapper');
-		const selected_date_element = document.querySelector('.selected-date');
-		const dates_element = document.querySelector('.dates');
-		const mth_element = document.querySelector('.dates .month .mth');
-		const next_mth_element = document.querySelector('.dates .month .next-mth');
-		const prev_mth_element = document.querySelector('.dates .month .prev-mth');
-		const days_element = document.querySelector('.dates .days');
-		
-		
-		
-		const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-		
-		let date = new Date();
-		let day = date.getDate();
-		let month = date.getMonth();
-		let year = date.getFullYear();
-		
-		let selectedDate = date;
-		let selectedDay = day;
-		let selectedMonth = month;
-		let selectedYear = year;
-		
-		mth_element.textContent = months[month] + ' ' + year;
-		
-		selected_date_element.textContent = formatDate(date);
-		selected_date_element.dataset.value = selectedDate;
-		
-		populateDates();
-		
-		// EVENT LISTENERS
-		date_picker_element.addEventListener('click', toggleDatePicker);
-		next_mth_element.addEventListener('click', goToNextMonth);
-		prev_mth_element.addEventListener('click', goToPrevMonth);
-		
-		// FUNCTIONS
-		function toggleDatePicker (e) {
-			if (!checkEventPathForClass(e.path, 'dates')) {
-				dates_element.classList.toggle('active');
-			selected_date_element.classList.toggle('active');
-			}
-		}
-		
-		function goToNextMonth (e) {
-			month++;
-			if (month > 11) {
-				month = 0;
-				year++;
-			}
-			mth_element.textContent = months[month] + ' ' + year;
-			populateDates();
-		}
-		
-		function goToPrevMonth (e) {
-			month--;
-			if (month < 0) {
-				month = 11;
-				year--;
-			}
-			mth_element.textContent = months[month] + ' ' + year;
-			populateDates();
-		}
-		
-		function populateDates (e) {
-			days_element.innerHTML = '';
-			let amount_days = 31;
-			if (month == 1) {
-				amount_days = 28;
-			}
-		
-			for (let i = 0; i < amount_days; i++) {
-				const day_element = document.createElement('div');
-				day_element.classList.add('day');
-				day_element.textContent = i + 1;
-		
-				if (selectedDay == (i + 1) && selectedYear == year && selectedMonth == month) {
-					day_element.classList.add('selected');
-				}
-		
-				day_element.addEventListener('click', function () {
-					selectedDate = new Date(year + '-' + (month + 1) + '-' + (i + 1));
-					selectedDay = (i + 1);
-					selectedMonth = month;
-					selectedYear = year;
-		
-					selected_date_element.textContent = formatDate(selectedDate);
-					selected_date_element.dataset.value = selectedDate;
-		
-					populateDates();
-				});
-		
-				days_element.appendChild(day_element);
-			}
-		}
-		
-		// HELPER FUNCTIONS
-		function checkEventPathForClass (path, selector) {
-			for (let i = 0; i < path.length; i++) {
-				if (path[i].classList && path[i].classList.contains(selector)) {
-					return true;
-				}
-			}
-			
-			return false;
-		}
-		function formatDate (d) {
-			let day = d.getDate();
-			if (day < 10) {
-				day = '0' + day;
-			}
-		
-			let month = d.getMonth() + 1;
-			if (month < 10) {
-				month = '0' + month;
-			}
-		
-			let year = d.getFullYear();
-		
-			return day + ' / ' + month + ' / ' + year;
-		}
-		
-		
-</script>  
 
 <script>
 
 function validate() {
-	if( document.getElementById('dateend').value == "" ) {
+	if( document.getElementById('dateinput').value == "" ) {
       document.getElementById('date-time-error').style.display = 'block';
       document.getElementById('date-time-field').classList.add("nhsuk-form-group--error");
-      document.getElementById('dateend').classList.add("nhsuk-input--error");
-      document.getElementById('dateend').focus();
+      document.getElementById('dateinput').classList.add("nhsuk-input--error");
+      document.getElementById('dateinput').focus();
       return false;
   	}
 

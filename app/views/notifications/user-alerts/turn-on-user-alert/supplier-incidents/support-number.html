@@ -112,7 +112,7 @@
             <div class="nhsuk-radios nhsuk-radios--conditional" id="support-ref-number-radios">
 
             <span class="nhsuk-error-message" id="support-ref-number-error" style="display: none;">
-              Choose if you know the support reference number for this incident
+              Select if you know the support reference number for this incident
             </span>
 
             <div class="nhsuk-radios__item">
@@ -130,6 +130,13 @@
                 </label>
                 <span class="nhsuk-error-message" id="incident-number-empty-error" style="display: none;">
                   Enter support reference number for this incident
+                </span>
+                <span class="nhsuk-error-message nhsuk-u-padding-top-2" id="incident-number-format-error" style="display: none;">
+                  <p>Enter a valid support reference number</p>
+                  <ul>
+                    <li>ServiceNow incidents must start with 'INC' followed by 7 numbers (i.e. INC1234567)</li>
+                    <li>Cherwell incidents must start with '2' followed by 7 numbers (i.e. 21234567)</li>
+                  </ul>
                 </span>
                 <input class="nhsuk-input nhsuk-u-width-full" id="incident-number-input" name="incident-number-input" type="text">
               </div>
@@ -164,28 +171,52 @@
 <script>
 
   function validate() {
-
     
-      
+    var srnServiceNow = document.getElementById('incident-number-input').value;
+    var serviceNowRGEX = /^inc[0-9]{7}/i;
+    var serviceNowResult = serviceNowRGEX.test(srnServiceNow);
+
+    var srnCherwell = document.getElementById('incident-number-input').value;
+    var cherwellRGEX = /^2[0-9]{7}/i;
+    var cherwellResult = cherwellRGEX.test(srnCherwell);
+ 
+
         if( document.getElementById('incident-number').checked ) {
             if( document.getElementById('incident-number-input').value == "" ) {
             document.getElementById('incident-number-empty-error').style.display = 'block';
+            document.getElementById('incident-number-format-error').style.display = 'none';
             document.getElementById('incident-number-field').classList.add("nhsuk-form-group--error");
             document.getElementById('incident-number').classList.add("nhsuk-input--error");
             document.getElementById('incident-number-input').focus();
             document.getElementById('support-ref-number-error').style.display = 'none';
             document.getElementById('support-ref-number-radios').classList.remove("nhsuk-form-group--error");
-            return false;
+            return false
+            } else
+            if(cherwellResult == false){
+              if(serviceNowResult == false){
+              document.getElementById('incident-number-empty-error').style.display = 'none';
+              document.getElementById('incident-number-format-error').style.display = 'block';
+              document.getElementById('incident-number-field').classList.add("nhsuk-form-group--error");
+              document.getElementById('incident-number').classList.add("nhsuk-input--error");
+              document.getElementById('incident-number-input').focus();
+              document.getElementById('support-ref-number-error').style.display = 'none';
+              document.getElementById('support-ref-number-radios').classList.remove("nhsuk-form-group--error");
+              return false
+              } else {
+              return true
+              }
             }
-        }
+            
+        } else
 
         if( document.querySelectorAll('input[type="radio"]:checked').length === 0 ) {
           document.getElementById('support-ref-number-error').style.display = 'block';
           document.getElementById('support-ref-number-radios').classList.add("nhsuk-form-group--error");
-          return false;
+        
+          return false; 
         }
+        
       
-        return( true );    
         
   }
 
