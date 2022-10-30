@@ -15,8 +15,8 @@ Do you know the support reference number?
       {% if data['incident-number'] === 'No' %}
       <li class="nhsuk-breadcrumb__item">Add support reference number</li>
       {% else %}
-      <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link" href="/notifications/user-alerts/schedule-user-alert/select-incident">Incident types</a></li>
-      <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link" href="/notifications/user-alerts/schedule-user-alert/select-incident/supplier-incidents">Supplier incidents</a></li>
+      <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link" href="/notifications/user-alerts/turn-on-user-alert/select-incident">Incident types</a></li>
+      <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link" href="/notifications/user-alerts/turn-on-user-alert/supplier-incidents/supplier-incidents">Supplier incidents</a></li>
       <li class="nhsuk-breadcrumb__item">Incident details</li>
       {% endif %}
     </ol>
@@ -46,9 +46,11 @@ Do you know the support reference number?
 <div class="nhsuk-grid-row">
   
   <div class="nhsuk-grid-column-two-thirds">
-    <h1 class="nhsuk-heading-l">
-      Enter the support reference number for:
-    </h1>
+    <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+      <h1 class="nhsuk-fieldset__heading">
+        Enter the support reference number for:
+      </h1>
+    </legend>
     {% if data['impact'] === 'Service is not working as expected' %}
     {% if data['is-it-planned'] === 'Yes' %}
     <h2 class="nhsuk-heading-l" style="line-height: 100%;">NAM is not working as expected</h2>
