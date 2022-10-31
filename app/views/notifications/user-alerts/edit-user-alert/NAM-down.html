@@ -567,6 +567,16 @@ Edit active user alerts - NAM down
           <p class="nhsuk-heading-xs" style="line-height: 0%;">Not known</p>
           {% endif %}
         </div>
+        {% if data['incident-number'] != 'No' %}
+        <div class="nhsuk-u-padding-top-3">
+          <p class="nhsuk-heading-xs" style="line-height: 50%;">
+            Support reference number:
+          </p>
+          <p class="nhsuk-heading-xs" style="line-height:0%;">
+            INC1234567
+          </p>
+        </div>
+        {% endif %}
       </div>
       </div>
       {% endif %}
@@ -581,6 +591,16 @@ Edit active user alerts - NAM down
         <div>
           <p class="nhsuk-heading-xs" style="line-height: 100%;">NAM is not working as expected</p>
         </div>
+        {% if data['incident-number'] != 'No' %}
+        <div class="nhsuk-u-padding-top-2">
+          <p class="nhsuk-heading-xs" style="line-height: 50%;">
+            Support reference number:
+          </p>
+          <p class="nhsuk-heading-xs" style="line-height:0%;">
+            INC1234567
+          </p>
+        </div>
+        {% endif %}
       </div>
       </div>
       {% endif %}
@@ -608,6 +628,16 @@ Edit active user alerts - NAM down
           <p class="nhsuk-heading-xs" style="line-height: 0%;">Not known</p>
           {% endif %}
         </div>
+        {% if data['incident-number'] != 'No' %}
+        <div class="nhsuk-u-padding-top-3">
+          <p class="nhsuk-heading-xs" style="line-height: 50%;">
+            Support reference number:
+          </p>
+          <p class="nhsuk-heading-xs" style="line-height:0%;">
+            INC1234567
+          </p>
+        </div>
+        {% endif %}
       </div>
       </div>
       {% endif %}
@@ -622,6 +652,16 @@ Edit active user alerts - NAM down
         <div>
           <p class="nhsuk-heading-xs" style="line-height: 100%;">NAM is down</p>
         </div>
+        {% if data['incident-number'] != 'No' %}
+        <div class="nhsuk-u-padding-top-2">
+          <p class="nhsuk-heading-xs" style="line-height: 50%;">
+            Support reference number:
+          </p>
+          <p class="nhsuk-heading-xs" style="line-height:0%;">
+            INC1234567
+          </p>
+        </div>
+        {% endif %}
       </div>
       </div>
       {% endif %} 
