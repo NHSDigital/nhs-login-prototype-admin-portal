@@ -83,7 +83,17 @@ Do you know the support reference number?
         <label class="nhsuk-label" for="incident-number">
           Support reference number 
         </label>
-        <input class="nhsuk-input" id="incident-number" name="incident-number" type="text">
+        <span class="nhsuk-error-message" id="add-incident-number-empty-error" style="display: none;">
+          Enter support reference number for this incident
+        </span>
+        <span class="nhsuk-error-message nhsuk-u-padding-top-2" id="add-incident-number-format-error" style="display: none;">
+          <p>Enter a valid support reference number</p>
+          <ul>
+            <li>ServiceNow incidents must start with 'INC' followed by 7 numbers (i.e. INC1234567)</li>
+            <li>Cherwell incidents must start with '2' followed by 7 numbers (i.e. 21234567)</li>
+          </ul>
+        </span>
+        <input class="nhsuk-input" id="add-incident-number-input" name="incident-number" type="text">
       </div>
 
   <a href="/notifications/user-alerts/manage-user-alerts?incident-number=true" >
