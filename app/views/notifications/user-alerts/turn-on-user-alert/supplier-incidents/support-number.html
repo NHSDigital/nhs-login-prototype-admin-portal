@@ -1,7 +1,11 @@
 {% extends 'layout-nav.html' %}
 {% set pageSection = "Manage user notifications" %}
 {% block pageTitle %}
+{% if data['incident-number'] === 'No' %}
+Add support reference number
+{% else %}
 Do you know the support reference number?
+{% endif %}
 {% endblock %}
 
 <!-- this page is only visible to prod-accessreport group -->
