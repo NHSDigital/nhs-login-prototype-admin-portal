@@ -87,8 +87,8 @@ a:visited {
       
 
 <div class="nhsuk-grid-row">
-  <div class="nhsuk-grid-column-two-thirds nhsuk-u-margin-top-4" >
-    <div class=" nhsuk-u-padding-0">
+  <div class="nhsuk-grid-column-full nhsuk-u-margin-top-4" >
+    <div class="nhsuk-grid-column-full nhsuk-u-padding-0">
       <h2 class="alert-header-tab-selected nhsuk-u-padding-left-4" id="global-alert" style="text-align: left;">
         Global alert
       </h2>
@@ -98,10 +98,10 @@ a:visited {
 
 
 <div class="nhsuk-grid-row " >
-  <div class="nhsuk-grid-column-two-thirds" >
+  <div class="nhsuk-grid-column-full">
    <div id="globalalert" style=" display:block; border-bottom: 1px solid #d8dde0;  border-right: 1px solid #d8dde0; border-left: 1px solid #d8dde0; background-color: #fff;">
               <div class="nhsuk-grid-row nhsuk-u-padding-4">
-          <div class=" nhsuk-u-padding-left-4 nhsuk-u-padding-right-4" >
+          <div class=" nhsuk-grid-column-one-half " >
             <div class=" nhsuk-u-padding-bottom-4" style="background-color: #fad9d7; padding:16px; border:1px solid #8A1538;">
               <div class="" aria-labelledby="error-summary-title" role="service status information" tabindex="-1" >
                 <div class=" " style="display:flex; flex-direction:row;">
@@ -146,6 +146,36 @@ a:visited {
             </div>
             </div>
           </div>
+          <div class=" nhsuk-grid-column-one-half" >
+            <details class="nhsuk-details nhsuk-expander">
+              <summary class="nhsuk-details__summary">
+                <span class="nhsuk-details__summary-text">
+                  See how it looks on a page
+                </span>
+              </summary>
+              <div class="nhsuk-details__text">
+                <img src="/images/global-alert-example.png" style="cursor:zoom-in;" id="openModal-globalAlert"> 
+              </div>
+            </details>
+            <details class="nhsuk-details nhsuk-expander ">
+              <summary class="nhsuk-details__summary">
+                <span class="nhsuk-details__summary-text">
+                  Where and when users will see it
+                </span>
+              </summary>
+              <div class="nhsuk-details__text">
+                <p>
+                  All users will see this alert at the beginning of the journey.
+                </p>
+                <p>
+                  At the point in the journey when we know a user is not affected by this incident, we will stop showing the alert to them.
+                </p>
+                <p>
+                  We will continue to show the alert to affected users.
+                </p>
+              </div>
+            </details>
+          </div>
         </div>     
     </div>
   </div>
@@ -168,6 +198,58 @@ a:visited {
 
 
 
+<div id="myModal" class="modal-image-zoom">
+
+  <!-- Modal content -->
+  <div class="modal-content-image-zoom nhsuk-u-padding-6">
+    <div style="display:block;">
+      <div style="float:right;">
+        <p class="nhsuk-u-margin-bottom-0 nhsuk-u-margin-bottom-3" style="display:inline-block; ">
+          <span class="close">
+            <a  href="#" class="" id="">Close</a>
+          </span>
+        </p>
+      </div>
+      <img src="/images/global-alert-example.png" id="globalAlertimage" style="display:none;">
+    </div>
+  </div>
+
+</div>
+
+<script>
+  // Get the modal
+  var modal = document.getElementById("myModal");
+  
+  // Get the button that opens the global alert modal
+  var btn = document.getElementById("openModal-globalAlert");
+  
+  // Get the <span> element that closes the modal
+  var span = document.getElementsByClassName("close")[0];
+  
+  // When the user clicks the button, open the modal 
+  btn.onclick = function() {
+    modal.style.display = "flex";
+    document.getElementById('globalAlertimage').style.display = "block";
+  }
+
+  
+  // When the user clicks on <span> (x), close the modal
+  span.onclick = function() {
+    modal.style.display = "none";
+  }
+
+  
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+
+
+    }
+  
+}
+  
+</script>
 
 
   
