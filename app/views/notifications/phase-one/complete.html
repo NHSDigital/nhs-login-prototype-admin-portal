@@ -1,0 +1,62 @@
+{% extends 'layout-nav.html' %}
+{% set pageSection = "Manage user notifications" %}
+{% block pageTitle %}
+User alerts active
+{% endblock %}
+
+<!-- this page is only visible to prod-accessreport group -->
+
+{% block beforeContent %}
+  <nav class="nhsuk-breadcrumb" aria-label="Breadcrumb">
+    <div class="nhsuk-width-container">
+      <ol class="nhsuk-breadcrumb__list">
+        <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link" href="manage-user-alerts?active=true">Manage user alerts</a></li>
+        <li class="nhsuk-breadcrumb__item">User alerts are active</li>
+      </ol>
+    </div>
+  </nav>
+{% endblock %}
+
+{% block headCSS %}
+  <link href="/css/main.css" rel="stylesheet">
+  <link href="/css/nhsuk.css" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+
+<style>
+  a:visited { 
+   color:	#005eb8; 
+  }
+</style>
+
+
+
+  <div class="nhsuk-grid-row" >
+    <div class="nhsuk-grid-column-two-thirds">
+      <div class="complete-alerts-on nhsuk-u-padding-7" >
+        <h1 class="nhsuk-heading-xl nhsuk-u-margin-bottom-6">
+          User alerts are active
+        </h1>
+        <h2 class="nhsuk-heading-l">NAM is not working as expected</h2>
+      </div>
+    </div>
+  </div>
+
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-two-thirds">
+    
+      <p class="mhsuk-body-l nhsuk-u-padding-top-4">
+        <a href="manage-user-alerts?active=true">
+          Return to manage user alerts
+        </a>
+      </p>
+
+  </div>
+</div>
+
+        
+{% endblock %}
+
+
