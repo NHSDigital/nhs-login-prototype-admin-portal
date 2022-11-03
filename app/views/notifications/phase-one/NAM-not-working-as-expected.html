@@ -222,9 +222,6 @@ a:visited {
   
   // Get the button that opens the global alert modal
   var btn = document.getElementById("openModal-globalAlert");
-
-  // Get the button that opens the reminder alert modal
-  var btn2 = document.getElementById("openModal-reminderAlert");
   
   // Get the <span> element that closes the modal
   var span = document.getElementsByClassName("close")[0];
@@ -233,13 +230,6 @@ a:visited {
   btn.onclick = function() {
     modal.style.display = "flex";
     document.getElementById('globalAlertimage').style.display = "block";
-    document.getElementById('reminderAlertimage').style.display = "none";
-  }
-
-  btn2.onclick = function() {
-    modal.style.display = "flex";
-    document.getElementById('reminderAlertimage').style.display = "block";
-    document.getElementById('globalAlertimage').style.display = "none";
   }
 
   
@@ -262,49 +252,6 @@ window.onclick = function(event) {
 </script>
 
 
-<script>
-
-  function reminderAlert() {
-    var reminderAlert = document.getElementById("reminderalert");
-    var globalAlert = document.getElementById("globalalert");
-  
-    document.getElementById("reminder-alert").className = "alert-header-tab-selected";
-    document.getElementById("global-alert").className = "alert-header-tab";
-  
-    if (reminderAlert.style.display === "none") {
-      reminderAlert.style.display = "block";
-      } else{
-      reminderAlert.style.display = "block";
-    }
-    if (globalAlert.style.display === "block") {
-      globalAlert.style.display = "none";
-      } else{
-      globalAlert.style.display = "none"; 
-    }
-  }
-  
-
-  function globalAlert() {
-    var reminderAlert = document.getElementById("reminderalert");
-    var globalAlert = document.getElementById("globalalert");
-  
-    document.getElementById("reminder-alert").className = "alert-header-tab";
-    document.getElementById("global-alert").className = "alert-header-tab-selected";
-  
-    if (globalAlert.style.display === "none") {
-      globalAlert.style.display = "block";
-    } else {
-      globalAlert.style.display = "block";
-    }
-    if (reminderAlert.style.display === "block") {
-      reminderAlert.style.display = "none";
-    } else {
-      reminderAlert.style.display = "none";
-    }
-  }
-  
-  
-</script>
   
 {% endblock %}
 
