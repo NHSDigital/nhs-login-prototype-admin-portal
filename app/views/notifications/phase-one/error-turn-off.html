@@ -1,0 +1,51 @@
+{% extends 'layout-nav.html' %}
+{% set pageSection = "Manage user notifications" %}
+{% block pageTitle %}
+Unable to turn off user alerts
+{% endblock %}
+
+<!-- this page is only visible to prod-accessreport group -->
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block headCSS %}
+  <link href="/css/main.css" rel="stylesheet">
+  <link href="/css/nhsuk.css" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+
+<style>
+  a:visited { 
+   color:	#005eb8; 
+  }
+</style>
+
+
+
+  <div class="nhsuk-grid-row" >
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <div style="display: flex; flex-direction:row;">
+        <div>
+          <span class="nhsuk-warning-text__icon_global" aria-hidden="true">!</span>
+        </div>
+        <div class="nhsuk-u-padding-left-4">
+
+          <h1 class="nhsuk-heading-l">
+            Unable to turn off user alerts
+          </h1>
+          <p>There was a problem turning off user alerts.</p>
+          <p>You can <span>
+            <a href="manage-user-alerts?active=true">return to manage user alerts</a></span>
+            and try again.
+          </p>
+        </div>
+    </div>
+  </div>
+
+        
+{% endblock %}
+
+
