@@ -12,7 +12,37 @@ router.get('/clear', (req, res) => {
 router.get('/error', (req, res) => {
 	var errormessage = req.param('errormessage')
 	res.render('error', {errormessage: errormessage},function(err,html){res.send(html)})
-}) 
+})
+
+// Run this code when a form is submitted to 'is it planned maintenance question in PHASE ONE '
+router.post('/is-it-planned-phase-one', function (req, res) {
+
+	// Make a variable and give it the value from 'enter name for the radio button'
+	var planned = req.session.data['is-it-planned']
+	 // Check whether the variable matches a condition
+	if (planned == "Yes"){
+	  // Send user to date and time page
+	  res.redirect('/notifications/phase-one/planned-maintenance')
+	} else {
+	  // Send user to confirm choices page
+	  res.redirect('/notifications/phase-one/incident-details')
+	}
+   })
+
+// Run this code when a form is submitted to 'maintenance end date time question in PHASE ONE'
+router.post('/date-time-phase-one', function (req, res) {
+
+	// Make a variable and give it the value from 'enter name for the radio button'
+	var planned = req.session.data['do-you-know-end-date-time']
+	 // Check whether the variable matches a condition
+	if (planned == "dontknow"){
+	  // Send user to confirm choices page
+	  res.redirect('/notifications/phase-one/incident-details')
+	} else {
+	  // Send user to date and time page
+	  res.redirect('/notifications/phase-one/planned-date-time')
+	}
+   }) 
 
 
 // Run this code when a form is submitted to 'is it planned maintenance question service '

@@ -1,0 +1,145 @@
+{% extends 'layout-nav.html' %}
+{% set pageSection = "Manage user notifications" %}
+{% block pageTitle %}
+Is it planned maintenance?
+{% endblock %}
+
+<!-- this page is only visible to prod-accessreport group -->
+
+{% block beforeContent %}
+<nav class="nhsuk-breadcrumb" aria-label="Breadcrumb">
+  <div class="nhsuk-width-container">
+    <ol class="nhsuk-breadcrumb__list">
+      <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link" href="manage-user-alerts">Manage user alerts</a></li>
+      <li class="nhsuk-breadcrumb__item">Incident details</li>
+    </ol>
+  </div>
+</nav>
+{% endblock %}
+
+{% block headCSS %}
+  <link href="/css/main.css" rel="stylesheet">
+  <link href="/css/nhsuk.css" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+
+<style>
+  a:visited { 
+      color:	#005eb8; 
+      }
+</style>
+
+<div class="nhsuk-width-container">
+  <h1 class="nhsuk-heading-s nhsuk-u-padding-bottom-2" style="color: 	#4c6272; ">NAM incident</h1>
+</div>
+
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-full">
+
+      
+
+      {% if data.change === 'true' %}
+      <form action="/is-it-planned-change" method="post">
+        <div class="nhsuk-form-group">
+
+          <fieldset class="nhsuk-fieldset">
+            <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+              <h1 class="nhsuk-fieldset__heading">
+                Is it planned maintenance?
+              </h1>
+            </legend>
+        
+            <div class="nhsuk-radios nhsuk-u-margin-top-2">
+              
+              <div class="nhsuk-radios__item">
+                <input class="nhsuk-radios__input" id="planned" name="is-it-planned" type="radio" value="Yes">
+                <label class="nhsuk-label nhsuk-radios__label" for="planned">
+                  Yes
+                </label>
+              </div>
+        
+              <div class="nhsuk-radios__item">
+                <input class="nhsuk-radios__input" id="notplanned" name="is-it-planned" type="radio" value="No">
+                <label class="nhsuk-label nhsuk-radios__label" for="notplanned">
+                  No
+                </label>
+              </div>
+        
+            </div>
+          </fieldset>
+        </div>
+        <button class="nhsuk-button" type="submit">
+        Continue with changes
+        </button>
+      </form>
+      <p>
+        <a class="nhsuk-link" href="/notifications/user-alerts/turn-on-user-alert/supplier-incidents/incident-details">
+        Cancel changes and return to incident details
+        </a>
+      </p> 
+      {% else %}
+      
+      <form role="form" action="/is-it-planned-phase-one" method="post" onsubmit="return(validate());">
+      <div class="nhsuk-form-group ">
+
+        <fieldset class="nhsuk-fieldset">
+          <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+            <h1 class="nhsuk-fieldset__heading">
+              Is it planned maintenance?
+            </h1>
+          </legend>
+      
+          <div class="nhsuk-radios nhsuk-u-margin-top-2" id="is-it-planned-radios">
+            <span class="nhsuk-error-message" id="is-it-planned-error" style="display: none;">
+              Select if it is planned maintenance
+            </span>
+            <div class="nhsuk-radios__item">
+              <input class="nhsuk-radios__input" id="planned" name="is-it-planned" type="radio" value="Yes">
+              <label class="nhsuk-label nhsuk-radios__label" for="planned">
+                Yes
+              </label>
+            </div>
+      
+            <div class="nhsuk-radios__item">
+              <input class="nhsuk-radios__input" id="notplanned" name="is-it-planned" type="radio" value="No">
+              <label class="nhsuk-label nhsuk-radios__label" for="notplanned">
+                No
+              </label>
+            </div>
+      
+          </div>
+        </fieldset>
+      
+      </div>
+
+
+      
+        <button class="nhsuk-button" type="submit">
+          Continue
+        </button>
+      </form>
+      {% endif %}
+    </div>
+  </div>
+
+  <script>
+
+    function validate() {
+        
+          if( document.querySelectorAll('input[type="radio"]:checked').length === 0 ) {
+              document.getElementById('is-it-planned-error').style.display = 'block';
+              document.getElementById('is-it-planned-radios').classList.add("nhsuk-form-group--error");
+              return false;
+          }
+        
+          return( true );
+        }
+    
+  </script>
+        
+        
+{% endblock %}
+
+
