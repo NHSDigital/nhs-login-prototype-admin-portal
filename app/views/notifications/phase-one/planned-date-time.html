@@ -287,6 +287,7 @@ function validate() {
       document.getElementById('date-time-field').classList.add("nhsuk-form-group--error");
       document.getElementById('dateinput').classList.add("nhsuk-input--error");
       document.getElementById('dateinput').focus();
+	  calendar.style.display = "block";
       return false;	
 	} 
 
@@ -296,6 +297,8 @@ function validate() {
       document.getElementById('date-time-field').classList.add("nhsuk-form-group--error");
       document.getElementById('timeinput').classList.add("nhsuk-input--error");
       document.getElementById('timeinput').focus();
+	  time.style.display = "flex";
+		doneButtonDiv.style.display = "block";
       return false;
   	}
 }
