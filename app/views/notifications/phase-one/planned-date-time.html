@@ -57,7 +57,7 @@ When does maintenance end?
 <div class="nhsuk-grid-row nhsuk-u-margin-top-2">
 	<div class="nhsuk-grid-column-full">
 		
-		<span class="nhsuk-error-message" id="date-time-error" style="display: none;">
+		<span class="nhsuk-error-message" id="date-time-empty-field-error" style="display: none;">
 			{% if data['do-you-know-end-date-time'] === 'both' %}
 			Enter the date and time when the maintenance ends
 			{% else %}
@@ -65,7 +65,10 @@ When does maintenance end?
 			{% endif %}
 		</span>
 		<span class="nhsuk-error-message" id="date-format-error" style="display: none;">
-			Enter a valid date using the format DD/MM/YYYY
+			Enter a valid date using the format DD/MM/YYYY.
+			<p>
+				The end date of maintenance must not be in the past.
+			</p>
 		</span>
 		<span class="nhsuk-error-message" id="invalid-past-time-error" style="display: none;">
 			The end time of maintenance must not be in the past
@@ -283,7 +286,7 @@ When does maintenance end?
 function validate() {
 
 	if( document.getElementById('dateinput').value == "" ) {
-      document.getElementById('date-time-error').style.display = 'block';
+      document.getElementById('date-time-empty-field-error').style.display = 'block';
       document.getElementById('date-time-field').classList.add("nhsuk-form-group--error");
       document.getElementById('dateinput').classList.add("nhsuk-input--error");
       document.getElementById('dateinput').focus();
@@ -292,7 +295,7 @@ function validate() {
 	} 
 
 	  if( document.getElementById('timeinput').value == "" ) {
-      document.getElementById('date-time-error').style.display = 'block';
+      document.getElementById('date-time-empty-field-error').style.display = 'block';
 	  document.getElementById('date-format-error').style.display = 'none';
       document.getElementById('date-time-field').classList.add("nhsuk-form-group--error");
       document.getElementById('timeinput').classList.add("nhsuk-input--error");
