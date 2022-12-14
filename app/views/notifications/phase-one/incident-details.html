@@ -153,7 +153,7 @@ a:visited {
   
   </dl> 
 
-  <form action="{% if data['is-it-planned'] === 'Yes' %}NAM-not-working-as-expected-planned {% else %} NAM-not-working-as-expected {%endif%}" method="post">
+  <form action="{% if data['is-it-planned'] === 'Yes' %}NAM-planned-no-reminder-alert {% else %} NAM-no-reminder-alert {%endif%}" method="post">
     <button class="nhsuk-button" type="submit">
       Confirm and continue
     </button>
