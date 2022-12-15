@@ -95,6 +95,18 @@
           <p class="nhsuk-heading-s" style="line-height: 0%;">NAM is not working as expected</p>
           <p class="nhsuk-heading-s" style="line-height: 0%;">Planned maintenance</p>
         </div>
+        <div class="nhsuk-u-padding-top-4">
+          <p class="nhsuk-heading-s" style="line-height:0%;">Maintenance end date:</p>
+          {% if data['do-you-know-end-date-time'] === 'both' %}
+          <p class="nhsuk-heading-s" style="line-height: 0%;">30 November 2022 at 1:30 PM</p>
+          {% endif %}
+          {% if data['do-you-know-end-date-time'] === 'date' %} 
+          <p class="nhsuk-heading-s" style="line-height: 0%;">30 November 2022</p>
+          {% endif %}
+          {% if data['do-you-know-end-date-time'] === 'dontknow' %}
+          <p class="nhsuk-heading-s" style="line-height: 0%;">Not known</p>
+          {% endif %}
+        </div>
         {% else %}
         <div>
           <p class="nhsuk-heading-s" style="line-height: 0%;">NAM is not working as expected</p>
@@ -139,6 +151,19 @@
             <p class="nhsuk-heading-m" style="line-height: 50%;">NAM is not working as expected</p>
             <p class="nhsuk-heading-m" style="line-height: 0%;">Planned maintenance</p>
           </div>
+
+          <div class="nhsuk-u-padding-top-4">
+            <p class="nhsuk-heading-s" style="line-height:0%;">Maintenance end date:</p>
+            {% if data['do-you-know-end-date-time'] === 'both' %}
+            <p class="nhsuk-heading-s" style="line-height: 0%;">30 November 2022 at 1:30 PM</p>
+            {% endif %}
+            {% if data['do-you-know-end-date-time'] === 'date' %} 
+            <p class="nhsuk-heading-s" style="line-height: 0%;">30 November 2022</p>
+            {% endif %}
+            {% if data['do-you-know-end-date-time'] === 'dontknow' %}
+            <p class="nhsuk-heading-s" style="line-height: 0%;">Not known</p>
+            {% endif %}
+          </div>
           {% else %}
           <div>
             <p class="nhsuk-heading-m" style="line-height: 50%;">NAM is not working as expected</p>
@@ -151,7 +176,7 @@
         <div class="form-group" >
           <p style="display:inline-block;">
             <span class="">
-              <a  href="/notifications/mvp/manage-user-alerts?active=false" class="close2" id="">Close</a>
+              <a  href="/notifications/phase-one/manage-user-alerts?active=false" class="close2" id="">Close</a>
             </span>
           </p>
         </div>
