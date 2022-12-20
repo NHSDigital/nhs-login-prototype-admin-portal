@@ -31,6 +31,9 @@ When does maintenance end?
 	a:visited { 
 	  color:	#005eb8; 
 	}
+	.picker-error {
+	padding-left:20px;
+	}
 </style>
 
 <div class="nhsuk-width-container">
@@ -65,9 +68,9 @@ When does maintenance end?
 			{% endif %}
 		</span>
 		<span class="nhsuk-error-message" id="date-format-error" style="display: none;">
-			Enter a valid date using the format DD/MM/YYYY.
+			Enter a valid date using the format DD/MM/YYYY
 			<p>
-				The end date of maintenance must not be in the past.
+				The end date of maintenance must not be in the past
 			</p>
 		</span>
 		<span class="nhsuk-error-message" id="invalid-past-time-error" style="display: none;">
@@ -89,7 +92,7 @@ When does maintenance end?
 		
 	</div>
 	{% if data['do-you-know-end-date-time'] === 'both' %}
-	<div style="width:50%" >
+	<div style="width:50%" id="pickerdivtime">
 
 		<div class="time-picker-done-button" id="time-picker-done-div">
 			<a style="cursor:pointer;" id="time-picker-done-button">Done</a>
@@ -119,7 +122,7 @@ When does maintenance end?
 		
 	</div>
 	{% endif %}
-	<div style="width:50%">
+	<div style="width:50%" id="pickerdivdate">
 		<div class="datescontainer nhsuk-u-margin-top-4 dates" id="calendar" style="display:none;">
 			<div class="month">
 				<div class="arrows-disabled">&lt;</div>
@@ -289,15 +292,17 @@ function validate() {
       document.getElementById('date-time-empty-field-error').style.display = 'block';
       document.getElementById('date-time-field').classList.add("nhsuk-form-group--error");
       document.getElementById('dateinput').classList.add("nhsuk-input--error");
+	  document.getElementById('pickerdivdate').classList.add("picker-error");
       document.getElementById('dateinput').focus();
 	  calendar.style.display = "block";
       return false;	
 	} 
 
 	  if( document.getElementById('timeinput').value == "" ) {
-      document.getElementById('date-time-empty-field-error').style.display = 'block';
+      document.getElementById('invalid-past-time-error').style.display = 'block';
 	  document.getElementById('date-format-error').style.display = 'none';
       document.getElementById('date-time-field').classList.add("nhsuk-form-group--error");
+	  document.getElementById('pickerdivtime').classList.add("picker-error");
       document.getElementById('timeinput').classList.add("nhsuk-input--error");
       document.getElementById('timeinput').focus();
 	  time.style.display = "flex";
