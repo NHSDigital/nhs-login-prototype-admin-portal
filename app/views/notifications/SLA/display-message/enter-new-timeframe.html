@@ -1,0 +1,65 @@
+{% extends 'layout-nav.html' %}
+{% set pageSection = "Manage user notifications" %}
+{% block pageTitle %}
+Enter new SLA timeframe
+{% endblock %}
+
+{% block beforeContent %}
+  <nav class="nhsuk-breadcrumb" aria-label="Breadcrumb">
+    <div class="nhsuk-width-container">
+      <ol class="nhsuk-breadcrumb__list">
+        <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link" href="/notifications">Manage user notifications</a></li>
+        <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link" href="/notifications/SLA/manage-service-SLA">Manage service SLA</a></li>
+        <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link" href="/notifications/SLA/manage-service-SLA">Choose a message</a></li>
+        <li class="nhsuk-breadcrumb__item">Enter timeframe</li>
+      </ol>
+    </div>
+  </nav>
+{% endblock %}
+
+{% block headCSS %}
+  <link href="/css/main.css" rel="stylesheet">
+  <link href="/css/nhsuk.css" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+
+
+<style>
+   a:visited { 
+   color:	#005eb8; 
+}
+
+</style>
+  
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-two-thirds">
+    <form method="post" action="confirm">    
+      <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+          <h1 class="nhsuk-fieldset__heading">
+              Enter new SLA timeframe
+          </h1>
+      </legend>
+
+      
+      <div class="nhsuk-form-group">
+        <p>Enter timeframe in {% if data['timeunit'] === 'hours' %} hours {% else %} days {% endif %}</p>
+        <div style="display: flex; align-items: center;">
+            <input class="nhsuk-input nhsuk-u-width-two-thirds nhsuk-input--width-3" id="timeframe" name="timeframe" type="number">
+            <span class="nhsuk-u-font-size-19 nhsuk-u-margin-left-2" style="display: inline-block; align-items: center;"><b>{% if data['timeunit'] === 'hours' %} hours {% else %} days {% endif %}</b></span>
+            </div>
+      </div>
+      
+
+      <button class="nhsuk-button" type="submit" value="Submit" >
+        Continue
+      </button>
+    </form>
+  </div>
+</div>
+
+
+
+
+{% endblock %}

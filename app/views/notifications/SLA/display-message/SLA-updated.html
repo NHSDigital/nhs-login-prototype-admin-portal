@@ -1,0 +1,65 @@
+{% extends 'layout-nav.html' %}
+{% set pageSection = "Manage user notifications" %}
+{% block pageTitle %}
+Enter new SLA timeframe
+{% endblock %}
+
+{% block beforeContent %}
+  <nav class="nhsuk-breadcrumb" aria-label="Breadcrumb">
+    <div class="nhsuk-width-container">
+      <ol class="nhsuk-breadcrumb__list">
+        <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link" href="/notifications">Manage user notifications</a></li>
+        <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link" href="/notifications/SLA/manage-service-SLA">Manage service SLA</a></li>
+        <li class="nhsuk-breadcrumb__item">SLA updated</li>
+      </ol>
+    </div>
+  </nav>
+{% endblock %}
+
+{% block headCSS %}
+  <link href="/css/main.css" rel="stylesheet">
+  <link href="/css/nhsuk.css" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+
+
+<style>
+   a:visited { 
+   color:	#005eb8; 
+}
+
+</style>
+  
+
+<div class="nhsuk-grid-row" >
+  <div class="nhsuk-grid-column-two-thirds">
+    <div class="complete-alerts-on nhsuk-u-padding-7" >
+    <div>
+      <h1 class="nhsuk-heading-xl nhsuk-u-margin-bottom-6">
+        SLA updated
+      </h1>
+      <h2 class="nhsuk-heading-l">Timeframe is set to 24 hours</h2>
+      <h2 class="nhsuk-heading-l">Message displayed on NHS login</h2>
+      <h3 class="nhsuk-u-padding-4" style="background-color:	#f0f4f5; color: #212b32;">Between 20 December and 4 January, it may take up to <b>24 hours</b> for us to email you.</h3>
+    </div>  
+  </div>
+  </div>
+</div>
+
+
+<div class="nhsuk-grid-row">
+<div class="nhsuk-grid-column-two-thirds">
+  
+    <p class="mhsuk-body-l nhsuk-u-padding-top-4">
+      <a href="/notifications/SLA/manage-service-SLA">
+        Return to manage service SLA
+      </a>
+    </p>
+
+</div>
+</div>
+
+
+
+{% endblock %}

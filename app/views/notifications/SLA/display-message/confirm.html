@@ -1,0 +1,73 @@
+{% extends 'layout-nav.html' %}
+{% set pageSection = "Manage user notifications" %}
+{% block pageTitle %}
+Enter new SLA timeframe
+{% endblock %}
+
+{% block beforeContent %}
+  <nav class="nhsuk-breadcrumb" aria-label="Breadcrumb">
+    <div class="nhsuk-width-container">
+      <ol class="nhsuk-breadcrumb__list">
+        <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link" href="/notifications">Manage user notifications</a></li>
+        <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link" href="/notifications/SLA/manage-service-SLA">Manage service SLA</a></li>
+        <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link" href="/notifications/SLA/manage-service-SLA">Choose a message</a></li>
+        <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link" href="/notifications/SLA/manage-service-SLA">Enter timeframe</a></li>
+        <li class="nhsuk-breadcrumb__item">Confirm changes</li>
+      </ol>
+    </div>
+  </nav>
+{% endblock %}
+
+{% block headCSS %}
+  <link href="/css/main.css" rel="stylesheet">
+  <link href="/css/nhsuk.css" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+
+
+<style>
+   a:visited { 
+   color:	#005eb8; 
+}
+
+</style>
+  
+
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+        <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+            <h1 class="nhsuk-fieldset__heading">
+             Confirm changes
+            </h1>
+        </legend>
+
+        <p class="nhsuk-body nhsuk-u-margin-top-6">
+          SLA timeframe will be set to <b>24 hours</b>.
+        </p>
+
+        <p class="nhsuk-body">
+          Following message will be displayed on NHS login:
+        </p>
+
+        <div style="background-color: #dfefff;">
+          <div class="nhsuk-inset-text">
+            <p>
+              Between 20 December and 4 January, it may take up to <b>24 hours</b> for us to email you.
+            </p>
+          </div>
+        </div>
+        <form method="post" action="SLA-updated">
+          <button class="nhsuk-button" type="submit">
+            Confirm and update SLA
+          </button>
+        </form>
+        <p>Once confirmed, changes will be effective immediately and displayed on NHS login app.</p>
+    </div>
+</div>
+
+
+
+
+{% endblock %}
