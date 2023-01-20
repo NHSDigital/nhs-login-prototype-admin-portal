@@ -1,0 +1,165 @@
+{% extends 'layout-nav.html' %}
+{% set pageSection = "Manage user notifications" %}
+
+<!-- this page is only visible to prod-accessreport group -->
+
+{% block beforeContent %}
+  <nav class="nhsuk-breadcrumb" aria-label="Breadcrumb">
+    <div class="nhsuk-width-container">
+      <ol class="nhsuk-breadcrumb__list">
+        <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link" href="/notifications">Manage user notifications</a></li>
+        <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link" href="/notifications/manage-user-alerts">Manage user alerts</a></li>
+        <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link" href="/notifications/">Incident categories</a></li>
+        <li class="nhsuk-breadcrumb__item">NHS login incidents</li>
+      </ol>
+      <p class="nhsuk-breadcrumb__back"><a class="nhsuk-breadcrumb__backlink" href="/notifications/manage-user-alerts">Back to: Access and permissions</a></p>
+    </div>
+  </nav>
+{% endblock %}
+
+{% block headCSS %}
+  <link href="/css/main.css" rel="stylesheet">
+  <link href="/css/nhsuk.css" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<style>
+  
+  /* Style the tab */
+  .tab {
+    float: left;
+    background-color: inherit;
+    color: #212b32;
+  }
+  
+  /* Style the buttons inside the tab */
+  .tab button {
+    display: block;
+    margin-bottom: 32px;
+    background-color: #fff;
+    border: 1px solid #d8dde0;
+    outline: none;
+    text-align: left;
+    cursor: pointer;
+    transition: 0.3s;
+    color:	#212b32;
+    width: 100%;
+  }
+  
+  /* Change background color of buttons on hover */
+  .tab button:hover {
+    border: 1px solid #005eb8;
+  }
+  
+  /* Create an active/current "tab button" class */
+  .tab button.active {
+    border: 1px solid #005eb8;
+  }
+  
+  /* Style the tab content */
+  .tabcontent {
+    background-color: inherit;
+  }
+
+  .tabcontent-option {
+  padding-top: 24px;
+  padding-left: 24px;
+  padding-right: 24px;
+  }
+
+  
+  /* Style the incident type cards */
+
+  .incident-heading {
+  display: flex;
+  padding-top: 24px;
+  padding-left: 24px;
+  padding-right: 24px;
+  height: fit-content;
+  width: 100%;
+  }
+
+  .incident-title {
+    width: 25%;
+  }
+
+  .incident-intro {
+      color: #4c6272;
+      width: 75%;
+      padding-left: 24px;
+  }
+
+  .change-incident {
+  float: right;
+  }
+
+</style>
+
+<style>
+  a:visited { 
+   color:	#005eb8; 
+   }
+</style>
+
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-full">
+    <div class="">
+    <h1 class="nhsuk-heading-l">NHS login incidents</h1>
+    <p class="" style="width:65%;">These incidents can be due to network or technical issues with NHS login regardless of the user volume.</p>
+    </div>
+
+    <ul class="nhsuk-grid-row nhsuk-card-group nhsuk-u-margin-top-9">
+      <div class="nhsuk-grid-column-two-thirds">
+        <h2 class="nhsuk-heading-m">Select part of the service that is affected</h2>
+      </div>
+      
+      <li class="nhsuk-grid-column-two-thirds nhsuk-card-group__item">
+    
+        <div class="nhsuk-card nhsuk-card--clickable">
+          <div class="nhsuk-card__content">
+            <h2 class="nhsuk-card__heading nhsuk-heading-m">
+              <a class="nhsuk-card__link" href="impact-level">Registration only</a>
+            </h2>
+            <p class="nhsuk-hint">Affecting users registering and uplifting</p>
+          </div>
+        </div>
+    
+      </li>
+      <li class="nhsuk-grid-column-two-thirds nhsuk-card-group__item">
+    
+        <div class="nhsuk-card nhsuk-card--clickable">
+          <div class="nhsuk-card__content">
+            <h2 class="nhsuk-card__heading nhsuk-heading-m">
+              <a class="nhsuk-card__link" href="#">Log in only</a>
+            </h2>
+            <p class="nhsuk-hint">Affecting existing users logging in and uplifting</p>
+          </div>
+        </div>
+    
+      </li>
+      <li class="nhsuk-grid-column-two-thirds nhsuk-card-group__item">
+    
+        <div class="nhsuk-card nhsuk-card--clickable">
+          <div class="nhsuk-card__content">
+            <h2 class="nhsuk-card__heading nhsuk-heading-m">
+              <a class="nhsuk-card__link" href="#">The whole service</a>
+            </h2>
+            <p class="nhsuk-hint">Affecting all/ any user group</p>
+          </div>
+        </div>
+    
+      </li>
+
+    </ul>
+
+
+
+
+
+        <script>
+        </script> 
+        
+{% endblock %}
+
+
