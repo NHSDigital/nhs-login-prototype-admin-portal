@@ -60,86 +60,98 @@ When does maintenance end?
 
 <div class="nhsuk-grid-row nhsuk-u-margin-top-2">
 	<div class="nhsuk-grid-column-full">
-		
-		<span class="nhsuk-error-message" id="date-time-empty-field-error" style="display: none;">
-			{% if data['do-you-know-end-date-time'] === 'both' %}
+
+		{% if data.error === 'true' %}
+		<span class="nhsuk-error-message" >
+			{% if data.FEerror === 'emptyDateTime' %}
 			Enter the date and time when the maintenance ends
-			{% else %}
+			{% elif data.FEerror === 'emptyDate' %}
 			Enter the date when the maintenance ends
+			{% elif data.FEerror === 'emptyTime' %}
+			Enter the time when the maintenance ends
+			{% elif data.FEerror === 'pastDate' %}
+			The end date of maintenance must not be in the past
+			{% elif data.FEerror === 'pastTime' %}
+			The end time of maintenance must not be in the past
+			{% elif data.FEerror === 'wrongFormat' %}
+			Enter a valid date using the format DD/MM/YYYY
+			{% elif data.FEerror === 'invalidCharacter' %}
+			Enter a real date using numbers only
+			<p>Use format DD/MM/YYYY</p>
+			{% elif data.FEerror === 'invalidDate' %}
+			Enter a real date using the format DD/MM/YYYY
 			{% endif %}
 		</span>
-		<span class="nhsuk-error-message" id="date-format-error" style="display: none;">
-			Enter a valid date using the format DD/MM/YYYY
-			<p>
-				The end date of maintenance must not be in the past
-			</p>
-		</span>
-		<span class="nhsuk-error-message" id="invalid-past-time-error" style="display: none;">
-			The end time of maintenance must not be in the past
-		</span>
-	<div class="datetime-wrapper" id="date-time-field">
-		<div class="date-wrapper" id="date">
-			<label class="nhsuk-label" for="date">Date</label>
-			<input class="dateend" type="text" placeholder="DD/MM/YYYY" id="dateinput"/> 
+		{% endif %}
+
+			{% if data.error === 'true' %}
+		<div class="datetime-wrapper nhsuk-form-group--error" id="date-time-field">
+			{% else %}
+		<div class="datetime-wrapper" id="date-time-field">
+			{% endif %}
+
+			<div class="date-wrapper" id="date">
+				<label class="nhsuk-label" for="date">Date</label>
+				<input class="dateend" type="text" placeholder="DD/MM/YYYY" id="dateinput"/> 
+			</div>
+
+			{% if data['do-you-know-end-date-time'] === 'both' %}
+
+			<div class="time-wrapper" id="time" >
+				<label class="nhsuk-label" for="date">Time</label>
+				<input class="timeend" placeholder="--:--" id="timeinput" readonly/>
+			</div>
+			{% endif %}
+			
 		</div>
-
 		{% if data['do-you-know-end-date-time'] === 'both' %}
+		<div style="width:50%" id="pickerdivtime">
 
-		<div class="time-wrapper" id="time" >
-			<label class="nhsuk-label" for="date">Time</label>
-			<input class="timeend" placeholder="--:--" id="timeinput" readonly/>
+			<div class="time-picker-done-button" id="time-picker-done-div">
+				<a style="cursor:pointer;" id="time-picker-done-button">Done</a>
+			</div>
+
+			<div class="times nhsuk-u-margin-top-4" id="timepicker" style="display:none;">
+				
+				<div class="hours" style="width:50%;" id="hour">
+					<p class="hour">12:00</p><p class="hour">12:30</p><p class="hour">1:00</p><p class="hour" id="time-selected">1:30</p><p class="hour">2:00</p>
+					<p class="hour">2:30</p><p class="hour">3:00</p><p class="hour">3:30</p><p class="hour">4:00</p><p class="hour">4:30</p>
+					<p class="hour">5:00</p><p class="hour">5:30</p><p class="hour">6:00</p><p class="hour">6:30</p><p class="hour">7:00</p><p class="hour">7:30</p>
+					<p class="hour">8:00</p><p class="hour">8:30</p><p class="hour">9:00</p><p class="hour">9:30</p><p class="hour">10:00</p><p class="hour">10:30</p>
+					<p class="hour">11:00</p><p class="hour">11:30</p>
+				</div>	
+
+				<div style="width:50%; height: 300px;">
+					<div style="height: 150px;">
+					<button class="am-selected" id="am" onclick="amButton()">AM</button>
+					</div>
+					<div style="height: 150px;">
+					<button class="pm" id="pm" onclick="pmButton()">PM</button>
+					</div>
+				</div>
+
+
+			</div>
+			
 		</div>
 		{% endif %}
-		
-	</div>
-	{% if data['do-you-know-end-date-time'] === 'both' %}
-	<div style="width:50%" id="pickerdivtime">
-
-		<div class="time-picker-done-button" id="time-picker-done-div">
-			<a style="cursor:pointer;" id="time-picker-done-button">Done</a>
-		</div>
-
-		<div class="times nhsuk-u-margin-top-4" id="timepicker" style="display:none;">
-			
-			<div class="hours" style="width:50%;" id="hour">
-				<p class="hour">12:00</p><p class="hour">12:30</p><p class="hour">1:00</p><p class="hour" id="time-selected">1:30</p><p class="hour">2:00</p>
-				<p class="hour">2:30</p><p class="hour">3:00</p><p class="hour">3:30</p><p class="hour">4:00</p><p class="hour">4:30</p>
-				<p class="hour">5:00</p><p class="hour">5:30</p><p class="hour">6:00</p><p class="hour">6:30</p><p class="hour">7:00</p><p class="hour">7:30</p>
-				<p class="hour">8:00</p><p class="hour">8:30</p><p class="hour">9:00</p><p class="hour">9:30</p><p class="hour">10:00</p><p class="hour">10:30</p>
-				<p class="hour">11:00</p><p class="hour">11:30</p>
-			</div>	
-
-			<div style="width:50%; height: 300px;">
-				<div style="height: 150px;">
-				<button class="am-selected" id="am" onclick="amButton()">AM</button>
+		<div style="width:50%" id="pickerdivdate">
+			<div class="datescontainer nhsuk-u-margin-top-4 dates" id="calendar" style="display:none;">
+				<div class="month">
+					<div class="arrows-disabled">&lt;</div>
+					<div class="mth">November 2022</div>
+					<div class="arrows">&gt;</div>
 				</div>
-				<div style="height: 150px;">
-				<button class="pm" id="pm" onclick="pmButton()">PM</button>
-				</div>
+				<div class="dayscontainer" style="width:50%;" id="date-selected">
+						<p class="daypast"> </p><p class="daypast"> </p><p class="daypast"> </p><p class="daypast"> </p>
+						<p class="daypast">1</p><p class="daypast">2</p><p class="daypast">3</p><p class="daypast">4</p><p class="daypast">5</p><p class="daypast">6</p><p class="daypast">7</p>
+						<p class="daypast">8</p><p class="daypast">9</p><p class="daynew dayselected" id="current">10</p><p class="daynew">11</p><p class="daynew">12</p><p class="daynew">13</p><p class="daynew">14</p>
+						<p class="daynew">15</p><p class="daynew">16</p><p class="daynew">17</p><p class="daynew">18</p><p class="daynew">19</p><p class="daynew">20</p><p class="daynew">21</p>
+						<p class="daynew">22</p><p class="daynew">23</p><p class="daynew">24</p><p class="daynew">25</p><p class="daynew">26</p><p class="daynew">27</p><p class="daynew">28</p>
+						<p class="daynew">29</p><p class="daynew" id="day-selected">30</p><p class="daynew">31</p>
+				</div>	
 			</div>
-
-
-		</div>
-		
-	</div>
-	{% endif %}
-	<div style="width:50%" id="pickerdivdate">
-		<div class="datescontainer nhsuk-u-margin-top-4 dates" id="calendar" style="display:none;">
-			<div class="month">
-				<div class="arrows-disabled">&lt;</div>
-				<div class="mth">November 2022</div>
-				<div class="arrows">&gt;</div>
-			</div>
-			<div class="dayscontainer" style="width:50%;" id="date-selected">
-					<p class="daypast"> </p><p class="daypast"> </p><p class="daypast"> </p><p class="daypast"> </p>
-					<p class="daypast">1</p><p class="daypast">2</p><p class="daypast">3</p><p class="daypast">4</p><p class="daypast">5</p><p class="daypast">6</p><p class="daypast">7</p>
-					<p class="daypast">8</p><p class="daypast">9</p><p class="daynew dayselected" id="current">10</p><p class="daynew">11</p><p class="daynew">12</p><p class="daynew">13</p><p class="daynew">14</p>
-					<p class="daynew">15</p><p class="daynew">16</p><p class="daynew">17</p><p class="daynew">18</p><p class="daynew">19</p><p class="daynew">20</p><p class="daynew">21</p>
-					<p class="daynew">22</p><p class="daynew">23</p><p class="daynew">24</p><p class="daynew">25</p><p class="daynew">26</p><p class="daynew">27</p><p class="daynew">28</p>
-					<p class="daynew">29</p><p class="daynew" id="day-selected">30</p><p class="daynew">31</p>
-			</div>	
-		</div>
-	</div>	
+		</div>	
 		
 	</div>	
 
@@ -167,7 +179,7 @@ When does maintenance end?
 {% else %}
 <div class="nhsuk-grid-row nhsuk-u-margin-top-4">
 	<div class="nhsuk-grid-column-one-half">
-		<form action="incident-details" method="post" >
+		<form action="incident-details" method="post">
 			<button class="nhsuk-button" type="submit">
 			  Continue
 			</button>
@@ -285,33 +297,7 @@ When does maintenance end?
 </script>
 	
 
-<script>
 
-function validate() {
-
-	if( document.getElementById('dateinput').value == "" ) {
-      document.getElementById('date-time-empty-field-error').style.display = 'block';
-      document.getElementById('date-time-field').classList.add("nhsuk-form-group--error");
-      document.getElementById('dateinput').classList.add("nhsuk-input--error");
-	  document.getElementById('pickerdivdate').classList.add("picker-error");
-      document.getElementById('dateinput').focus();
-	  calendar.style.display = "block";
-      return false;	
-	} 
-
-	  if( document.getElementById('timeinput').value == "" ) {
-      document.getElementById('invalid-past-time-error').style.display = 'block';
-	  document.getElementById('date-format-error').style.display = 'none';
-      document.getElementById('date-time-field').classList.add("nhsuk-form-group--error");
-	  document.getElementById('pickerdivtime').classList.add("picker-error");
-      document.getElementById('timeinput').classList.add("nhsuk-input--error");
-      document.getElementById('timeinput').focus();
-	  time.style.display = "flex";
-		doneButtonDiv.style.display = "block";
-      return false;
-  	}
-}
-</script>
         
 {% endblock %}
 
