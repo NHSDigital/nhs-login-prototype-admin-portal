@@ -182,6 +182,31 @@
         </div>
       
     </div>
+    <div class="nhsuk-grid-row" id="displaySpinner" style="display:none;">
+      <div class="nhsuk-width-container">
+         <h1 class="nhsuk-heading-l">Turning off user alerts</h1>
+     
+      <form action="auth" method="post">
+        <section class="loading-container" id="gp-connect-0" style="display:block; min-height: 16em;">
+      
+          <div class="bar_container">
+            <div id="main_container">
+              <div id="pbar" class="progress-spinner" data-percent="0">
+                <img src="/images/loader-spinner.svg" width="200px" height="200px" id="spinner" class=""/>
+                <div class="ppc-loading">
+                  <div class="pcc-percents-wrapper">
+                    <span id="spinner-status" class="nhsuk-body">Loading</span><span aria-hidden="true">...</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+      
+        </section>
+      </form>
+    
+    </div>
+    </div>
   </div>
 
 </div>
@@ -243,12 +268,19 @@ function conFirm() {
 
 function turnOff() {
         if((document.getElementById('confirm').checked)) {
-            document.getElementById('alert-off-feedback').style.display = "block";
+            document.getElementById('displaySpinner').style.display = "block";
             document.getElementById('alert-off-confirm').style.display = "none";
-            document.getElementById('active').style.display = "none";
-            document.getElementById('turn-alert-on').style.display = "block";
+              // display turn off feedback after a delay of 5 seconds
+            setTimeout(function() {
+              document.getElementById('alert-off-feedback').style.display = "block";
+              document.getElementById('displaySpinner').style.display = "none";
+              document.getElementById('alert-off-confirm').style.display = "none";
+              document.getElementById('active').style.display = "none";
+              document.getElementById('turn-alert-on').style.display = "block";
+            }, 2500); 
         } else {
             document.getElementById('alert-off-feedback').style.display = "none";
+            document.getElementById('displaySpinner').style.display = "none";
             document.getElementById('alert-off-confirm').style.display = "block";
             document.getElementById('active').style.display = "block";
             document.getElementById('turn-alert-on').style.display = "none";
