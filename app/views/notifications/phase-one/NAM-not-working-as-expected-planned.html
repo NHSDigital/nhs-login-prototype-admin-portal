@@ -126,7 +126,7 @@ a:visited {
                     <div class="" id="BannerContent" style="display:block;">
                       <div class="nhsuk-error-summary__body">
                         
-                        {% if data['do-you-know-end-date-time'] === 'both' %}
+                        {% if data.datetime === 'both' %}
                         <p> 
                           This could affect your access to the service.
                         </p>
@@ -135,7 +135,7 @@ a:visited {
                         </p>
                         {% endif %}
 
-                        {% if data['do-you-know-end-date-time'] === 'date' %}
+                        {% if data.datetime === 'date' %}
                         <p> 
                           This could affect your access to the service.
                         </p>
@@ -144,7 +144,7 @@ a:visited {
                         </p>
                         {% endif %}
 
-                        {% if data['do-you-know-end-date-time'] === 'dontknow' %}
+                        {% if data.datetime === 'dontknow' %}
                         <p> 
                           This could affect your access to the service.
                         </p>
@@ -203,8 +203,8 @@ a:visited {
                   </h2>
                   {% endif %}
                 <div class="nhsuk-error-summary__body">
-                  {% if data['is-it-planned'] === 'Yes' %}
-                  {% if data['do-you-know-end-date-time'] === 'both' %}
+                  {% if data.planned === 'Yes' %}
+                  {% if data.datetime === 'both' %}
                   <p>
                     We are carrying out essential maintenance on the service.
                   </p>
@@ -218,8 +218,8 @@ a:visited {
                   {% endif %}
 
 
-                  {% if data['is-it-planned'] === 'Yes' %}
-                  {% if data['do-you-know-end-date-time'] === 'date' %}
+                  {% if data.planned === 'Yes' %}
+                  {% if data.datetime === 'date' %}
                   <p>
                     We are carrying out essential maintenance on the service.
                   </p>
@@ -232,8 +232,8 @@ a:visited {
                   {% endif %}
                   {% endif %}
 
-                  {% if data['is-it-planned'] === 'Yes' %}
-                  {% if data['do-you-know-end-date-time'] === 'dontknow' %}
+                  {% if data.planned === 'Yes' %}
+                  {% if data.datetime === 'dontknow' %}
                   <p>
                     We are carrying out essential maintenance on the service.
                   </p>
@@ -247,7 +247,7 @@ a:visited {
                   {% endif %}
                   {% endif %}
 
-                  {% if data['is-it-planned'] === 'No' %}
+                  {% if data.planned != 'Yes' %}
                   <p>
                     We are working to fix it.
                   </p>
