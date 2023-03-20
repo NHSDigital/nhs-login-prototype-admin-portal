@@ -37,14 +37,31 @@ When does maintenance end?
 }
 </style>
 
-<div class="nhsuk-width-container">
-	<h1 class="nhsuk-heading-s nhsuk-u-padding-bottom-2" style="color: 	#4c6272;">NAM incident</h1>
-</div>
 
   
-
 <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds ">
+		{% if data.FEerror === 'true' %}
+
+		<div class="nhsuk-error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1">
+		  <h2 class="nhsuk-error-summary__title" id="error-summary-title">
+			There is a problem
+		  </h2>
+		  <div class="nhsuk-error-summary__body">
+
+			<ul class="nhsuk-list nhsuk-error-summary__list" role="list">
+			  <li>
+				<a href="#dateandtime">You need to enter the date when the maintenance ends</a>
+			  </li>
+			</ul>
+		  </div>
+		</div>
+		{% endif %}
+
+		<div class="nhsuk-width-container">
+			<h1 class="nhsuk-heading-s nhsuk-u-padding-bottom-2" style="color: 	#4c6272;">NAM incident</h1>
+		</div>
+
         <h1 class="nhsuk-heading-l">When does the maintenance end?</h1>
     </div>
 </div>
@@ -84,7 +101,7 @@ When does maintenance end?
 		</span>
 		{% endif %}
 
-			{% if data.error === 'true' %}
+			{% if data.FEerror === 'true' %}
 		<div class="datetime-wrapper nhsuk-form-group--error" id="date-time-field">
 			{% else %}
 		<div class="datetime-wrapper" id="date-time-field">
