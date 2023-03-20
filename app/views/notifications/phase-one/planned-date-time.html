@@ -51,7 +51,25 @@ When does maintenance end?
 
 			<ul class="nhsuk-list nhsuk-error-summary__list" role="list">
 			  <li>
-				<a href="#dateandtime">You need to enter the date when the maintenance ends</a>
+				<a href="#dateandtime">
+					{% if data.error === 'emptyDateTime' %}
+					You need to enter the date and time when the maintenance ends
+					{% elif data.error === 'emptyDate' %}
+					You need to enter the date when the maintenance ends
+					{% elif data.error === 'emptyTime' %}
+					You need to enter the time when the maintenance ends
+					{% elif data.error === 'pastDate' %}
+					The end date of maintenance must not be in the past
+					{% elif data.error === 'pastTime' %}
+					The end time of maintenance must not be in the past
+					{% elif data.error === 'wrongFormat' %}
+					You need to enter a valid date using the format DD/MM/YYYY
+					{% elif data.error === 'invalidCharacter' %}
+					You need to enter a real date using numbers only
+					{% elif data.error === 'invalidDate' %}
+					You need to enter a real date using the format DD/MM/YYYY
+					{% endif %}
+				</a>
 			  </li>
 			</ul>
 		  </div>
@@ -62,61 +80,75 @@ When does maintenance end?
 			<h1 class="nhsuk-heading-s nhsuk-u-padding-bottom-2" style="color: 	#4c6272;">NAM incident</h1>
 		</div>
 
-        <h1 class="nhsuk-heading-l">When does the maintenance end?</h1>
+
     </div>
 </div>
 
-<div class="nhsuk-grid-row ">
-	<div class="nhsuk-grid-column-two-thirds" >
-	  <p class="nhsuk-hint">
-		This will be displayed on user alerts
-	  </p>
-	</div>
-</div> 
 
 
 <div class="nhsuk-grid-row nhsuk-u-margin-top-2">
 	<div class="nhsuk-grid-column-full">
+		{% if data.FEerror === 'true' %}
+        <div class="nhsuk-form-group nhsuk-form-group--error">
+        {% else %}
+        <div class="nhsuk-form-group">
+        {% endif %}
+		<fieldset class="nhsuk-fieldset">
+            <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+              <h1 class="nhsuk-fieldset__heading">
+                When does the maintenance end?
+              </h1>
+            </legend>
 
-		{% if data.error === 'true' %}
+			<p class="nhsuk-hint">
+				This will be displayed on user alerts
+			</p>
+
+		{% if data.FEerror === 'true' %}
 		<span class="nhsuk-error-message" >
-			{% if data.FEerror === 'emptyDateTime' %}
+			{% if data.error === 'emptyDateTime' %}
 			Enter the date and time when the maintenance ends
-			{% elif data.FEerror === 'emptyDate' %}
+			{% elif data.error === 'emptyDate' %}
 			Enter the date when the maintenance ends
-			{% elif data.FEerror === 'emptyTime' %}
+			{% elif data.error === 'emptyTime' %}
 			Enter the time when the maintenance ends
-			{% elif data.FEerror === 'pastDate' %}
+			{% elif data.error === 'pastDate' %}
 			The end date of maintenance must not be in the past
-			{% elif data.FEerror === 'pastTime' %}
+			{% elif data.error === 'pastTime' %}
 			The end time of maintenance must not be in the past
-			{% elif data.FEerror === 'wrongFormat' %}
+			{% elif data.error === 'wrongFormat' %}
 			Enter a valid date using the format DD/MM/YYYY
-			{% elif data.FEerror === 'invalidCharacter' %}
+			{% elif data.error === 'invalidCharacter' %}
 			Enter a real date using numbers only
 			<p>Use format DD/MM/YYYY</p>
-			{% elif data.FEerror === 'invalidDate' %}
+			{% elif data.error === 'invalidDate' %}
 			Enter a real date using the format DD/MM/YYYY
 			{% endif %}
 		</span>
 		{% endif %}
 
-			{% if data.FEerror === 'true' %}
-		<div class="datetime-wrapper nhsuk-form-group--error" id="date-time-field">
-			{% else %}
+
 		<div class="datetime-wrapper" id="date-time-field">
-			{% endif %}
+
 
 			<div class="date-wrapper" id="date">
 				<label class="nhsuk-label" for="date">Date</label>
-				<input class="dateend" type="text" placeholder="DD/MM/YYYY" id="dateinput"/> 
+				{% if data.error === 'emptyDateTime' or data.error === 'emptyDate' or data.error === 'pastDate' or data.error === 'wrongFormat' or data.error === 'invalidCharacter' or data.error === 'invalidDate' %}
+				<input class="dateend" type="text" placeholder="DD/MM/YYYY" id="dateinput" style="border-color: #d5281b;"/> 
+				{% else %}
+				<input class="dateend" type="text" placeholder="DD/MM/YYYY" id="dateinput"/>
+				{% endif %} 
 			</div>
 
 			{% if data['do-you-know-end-date-time'] === 'both' %}
 
 			<div class="time-wrapper" id="time" >
 				<label class="nhsuk-label" for="date">Time</label>
+				{% if data.error === 'emptyDateTime' or data.error === 'emptyTime' or data.error === 'pastTime' %}
+				<input class="timeend" placeholder="--:--" id="timeinput" readonly style="border-color: #d5281b;"/>
+				{% else %}
 				<input class="timeend" placeholder="--:--" id="timeinput" readonly/>
+				{% endif %}
 			</div>
 			{% endif %}
 			
@@ -169,31 +201,12 @@ When does maintenance end?
 				</div>	
 			</div>
 		</div>	
-		
+		</fieldset>
+		</div>
 	</div>	
 
-	
 </div>
 
-{% if data.change === 'true' %}
-
-<div class="nhsuk-grid-row nhsuk-u-margin-top-4">
-	<div class="nhsuk-grid-column-two-thirds">
-		<form action="incident-details" method="post">
-			<button class="nhsuk-button" type="submit">
-				Continue with changes
-			</button>
-		</form>
-		<p>
-			<a class="nhsuk-link" href="/notifications/user-alerts/turn-on-user-alert/supplier-incidents/incident-details">
-			Cancel changes and return to incident details
-			</a>
-		  </p>
-	</div>
-</div>
-   
-
-{% else %}
 <div class="nhsuk-grid-row nhsuk-u-margin-top-4">
 	<div class="nhsuk-grid-column-one-half">
 		<form action="incident-details" method="post">
@@ -203,7 +216,7 @@ When does maintenance end?
 		  </form>
 	</div>
 </div>
-{% endif %}
+
 
 
 <div class="nhsuk-back-link nhsuk-u-margin-top-2">

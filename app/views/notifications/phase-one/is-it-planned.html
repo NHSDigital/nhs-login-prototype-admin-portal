@@ -57,54 +57,7 @@ Is it planned maintenance?
         <h1 class="nhsuk-heading-s nhsuk-u-padding-bottom-2" style="color: 	#4c6272; ">NAM incident</h1>
       </div>
 
-      {% if data.change === 'true' %}
-      <form action="/is-it-planned-change" method="post">
-        {% if data.FEerror === 'true' %}
-        <div class="nhsuk-form-group nhsuk-form-group--error">
-        {% else %}
-        <div class="nhsuk-form-group">
-        {% endif %}
-          <fieldset class="nhsuk-fieldset">
-            <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
-              <h1 class="nhsuk-fieldset__heading">
-                Is it planned maintenance?
-              </h1>
-            </legend>
-        
-            <div class="nhsuk-radios nhsuk-u-margin-top-2">
-              {% if data.FEerror === 'true' %}
-              <span class="nhsuk-error-message" id="is-it-planned-error">
-                Select if it is planned maintenance
-              </span>
-              {% endif %}
-              <div class="nhsuk-radios__item">
-                <input class="nhsuk-radios__input" id="planned" name="is-it-planned" type="radio" value="Yes">
-                <label class="nhsuk-label nhsuk-radios__label" for="planned">
-                  Yes
-                </label>
-              </div>
-        
-              <div class="nhsuk-radios__item">
-                <input class="nhsuk-radios__input" id="notplanned" name="is-it-planned" type="radio" value="No">
-                <label class="nhsuk-label nhsuk-radios__label" for="notplanned">
-                  No
-                </label>
-              </div>
-        
-            </div>
-          </fieldset>
-        </div>
-        <button class="nhsuk-button" type="submit">
-        Continue with changes
-        </button>
-      </form>
-      <p>
-        <a class="nhsuk-link" href="/notifications/user-alerts/turn-on-user-alert/supplier-incidents/incident-details">
-        Cancel changes and return to incident details
-        </a>
-      </p> 
-      {% else %}
-      
+     
       <form role="form" action="/is-it-planned-phase-one" method="post" onsubmit="return(validate());">
 
         {% if data.FEerror === 'true' %}
@@ -152,7 +105,7 @@ Is it planned maintenance?
           Continue
         </button>
       </form>
-      {% endif %}
+    
     </div>
   </div>
 
