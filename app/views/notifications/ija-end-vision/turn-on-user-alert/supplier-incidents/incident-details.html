@@ -1,0 +1,183 @@
+{% extends 'layout-nav.html' %}
+{% set pageSection = "Manage user notifications" %}
+{% block pageTitle %}
+Confirm incident details
+{% endblock %}
+
+<!-- this page is only visible to prod-accessreport group -->
+
+{% block beforeContent %}
+  <nav class="nhsuk-breadcrumb" aria-label="Breadcrumb">
+    <div class="nhsuk-width-container">
+      <ol class="nhsuk-breadcrumb__list">
+        <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link" href="/notifications">Manage user notifications</a></li>
+        <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link" href="/notifications/ija-end-vision/manage-user-alerts">Manage user alerts</a></li>
+        <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link" href="/notifications/ija-end-vision/turn-on-user-alert/select-incident">Incident types</a></li>
+        <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link" href="/notifications/ija-end-vision/turn-on-user-alert/supplier-incidents/supplier-incidents">Supplier incidents</a></li>
+        <li class="nhsuk-breadcrumb__item">Incident details</li>
+      </ol>
+      <p class="nhsuk-breadcrumb__back"><a class="nhsuk-breadcrumb__backlink" href="/notifications/manage-user-alerts">Back to: Access and permissions</a></p>
+    </div>
+  </nav>
+{% endblock %}
+
+{% block headCSS %}
+  <link href="/css/main.css" rel="stylesheet">
+  <link href="/css/nhsuk.css" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+
+<style>
+a:visited { 
+    color:	#005eb8; 
+    }
+</style>
+
+<div class="nhsuk-width-container">
+  <h1 class="nhsuk-heading-s nhsuk-u-padding-bottom-2" style="color: 	#4c6272;">NAM incident</h1>
+</div>
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds" >
+
+        <h1 class="nhsuk-heading-l">Confirm incident details</h1>
+    </div>
+  </div>
+  
+  <dl class="nhsuk-summary-list nhsuk-u-margin-top-4">
+
+    <div class="nhsuk-summary-list__row">
+      <dt class="nhsuk-summary-list__key">
+        Incident type
+      </dt>
+      <dd class="nhsuk-summary-list__value">
+        3rd party supplier incident
+        <p class="nhsuk-hint">Network or a technical issue with a supplier regardless of the user volume</p>
+      </dd>
+  
+      <dd class="nhsuk-summary-list__actions" >
+  
+        <a href="#">
+          <span class="nhsuk-u-visually-hidden"> name</span>
+        </a>
+  
+      </dd>
+  
+    </div>
+
+    <div class="nhsuk-summary-list__row">
+      <dt class="nhsuk-summary-list__key">
+        Affected supplier
+      </dt>
+      <dd class="nhsuk-summary-list__value">
+        NAM
+        <p class="nhsuk-hint">Affecting IDVM, POL and GP Connect</p>
+      </dd>
+  
+      <dd class="nhsuk-summary-list__actions" >
+  
+        <a href="#">
+        </a>
+  
+      </dd>
+  
+    </div>
+  
+    <div class="nhsuk-summary-list__row">
+      <dt class="nhsuk-summary-list__key">
+       Is it planned maintenance?
+      </dt>
+      <dd class="nhsuk-summary-list__value">
+        {{ data['is-it-planned'] }}
+      </dd>
+  
+      <dd class="nhsuk-summary-list__actions">
+  
+        <a href="/notifications/ija-end-vision/turn-on-user-alert/supplier-incidents/is-it-planned?change=true&backlink=true">
+          Change
+        </a>
+  
+      </dd>
+  
+    </div>
+
+    {% if data['is-it-planned'] === 'Yes' %}
+    
+    <div class="nhsuk-summary-list__row">
+      <dt class="nhsuk-summary-list__key">
+       When does the maintenance end?
+      </dt>
+      {% if data['do-you-know-end-date-time'] === 'both' %}
+      <dd class="nhsuk-summary-list__value">
+       <p>30 November 2022 at 1:30 PM</p>
+      </dd>
+      {% endif %}
+      {% if data['do-you-know-end-date-time'] === 'date' %}
+      <dd class="nhsuk-summary-list__value">
+       <p> 30 November 2022</p>
+      </dd>
+      {% endif %}
+      {% if data['do-you-know-end-date-time'] === 'dontknow' %}
+      <dd class="nhsuk-summary-list__value">
+       <p>Not known</p>
+      </dd>
+      {% endif %}
+  
+      <dd class="nhsuk-summary-list__actions">
+  
+        <a href="/notifications/ija-end-vision/turn-on-user-alert/supplier-incidents/planned-maintenance?change=true&backlink=false">
+          Change<span class="nhsuk-u-visually-hidden"></span>
+        </a>
+  
+      </dd>
+  
+    </div>
+
+    {% endif %}
+
+    <div class="nhsuk-summary-list__row">
+      <dt class="nhsuk-summary-list__key">
+        What is the impact on the service?
+      </dt>
+      <dd class="nhsuk-summary-list__value">
+        {{ data['impact'] }}
+        {% if data['impact'] === 'Service is down' %}
+        <p class="nhsuk-hint">Users cannot continue their journey</p>
+        {% endif %}
+        {% if data['impact'] === 'Service is not working as expected' %}
+        <p class="nhsuk-hint">Users may or may not be able to continue their journey</p>
+        {% endif %}
+      </dd>
+  
+      <dd class="nhsuk-summary-list__actions">
+  
+        <a href="/notifications/ija-end-vision/turn-on-user-alert/supplier-incidents/impact-level?change=true">
+          Change
+        </a>
+  
+      </dd>
+  
+    </div>
+  
+  </dl> 
+
+
+  {% if data['impact'] === 'Service is not working as expected' %}
+  <form action="/NAM-template" method="post">
+    <button class="nhsuk-button" type="submit">
+      Confirm and continue
+    </button>
+  </form>
+  {% else %}
+  <form action="/NAM-down-template" method="post">
+    <button class="nhsuk-button" type="submit">
+      Confirm and continue
+    </button>
+  </form>
+  {% endif %}
+        
+        
+{% endblock %}
+
+

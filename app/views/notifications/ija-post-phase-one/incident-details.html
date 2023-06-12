@@ -1,0 +1,189 @@
+{% extends 'layout-nav.html' %}
+{% set pageSection = "Manage user notifications" %}
+{% block pageTitle %}
+Confirm incident details
+{% endblock %}
+
+<!-- this page is only visible to prod-accessreport group -->
+
+{% block beforeContent %}
+  <nav class="nhsuk-breadcrumb" aria-label="Breadcrumb">
+    <div class="nhsuk-width-container">
+      <ol class="nhsuk-breadcrumb__list">
+        <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link" href="manage-user-alerts">Manage user alerts</a></li>
+        <li class="nhsuk-breadcrumb__item">Incident details</li>
+      </ol>
+    </div>
+  </nav>
+{% endblock %}
+
+{% block headCSS %}
+  <link href="/css/main.css" rel="stylesheet">
+  <link href="/css/nhsuk.css" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+
+<style>
+a:visited { 
+    color:	#005eb8; 
+    }
+</style>
+
+<div class="nhsuk-width-container">
+  <h1 class="nhsuk-heading-s nhsuk-u-padding-bottom-2" style="color: 	#4c6272;">NAM incident</h1>
+</div>
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds" >
+
+        <h1 class="nhsuk-heading-l">Confirm incident details</h1>
+    </div>
+  </div>
+  
+  <dl class="nhsuk-summary-list nhsuk-u-margin-top-4">
+
+    <div class="nhsuk-summary-list__row">
+      <dt class="nhsuk-summary-list__key">
+        Incident type
+      </dt>
+      <dd class="nhsuk-summary-list__value">
+        3rd party supplier incident
+        <p class="nhsuk-hint">Network or a technical issue with a supplier regardless of the user volume</p>
+      </dd>
+  
+      <dd class="nhsuk-summary-list__actions" >
+  
+        <a href="#">
+        </a>
+  
+      </dd>
+  
+    </div>
+
+    <div class="nhsuk-summary-list__row">
+      <dt class="nhsuk-summary-list__key">
+        Affected supplier
+      </dt>
+      <dd class="nhsuk-summary-list__value">
+        NAM
+        <p class="nhsuk-hint">Affecting IDVM, POL and GP Connect</p>
+      </dd>
+  
+      <dd class="nhsuk-summary-list__actions" >
+  
+        <a href="#">
+        </a>
+  
+      </dd>
+  
+    </div>
+  
+    <div class="nhsuk-summary-list__row">
+      <dt class="nhsuk-summary-list__key">
+       Is it planned maintenance?
+      </dt>
+      <dd class="nhsuk-summary-list__value">
+        {{ data['is-it-planned'] }}
+      </dd>
+  
+      <dd class="nhsuk-summary-list__actions">
+  
+        <a href="#">
+          
+        </a>
+  
+      </dd>
+  
+    </div>
+
+    {% if data['is-it-planned'] === 'Yes' %}
+    
+    <div class="nhsuk-summary-list__row">
+      <dt class="nhsuk-summary-list__key">
+       When does the maintenance end?
+      </dt>
+      {% if data['do-you-know-end-date-time'] === 'both' %}
+      <dd class="nhsuk-summary-list__value">
+       <p>30 November 2022 at 1:30 PM</p>
+      </dd>
+      {% endif %}
+      {% if data['do-you-know-end-date-time'] === 'date' %}
+      <dd class="nhsuk-summary-list__value">
+       <p> 30 November 2022</p>
+      </dd>
+      {% endif %}
+      {% if data['do-you-know-end-date-time'] === 'dontknow' %}
+      <dd class="nhsuk-summary-list__value">
+       <p>Not known</p>
+      </dd>
+      {% endif %}
+  
+      <dd class="nhsuk-summary-list__actions">
+  
+        <a href="#">
+          
+        </a>
+  
+      </dd>
+  
+    </div>
+
+    {% endif %}
+
+
+    <div class="nhsuk-summary-list__row">
+      <dt class="nhsuk-summary-list__key">
+        What is the impact on the service?
+      </dt>
+      <dd class="nhsuk-summary-list__value">
+        Service is not working as expected
+        <p class="nhsuk-hint">Users may or may not be able to continue their journey</p>
+      </dd>
+  
+      <dd class="nhsuk-summary-list__actions">
+  
+        <a href="#">
+          
+        </a>
+  
+      </dd>
+  
+    </div>
+  
+  </dl> 
+
+  <form action="{% if data['is-it-planned'] === 'Yes' %}NAM-not-working-as-expected-planned{% else %} NAM-not-working-as-expected {%endif%}" method="post">
+    <button class="nhsuk-button" type="submit">
+      Confirm and continue
+    </button>
+  </form>
+
+  {% if data['is-it-planned'] === 'Yes' %}
+
+  <div class="nhsuk-back-link nhsuk-u-margin-top-2" style="{% if data.backlink === 'false' %}display:none;{% else %} display:block;{% endif %}">
+    <a class="nhsuk-back-link__link" href="planned-maintenance">
+      <svg class="nhsuk-icon nhsuk-icon__chevron-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" height="24" width="24">
+      <path d="M8.5 12c0-.3.1-.5.3-.7l5-5c.4-.4 1-.4 1.4 0s.4 1 0 1.4L10.9 12l4.3 4.3c.4.4.4 1 0 1.4s-1 .4-1.4 0l-5-5c-.2-.2-.3-.4-.3-.7z"></path>
+      </svg>
+      Back to: Do you know when the maintenance ends?
+    </a>
+  </div>
+
+  {% else %}
+
+  <div class="nhsuk-back-link nhsuk-u-margin-top-2" style="{% if data.backlink === 'false' %}display:none;{% else %} display:block;{% endif %}">
+    <a class="nhsuk-back-link__link" href="is-it-planned">
+      <svg class="nhsuk-icon nhsuk-icon__chevron-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" height="24" width="24">
+      <path d="M8.5 12c0-.3.1-.5.3-.7l5-5c.4-.4 1-.4 1.4 0s.4 1 0 1.4L10.9 12l4.3 4.3c.4.4.4 1 0 1.4s-1 .4-1.4 0l-5-5c-.2-.2-.3-.4-.3-.7z"></path>
+      </svg>
+      Back to: Is it planned maintenance?
+    </a>
+  </div>
+
+  {% endif %}
+        
+        
+{% endblock %}
+
+

@@ -53,10 +53,10 @@ router.post('/is-it-planned', function (req, res) {
 	 // Check whether the variable matches a condition
 	if (planned == "Yes"){
 	  // Send user to date and time page
-	  res.redirect('/notifications/user-alerts/turn-on-user-alert/supplier-incidents/planned-maintenance')
+	  res.redirect('/notifications/ija-end-vision/turn-on-user-alert/supplier-incidents/planned-maintenance')
 	} else {
 	  // Send user to confirm choices page
-	  res.redirect('/notifications/user-alerts/turn-on-user-alert/supplier-incidents/impact-level')
+	  res.redirect('/notifications/ija-end-vision/turn-on-user-alert/supplier-incidents/impact-level')
 	}
    })  
 
@@ -68,10 +68,10 @@ router.post('/is-it-planned-change', function (req, res) {
 	 // Check whether the variable matches a condition
 	if (planned == "Yes"){
 	  // Send user to date and time page
-	  res.redirect('/notifications/user-alerts/turn-on-user-alert/supplier-incidents/planned-maintenance')
+	  res.redirect('/notifications/ija-end-vision/turn-on-user-alert/supplier-incidents/planned-maintenance')
 	} else {
 	  // Send user to confirm choices page
-	  res.redirect('/notifications/user-alerts/turn-on-user-alert/supplier-incidents/incident-details')
+	  res.redirect('/notifications/ija-end-vision/turn-on-user-alert/supplier-incidents/incident-details')
 	}
    })   
 
@@ -83,10 +83,10 @@ router.post('/is-it-planned-edit', function (req, res) {
 	 // Check whether the variable matches a condition
 	if (planned == "Yes"){
 	  // Send user to date and time page
-	  res.redirect('/notifications/user-alerts/edit-user-alert/planned-maintenance')
+	  res.redirect('/notifications/ija-end-vision/edit-user-alert/planned-maintenance')
 	} else {
 	  // Send user to confirm choices page
-	  res.redirect('/notifications/user-alerts/edit-user-alert/incident-details?change=true')
+	  res.redirect('/notifications/ija-end-vision/edit-user-alert/incident-details?change=true')
 	}
    })   
 
@@ -98,10 +98,10 @@ router.post('/date-time', function (req, res) {
 	 // Check whether the variable matches a condition
 	if (planned == "dontknow"){
 	  // Send user to date and time page
-	  res.redirect('/notifications/user-alerts/turn-on-user-alert/supplier-incidents/impact-level')
+	  res.redirect('/notifications/ija-end-vision/turn-on-user-alert/supplier-incidents/impact-level')
 	} else {
 	  // Send user to confirm choices page
-	  res.redirect('/notifications/user-alerts/turn-on-user-alert/supplier-incidents/planned-date-time')
+	  res.redirect('/notifications/ija-end-vision/turn-on-user-alert/supplier-incidents/planned-date-time')
 	}
    })   
    
@@ -113,10 +113,10 @@ router.post('/date-time-change', function (req, res) {
 	 // Check whether the variable matches a condition
 	if (planned == "dontknow"){
 	  // Send user to date and time page
-	  res.redirect('/notifications/user-alerts/turn-on-user-alert/supplier-incidents/incident-details')
+	  res.redirect('/notifications/ija-end-vision/turn-on-user-alert/supplier-incidents/incident-details')
 	} else {
 	  // Send user to confirm choices page
-	  res.redirect('/notifications/user-alerts/turn-on-user-alert/supplier-incidents/planned-date-time')
+	  res.redirect('/notifications/ija-end-vision/turn-on-user-alert/supplier-incidents/planned-date-time')
 	}
    })    
 
@@ -128,10 +128,10 @@ router.post('/date-time-edit', function (req, res) {
 	 // Check whether the variable matches a condition
 	if (planned == "dontknow"){
 	  // Send user to date and time page
-	  res.redirect('/notifications/user-alerts/edit-user-alert/incident-details?change=true')
+	  res.redirect('/notifications/ija-end-vision/edit-user-alert/incident-details?change=true')
 	} else {
 	  // Send user to confirm choices page
-	  res.redirect('/notifications/user-alerts/edit-user-alert/planned-date-time')
+	  res.redirect('/notifications/ija-end-vision/edit-user-alert/planned-date-time')
 	}
    })  
     
@@ -144,10 +144,10 @@ router.post('/NAM-down-template', function (req, res) {
 	 // Check whether the variable matches a condition
 	if (planned == "Yes"){
 	  // Send user to date and time page
-	  res.redirect('/notifications/user-alerts/turn-on-user-alert/supplier-incidents/NAM-down-planned')
+	  res.redirect('/notifications/ija-end-vision/turn-on-user-alert/supplier-incidents/NAM-down-planned')
 	} else {
 	  // Send user to confirm choices page
-	  res.redirect('/notifications/user-alerts/turn-on-user-alert/supplier-incidents/NAM-down')
+	  res.redirect('/notifications/ija-end-vision/turn-on-user-alert/supplier-incidents/NAM-down')
 	}
    })  
 
@@ -159,10 +159,10 @@ router.post('/NAM-down-template-edit', function (req, res) {
 	 // Check whether the variable matches a condition
 	if (planned == "Yes"){
 	  // Send user to date and time page
-	  res.redirect('/notifications/user-alerts/edit-user-alert/NAM-down-planned?change=true&namdownplanned=true')
+	  res.redirect('/notifications/ija-end-vision/edit-user-alert/NAM-down-planned?change=true&namdownplanned=true')
 	} else {
 	  // Send user to confirm choices page
-	  res.redirect('/notifications/user-alerts/edit-user-alert/NAM-down?change=true&namdownplanned=false')
+	  res.redirect('/notifications/ija-end-vision/edit-user-alert/NAM-down?change=true&namdownplanned=false')
 	}
    })  
    
@@ -174,10 +174,10 @@ router.post('/NAM-template-edit', function (req, res) {
 	 // Check whether the variable matches a condition
 	if (planned == "Yes"){
 	  // Send user to date and time page
-	  res.redirect('/notifications/user-alerts/edit-user-alert/NAM-not-working-as-expected-planned?change=true&namplanned=true')
+	  res.redirect('/notifications/ija-end-vision/edit-user-alert/NAM-not-working-as-expected-planned?change=true&namplanned=true')
 	} else {
 	  // Send user to confirm choices page
-	  res.redirect('/notifications/user-alerts/edit-user-alert/NAM-not-working-as-expected?change=true&namplanned=false')
+	  res.redirect('/notifications/ija-end-vision/edit-user-alert/NAM-not-working-as-expected?change=true&namplanned=false')
 	}
    })    
 
@@ -189,10 +189,27 @@ router.post('/NAM-template', function (req, res) {
 	 // Check whether the variable matches a condition
 	if (planned == "Yes"){
 	  // Send user to date and time page
-	  res.redirect('/notifications/user-alerts/turn-on-user-alert/supplier-incidents/NAM-not-working-as-expected-planned')
+	  res.redirect('/notifications/ija-end-vision/turn-on-user-alert/supplier-incidents/NAM-not-working-as-expected-planned')
 	} else {
 	  // Send user to confirm choices page
-	  res.redirect('/notifications/user-alerts/turn-on-user-alert/supplier-incidents/NAM-not-working-as-expected')
+	  res.redirect('/notifications/ija-end-vision/turn-on-user-alert/supplier-incidents/NAM-not-working-as-expected')
+	}
+   }) 
+
+
+
+   // Run this code when a form is submitted to 'SLA choose time unit'
+router.post('/choose-time-unit', function (req, res) {
+
+	// Make a variable and give it the value from 'enter name for the radio button'
+	var timeunit = req.session.data['timeunit']
+	 // Check whether the variable matches a condition
+	if (timeunit == "hours"){
+	  // Send user to date and time page
+	  res.redirect('/journey/SLA/change-timeframe/enter-timeframe')
+	} else {
+	  // Send user to confirm choices page
+	  res.redirect('/journey/SLA/change-timeframe/SLA-message-needed')
 	}
    }) 
 

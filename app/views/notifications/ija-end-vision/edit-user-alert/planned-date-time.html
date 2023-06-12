@@ -1,0 +1,269 @@
+{% extends 'layout-nav.html' %}
+{% set pageSection = "Manage user notifications" %}
+
+{% block pageTitle %}
+Edit - When does maintenance end?
+{% endblock %}
+
+<!-- this page is only visible to prod-accessreport group -->
+
+{% block beforeContent %}
+<nav class="nhsuk-breadcrumb" aria-label="Breadcrumb">
+    <div class="nhsuk-width-container">
+      <ol class="nhsuk-breadcrumb__list">
+        <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link" href="/notifications">Manage user notifications</a></li>
+        <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link" href="/notifications/ija-end-vision/manage-user-alerts">Manage user alerts</a></li>
+        <li class="nhsuk-breadcrumb__item">Edit active user alerts</li>
+      </ol>
+    </div>
+  </nav>
+{% endblock %}
+
+{% block headCSS %}
+  <link href="/css/main.css" rel="stylesheet">
+  <link href="/css/nhsuk.css" rel="stylesheet">
+
+
+{% endblock %}
+
+{% block content %}
+
+<style>
+
+	a:visited { 
+	  color:	#005eb8; 
+	}
+
+</style>
+
+<div class="nhsuk-width-container">
+	<h1 class="nhsuk-heading-s nhsuk-u-padding-bottom-2" style="color: 	#4c6272;">NAM incident</h1>
+</div>
+
+  
+
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds ">
+		{% if data['do-you-know-end-date-time'] === 'both' %}
+        <h1 class="nhsuk-heading-l">When does the maintenance end?</h1>
+		{% endif %}
+		{% if data['do-you-know-end-date-time'] === 'date' %}
+		<h1 class="nhsuk-heading-l">When does the maintenance end?</h1>
+		{% endif %}
+    </div>
+</div>
+
+<div class="nhsuk-grid-row ">
+	<div class="nhsuk-grid-column-two-thirds" >
+	  <p class="nhsuk-hint">
+		This will be displayed on user alerts
+	  </p>
+	</div>
+</div> 
+
+
+<div class="nhsuk-grid-row nhsuk-u-margin-top-2">
+	<div class="nhsuk-grid-column-full">
+
+
+		<div class="datetime-wrapper" id="date-time-field">
+			<div class="date-wrapper" id="date">
+				<label class="nhsuk-label" for="date">Date</label>
+				<input class="selected-date dateend" type="text" placeholder="DD/MM/YYYY" id="dateinput"/> 
+	
+			</div>
+	
+			{% if data['do-you-know-end-date-time'] === 'both' %}
+	
+			<div class="time-wrapper" id="time" >
+				<label class="nhsuk-label" for="date">Time</label>
+				<input class="timeend" placeholder="--:--" id="timeinput" readonly/>
+			</div>
+			{% endif %}
+			
+		</div>
+	{% if data['do-you-know-end-date-time'] === 'both' %}
+	<div style="width:50%" >
+
+		<div class="time-picker-done-button" id="time-picker-done-div">
+			<a style="cursor:pointer;" id="time-picker-done-button">Done</a>
+		</div>
+
+		<div class="times nhsuk-u-margin-top-4" id="timepicker" style="display:none;">
+			
+			<div class="hours" style="width:50%;" id="hour">
+				<p class="hour">12:00</p><p class="hour">12:30</p><p class="hour">1:00</p><p class="hour" id="time-selected">1:30</p><p class="hour">2:00</p>
+				<p class="hour">2:30</p><p class="hour">3:00</p><p class="hour">3:30</p><p class="hour">4:00</p><p class="hour">4:30</p>
+				<p class="hour">5:00</p><p class="hour">5:30</p><p class="hour">6:00</p><p class="hour">6:30</p><p class="hour">7:00</p><p class="hour">7:30</p>
+				<p class="hour">8:00</p><p class="hour">8:30</p><p class="hour">9:00</p><p class="hour">9:30</p><p class="hour">10:00</p><p class="hour">10:30</p>
+				<p class="hour">11:00</p><p class="hour">11:30</p>
+			</div>	
+
+			<div style="width:50%; height: 300px;">
+				<div style="height: 150px;">
+				<button class="am-selected" id="am" onclick="amButton()">AM</button>
+				</div>
+				<div style="height: 150px;">
+				<button class="pm" id="pm" onclick="pmButton()">PM</button>
+				</div>
+			</div>
+
+
+			
+			
+		</div>
+		
+	</div>
+	{% endif %}
+	<div style="width:50%">
+		<div class="datescontainer nhsuk-u-margin-top-4 dates" id="calendar" style="display:none;">
+			<div class="month">
+				<div class="arrows-disabled">&lt;</div>
+				<div class="mth">November 2022</div>
+				<div class="arrows">&gt;</div>
+			</div>
+			<div class="dayscontainer" style="width:50%;" id="date-selected">
+					<p class="daypast"> </p><p class="daypast"> </p><p class="daypast"> </p><p class="daypast"> </p>
+					<p class="daypast">1</p><p class="daypast">2</p><p class="daypast">3</p><p class="daypast">4</p><p class="daypast">5</p><p class="daypast">6</p><p class="daypast">7</p>
+					<p class="daypast">8</p><p class="daypast">9</p><p class="daynew dayselected" id="current">10</p><p class="daynew">11</p><p class="daynew">12</p><p class="daynew">13</p><p class="daynew">14</p>
+					<p class="daynew">15</p><p class="daynew">16</p><p class="daynew">17</p><p class="daynew">18</p><p class="daynew">19</p><p class="daynew">20</p><p class="daynew">21</p>
+					<p class="daynew">22</p><p class="daynew">23</p><p class="daynew">24</p><p class="daynew">25</p><p class="daynew">26</p><p class="daynew">27</p><p class="daynew">28</p>
+					<p class="daynew">29</p><p class="daynew" id="day-selected">30</p><p class="daynew">31</p>
+			</div>	
+		</div>
+	</div>
+		
+	</div>	
+
+	
+</div>
+
+
+
+<div class="nhsuk-grid-row nhsuk-u-margin-top-4">
+	<div class="nhsuk-grid-column-two-thirds">
+		<form action="incident-details?change=true" method="post">
+			<button class="nhsuk-button" type="submit">
+			  Continue with changes
+			</button>
+		  </form>
+	
+		  <p>
+			<a class="nhsuk-link" href="incident-details?edit=false">
+			Cancel changes and return to incident details 
+			</a>
+		  </p>
+	</div>
+</div>
+
+<div class="nhsuk-back-link nhsuk-u-margin-top-2">
+	<a class="nhsuk-back-link__link" href="#">
+	  <svg class="nhsuk-icon nhsuk-icon__chevron-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" height="24" width="24">
+		<path d="M8.5 12c0-.3.1-.5.3-.7l5-5c.4-.4 1-.4 1.4 0s.4 1 0 1.4L10.9 12l4.3 4.3c.4.4.4 1 0 1.4s-1 .4-1.4 0l-5-5c-.2-.2-.3-.4-.3-.7z"></path>
+	  </svg>
+	  Back to: Do you know when the maintenance ends?
+	</a>
+</div>
+
+
+<script>
+	
+	const calendar = document.getElementById("calendar");
+	const date1 = document.getElementById("dateinput");
+	const btn3 = document.getElementById("date-selected");
+	const input2 = document.getElementById("timeinput");
+	const time = document.getElementById("timepicker");
+	const doneButtonDiv = document.getElementById("time-picker-done-div");
+	const doneButton = document.getElementById("time-picker-done-button");
+	const btn4 = document.getElementById("hour");
+	
+	date1.onclick = function () {
+		calendar.style.display = "block";
+	};
+	
+	btn3.onclick = function () {
+	  calendar.style.display = "none";
+	  document.getElementById("dateinput").value ='30/11/2022'
+	  document.getElementById('current').classList.remove("dayselected");
+	  document.getElementById('day-selected').classList.add("dayselected");
+	};
+
+	btn4.onclick = function () {
+	document.getElementById('time-selected').classList.add("hour-selected");
+	if (document.getElementById("pm").className === "pm-selected") {
+	document.getElementById("timeinput").value ='1:30 PM';
+	} else {
+	document.getElementById("timeinput").value ='1:30 AM';	
+	}
+	};
+
+	doneButton.onclick = function () {
+	time.style.display = "none";
+	doneButtonDiv.style.display = "none";
+	if (document.getElementById("timeinput").value ==='') {
+	document.getElementById("timeinput").value ='';
+	} else
+	if (document.getElementById("pm").className === "pm-selected") {
+	document.getElementById("timeinput").value ='1:30 PM';
+	} else {
+	document.getElementById("timeinput").value ='1:30 AM';
+	}
+	};
+	
+	input2.onclick = function () {
+		time.style.display = "flex";
+		doneButtonDiv.style.display = "block";
+	  if (document.getElementById("timeinput").value ==='') {
+		 document.getElementById("timeinput").value ='';
+	  } else 
+	  if (document.getElementById("timeinput").value ==='1:30 PM'){
+		document.getElementById("timeinput").value ='1:30 PM';
+	  } else {
+	  	document.getElementById("timeinput").value ='1:30 AM';
+	  }
+	};
+
+	function amButton() {
+
+	var am = document.getElementById("am");
+  	var pm = document.getElementById("pm");
+
+  	document.getElementById("am").className = "am-selected";
+  	document.getElementById("pm").className = "pm";
+	if (document.getElementById("timeinput").value ===''){
+	document.getElementById("timeinput").value ='';
+	} else {
+	document.getElementById("timeinput").value ='1:30 AM';
+	}
+	};
+
+	function pmButton() {
+
+	var am = document.getElementById("am");
+  	var pm = document.getElementById("pm");
+
+  	document.getElementById("am").className = "am";
+  	document.getElementById("pm").className = "pm-selected";
+	if (document.getElementById("timeinput").value ===''){
+	document.getElementById("timeinput").value ='';
+	} else {
+	document.getElementById("timeinput").value ='1:30 PM';
+	}
+	};
+
+	document.addEventListener('mouseup', function(e) {
+    if (!calendar.contains(e.target)) {
+        calendar.style.display = 'none';
+    }
+	if (!time.contains(e.target)) {
+        time.style.display = 'none';
+		doneButtonDiv.style.display = 'none';
+    }
+	});
+
+</script>
+
+        
+{% endblock %}
+
+

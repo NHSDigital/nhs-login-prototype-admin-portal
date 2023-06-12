@@ -1,0 +1,123 @@
+{% extends 'layout-nav.html' %}
+{% set pageSection = "Manage user notifications" %}
+
+{% block pageTitle %}
+User alerts updated
+{% endblock %}
+
+<!-- this page is only visible to prod-accessreport group -->
+
+{% block beforeContent %}
+  <nav class="nhsuk-breadcrumb" aria-label="Breadcrumb">
+    <div class="nhsuk-width-container">
+      <ol class="nhsuk-breadcrumb__list">
+        <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link" href="/notifications">Manage user notifications</a></li>
+        <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link" href="/notifications/ija-end-vision/manage-user-alerts?active=true">Manage user alerts</a></li>
+        <li class="nhsuk-breadcrumb__item">User alerts are updated</li>
+      </ol>
+    </div>
+  </nav>
+{% endblock %}
+
+{% block headCSS %}
+  <link href="/css/main.css" rel="stylesheet">
+  <link href="/css/nhsuk.css" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+
+<style>
+  a:visited { 
+   color:	#005eb8; 
+  }
+
+</style>
+
+
+
+<div class="nhsuk-grid-row" >
+  <div class="nhsuk-grid-column-two-thirds">
+    <div class="edit-complete-box nhsuk-u-padding-7" >
+    <div>
+      <h1 class="nhsuk-heading-xl nhsuk-u-margin-bottom-6">
+        User alerts are updated
+      </h1>
+      {% if data['impact'] === 'Service is not working as expected' %}
+      {% if data['is-it-planned'] === 'Yes' %}
+      <h2 class="nhsuk-heading-l" style="line-height: 100%;">NAM is not working as expected</h2>
+      <h2 class="nhsuk-heading-l nhsuk-u-padding-bottom-6" style="line-height: 0%;">Planned maintenance</h2>
+      <div class="nhsuk-u-padding-bottom-2">
+        <p class="nhsuk-heading-l" style="line-height:0%;">Maintenance end date:</p>
+        {% if data['do-you-know-end-date-time'] === 'both' %}
+        <p class="nhsuk-heading-l" style="line-height: 0%;">30 November 2022 at 1:30 PM</p>
+        {% endif %}
+        {% if data['do-you-know-end-date-time'] === 'date' %}
+        <p class="nhsuk-heading-l" style="line-height: 0%;">30 November 2022</p>
+        {% endif %}
+        {% if data['do-you-know-end-date-time'] === 'dontknow' %}
+        <p class="nhsuk-heading-l" style="line-height: 0%;">Not known</p>
+        {% endif %}
+      </div>
+      {% endif %}
+      {% endif %}
+      {% if data['impact'] === 'Service is not working as expected' %}
+      {% if data['is-it-planned'] === 'No' %}
+      <h2 class="nhsuk-heading-l">NAM is not working as expected</h2>
+      {% endif %}
+      {% endif %}
+      {% if data['impact'] === 'Service is down' %}
+      {% if data['is-it-planned'] === 'Yes' %}
+      <h2 class="nhsuk-heading-l" style="line-height: 100%;">NAM is down</h2>
+      <h2 class="nhsuk-heading-l nhsuk-u-padding-bottom-6" style="line-height: 0%;">Planned maintenance</h2>
+      <div class="nhsuk-u-padding-bottom-2">
+        <p class="nhsuk-heading-l" style="line-height:0%;">Maintenance end date:</p>
+        {% if data['do-you-know-end-date-time'] === 'both' %}
+        <p class="nhsuk-heading-l" style="line-height: 0%;">30 November 2022 at 1:30 PM</p>
+        {% endif %}
+        {% if data['do-you-know-end-date-time'] === 'date' %}
+        <p class="nhsuk-heading-l" style="line-height: 0%;">30 November 2022</p>
+        {% endif %}
+        {% if data['do-you-know-end-date-time'] === 'dontknow' %}
+        <p class="nhsuk-heading-l" style="line-height: 0%;">Not known</p>
+        {% endif %}
+      </div>
+      {% endif %}
+      {% endif %}
+      {% if data['impact'] === 'Service is down' %}
+      {% if data['is-it-planned'] === 'No' %}
+      <h2 class="nhsuk-heading-l">NAM is down</h2>
+      {% endif %}
+      {% endif %}
+    </div>
+    {% if data['incident-number'] != 'No' %}
+
+    <p class="nhsuk-body-l nhsuk-u-padding-top-6" style="line-height: 0%;">
+      Support reference number:
+    </p>
+    
+    <h3 class="nhsuk-heading-l" style="line-height:0%;">
+      INC1234567
+    </h3>
+      
+    {% endif %}
+  </div>
+  </div>
+</div>
+
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-two-thirds">
+      <p class="mhsuk-body-l nhsuk-u-padding-top-4">
+        <a href="/notifications/ija-end-vision/manage-user-alerts?active=true&edit=true">
+          Return to manage user alerts
+        </a>
+      </p>
+      
+
+  </div>
+</div>
+
+        
+{% endblock %}
+
+

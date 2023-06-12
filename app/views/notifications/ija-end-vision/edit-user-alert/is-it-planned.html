@@ -1,0 +1,90 @@
+{% extends 'layout-nav.html' %}
+{% set pageSection = "Manage user notifications" %}
+
+{% block pageTitle %}
+Edit - Is it planned maintenance?
+{% endblock %}
+
+<!-- this page is only visible to prod-accessreport group -->
+
+{% block beforeContent %}
+  <nav class="nhsuk-breadcrumb" aria-label="Breadcrumb">
+    <div class="nhsuk-width-container">
+      <ol class="nhsuk-breadcrumb__list">
+        <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link" href="/notifications">Manage user notifications</a></li>
+        <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link" href="/notifications/ija-end-vision/manage-user-alerts">Manage user alerts</a></li>
+        <li class="nhsuk-breadcrumb__item">Edit active user alerts</li>
+      </ol>
+    </div>
+  </nav>
+{% endblock %}
+
+{% block headCSS %}
+  <link href="/css/main.css" rel="stylesheet">
+  <link href="/css/nhsuk.css" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<style>
+  a:visited { 
+    color:	#005eb8; 
+    }
+</style>
+
+<div class="nhsuk-width-container">
+  <h1 class="nhsuk-heading-s nhsuk-u-padding-bottom-2" style="color: 	#4c6272; ">NAM incident</h1>
+</div>
+
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <form action="/is-it-planned-edit" method="post">
+        <div class="nhsuk-form-group">
+
+          <fieldset class="nhsuk-fieldset">
+            <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+              <h1 class="nhsuk-fieldset__heading">
+                Is it planned maintenance?
+              </h1>
+            </legend>
+        
+            <div class="nhsuk-radios nhsuk-u-margin-top-2">
+
+              <div class="nhsuk-radios__item">
+                <input class="nhsuk-radios__input" id="planned" name="is-it-planned" type="radio" value="Yes">
+                <label class="nhsuk-label nhsuk-radios__label" for="planned">
+                  Yes
+                </label>
+              </div>
+        
+              <div class="nhsuk-radios__item">
+                <input class="nhsuk-radios__input" id="notplanned" name="is-it-planned" type="radio" value="No">
+                <label class="nhsuk-label nhsuk-radios__label" for="notplanned">
+                  No
+                </label>
+              </div>
+        
+            </div>
+          </fieldset>
+        </div>
+        <button class="nhsuk-button" type="submit">
+        Continue with changes
+        </button>
+      </form>
+      <p>
+        <a class="nhsuk-link" href="incident-details?edit=false">
+        Cancel changes and return to incident details
+        </a>
+      </p> 
+      
+    </div>
+  </div>
+
+
+
+        
+        
+{% endblock %}
+
+

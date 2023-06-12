@@ -106,9 +106,14 @@ a:visited {
 
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-two-thirds nhsuk-u-margin-top-4" >
-    <div class=" nhsuk-u-padding-0">
-      <h2 class="alert-header-tab-selected nhsuk-u-padding-left-4" id="global-alert" style="text-align: left;">
+    <div class="nhsuk-grid-column-one-half nhsuk-u-padding-0 nhsuk-u-padding-right-3" onclick="globalAlert()" style="cursor:pointer;">
+      <h2 class="alert-header-tab-selected" id="global-alert">
         Global alert
+      </h2>
+    </div>
+    <div class="nhsuk-grid-column-one-half nhsuk-u-padding-0" onclick="reminderAlert()" style="cursor:pointer;">
+      <h2 class="alert-header-tab" id="reminder-alert">
+        Reminder alert
       </h2>
     </div>
   </div>
@@ -194,6 +199,78 @@ a:visited {
   </div>
 </div>
 
+<div class="nhsuk-grid-row " >
+  <div class="nhsuk-grid-column-two-thirds">
+   <div id="reminderalert" style=" display:none; border-bottom: 1px solid #d8dde0;  border-right: 1px solid #d8dde0; border-left: 1px solid #d8dde0; background-color: #fff;">
+           <div class="nhsuk-grid-row nhsuk-u-padding-4">
+          <div class=" nhsuk-u-padding-left-4 nhsuk-u-padding-right-4" >
+            <div class="" aria-labelledby="error-summary-title" style="padding: 16px; margin-top: 8px;  border: 2px solid #ED8B00;" role="alert" tabindex="-1">
+              <div class=" " style="display:flex; flex-direction:row;">
+                <div class="">
+                  <span class="nhsuk-warning-text__icon_global" aria-hidden="true" >!</span>
+                </div>
+                <div class="nhsuk-u-margin-left-4" aria-labelledby="error-summary-title" role="alert" tabindex="-1" >
+                  <h2 class="nhsuk-error-summary__title" id="error-summary-title">
+                    Connecting to GP systems is currently unavailable
+                  </h2>
+                <div class="nhsuk-error-summary__body">
+                  {% if data['do-you-know-end-date-time'] === 'both' %}
+                  <p>
+                    We are carrying out essential maintenance on the service.
+                  </p>
+                  <p>
+                    This could affect your access to the service.
+                  </p>
+                  <p>
+                    We expect this work to finish on 30 November 2022 at 1.30pm.
+                  </p>
+                  {% endif %}
+
+                  {% if data['do-you-know-end-date-time'] === 'date' %}
+                  <p>
+                    We are carrying out essential maintenance on the service.
+                  </p>
+                  <p>
+                    This could affect your access to the service.
+                  </p>
+                  <p>
+                    We expect this work to finish on 30 November 2022.
+                  </p>
+                  {% endif %}
+
+                  {% if data['do-you-know-end-date-time'] === 'dontknow' %}
+                  <p>
+                    We are carrying out essential maintenance on the service.
+                  </p>
+                  <p>
+                    This could affect your access to the service.
+                  </p>
+                  <p>
+                    We are working to complete it as soon as possible.
+                  </p>
+                  {% endif %}
+              
+                  <p>
+                    You can try again later.
+                  </p>
+                  <ul class="nhsuk-list nhsuk-error-summary__list">
+                  <li>
+                    <p class=" nhsuk-body ">Last updated: <span id="datestamp-reminderalert"> </span><span id="timestamp-reminderalert"></span></p>
+                  </li>
+                  </ul>
+                </div>
+                </div>
+              </div>
+            </div>
+            <div class="nhsuk-u-padding-top-4">
+              <span class="nhsuk-hint nhsuk-u-font-size-16">Last updated timestamp will initially display the date and time the alert is turned on. It will then automatically update every hour until it is turned off.</span>
+            </div>
+          </div>
+        </div>     
+    </div>
+  </div>
+</div>
+
 
 <div class="nhsuk-grid-row nhsuk-u-margin-top-6">
   <div class="nhsuk-grid-column-full" >
@@ -206,6 +283,27 @@ a:visited {
 </div>
 </div>
 
+
+
+
+<div id="myModal" class="modal-image-zoom">
+
+  <!-- Modal content -->
+  <div class="modal-content-image-zoom nhsuk-u-padding-6">
+    <div style="display:block;">
+      <div style="float:right;">
+        <p class="nhsuk-u-margin-bottom-0 nhsuk-u-margin-bottom-3" style="display:inline-block; ">
+          <span class="close">
+            <a  href="#" class="" id="">Close</a>
+          </span>
+        </p>
+      </div>
+      <img src="/images/global-alert-example.png" id="globalAlertimage" style="display:none;">
+      <img src="/images/reminder-alert-example.png" id="reminderAlertimage" style="display:none;">
+    </div>
+  </div>
+
+</div>
 
 </div>
 
@@ -236,6 +334,50 @@ a:visited {
       var timestamp = document.getElementById("timestamp-reminderalert");
       timestamp.innerHTML = " " +"at" + " " + time;
   };
+</script>
+
+<script>
+
+  function reminderAlert() {
+    var reminderAlert = document.getElementById("reminderalert");
+    var globalAlert = document.getElementById("globalalert");
+  
+    document.getElementById("reminder-alert").className = "alert-header-tab-selected";
+    document.getElementById("global-alert").className = "alert-header-tab";
+  
+    if (reminderAlert.style.display === "none") {
+      reminderAlert.style.display = "block";
+      } else{
+      reminderAlert.style.display = "block";
+    }
+    if (globalAlert.style.display === "block") {
+      globalAlert.style.display = "none";
+      } else{
+      globalAlert.style.display = "none"; 
+    }
+  }
+  
+
+  function globalAlert() {
+    var reminderAlert = document.getElementById("reminderalert");
+    var globalAlert = document.getElementById("globalalert");
+  
+    document.getElementById("reminder-alert").className = "alert-header-tab";
+    document.getElementById("global-alert").className = "alert-header-tab-selected";
+  
+    if (globalAlert.style.display === "none") {
+      globalAlert.style.display = "block";
+    } else {
+      globalAlert.style.display = "block";
+    }
+    if (reminderAlert.style.display === "block") {
+      reminderAlert.style.display = "none";
+    } else {
+      reminderAlert.style.display = "none";
+    }
+  }
+  
+  
 </script>
 
 <script>

@@ -1,21 +1,21 @@
 {% extends 'layout-nav.html' %}
 {% set pageSection = "Manage user notifications" %}
 {% block pageTitle %}
-NAM not working as expected planned maintenance
+NAM not working as expected
 {% endblock %}
 
 <!-- this page is only visible to prod-accessreport group -->
 
 {% block beforeContent %}
-<nav class="nhsuk-breadcrumb" aria-label="Breadcrumb">
-  <div class="nhsuk-width-container">
-    <ol class="nhsuk-breadcrumb__list">
-      <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link" href="manage-user-alerts">Manage user alerts</a></li>
-      <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link" href="incident-details">Incident details</a></li>
-      <li class="nhsuk-breadcrumb__item">NAM incident</li>
-    </ol>
-  </div>
-</nav>
+  <nav class="nhsuk-breadcrumb" aria-label="Breadcrumb">
+    <div class="nhsuk-width-container">
+      <ol class="nhsuk-breadcrumb__list">
+        <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link" href="manage-user-alerts">Manage user alerts</a></li>
+        <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link" href="incident-details">Incident details</a></li>
+        <li class="nhsuk-breadcrumb__item">NAM incident</li>
+      </ol>
+    </div>
+  </nav>
 {% endblock %}
 
 
@@ -32,8 +32,8 @@ NAM not working as expected planned maintenance
 <style>
 
 a:visited { 
-   color:	#005eb8; 
-}  
+    color:	#005eb8; 
+}
 </style>
 
 <div class="nhsuk-grid-row" id="displaySpinner" style="display:none;">
@@ -63,15 +63,15 @@ a:visited {
 </div>
 
 <div id="mainContent">
+
 <div class="nhsuk-grid-row">
 
     <div class="nhsuk-grid-column-full">
-      <h1 class="nhsuk-heading-l" style="line-height: 100%;">NAM is not working as expected</h1> 
-      <h1 class="nhsuk-heading-l" style="line-height: 0%;">Planned maintenance</h1> 
+      <h1 class="nhsuk-heading-l" style="line-height: 100%;">NAM is not working as expected</h1>  
     </div>
     <div class="nhsuk-grid-column-two-thirds nhsuk-u-margin-top-4">
         <p >
-          Some users might have problems accessing the affected journeys due to a planned maintence.
+          This might be due to a network or a technical issue regardless of user volume. Some users might have problems accessing the affected journeys.
         </p>
           <details class="nhsuk-details ">
             <summary class="nhsuk-details__summary">
@@ -102,34 +102,38 @@ a:visited {
             </div>
           </details>
     </div>
-</div>
+</div>   
 
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-two-thirds nhsuk-u-margin-top-4" >
-    <div class=" nhsuk-u-padding-0">
-      <h2 class="alert-header-tab-selected nhsuk-u-padding-left-4" id="global-alert" style="text-align: left;">
+    <div class="nhsuk-grid-column-one-half nhsuk-u-padding-0 nhsuk-u-padding-right-3" onclick="globalAlert()" style="cursor:pointer;">
+      <h2 class="alert-header-tab-selected" id="global-alert">
         Global alert
+      </h2>
+    </div>
+    <div class="nhsuk-grid-column-one-half nhsuk-u-padding-0" onclick="reminderAlert()" style="cursor:pointer;">
+      <h2 class="alert-header-tab" id="reminder-alert">
+        Reminder alert
       </h2>
     </div>
   </div>
 </div>
 
-
 <div class="nhsuk-grid-row " >
-  <div class="nhsuk-grid-column-two-thirds">
-    <div id="globalalert" style=" display:block; border-bottom: 1px solid #d8dde0;  border-right: 1px solid #d8dde0; border-left: 1px solid #d8dde0; background-color: #fff;">
-      <div class="nhsuk-grid-row nhsuk-u-padding-4">
-        <div class=" nhsuk-u-padding-left-4 nhsuk-u-padding-right-4" >
-          <div class=" nhsuk-u-padding-bottom-4" style="background-color: #fad9d7; padding:16px; border:1px solid #8A1538;">
-            <div class="" aria-labelledby="error-summary-title" role="service status information" tabindex="-1" >
-              <div class=" " style="display:flex; flex-direction:row;">
-                <div>
-                  <span class="nhsuk-warning-text__icon_global" aria-hidden="true" >!</span>
-                </div>
-                <div class="nhsuk-u-margin-left-4" aria-labelledby="error-summary-title" role="alert" tabindex="-1" >
+  <div class="nhsuk-grid-column-two-thirds" >
+   <div id="globalalert" style=" display:block; border-bottom: 1px solid #d8dde0;  border-right: 1px solid #d8dde0; border-left: 1px solid #d8dde0; background-color: #fff;">
+        <div class="nhsuk-grid-row nhsuk-u-padding-4">
+          <div class=" nhsuk-u-padding-left-4 nhsuk-u-padding-right-4" >
+            <div class=" nhsuk-u-padding-bottom-4" style="background-color: #fad9d7; padding:16px; border:1px solid #8A1538;">
+              <div class="" aria-labelledby="error-summary-title" role="service status information" tabindex="-1" >
+                <div class=" " style="display:flex; flex-direction:row;">
                   <div>
+                    <span class="nhsuk-warning-text__icon_global" aria-hidden="true" >!</span>
+                  </div>
+                  <div class="nhsuk-u-margin-left-4" aria-labelledby="error-summary-title" role="alert" tabindex="-1" >
+                    <div>
                       <h1 class="nhsuk-error-summary__title nhsuk-heading-l" style=" padding-right: 16px;" id="error-summary-title">
-                        We are carrying out essential maintenance on the service
+                        There is a problem with the service
                       </h1>
                     <div id="show-details" style="display:none; padding-bottom: 16px;" class="nhsuk-u-font-size-19">
                       <a href="#" onclick="ExpandBanner()" class="nhsuk-link nhsuk-link--no-visited-state">Show details</a>
@@ -137,45 +141,23 @@ a:visited {
                     </div>
                     <div class="" id="BannerContent" style="display:block;">
                       <div class="nhsuk-error-summary__body">
-                        
-                        {% if data['do-you-know-end-date-time'] === 'both' %}
+                        <p> 
+                          We are working to fix a technical issue with NHS login.
+                        </p>
                         <p> 
                           This could affect your access to the service.
                         </p>
-                        <p>
-                          We expect this work to finish on 30 November 2022 at 1.30pm.
-                        </p>
-                        {% endif %}
-
-                        {% if data['do-you-know-end-date-time'] === 'date' %}
-                        <p> 
-                          This could affect your access to the service.
-                        </p>
-                        <p>
-                          We expect this work to finish on 30 November 2022.
-                        </p>
-                        {% endif %}
-
-                        {% if data['do-you-know-end-date-time'] === 'dontknow' %}
-                        <p> 
-                          This could affect your access to the service.
-                        </p>
-                        <p>
-                          We are working to complete it as soon as possible.
-                        </p>
-                        {% endif %}
-
                         <p>
                           If you are registering with NHS login for the first time, it may take longer than usual to check your information.
                         </p>
-                        <ul class="nhsuk-list ">
+                        <ul class="nhsuk-list">
                           <li>
                             <p class=" nhsuk-body ">Last updated: <span id="datestamp"> </span><span id="timestamp"></span></p>
                           </li>
                         </ul>
             
                       </div>
-                       <div class="nhsuk-u-padding-bottom-2" style="pointer-events:none;" id="MinimiseBanner">
+                      <div class="nhsuk-u-padding-bottom-2" style="pointer-events:none;" id="MinimiseBanner">
                         <a href="#" class="nhsuk-link nhsuk-link--no-visited-state nhsuk-u-font-size-19" id="MinimiseBanner" onclick="MinimiseBanner()">
                           Hide this message
                         </a>
@@ -184,20 +166,61 @@ a:visited {
                   </div>
                 </div>           
             </div>
+            </div>
+            <div class="nhsuk-u-padding-top-4">
+              <span class="nhsuk-hint nhsuk-u-font-size-16">Last updated timestamp will initially display the date and time the alert is turned on. It will then automatically update every hour until it is turned off.</span>
+            </div>
           </div>
-          <div class="nhsuk-u-padding-top-4">
-            <span class="nhsuk-hint nhsuk-u-font-size-16">Last updated timestamp will initially display the date and time the alert is turned on. It will then automatically update every hour until it is turned off.</span>
-          </div>
-        </div>
-      </div>     
+        </div>     
     </div>
   </div>
 </div>
 
+<div class="nhsuk-grid-row " >
+  <div class="nhsuk-grid-column-two-thirds">
+   <div id="reminderalert" style=" display:none; border-bottom: 1px solid #d8dde0;  border-right: 1px solid #d8dde0; border-left: 1px solid #d8dde0; background-color: #fff;">
+           <div class="nhsuk-grid-row nhsuk-u-padding-4">
+          <div class=" nhsuk-u-padding-left-4 nhsuk-u-padding-right-4" >
+            <div class="" aria-labelledby="error-summary-title" style="padding: 16px; margin-top: 8px;  border: 2px solid #ED8B00;" role="alert" tabindex="-1">
+              <div class=" " style="display:flex; flex-direction:row;">
+                <div class="">
+                  <span class="nhsuk-warning-text__icon_global" aria-hidden="true" >!</span>
+                </div>
+                <div class="nhsuk-u-margin-left-4" aria-labelledby="error-summary-title" role="alert" tabindex="-1" >
+                  <h2 class="nhsuk-error-summary__title" id="error-summary-title">
+                    We are having issues connecting to GP systems
+                  </h2>
+                <div class="nhsuk-error-summary__body">
+                  <p>
+                    This could affect your access to the service.
+                  </p>
+                  <p>
+                    We are working to fix it.
+                  </p>
+                  <p>
+                    You can try again later.
+                  </p>
+                  <ul class="nhsuk-list nhsuk-error-summary__list">
+                  <li>
+                    <p class=" nhsuk-body ">Last updated: <span id="datestamp-reminderalert"> </span><span id="timestamp-reminderalert"></span></p>
+                  </li>
+                  </ul>
+                </div>
+                </div>
+              </div>
+            </div>
+            <div class="nhsuk-u-padding-top-4" >
+              <span class="nhsuk-hint nhsuk-u-font-size-16">Last updated timestamp will initially display the date and time the alert is turned on. It will then automatically update every hour until it is turned off.</span>
+            </div>
+          </div>
+        </div>     
+    </div>
+  </div>
+</div>
 
 <div class="nhsuk-grid-row nhsuk-u-margin-top-6">
   <div class="nhsuk-grid-column-full" >
-  <form action="complete?namplanned=true" method="post" >
+  <form action="complete" method="post" >
     <button class="nhsuk-button" type="submit" id="turnOnAlerts">
       Turn on user alerts for this incident
     </button>
@@ -206,10 +229,7 @@ a:visited {
 </div>
 </div>
 
-
 </div>
-
-
 
 <script>
   const months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
@@ -239,6 +259,50 @@ a:visited {
 </script>
 
 <script>
+
+  function reminderAlert() {
+    var reminderAlert = document.getElementById("reminderalert");
+    var globalAlert = document.getElementById("globalalert");
+  
+    document.getElementById("reminder-alert").className = "alert-header-tab-selected";
+    document.getElementById("global-alert").className = "alert-header-tab";
+  
+    if (reminderAlert.style.display === "none") {
+      reminderAlert.style.display = "block";
+      } else{
+      reminderAlert.style.display = "block";
+    }
+    if (globalAlert.style.display === "block") {
+      globalAlert.style.display = "none";
+      } else{
+      globalAlert.style.display = "none"; 
+    }
+  }
+  
+
+  function globalAlert() {
+    var reminderAlert = document.getElementById("reminderalert");
+    var globalAlert = document.getElementById("globalalert");
+  
+    document.getElementById("reminder-alert").className = "alert-header-tab";
+    document.getElementById("global-alert").className = "alert-header-tab-selected";
+  
+    if (globalAlert.style.display === "none") {
+      globalAlert.style.display = "block";
+    } else {
+      globalAlert.style.display = "block";
+    }
+    if (reminderAlert.style.display === "block") {
+      reminderAlert.style.display = "none";
+    } else {
+      reminderAlert.style.display = "none";
+    }
+  }
+  
+  
+</script>
+
+<script>
   // get the button element
   const button = document.getElementById('turnOnAlerts');
   
@@ -258,6 +322,7 @@ a:visited {
   });
   
 </script>
+
   
 {% endblock %}
 
