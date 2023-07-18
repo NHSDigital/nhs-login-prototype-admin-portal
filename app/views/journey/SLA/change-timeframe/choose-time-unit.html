@@ -1,0 +1,99 @@
+{% extends 'layout-nav.html' %}
+{% set pageSection = "Manage user notifications" %}
+{% block pageTitle %}
+Is the new SLA timeframe more than 24 hours?
+{% endblock %}
+
+{% block beforeContent %}
+  <nav class="nhsuk-breadcrumb" aria-label="Breadcrumb">
+    <div class="nhsuk-width-container">
+      <ol class="nhsuk-breadcrumb__list">
+        <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link" href="/notifications">Change user journey</a></li>
+        <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link" href="/notifications/SLA/manage-service-SLA">Manage service SLA</a></li>
+        <li class="nhsuk-breadcrumb__item">Update SLA timeframe</li>
+      </ol>
+    </div>
+  </nav>
+{% endblock %}
+
+{% block headCSS %}
+  <link href="/css/main.css" rel="stylesheet">
+  <link href="/css/nhsuk.css" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+
+
+<style>
+   a:visited { 
+   color:	#005eb8; 
+}
+
+</style>
+  
+
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+        <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+            <h1 class="nhsuk-fieldset__heading">
+              Is the new SLA more than 24 hours?
+            </h1>
+        </legend>
+
+      <form action="/choose-time-unit" method="post">
+        <div class="nhsuk-form-group">
+
+            <fieldset class="nhsuk-fieldset" aria-describedby="contact-hint">
+                <div class="nhsuk-radios" style="display:none;">
+                    
+
+                    <div class="nhsuk-radios__item">
+                      <input class="nhsuk-radios__input" id="example-2" name="timeunit" type="radio" value="days" onclick="storeTimeUnit(this.value)">
+                      <label class="nhsuk-label nhsuk-radios__label" for="example-2">
+                        Yes, it is more than 24 hours
+                      </label>
+                    </div>
+
+                    <div class="nhsuk-radios__item">
+                      <input class="nhsuk-radios__input" id="example-1" name="timeunit" type="radio" value="hours" onclick="storeTimeUnit(this.value)">
+                      <label class="nhsuk-label nhsuk-radios__label" for="example-1">
+                        No, it is less than or equal to 24 hours
+                      </label>
+                    </div>
+            
+              
+                </div>
+                <div class="nhsuk-radios">
+
+                  <div class="nhsuk-radios__item">
+                    <input class="nhsuk-radios__input" id="timeindays" name="timeunit" type="radio" value="days">
+                    <label class="nhsuk-label nhsuk-radios__label" for="example-inline-1">
+                      Yes, it is more than 24 hours
+                    </label>
+                  </div>
+            
+                  <div class="nhsuk-radios__item">
+                    <input class="nhsuk-radios__input" id="timeinhours" name="timeunit" type="radio" value="hours">
+                    <label class="nhsuk-label nhsuk-radios__label" for="example-inline-2">
+                      No, it less than or equal to 24 hours 
+                    </label>
+                  </div>
+                </div>
+            </fieldset>
+          
+        </div>
+
+
+
+        <button class="nhsuk-button" type="submit">
+          Continue
+        </button>
+      </form>
+    </div>
+</div>
+
+
+
+
+{% endblock %}

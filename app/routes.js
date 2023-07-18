@@ -22,10 +22,10 @@ router.post('/is-it-planned-phase-one', function (req, res) {
 	 // Check whether the variable matches a condition
 	if (planned == "Yes"){
 	  // Send user to date and time page
-	  res.redirect('/notifications/phase-one/planned-maintenance')
+	  res.redirect('/notifications/in-journey-alerts/planned-maintenance')
 	} else {
 	  // Send user to confirm choices page
-	  res.redirect('/notifications/phase-one/incident-details')
+	  res.redirect('/notifications/in-journey-alerts/incident-details')
 	}
    })
 
@@ -37,10 +37,10 @@ router.post('/date-time-phase-one', function (req, res) {
 	 // Check whether the variable matches a condition
 	if (planned == "dontknow"){
 	  // Send user to confirm choices page
-	  res.redirect('/notifications/phase-one/incident-details')
+	  res.redirect('/notifications/in-journey-alerts/incident-details')
 	} else {
 	  // Send user to date and time page
-	  res.redirect('/notifications/phase-one/planned-date-time')
+	  res.redirect('/notifications/in-journey-alerts/planned-date-time')
 	}
    }) 
 

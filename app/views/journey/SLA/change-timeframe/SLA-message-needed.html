@@ -1,0 +1,226 @@
+{% extends 'layout-nav.html' %}
+{% set pageSection = "Manage user notifications" %}
+{% block pageTitle %}
+You need to display an SLA message
+{% endblock %}
+
+{% block beforeContent %}
+  <nav class="nhsuk-breadcrumb" aria-label="Breadcrumb">
+    <div class="nhsuk-width-container">
+      <ol class="nhsuk-breadcrumb__list">
+        <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link" href="/journey">Change user journey</a></li>
+        <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link" href="/journey/SLA/manage-service-SLA">Manage service SLA</a></li>
+        <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link" href="/journey/SLA/choose-time-unit">Update SLA timeframe</a></li>
+        <li class="nhsuk-breadcrumb__item">SLA message</li>
+      </ol>
+    </div>
+  </nav>
+{% endblock %}
+
+{% block headCSS %}
+  <link href="/css/main.css" rel="stylesheet">
+  <link href="/css/nhsuk.css" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+
+
+<style>
+   a:visited { 
+   color:	#005eb8; 
+}
+
+</style>
+  
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-two-thirds">
+
+        <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+            <h1 class="nhsuk-fieldset__heading">
+              You need to display an SLA message
+            </h1>
+        </legend>
+
+        <p>If the timeframe is more than 24 hours, you must display an SLA message.</p>
+        <p>For this, you need to raise an RFC request.</p>
+
+      
+        <details class="nhsuk-details">
+          <summary class="nhsuk-details__summary">
+            <span class="nhsuk-details__summary-text">
+              How to raise an RFC request
+            </span>
+          </summary>
+          <div class="nhsuk-details__text">
+            <p class="nhsuk-u-font-weight-bold">You can raise an RFC request by either:</p>
+            <ul>
+              <li>posting a request in #cid-support Slack channel</li>
+              <li>or, submitting a Standard RFC form in #cid-release-prep Slack channel</li>
+            </ul>
+                
+              
+            </ul>
+              <p class="nhsuk-u-font-weight-bold">You will need to provide the following details:</p>
+              <ul>
+                <li>new timeframe</li>
+                <li>reason for change</li>
+                <li>content for the SLA message</li>
+                <li>when it needs to be done by</li>
+            </ul>
+
+            <p>You can find <a href="https://nhsd-confluence.digital.nhs.uk/display/NL/Updating+SLA" class="nhsuk-link">step by step guidelines for updating SLA</a>.</p>
+        
+          </div>
+        </details>
+    </div>
+</div>
+
+
+
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-two-thirds">
+
+    <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l nhsuk-u-margin-top-6">
+      <h1 class="nhsuk-fieldset__heading">
+        SLA messages
+      </h1>
+    </legend>
+
+    <details class="nhsuk-details nhsuk-u-margin-top-4">
+      <summary class="nhsuk-details__summary">
+        <span class="nhsuk-details__summary-text">
+          Content guidelines for entering date, time and SLA timeframe
+        </span>
+      </summary>
+      <div class="nhsuk-details__text">
+
+      <p class="nhsuk-u-font-weight-bold">Entering SLA timeframe</p>
+      <ul>
+        <li>use the closest number of days rounded up when SLA is more than 24 hours i.e  2 days instead of 48 hours</li>
+      </ul>
+
+        <p class="nhsuk-u-font-weight-bold">Entering date</p>
+        <ul>
+          <li>spell out months in full text i.e September </li>
+          <li>do not use '0' at the beginning of dates i.e 1 September 2022</li>
+        </ul>
+            
+          
+        </ul>
+          <p class="nhsuk-u-font-weight-bold">Entering time</p>
+          <ul>
+            <li>use 12 hr system i.e 1am / 1pm if it is on the hour OR 1.30am / 1.30pm if it is half past the hour</li>
+            <li>if it is 12pm, use 'midday'</li>
+            <li>if it is 12am, use 'midnight'</li>
+        </ul>
+    
+      </div>
+    </details>
+  </div>
+</div>
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-full">
+    <table>
+
+      <tr>
+        <th>Scenario</th>
+        <th></th>
+        <th>Content</th>
+      </tr>
+      <tr>
+        <td>
+          <h4>High volume of users on PYI journey</h4>
+          <p class="nhsuk-hint">A technical issue or a national incident causing more users go down PYI route, increasing workload on ID checkers</p>
+        </td>
+        <td></td>
+        <td >There is currently a high number of people trying to register with NHS login.
+          <p class="nhsuk-u-padding-top-4">It may take up to <b>[enter SLA timeframe]</b> for us to email you.</p>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <h4>Gov Notify incident - time of fix unknown</h4>
+          <p class="nhsuk-hint">Technical issue with Notify causing delays in sending PYI rejection or approval emails</p>
+        </td>
+        <td></td>
+        <td>We are currently working to fix a technical issue with the service.
+          <p class="nhsuk-u-padding-top-4">It may take <b>more than 24 hours</b> for us to email you.</p>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <h4>Gov Notify incident - planned maintenance</h4>
+          <p class="nhsuk-hint">Notify planned maintenance causing delays in sending PYI rejection or approval emails</p>
+        </td>
+        <td></td>
+        <td>
+          <p>We are carrying out essential maintenance on the service.</p>
+          <p class="nhsuk-u-padding-top-2">We expect this work to finish on [enter date] at [enter time].</p>
+          <p class="nhsuk-u-padding-top-2">It may take <b>more than 24 hours</b> for us to email you.</p>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <h4>ID checker app incident</h4>
+          <p class="nhsuk-hint">Technical issue with ID checker app causing delays in checking user information</p>
+        </td>
+        <td></td>
+        <td>We are currently working to fix a technical issue with the service.
+          <p class="nhsuk-u-padding-top-4">It may take <b>more than 24 hours</b> for us to email you.</p>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <h4>Freeze period / Holidays</h4>
+          <p class="nhsuk-hint">Expected longer waiting times over the holidays and freeze period due to reduced number of staff</p>
+        </td>
+        <td></td>
+        <td>Between [enter date] and [enter date], it may take up to <b>[enter SLA timeframe]</b> for us to email you.</td>
+      </tr>
+      <tr>
+        <td>
+          <h4>Generic content</h4>
+          <p class="nhsuk-hint">Use this content if none of the above scenarios is true but the SLA timeframe is more than 24 hours</p>
+        </td>
+        <td></td>
+        <td >There is currently a high number of people trying to register with NHS login.
+          <p class="nhsuk-u-padding-top-4">It may take up to <b>[enter SLA timeframe]</b> for us to email you.</p>
+        </td>
+      </tr>
+    </table>
+
+
+  </div>
+</div>
+
+<style>
+  table {
+    border-collapse: collapse; /* remove the gaps between cells */
+  }
+
+  th, td {
+    text-align: left; /* align the text in the cells */
+    border-bottom: 1px solid #ddd; /* add a bottom border to the cells */
+  }
+
+td {
+  padding-top:32px;
+  padding-bottom:32px;
+}
+
+th:first-child, td:first-child {
+  width: 50%; /* set the width of the first column to 50% */
+}
+th:nth-child(2), td:nth-child(2) {
+  width: 10%; /* set the width of the second column to 10% */
+}
+th:last-child, td:last-child {
+  width: 40%; /* set the width of the third column to 40% */
+}
+
+</style>
+
+
+{% endblock %}

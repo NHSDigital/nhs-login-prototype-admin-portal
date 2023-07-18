@@ -1,0 +1,117 @@
+{% extends 'layout-nav.html' %}
+{% set pageSection = "Manage user notifications" %}
+{% block pageTitle %}
+Enter new SLA timeframe
+{% endblock %}
+
+{% block beforeContent %}
+  <nav class="nhsuk-breadcrumb" aria-label="Breadcrumb">
+    <div class="nhsuk-width-container">
+      <ol class="nhsuk-breadcrumb__list">
+        <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link" href="/notifications">Manage user notifications</a></li>
+        <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link" href="/notifications/SLA/manage-service-SLA">Manage service SLA</a></li>
+        <li class="nhsuk-breadcrumb__item">Choose message</li>
+      </ol>
+    </div>
+  </nav>
+{% endblock %}
+
+{% block headCSS %}
+  <link href="/css/main.css" rel="stylesheet">
+  <link href="/css/nhsuk.css" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+
+
+<style>
+   a:visited { 
+   color:	#005eb8; 
+}
+
+</style>
+  
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-full">
+
+    <h1 class="nhsuk-heading-l">Select the type of message to be displayed</h1>
+
+    <ul class="nhsuk-grid-row nhsuk-card-group">
+
+      <li class="nhsuk-grid-column-two-thirds nhsuk-card-group__item">
+    
+        <div class="nhsuk-card nhsuk-card--clickable">
+          <div class="nhsuk-card__content">
+            <h2 class="nhsuk-card__heading nhsuk-heading-m">
+              <a class="nhsuk-card__link" href="enter-new-timeframe">
+                High volume of users on PYI manual journey
+              </a>
+            </h2>
+            <p class="nhsuk-card__description nhsuk-hint">
+              Technical issue or national announcement causing high volume of users and increased workload on ID checkers
+            </p>
+          </div>
+        </div>
+    
+      </li>
+
+      <li class="nhsuk-grid-column-two-thirds nhsuk-card-group__item" >
+    
+        <div class="nhsuk-card nhsuk-card--clickable">
+          <div class="nhsuk-card__content">
+            <h2 class="nhsuk-card__heading nhsuk-heading-m">
+              <a class="nhsuk-card__link" href="#">
+                GOV Notify incident
+              </a>
+            </h2>
+            <p class="nhsuk-card__description nhsuk-hint">
+              Technical issue causing delays in sending PYI rejection or approval emails
+            </p>
+          </div>
+        </div>
+    
+      </li>
+
+      <li class="nhsuk-grid-column-two-thirds nhsuk-card-group__item" >
+    
+        <div class="nhsuk-card nhsuk-card--clickable">
+          <div class="nhsuk-card__content">
+            <h2 class="nhsuk-card__heading nhsuk-heading-m">
+              <a class="nhsuk-card__link" href="#">
+                Technical issue with ID checker app
+              </a>
+            </h2>
+            <p class="nhsuk-card__description nhsuk-hint">
+              Expected delays in checking user information due to an issue with the ID checker app
+            </p>
+          </div>
+        </div>
+    
+      </li>
+
+      <li class="nhsuk-grid-column-two-thirds nhsuk-card-group__item" >
+    
+        <div class="nhsuk-card nhsuk-card--clickable">
+          <div class="nhsuk-card__content">
+            <h2 class="nhsuk-card__heading nhsuk-heading-m">
+              <a class="nhsuk-card__link" href="enter-new-timeframe">
+                Freeze period / Christmas holidays
+              </a>
+            </h2>
+            <p class="nhsuk-card__description nhsuk-hint">
+              Expected longer waiting times over the holidays
+            </p>
+          </div>
+        </div>
+    
+      </li>
+
+    </ul>
+  </div>
+</div>
+
+
+
+
+{% endblock %}
