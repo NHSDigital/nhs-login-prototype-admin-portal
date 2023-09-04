@@ -206,10 +206,10 @@ router.post('/choose-time-unit', function (req, res) {
 	 // Check whether the variable matches a condition
 	if (timeunit == "hours"){
 	  // Send user to date and time page
-	  res.redirect('/journey/SLA/change-timeframe/enter-timeframe')
+	  res.redirect('/user-journey/SLA/change-timeframe/enter-timeframe')
 	} else {
 	  // Send user to confirm choices page
-	  res.redirect('/journey/SLA/change-timeframe/SLA-message-needed')
+	  res.redirect('/user-journey/SLA/change-timeframe/SLA-message-needed')
 	}
    }) 
 
