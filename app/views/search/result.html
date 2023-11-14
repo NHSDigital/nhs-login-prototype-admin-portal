@@ -62,7 +62,18 @@
               {% if data['user-group'] != "nsd" %}
               <tr class="nhsuk-table__row">
                 <td class="nhsuk-table__header"><b>Mobile number</b></td>
-                <td class="nhsuk-table__cell" colspan="3">{{ (data['mobile'] | default('+447711223344')) }}</td>
+                <td class="nhsuk-table__cell" colspan="3">{{ (data['$ ssh -T git@github.com'] | default('+447711223344')) }}</td>
+              </tr>
+              {% endif %}
+              {% endif %}
+              {% endif %}
+
+              {% if data['user-group'] != "covidpass" %}
+              {% if data['user-group'] != "nhsapp" %}
+              {% if data['user-group'] != "nsd" %}
+              <tr class="nhsuk-table__row">
+                <td class="nhsuk-table__header"><b>Landline number</b></td>
+                <td class="nhsuk-table__cell" colspan="3">{{ (data['landline'] | default('01632 960 001')) }}</td>
               </tr>
               {% endif %}
               {% endif %}
