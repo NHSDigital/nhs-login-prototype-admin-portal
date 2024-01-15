@@ -19,11 +19,18 @@
 
   function validate() {
 
-    if( document.querySelectorAll('input[type="radio"]:checked').length === 0 ) {
-        document.getElementById('mobile-error').style.display = 'block';
-        document.getElementById('mobile-number-container').classList.add("nhsuk-form-group--error");
-        return false;
-    }
+    if( document.querySelectorAll('input[name="mobile"]:checked').length === 0 ) {
+    document.getElementById('mobile-error').style.display = 'block';
+    document.getElementById('mobile-number-container').classList.add("nhsuk-form-group--error");
+    return false;
+}
+
+if( document.querySelectorAll('input[name="landline"]:checked').length === 0 ) {
+    document.getElementById('landline-error').style.display = 'block';
+    document.getElementById('landline-number-container').classList.add("nhsuk-form-group--error");
+    return false;
+}
+
 
     if( document.getElementById('incident-number-cleanse').value == "" ) {
         document.getElementById('incident-error').style.display = 'block';
@@ -100,12 +107,13 @@
               </span>
             </p>
 
+
             <div class="nhsuk-form-group" id="mobile-number-container">
               <label class="nhsuk-label" for="mobile">
                 Would you like to remove the mobile number?
               </label>
               <span class="nhsuk-hint">
-                Choose whether to remove the mobile number from the account so that the user is prompted to add one again.
+                If removed, the user will be prompted to add one again.
               </span>
               <span class="nhsuk-error-message" id="mobile-error" style="display: none;">
                 Choose whether you want to remove the mobile number
@@ -121,6 +129,32 @@
                   <input class="nhsuk-radios__input" id="option2" name="mobile" value="{{ (data['mobile'] | default('+447711223344')) }}" type="radio">
                   <label class="nhsuk-label nhsuk-radios__label" for="option2">
                     No, keep existing mobile number
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <div class="nhsuk-form-group" id="landline-number-container">
+              <label class="nhsuk-label" for="landline">
+                Would you like to remove the landline number?
+              </label>
+              <span class="nhsuk-hint">
+                If removed, the user will be prompted to add one again.
+              </span>
+              <span class="nhsuk-error-message" id="landline-error" style="display: none;">
+                Choose whether you want to remove the landline number
+              </span>
+              <div class="nhsuk-radios">
+                <div class="nhsuk-radios__item">
+                  <input class="nhsuk-radios__input" id="option1" name="landline" value="-" type="radio">
+                  <label class="nhsuk-label nhsuk-radios__label" for="option1">
+                    Yes, remove
+                  </label>
+                </div>
+                <div class="nhsuk-radios__item">
+                  <input class="nhsuk-radios__input" id="option2" name="landline" value="{{ (data['landline'] | default('+447711223344')) }}" type="radio">
+                  <label class="nhsuk-label nhsuk-radios__label" for="option2">
+                    No, keep existing landline number
                   </label>
                 </div>
               </div>
