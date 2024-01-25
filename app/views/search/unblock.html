@@ -1,0 +1,105 @@
+{% extends 'layout-nav.html' %}
+{% set pageSection = "Find a user" %}
+
+{% block beforeContent %}
+  <nav class="nhsuk-breadcrumb" aria-label="Breadcrumb">
+    <div class="nhsuk-width-container">
+      <ol class="nhsuk-breadcrumb__list">
+        <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link" href="/search">Search</a></li>
+        <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link" href="result">Search result</a></li>
+        <li class="nhsuk-breadcrumb__item">Unblock account from IDVM</li>
+      </ol>
+      <p class="nhsuk-breadcrumb__back"><a class="nhsuk-breadcrumb__backlink" href="result">Back to: search result</a></p>
+    </div>
+  </nav>
+{% endblock %}
+
+{% block content %}
+
+<script>
+
+function validate() {
+      
+  if( document.getElementById('incident-number').value == "" ) {
+      document.getElementById('incident-error').style.display = 'block';
+      document.getElementById('incident-number-container').classList.add("nhsuk-form-group--error");
+      document.getElementById('incident-number').classList.add("nhsuk-input--error");
+      document.getElementById('incident-number').focus();
+      return false;
+  }
+
+  if( document.querySelectorAll('input[type="radio"]:checked').length === 0 ) {
+      document.getElementById('reason-error').style.display = 'block';
+      document.getElementById('reason-container').classList.add("nhsuk-form-group--error");
+      return false;
+  }
+
+  return( true );
+}
+
+</script>
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <form action="result?status=disabled" method="POST" name="form_disable" onsubmit="return(validate());">
+        
+
+        <div class="nhsuk-form-group">
+
+          <fieldset class="nhsuk-fieldset">
+            <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+              <h1 class="nhsuk-fieldset__heading">
+                Provide information to unblock this account from IDVM
+              </h1>
+            </legend>
+
+        
+
+            <p>
+              Account ID<br />
+              <span class="nhsuk-hint">
+                {{ (data['accountid'] | default('2ead33a3-bb11-cd1c-ab11-33bcd33aaed3')) }}
+              </span>
+            </p>
+            <p>
+              Email address<br />
+              <span class="nhsuk-hint">
+                {{ (data['email'] | default('tim.peak2@hotmail.com')) }}
+              </span>
+            </p>
+
+            <div class="nhsuk-form-group" id="incident-number-container">
+              <label class="nhsuk-label" for="incident-number">
+                Incident number
+              </label>
+              <span class="nhsuk-hint">
+                Enter the incident number that relates to this account being unblocked.
+              </span>
+              <span class="nhsuk-error-message" id="incident-error" style="display: none;">
+                Enter an incident number
+              </span>
+              <input class="nhsuk-input" id="incident-number" name="incident-number" type="text">
+            </div>
+
+         
+          
+              </div>
+
+            </div>
+
+          </fieldset>
+        
+        </div>
+
+        <div class="nhsuk-form-group">
+          <button class="nhsuk-button" type="submit">
+            Unblock account from IDVM
+          </button>
+        </div>
+
+      </form>
+      
+    </div>
+  </div>
+{% endblock %}
