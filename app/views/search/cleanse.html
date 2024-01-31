@@ -107,21 +107,24 @@ if( document.querySelectorAll('input[name="landline"]:checked').length === 0 ) {
               </span>
             </p>
 
-            <p>
+           <!-- <p>
               Mobile number<br />
               <span class="nhsuk-hint">
                 {{ (data['mobile'] | default('+447711223344')) }}
               </span>
-            </p>
-
-
-            <div class="nhsuk-form-group" id="mobile-number-container">
-              <label class="nhsuk-label" for="mobile">
-                Would you like to remove the mobile number?
-              </label>
-              <span class="nhsuk-hint">
-                If removed, the user will be prompted to add one again.
+            </p>-->
+            
+            <p>
+              Landline number<br />
+              <span id="nhsuk-landline" class="nhsuk-hint">
+                {{ (data['landline'] | default('01632960001')) }}
               </span>
+            </p>
+         
+           <!-- <div class="nhsuk-form-group" id="mobile-number-container">
+              <label class="nhsuk-label" for="mobile">
+               Would you like to remove a mobile number?
+              </label>
               <span class="nhsuk-error-message" id="mobile-error" style="display: none;">
                 Choose whether you want to remove the mobile number
               </span>
@@ -139,15 +142,12 @@ if( document.querySelectorAll('input[name="landline"]:checked').length === 0 ) {
                   </label>
                 </div>
               </div>
-            </div>
+            </div>-->
 
             <div class="nhsuk-form-group" id="landline-number-container">
               <label class="nhsuk-label" for="landline">
                 Would you like to remove the landline number?
               </label>
-              <span class="nhsuk-hint">
-                If removed, the user will be prompted to add one again.
-              </span>
               <span class="nhsuk-error-message" id="landline-error" style="display: none;">
                 Choose whether you want to remove the landline number
               </span>
@@ -165,6 +165,18 @@ if( document.querySelectorAll('input[name="landline"]:checked').length === 0 ) {
                   </label>
                 </div>
               </div>
+            </div>
+
+            <!--<div class="nhsuk-inset-text">
+              If the mobile number on the account is removed, the user will be asked to add one next time they log in.
+            </div>-->
+
+           <!-- <div class="nhsuk-inset-text">
+              If both phone numbers on the account are removed, the user will be asked to add either a mobile or landline number next time they log in.
+            </div>-->
+
+            <div class="nhsuk-inset-text">
+              If the landline number on the account is removed, the user will be asked to add one next time they log in.
             </div>
 
             <div class="nhsuk-form-group" id="incident-number-container">
