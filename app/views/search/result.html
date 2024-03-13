@@ -125,6 +125,15 @@
                 <td class="nhsuk-table__header"><b>Proofing level</b></td>
                 <td class="nhsuk-table__cell" colspan="3">{% if data['cleansed'] == "1" %} P0 {% else %} P9 {% endif %}</td>
               </tr>
+              
+              <tr class="nhsuk-table__row">
+                <td class="nhsuk-table__header"><b>IDVM status</b></td>
+                {% if data['idvmStatus'] == "blocked" %}
+                <td class="nhsuk-table__cell" colspan="3">Blocked</td>
+                {% else %}
+                <td class="nhsuk-table__cell" colspan="3">Active</td>
+                {% endif %}
+              </tr>
               {% endif %}
               {% endif %}
               {% endif %}
@@ -136,26 +145,6 @@
               </tr>
               {% else %}
               {% endif %}
-
-<!-- this bit has been designed but never implemented, not necessary
-
-         {% if data['user-group'] != "nhsapp" %}
-        {% if data['user-group'] != "covidpass" %}
-          {% if data['status'] == "disabled" %} 
-
-              <tr class="nhsuk-table__row">
-                <td class="nhsuk-table__header"><b>Disabled reason</b></td>
-                <td class="nhsuk-table__cell" colspan="3">{{ data['reason'] }}</td>
-              </tr>
-
-              <tr class="nhsuk-table__row">
-                <td class="nhsuk-table__header"><b>Incident number</b></td>
-                <td class="nhsuk-table__cell" colspan="3">{{ data['incident-number'] }}</td>
-              </tr>
-        
-          {% endif %}
-        {% endif %}
-        {% endif %} -->
 
         </tbody>
       </table>
@@ -203,6 +192,24 @@
             </div>
           </div>
         </li>
+        </div>
+        {% endif %}
+
+        {% if data['status'] != "disabled" %}
+        <div class="nhsuk-grid-column-one-half">
+          {% if data['idvmStatus'] == "blocked" %}
+          <form action="unblock-for-idvm">
+            <button class="nhsuk-button force-full-width" type="submit">
+              Unblock from IDVM
+            </button>
+          </form>
+          {% else %}
+          <form action="block-for-idvm">
+            <button class="nhsuk-button nhsuk-button--secondary force-full-width" type="submit">
+              Block from IDVM
+            </button>
+          </form>
+          {% endif %}
         </div>
         {% endif %}
 

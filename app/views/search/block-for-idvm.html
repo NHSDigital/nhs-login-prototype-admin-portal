@@ -7,7 +7,7 @@
       <ol class="nhsuk-breadcrumb__list">
         <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link" href="/search">Search</a></li>
         <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link" href="result">Search result</a></li>
-        <li class="nhsuk-breadcrumb__item">Unblock account from IDVM</li>
+        <li class="nhsuk-breadcrumb__item">Block account from IDVM</li>
       </ol>
       <p class="nhsuk-breadcrumb__back"><a class="nhsuk-breadcrumb__backlink" href="result">Back to: search result</a></p>
     </div>
@@ -42,7 +42,7 @@ function validate() {
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
-      <form action="result?status=disabled" method="POST" name="form_disable" onsubmit="return(validate());">
+      <form action="result?idvmStatus=blocked" method="POST" name="form_disable" onsubmit="return(validate());">
         
 
         <div class="nhsuk-form-group">
@@ -50,11 +50,19 @@ function validate() {
           <fieldset class="nhsuk-fieldset">
             <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
               <h1 class="nhsuk-fieldset__heading">
-                Provide information to unblock this account from IDVM
+                Provide information to block this account from IDVM
               </h1>
             </legend>
 
-        
+            <details class="nhsuk-details nhsuk-expander">
+              <summary class="nhsuk-details__summary">
+                <span class="nhsuk-details__summary-text">
+                  Information about blocking accounts from IDVM
+              </summary>
+              <div class="nhsuk-details__text">
+                <p>Users with blocked accounts cannot use IDVM to prove their identity and will be required to go through the PYI journey.</p>
+              </div>
+            </details>
 
             <p>
               Account ID<br />
@@ -74,7 +82,7 @@ function validate() {
                 Incident number
               </label>
               <span class="nhsuk-hint">
-                Enter the incident number that relates to this account being unblocked.
+                Enter the incident number that relates to this account being blocked.
               </span>
               <span class="nhsuk-error-message" id="incident-error" style="display: none;">
                 Enter an incident number
@@ -94,7 +102,7 @@ function validate() {
 
         <div class="nhsuk-form-group">
           <button class="nhsuk-button" type="submit">
-            Unblock account from IDVM
+            Block account from IDVM
           </button>
         </div>
 
