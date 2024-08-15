@@ -18,7 +18,7 @@
     <h1 class="nhsuk-heading-l">Manage invalid email domains</h1>
     <ul class="nhsuk-grid-row nhsuk-card-group nhsuk-u-padding-top-0">
 
-      {% if data.blockaccess === 'true' %}
+      {% if data.blockaccess != 'false' %}
         <div class="nhsuk-grid-column-one-half">
           <li class="beta-hub-main-topic nhsuk-card-group__item">
             <div class="nhsuk-card nhsuk-card--clickable ">
