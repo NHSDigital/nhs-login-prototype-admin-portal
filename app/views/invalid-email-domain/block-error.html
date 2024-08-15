@@ -1,0 +1,23 @@
+{% extends 'layout-nav.html' %}
+{% set pageSection = "Invalid email domains" %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <h1 class="nhsuk-heading-l">There was a problem</h1>
+      <p>
+        {% if data.multipleDomains === 'true' %}
+        We could not block the email domains.
+        {% else %}
+        We could not block the email domain.
+        {% endif %}
+      </p>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

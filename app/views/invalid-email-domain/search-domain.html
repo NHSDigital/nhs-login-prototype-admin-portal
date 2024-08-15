@@ -1,0 +1,92 @@
+{% extends 'layout-nav.html' %}
+{% set pageSection = "Invalid email domains" %}
+
+{% block beforeContent %}
+  <nav class="nhsuk-breadcrumb" aria-label="Breadcrumb">
+    <div class="nhsuk-width-container">
+      <ol class="nhsuk-breadcrumb__list">
+        <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link" href="/invalid-email-domain">Manage invalid email domains</a></li>
+        <li class="nhsuk-breadcrumb__item">Search invalid email domains</li>
+      </ol>
+    </div>
+  </nav>
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <h1 class="nhsuk-heading-l">Search invalid email domains</h1>
+
+      <p>Enter the domain name only, without the @ sign, for example domain123.com.</p>
+      <p>You can search for one email domain at a time.</p>
+
+      <form action="search-domain-result">
+        <div class="nhsuk-form-group" id="domain-form-group">
+            <label class="nhsuk-label">
+              Email domain
+            </label>
+            <span class="nhsuk-error-message" id="domain-error" style="display: none;">
+            </span>
+            <input class="nhsuk-input" id="domain-input" >
+        </div>
+
+        <button class="nhsuk-button">
+            Search
+        </button>
+
+      </form>
+  </div>
+</div>
+
+<script>
+  // Function to get URL parameters
+  function getUrlParameter(name) {
+    name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+    var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+    var results = regex.exec(location.search);
+    return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+  }
+
+  // Get the error code from the URL parameter
+  var errorCode = getUrlParameter('FEerror');
+
+  // References to the error message elements and input fields
+  var domainErrorMessageElement = document.getElementById('domain-error');
+  var domainInputField = document.getElementById('domain-input');
+  var domainFormGroup = document.getElementById('domain-form-group');
+
+  // Determine the error message and field based on the error code
+  var errorMessage;
+  var isError = true;
+
+  switch (errorCode) {
+    // Domain errors
+    case 'domainempty':
+      errorMessage = 'Enter a domain name';
+      domainErrorMessageElement.innerHTML = errorMessage;
+      domainErrorMessageElement.style.display = 'block';
+      domainInputField.className = 'nhsuk-input nhsuk-input--error';
+      domainFormGroup.className = 'nhsuk-form-group nhsuk-form-group--error';
+      break;
+    case '@sign':
+      errorMessage = 'Enter the domain name without the @ sign';
+      domainErrorMessageElement.innerHTML = errorMessage;
+      domainErrorMessageElement.style.display = 'block';
+      domainInputField.className = 'nhsuk-input nhsuk-input--error';
+      domainFormGroup.className = 'nhsuk-form-group nhsuk-form-group--error';
+      break;
+
+    default:
+      isError = false;
+  }
+
+  // Reset error state if no errors
+  if (!isError) {
+    domainErrorMessageElement.style.display = 'none';
+    domainInputField.className = 'nhsuk-input';
+    domainFormGroup.className = 'nhsuk-form-group';
+  }
+</script>
+
+{% endblock %}

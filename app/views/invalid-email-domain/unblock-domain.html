@@ -1,0 +1,148 @@
+{% extends 'layout-nav.html' %}
+{% set pageSection = "Invalid email domains" %}
+
+{% block beforeContent %}
+  <nav class="nhsuk-breadcrumb" aria-label="Breadcrumb">
+    <div class="nhsuk-width-container">
+      <ol class="nhsuk-breadcrumb__list">
+        <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link" href="/invalid-email-domain">Manage invalid email domains</a></li>
+        <li class="nhsuk-breadcrumb__item">Unblock an email domain</li>
+      </ol>
+    </div>
+  </nav>
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-two-thirds">
+
+    <h1 class="nhsuk-heading-l">Unblock an email domain</h1>
+    <form action="domain-unblocked">
+
+
+      <div class="nhsuk-form-group" id="domain-form-group">
+        
+        <h2 class="nhsuk-heading-s nhsuk-u-padding-top-4">Enter email domain</h2>
+
+          <p>
+            Enter the domain name only, without the @ sign, for example domain123.com.
+          </p>
+          <p>
+            To unblock multiple domains, enter a comma after each domain name.
+          </p>
+          <label class="nhsuk-label">
+            Email domain
+          </label>
+          <span class="nhsuk-error-message" id="domain-error" style="display: none;">
+          </span>
+          <input class="nhsuk-input" id="domain-input">
+      </div>
+
+      <div class="nhsuk-form-group" id="incident-number-form-group">
+        <h2 class="nhsuk-heading-s nhsuk-u-padding-top-4">Enter incident number</h2>
+          <label class="nhsuk-label" for="incident-number">
+            Incident number
+          </label>
+          <span class="nhsuk-error-message" id="incident-number-error" style="display: none;">
+          </span>
+          <input class="nhsuk-input" id="incident-number-input" name="incident-number" type="text">
+      </div>
+
+      <button class="nhsuk-button" type="submit">
+          Unblock
+      </button>
+
+    </form>
+
+  </div>
+</div>
+
+<script>
+  // Function to get URL parameters
+  function getUrlParameter(name) {
+    name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+    var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+    var results = regex.exec(location.search);
+    return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+  }
+
+  // Get the error code from the URL parameter
+  var errorCode = getUrlParameter('FEerror');
+
+  // References to the error message elements and input fields
+  var domainErrorMessageElement = document.getElementById('domain-error');
+  var domainInputField = document.getElementById('domain-input');
+  var domainFormGroup = document.getElementById('domain-form-group');
+
+  var incidentErrorMessageElement = document.getElementById('incident-number-error');
+  var incidentInputField = document.getElementById('incident-number-input');
+  var incidentFormGroup = document.getElementById('incident-number-form-group');
+
+  // Determine the error message and field based on the error code
+  var errorMessage;
+  var isError = true;
+
+  switch (errorCode) {
+    // Domain errors
+    case 'domainempty':
+      errorMessage = 'Enter a domain name';
+      domainErrorMessageElement.innerHTML = errorMessage;
+      domainErrorMessageElement.style.display = 'block';
+      domainInputField.className = 'nhsuk-input nhsuk-input--error';
+      domainFormGroup.className = 'nhsuk-form-group nhsuk-form-group--error';
+      break;
+    case '@sign':
+      errorMessage = 'Enter the domain name without the @ sign';
+      domainErrorMessageElement.innerHTML = errorMessage;
+      domainErrorMessageElement.style.display = 'block';
+      domainInputField.className = 'nhsuk-input nhsuk-input--error';
+      domainFormGroup.className = 'nhsuk-form-group nhsuk-form-group--error';
+      break;
+
+    // Incident number errors
+    case 'incidentempty':
+      errorMessage = 'Enter an incident number';
+      incidentErrorMessageElement.innerHTML = errorMessage;
+      incidentErrorMessageElement.style.display = 'block';
+      incidentInputField.className = 'nhsuk-input nhsuk-input--error';
+      incidentFormGroup.className = 'nhsuk-form-group nhsuk-form-group--error';
+      break;
+
+    case 'incidentformat':
+      errorMessage = 'Enter an incident number in the correct format, for example INC0123456';
+      incidentErrorMessageElement.innerHTML = errorMessage;
+      incidentErrorMessageElement.style.display = 'block';
+      incidentInputField.className = 'nhsuk-input nhsuk-input--error';
+      incidentFormGroup.className = 'nhsuk-form-group nhsuk-form-group--error';
+      break;
+
+    // Both empty field
+    case 'bothempty':
+      errorMessage = 'Enter an incident number';
+      incidentErrorMessageElement.innerHTML = errorMessage;
+      incidentErrorMessageElement.style.display = 'block';
+      incidentInputField.className = 'nhsuk-input nhsuk-input--error';
+      incidentFormGroup.className = 'nhsuk-form-group nhsuk-form-group--error';
+      errorMessage = 'Enter a domain name';
+      domainErrorMessageElement.innerHTML = errorMessage;
+      domainErrorMessageElement.style.display = 'block';
+      domainInputField.className = 'nhsuk-input nhsuk-input--error';
+      domainFormGroup.className = 'nhsuk-form-group nhsuk-form-group--error';
+      break;
+
+    default:
+      isError = false;
+  }
+
+  // Reset error state if no errors
+  if (!isError) {
+    domainErrorMessageElement.style.display = 'none';
+    domainInputField.className = 'nhsuk-input';
+    domainFormGroup.className = 'nhsuk-form-group';
+
+    incidentErrorMessageElement.style.display = 'none';
+    incidentInputField.className = 'nhsuk-input';
+    incidentFormGroup.className = 'nhsuk-form-group';
+  }
+</script>
+{% endblock %}
