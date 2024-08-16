@@ -1,6 +1,10 @@
 {% extends 'layout-nav.html' %}
 {% set pageSection = "Invalid email domains" %}
 
+{% block pageTitle %}
+Block an email domain
+{% endblock %}
+
 {% block beforeContent %}
   <nav class="nhsuk-breadcrumb" aria-label="Breadcrumb">
     <div class="nhsuk-width-container">
@@ -117,13 +121,13 @@
         break;
 
       // Both empty field
-      case 'bothempty':
+      case 'bothfields':
         errorMessage = 'Enter an incident number';
         incidentErrorMessageElement.innerHTML = errorMessage;
         incidentErrorMessageElement.style.display = 'block';
         incidentInputField.className = 'nhsuk-input nhsuk-input--error';
         incidentFormGroup.className = 'nhsuk-form-group nhsuk-form-group--error';
-        errorMessage = 'Enter a domain name';
+        errorMessage = 'Enter the domain name without the @ sign';
         domainErrorMessageElement.innerHTML = errorMessage;
         domainErrorMessageElement.style.display = 'block';
         domainInputField.className = 'nhsuk-input nhsuk-input--error';
