@@ -117,13 +117,13 @@
       break;
 
     // Both empty field
-    case 'bothempty':
-      errorMessage = 'Enter an incident number';
+    case 'bothfields':
+      errorMessage = 'Enter an incident number in the correct format, for example INC0123456';
       incidentErrorMessageElement.innerHTML = errorMessage;
       incidentErrorMessageElement.style.display = 'block';
       incidentInputField.className = 'nhsuk-input nhsuk-input--error';
       incidentFormGroup.className = 'nhsuk-form-group nhsuk-form-group--error';
-      errorMessage = 'Enter a domain name';
+      errorMessage = 'Enter the domain name without the @ sign';
       domainErrorMessageElement.innerHTML = errorMessage;
       domainErrorMessageElement.style.display = 'block';
       domainInputField.className = 'nhsuk-input nhsuk-input--error';
